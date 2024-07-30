@@ -1,0 +1,2 @@
+# frontend
+Inkchain Frontend Monorepo
