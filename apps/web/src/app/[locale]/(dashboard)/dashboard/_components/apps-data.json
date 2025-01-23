@@ -700,6 +700,29 @@
       }
     },
     {
+      "id": "omnisea",
+      "name": "Omnisea",
+      "description": "Post and Mint on Chain Feeds",
+      "imageUrl": "/featured-apps/icons/omnisea.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.omnisea.io",
+        "testnetWebsite": "https://www.omnisea.io",
+        "x": "https://x.com/omnisea",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x8692A822520681641E214dcd91aAeF6C5873d98A"
+      }
+    },
+    {
       "id": "orbiter-finance",
       "name": "Orbiter Finance",
       "description": "Orbiter Finance is a ZK-tech based cross-chain protocol offers fast, secure, and instant transfer.",
