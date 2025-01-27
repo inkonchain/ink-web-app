@@ -67,6 +67,29 @@
       }
     },
     {
+      "id": "atomic-wallet",
+      "name": "Atomic Wallet",
+      "description": "Manage, Swap, Buy and Stake your favorite assets. Securely hold your NFTs and 1000+ other tokens.",
+      "imageUrl": "/featured-apps/icons/atomic-wallet.webp",
+      "category": [
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "wallet"
+      ],
+      "links": {
+        "mainnetWebsite": "https://atomicwallet.io/",
+        "testnetWebsite": "https://atomicwallet.io/",
+        "x": "https://x.com/AtomicWallet",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "blockscout",
       "name": "Blockscout",
       "description": "Open-source, universally accessible, and fully customizable, the new Blockscout Explorer Portal is your definitive gateway to the blockchain world.",
