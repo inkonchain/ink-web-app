@@ -838,6 +838,29 @@
       }
     },
     {
+      "id": "rekt-ink",
+      "name": "Rekt Ink",
+      "description": "Rekt Ink is an NFT community feautring 4,444 animated works of art.",
+      "imageUrl": "/featured-apps/icons/rekt-ink.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts"
+      ],
+      "links": {
+        "mainnetWebsite": "https://rektink.com/",
+        "testnetWebsite": "https://rektink.com/",
+        "x": "https://x.com/rektink",
+        "discord": "https://discord.gg/eXz6hBpQPC",
+        "telegram": "https://t.me/rektink",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x25Aa78Ab6785A4b0aeFF5c170998992Fd958d43d"
+      }
+    },
+    {
       "id": "reservoir:-relay",
       "name": "Reservoir: Relay",
       "description": "Instant, low-cost bridging\nand swapping",
