@@ -427,6 +427,33 @@
       }
     },
     {
+      "id": "ink-scan-bot-",
+      "name": "Ink Scan Bot ",
+      "description": "This bot provides real-time token information from the Ink chain directly on telegram.",
+      "imageUrl": "/featured-apps/icons/ink-scan-bot-.webp",
+      "category": [
+        "Explorers"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "data",
+        "explorer",
+        "tokens",
+        "security",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://scanbot.ink/",
+        "testnetWebsite": "https://scanbot.ink/",
+        "x": "https://x.com/inkscanbot",
+        "discord": "",
+        "telegram": "https://t.me/deploysonink",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "inkypump",
       "name": "InkyPump",
       "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image. ",
