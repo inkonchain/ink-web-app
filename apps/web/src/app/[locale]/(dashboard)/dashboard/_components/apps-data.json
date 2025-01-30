@@ -1221,6 +1221,30 @@
       }
     },
     {
+      "id": "zeroway",
+      "name": "Zeroway",
+      "description": "Simple and cheap ETH bridge using Hyperlane decentralised omnichain technology.",
+      "imageUrl": "/featured-apps/icons/zeroway.webp",
+      "category": [
+        "Bridge",
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://zeroway.io",
+        "testnetWebsite": "https://zeroway.io",
+        "x": "https://x.com/zeroway_io",
+        "discord": "http://discord.gg/bQNEWkXdDG",
+        "telegram": "https://t.me/zeroway_announcements",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x73F9228039b5c2CE4DCfFA32A8712A48283EDE9b"
+      }
+    },
+    {
       "id": "zkcodex-wallet-tracker",
       "name": "zkCodex Wallet Tracker",
       "description": "zkCodex is a comprehensive wallet analysis platform for Layer 2. Track transaction volume, Chain Score, NFTs, DApp interactions, and airdrop eligibility across 15+ blockchains with ease and efficiency",
