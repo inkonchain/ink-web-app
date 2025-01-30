@@ -656,6 +656,31 @@
       }
     },
     {
+      "id": "nitro(-by-router-protocol)",
+      "name": "Nitro( by Router Protocol)",
+      "description": "Nitro is an intent based bridge which allows fast,cheap swaps and bridging between 35+ chains",
+      "imageUrl": "/featured-apps/icons/nitro(-by-router-protocol).webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain",
+        "faucet",
+        "interop"
+      ],
+      "links": {
+        "mainnetWebsite": "https://routernitro.com/swap",
+        "testnetWebsite": "https://routernitro.com/swap",
+        "x": "https://x.com/routerprotocol",
+        "discord": "",
+        "telegram": "https://t.me/routerprotocol",
+        "github": "https://github.com/router-protocol",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "okx-explorer",
       "name": "OKX Explorer",
       "description": "Your go-to onchain data hub. Offering ALL-IN-ONE Blockchain Explorer, OpenAPI, and EaaS to securely explore and build onchain.",
