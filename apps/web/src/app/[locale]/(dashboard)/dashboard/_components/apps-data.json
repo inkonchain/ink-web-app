@@ -948,6 +948,29 @@
       }
     },
     {
+      "id": "shroomy",
+      "name": "Shroomy",
+      "description": "Shroomy is the wholesome fungi-loving community token project with a mission.",
+      "imageUrl": "/featured-apps/icons/shroomy.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "fun"
+      ],
+      "links": {
+        "mainnetWebsite": "https://shroomy.io",
+        "testnetWebsite": "https://shroomy.io",
+        "x": "https://x.com/ShroomyProject",
+        "discord": "",
+        "telegram": "https://t.me/ShroomyProject",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "squidswap",
       "name": "SquidSwap",
       "description": "SquidSwap is  designed to provide a secure and efficient way to launch, lock, and trade tokens. ",
