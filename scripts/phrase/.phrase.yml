@@ -1,0 +1,59 @@
+phrase:
+  project_id: 1db1bb7bc5f04326488ffa791d4c765b
+  file_format: nested_json
+  push:
+    sources:
+      - file: ./apps/web/messages/en-US.json
+        params:
+          locale_id: en-US
+          update_translations: true
+  pull:
+    targets:
+      # - file: ./apps/web/messages/en-GB.json
+      #   params:
+      #     locale_id: en-GB
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/pt-BR.json
+      #   params:
+      #     locale_id: pt-BR
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/fr-FR.json
+      #   params:
+      #     locale_id: fr-FR
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/es-ES.json
+      #   params:
+      #     locale_id: es-ES
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/uk-UA.json
+      #   params:
+      #     locale_id: uk-UA
+      #     include_unverified_translations: true
+      - file: ./apps/web/messages/de-DE.json
+        params:
+          locale_id: de-DE
+          include_unverified_translations: true
+      # - file: ./apps/web/messages/ru-RU.json
+      #   params:
+      #     locale_id: ru-RU
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/it-IT.json
+      #   params:
+      #     locale_id: it-IT
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/vi-VN.json
+      #   params:
+      #     locale_id: vi-VN
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/nl-NL.json
+      #   params:
+      #     locale_id: nl-NL
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/tr-TR.json
+      #   params:
+      #     locale_id: tr-TR
+      #     include_unverified_translations: true
+      # - file: ./apps/web/messages/pl-PL.json
+      #   params:
+      #     locale_id: pl-PL
+      #     include_unverified_translations: true

@@ -1,0 +1,163 @@
+name: PR Checks
+on: [pull_request]
+jobs:
+  install_modules:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          run_install: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20.x"
+          cache: "pnpm"
+      - name: Clear pnpm store and modules
+        run: |
+          rm -rf node_modules || true
+          rm -rf ~/.pnpm-store || true
+          pnpm store path && pnpm store prune || true
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+  lint:
+    needs: install_modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/base-setup
+        name: Base Setup
+      - name: Run linting
+        run: pnpm run lint
+
+  format:
+    needs: install_modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/base-setup
+        name: Base Setup
+      - name: Run formatting
+        run: pnpm run format:check
+
+  build:
+    needs: install_modules
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/base-setup
+        name: Base Setup
+      - name: Create and populate .env.production
+        env:
+          NEXT_PUBLIC_WC_PROJECT_ID: DUMMY_DO_NOT_REPLACE
+          NEXT_PUBLIC_FAUCET_API_URL: DUMMY_DO_NOT_REPLACE
+          NEXT_PUBLIC_GELATO_BRIDGE_URL: DUMMY_DO_NOT_REPLACE
+          NEXT_PUBLIC_SENTRY_DSN: DUMMY_DO_NOT_REPLACE
+          NEXT_PUBLIC_GTM_ID: DUMMY_DO_NOT_REPLACE
+          NEXT_PUBLIC_SEGMENT_WRITE_KEY: DUMMY_DO_NOT_REPLACE
+          BRAZE_INSTANCE_URL: DUMMY_DO_NOT_REPLACE
+          BRAZE_API_KEY: DUMMY_DO_NOT_REPLACE
+          BRAZE_GENERAL_WAITLIST_GROUP_ID: DUMMY_DO_NOT_REPLACE
+          BRAZE_DEVELOPERS_WAITLIST_GROUP_ID: DUMMY_DO_NOT_REPLACE
+          MULTIPLIER_JWT_SECRET: DUMMY_DO_NOT_REPLACE
+          ORIGIN: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_BOT_GITHUB_APP_ID: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_SLACK_BOT_TOKEN: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_TARGET_ORG: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_TARGET_REPO: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_TARGET_BRANCH: DUMMY_DO_NOT_REPLACE
+          INK_APP_SUBMISSION_SLACK_NOTIFICATION_CHANNEL: DUMMY_DO_NOT_REPLACE
+          HCAPTCHA_SECRET: DUMMY_DO_NOT_REPLACE
+        run: |
+          touch apps/web/.env.production
+          echo "NEXT_PUBLIC_WC_PROJECT_ID=$NEXT_PUBLIC_WC_PROJECT_ID" >> apps/web/.env.production
+          echo "NEXT_PUBLIC_FAUCET_API_URL=$NEXT_PUBLIC_FAUCET_API_URL" >> apps/web/.env.production
+          echo "NEXT_PUBLIC_GELATO_BRIDGE_URL=$NEXT_PUBLIC_GELATO_BRIDGE_URL" >> apps/web/.env.production
+          echo "NEXT_PUBLIC_SENTRY_DSN=$NEXT_PUBLIC_SENTRY_DSN" >> apps/web/.env.production
+          echo "NEXT_PUBLIC_GTM_ID=$NEXT_PUBLIC_GTM_ID" >> apps/web/.env.production
+          echo "NEXT_PUBLIC_SEGMENT_WRITE_KEY=$NEXT_PUBLIC_SEGMENT_WRITE_KEY" >> apps/web/.env.production
+          echo "BRAZE_INSTANCE_URL=$BRAZE_INSTANCE_URL" >> apps/web/.env.production
+          echo "BRAZE_API_KEY=$BRAZE_API_KEY" >> apps/web/.env.production
+          echo "BRAZE_GENERAL_WAITLIST_GROUP_ID=$BRAZE_GENERAL_WAITLIST_GROUP_ID" >> apps/web/.env.production
+          echo "BRAZE_DEVELOPERS_WAITLIST_GROUP_ID=$BRAZE_DEVELOPERS_WAITLIST_GROUP_ID" >> apps/web/.env.production
+          echo "MULTIPLIER_JWT_SECRET=$MULTIPLIER_JWT_SECRET" >> apps/web/.env.production
+          echo "ORIGIN=$ORIGIN" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_BOT_GITHUB_APP_ID=$INK_APP_SUBMISSION_BOT_GITHUB_APP_ID" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY=$INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID=$INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_SLACK_BOT_TOKEN=$INK_APP_SUBMISSION_SLACK_BOT_TOKEN" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_TARGET_ORG=$INK_APP_SUBMISSION_TARGET_ORG" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_TARGET_REPO=$INK_APP_SUBMISSION_TARGET_REPO" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_TARGET_BRANCH=$INK_APP_SUBMISSION_TARGET_BRANCH" >> apps/web/.env.production
+          echo "INK_APP_SUBMISSION_SLACK_NOTIFICATION_CHANNEL=$INK_APP_SUBMISSION_SLACK_NOTIFICATION_CHANNEL" >> apps/web/.env.production
+          echo "HCAPTCHA_SECRET=$HCAPTCHA_SECRET" >> apps/web/.env.production
+      - name: Building app
+        run: pnpm run build
+      - name: Cache build
+        uses: actions/cache/save@v4
+        with:
+          path: apps/web/.next
+          key: ${{ runner.os }}-build-store-${{ hashFiles('./apps/web/src') }}
+
+  # e2e-test:
+  #   needs: build
+  #   timeout-minutes: 60
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: ./.github/actions/base-setup
+  #       name: Base Setup
+  #     - name: Restore build from cache
+  #       uses: actions/cache/restore@v4
+  #       with:
+  #         path: apps/web/.next
+  #         key: ${{ runner.os }}-build-store-${{ hashFiles('./apps/web/src') }}
+  #     - name: Get installed Playwright version
+  #       id: playwright-version
+  #       run: echo "PLAYWRIGHT_VERSION=$(node -e "console.log(require('./package.json').dependencies['@playwright/test'].version)")" >> $GITHUB_ENV
+  #     - name: Restore playwright binaries from cache
+  #       uses: actions/cache@v4
+  #       id: playwright-cache
+  #       with:
+  #         path: |
+  #           ~/apps/web/.cache/ms-playwright
+  #         key: ${{ runner.os }}-playwright-${{ steps.playwright-version.outputs.PLAYWRIGHT_VERSION }}
+  #     - name: Install Playwright Browsers
+  #       run: npx playwright install --with-deps
+  #       if: steps.playwright-cache.outputs.cache-hit != 'true'
+  #     - name: Install Playwright Dependencies
+  #       run: npx playwright install-deps
+  #       if: steps.playwright-cache.outputs.cache-hit == 'true'
+  #     - name: Change dir
+  #       run: cd apps/web
+  #     - name: Run Playwright tests
+  #       run: pnpm run test
+  #       env:
+  #         NEXT_PUBLIC_ENVIRONMENT: ci
+  #         NEXT_PUBLIC_FAUCET_API_URL: DUMMY_DO_NOT_REPLACE
+  #         NEXT_PUBLIC_GELATO_BRIDGE_URL: DUMMY_DO_NOT_REPLACE
+  #         NEXT_PUBLIC_GTM_ID: DUMMY_DO_NOT_REPLACE
+  #         NEXT_PUBLIC_SENTRY_DSN: DUMMY_DO_NOT_REPLACE
+  #         NEXT_PUBLIC_SEGMENT_WRITE_KEY: DUMMY_DO_NOT_REPLACE
+  #         BRAZE_INSTANCE_URL: DUMMY_DO_NOT_REPLACE
+  #         BRAZE_API_KEY: DUMMY_DO_NOT_REPLACE
+  #         BRAZE_GENERAL_WAITLIST_GROUP_ID: DUMMY_DO_NOT_REPLACE
+  #         BRAZE_DEVELOPERS_WAITLIST_GROUP_ID: DUMMY_DO_NOT_REPLACE
+  #         MULTIPLIER_JWT_SECRET: DUMMY_DO_NOT_REPLACE
+  #         ORIGIN: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_BOT_GITHUB_APP_ID: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_SLACK_BOT_TOKEN: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_TARGET_ORG: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_TARGET_REPO: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_TARGET_BRANCH: DUMMY_DO_NOT_REPLACE
+  #         INK_APP_SUBMISSION_SLACK_NOTIFICATION_CHANNEL: DUMMY_DO_NOT_REPLACE
+  #     - uses: actions/upload-artifact@v4
+  #       if: always()
+  #       with:
+  #         name: playwright-report
+  #         path: apps/web/playwright-report/
+  #         retention-days: 30

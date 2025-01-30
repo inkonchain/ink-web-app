@@ -1,0 +1,20 @@
+name: Push Phrase
+on:
+  push:
+    branches: ["main", "feat/phrase"]
+    paths:
+      - apps/web/messages/en-US.json
+jobs:
+  deploy-phrase:
+    if: github.repository == 'inkonchain/frontend'
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: "Install Phrase CLI"
+        run: brew install phrase-cli
+        env:
+          HOMEBREW_NO_INSTALL_CLEANUP: "true"
+      - name: "Push Command"
+        run: phrase push --access_token $PHRASEAPP_ACCESS_TOKEN --config ./scripts/phrase/.phrase.yml
+        env:
+          PHRASEAPP_ACCESS_TOKEN: ${{ secrets.PHRASEAPP_ACCESS_TOKEN }}

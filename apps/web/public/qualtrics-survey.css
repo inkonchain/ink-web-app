@@ -1,0 +1,179 @@
+html .Skin .QuestionText h1,
+html .Skin .ChoiceStructure .QuestionText h1 {
+  color: rgb(75 85 99 / var(--tw-text-opacity));
+  font-size: 56px;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+  line-height: 1.25;
+  font-weight: 500;
+}
+
+html .Skin #Buttons #NextButton {
+  align-items: center;
+  appearance: button;
+  background-color: rgb(117, 56, 245);
+  background-image: none;
+  border-bottom-color: rgb(255, 255, 255);
+  border-bottom-left-radius: 9999px;
+  border-bottom-right-radius: 9999px;
+  border-bottom-style: solid;
+  border-bottom-width: 0px;
+  border-image-outset: 0;
+  border-image-repeat: stretch;
+  border-image-slice: 100%;
+  border-image-source: none;
+  border-image-width: 1;
+  border-left-color: rgb(255, 255, 255);
+  border-left-style: solid;
+  border-left-width: 0px;
+  border-right-color: rgb(255, 255, 255);
+  border-right-style: solid;
+  border-right-width: 0px;
+  border-top-color: rgb(255, 255, 255);
+  border-top-left-radius: 9999px;
+  border-top-right-radius: 9999px;
+  border-top-style: solid;
+  border-top-width: 0px;
+  box-sizing: border-box;
+  color: rgb(246, 244, 255);
+  color-scheme: light;
+  column-gap: 8px;
+  cursor: pointer;
+  display: flex;
+  font-family: "Plus Jakarta Sans", "Inter", sans-serif;
+  font-feature-settings: normal;
+  font-kerning: auto;
+  font-optical-sizing: auto;
+  font-size: 18px;
+  font-size-adjust: none;
+  font-stretch: 100%;
+  font-style: normal;
+  font-variant-alternates: normal;
+  font-variant-caps: normal;
+  font-variant-east-asian: normal;
+  font-variant-ligatures: normal;
+  font-variant-numeric: normal;
+  font-variant-position: normal;
+  font-variation-settings: normal;
+  font-weight: 700;
+  height: 68px;
+  justify-content: center;
+  letter-spacing: normal;
+  line-height: 23.4px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  margin-top: 0px;
+  opacity: 1;
+  overflow-x: hidden;
+  overflow-y: hidden;
+  padding-block-end: 20px;
+  padding-block-start: 20px;
+  padding-bottom: 20px;
+  padding-inline-end: 40px;
+  padding-inline-start: 40px;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-top: 20px;
+  pointer-events: auto;
+  row-gap: 8px;
+  tab-size: 4;
+  text-align: center;
+  text-indent: 0px;
+  text-rendering: auto;
+  text-shadow: none;
+  text-size-adjust: 100%;
+  text-transform: none;
+  transition-duration: 0.15s;
+  transition-property: color, background-color, border-color,
+    text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  width: 278.609px;
+  word-spacing: 0px;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-border-image: none;
+}
+
+html .Skin #Buttons #NextButton:hover {
+  filter: brightness(1.1);
+}
+html #Plug a {
+  display: none !important;
+}
+html .Skin .advanceButtonContainer {
+  display: none !important;
+}
+html .Skin select.ChoiceStructure.Selection {
+  background-color: transparent;
+}
+html .Skin .QuestionBody:has(select) select {
+  background-color: transparent;
+  width: 100%;
+}
+html .Skin .QuestionBody:has(input.InputText) .ChoiceStructure {
+  width: 100%;
+}
+html .Skin .QuestionBody:has(input.InputText),
+html .Skin .QuestionBody:has(select) {
+  background-clip: padding-box;
+  background-color: rgb(244, 244, 245);
+  border: 1px solid rgb(229, 231, 235);
+  border-radius: 9999px;
+  box-shadow: inset 0 0 4px rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+  color: rgb(11, 13, 18);
+  display: flex;
+  font-family:
+    "__Plus_Jakarta_Sans",
+    "__Inter",
+    -apple-system,
+    system-ui,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  height: 48px;
+  line-height: 22px;
+  min-width: 224px;
+  overflow: hidden;
+  padding-left: 24px;
+  pointer-events: auto;
+  position: relative;
+  transition:
+    background-color 0.15s cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 0.15s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+html .Skin .TE .SL input.InputText,
+html .Skin select.ChoiceStructure {
+  appearance: auto;
+  background-color: transparent;
+  border: 0 solid rgb(229, 231, 235);
+  box-sizing: border-box;
+  color: rgb(11, 13, 18);
+  cursor: text;
+  display: block;
+  font-family:
+    "__Plus_Jakarta_Sans",
+    "__Inter",
+    -apple-system,
+    system-ui,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  height: 46px;
+  line-height: 22px;
+  margin: 0;
+  overflow: clip;
+  padding: 0px;
+  pointer-events: auto;
+  text-align: start;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}

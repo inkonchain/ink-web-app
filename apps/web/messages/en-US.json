@@ -1,0 +1,124 @@
+{
+  "Bridge": {
+    "title": "Bridge to Ink Testnet",
+    "transactionSubmitted": "Transaction submitted",
+    "bridgingTime": "Funds should finish bridging to <network>Ink Sepolia</network> within ~3 minutes",
+    "done": "Done"
+  },
+  "Home": {
+    "header:about": "ABOUT INKCHAIN",
+    "header:developer": "DEVELOPER DOCS"
+  },
+  "Landing": {
+    "mainContentTagLine": "Ink the future",
+    "mainContentSubTagLine": "Simplified DeFi for|builders,degens,gigachads,institutions,normies,ALL",
+    "bridge:cta": "Bridge Now",
+    "exploreApps:cta": "Explore Apps",
+    "discord:cta": "Join Discord",
+    "subscribe:cta": "Subscribe",
+    "inktopia:cta": "RSVP Now!",
+    "subscribeUpdates:cta": "Subscribe for updates"
+  },
+  "LocaleSwitcher": {
+    "label": "Change language",
+    "locale": "{locale, select, deDE {🇩🇪 Deutsch} enUS {🇺🇸 English} other {Unknown}}"
+  },
+  "Faucet": {
+    "title": "Ink faucet",
+    "description": "Receive 0.01 ETH per request",
+    "enterAddress": "Enter your address or ENS name",
+    "requestTokens": "Request"
+  },
+  "SmartWallet": {
+    "createWallet": "Create Wallet",
+    "noGas": "No gas fees",
+    "alreadyCreated": "Already created a smart wallet?"
+  },
+  "404": {
+    "title": "This page doesn't exist",
+    "cta": "Go Home",
+    "alt": "404 blob"
+  },
+  "Menu": {
+    "about": "About",
+    "bridge": "Bridge",
+    "builders": "Builders",
+    "documentation": "Documentation",
+    "inkkit": "Ink Kit",
+    "testnetFaucet": "Testnet Faucet",
+    "statusPage": "Status Page",
+    "explorer": "Explorer",
+    "blockscout": "Blockscout",
+    "okx": "OKX Explorer",
+    "routescan": "Routescan",
+    "community": "Community",
+    "contact": "Contact",
+    "github": "GitHub"
+  },
+  "Community": {
+    "title": "Join the Ink Community",
+    "description": "Discover, dive into events, and get the support you need to ink the future with us",
+    "letsGetSocial": {
+      "title": "Let's get social",
+      "description": "Join the Ink community, vibe with fellow developers and get support"
+    },
+    "twitter": {
+      "title": "Follow us on Twitter",
+      "description": "Stay tuned to receive all ink updates first hand"
+    },
+    "discord": {
+      "title": "Join our Discord",
+      "description": "Access our Discord for fast support, feedback and memes"
+    },
+    "telegram": {
+      "title": "Talk to us on Telegram",
+      "description": "Get exclusive updates and inside tips from our team and users"
+    },
+    "farcaster": {
+      "title": "Follow us on Farcaster",
+      "description": "Connect with us where the real DeFi conversations happen"
+    },
+    "brandKit": {
+      "title": "Brand Kit",
+      "description": "Ink logos, colors, typefaces, illustrations, and best practices. It should help any and all creative work",
+      "cta": "Learn more"
+    }
+  },
+  "Verify": {
+    "title": "Get Verified and Start Your On-Chain Journey Today",
+    "description": "Ink Verify — Seamlessly authenticate your activity, unlock rewards, and explore the limitless potential of Ink",
+    "cta": "Connect to verify",
+    "whatIsVerify": {
+      "title": "What is Ink Verify?",
+      "description": "Ink Verify is your gateway to effortless cross chain attestations. With Ink Verify, you can easily validate your DeFi activity, NFT mints and Kraken account all with zero gas fees. Just connect any wallet, including Kraken Wallet, Rainbow, or MetaMask to get started."
+    },
+    "whyVerify": {
+      "title": "Why Verify?",
+      "description": "By verifying your on-chain activity, you can unlock rewards, perks, tools, and more. Designed with both users and developers in mind, Ink Verify is constantly evolving to support new verification categories."
+    },
+    "yourPrivacy": {
+      "title": "Your Privacy",
+      "description": "Privacy and security are embedded in the Ink ethos. Therefore no personal information is ever disclosed in your verifications."
+    },
+    "haveASuggestion": {
+      "title": "Have a suggestion?",
+      "description": "Ink Verify is a tool for both users and developers! Have a suggestion? Reach out to the Ink team to request additional categories here",
+      "contactTeam": "Contact Team"
+    },
+    "verifications": {
+      "title": "Available verifications",
+      "description": "Discover the latest verifications on Ink"
+    }
+  },
+  "events": {
+    "ethdenver": {
+      "title": "Join us at the House of Ink in Denver",
+      "cardTitle": "Ink is coming to ETHDenver!",
+      "description": "Join us at the House of Ink, a 5-day immersive hacker house experience during ETH Denver, where innovation meets collaboration! Explore the power of Ink, dive into smart contract development, and gain hands-on expertise through interactive workshops and tooling overviews.",
+      "pillLabel": "Event",
+      "location": "Denver, CO",
+      "date": "Feb 22, 2025",
+      "cta": "RSVP Now!"
+    }
+  }
+}
