@@ -6,7 +6,7 @@ on:
       - apps/web/messages/en-US.json
 jobs:
   deploy-phrase:
-    if: github.repository == 'inkonchain/frontend'
+    if: github.repository == 'inkonchain/ink-web-app'
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v4

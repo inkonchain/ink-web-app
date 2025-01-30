@@ -96,7 +96,7 @@ export const AppSubmissionModal: React.FC = () => {
                 <PullRequestButton
                   pullRequestUrl={
                     state.prUrl ||
-                    "https://github.com/inkonchain/frontend/pulls"
+                    "https://github.com/inkonchain/ink-web-app/pulls"
                   }
                 />
               </div>
