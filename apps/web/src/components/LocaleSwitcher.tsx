@@ -1,6 +1,7 @@
 "use client";
 
 import { Popover, PopoverButton, PopoverPanel } from "@headlessui/react";
+import { useParams } from "next/navigation";
 import { useLocale, useTranslations } from "next-intl";
 
 import { compactLanguage, Link, routing, usePathname } from "@/routing";
@@ -10,6 +11,7 @@ import { RoundedIconButton } from "./Button/RoundedIconButton";
 import { LanguageIcon } from "./icons/Language";
 
 export const LanguageSwitcher: React.FC = () => {
+  const params = useParams();
   const pathname = usePathname();
   const locale = useLocale();
   const t = useTranslations("LocaleSwitcher");
@@ -38,7 +40,9 @@ export const LanguageSwitcher: React.FC = () => {
                 "text-krakenPurple": cur === locale,
               }
             )}
-            href={pathname}
+            // @ts-expect-error -- Expected since the types of "params" is not computed in tanden with the "pathname", so the types don't match
+            href={{ pathname, params }}
+            params={params}
             key={cur}
             locale={cur}
           >

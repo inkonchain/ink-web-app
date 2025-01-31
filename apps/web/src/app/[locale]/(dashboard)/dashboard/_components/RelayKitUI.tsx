@@ -4,7 +4,7 @@ import { LinkedWallet, SwapWidget } from "@reservoir0x/relay-kit-ui";
 import { useAccount } from "wagmi";
 
 import { RelayLogo } from "@/components/icons/RelayLogo";
-import { EXTERNAL_LINKS_WITH_PARAMS, Link } from "@/routing";
+import { EXTERNAL_LINKS, Link } from "@/routing";
 
 import "@reservoir0x/relay-kit-ui/styles.css";
 
@@ -21,7 +21,10 @@ export const RelayKitUI: React.FC = () => {
           </p>
           {address && (
             <Link
-              href={EXTERNAL_LINKS_WITH_PARAMS.relayTxHistory(address)}
+              href={{
+                pathname: EXTERNAL_LINKS.relayTxHistory,
+                params: { address },
+              }}
               target="_blank"
               rel="noopener noreferrer"
             >

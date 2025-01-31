@@ -43,13 +43,8 @@ export const EXTERNAL_LINKS = {
   legal: "mailto:legal@inkonchain.com",
   // TODO: update this.
   inkVerify: "https://verify.inkonchain.com/",
-} as const;
-
-export const EXTERNAL_LINKS_WITH_PARAMS = {
-  l1Explorer: (hash: string) =>
-    `https://sepolia.etherscan.io/tx/${hash}` as Pathnames,
-  relayTxHistory: (address: string) =>
-    `https://relay.link/transactions?address=${address}` as Pathnames,
+  relayTxHistory: "https://relay.link/transactions?address=[address]",
+  l1Explorer: "https://sepolia.etherscan.io/tx/[hash]",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
@@ -91,6 +86,7 @@ export const routing = defineRouting({
     "/newsletter/unsubscribe": "/newsletter/unsubscribe",
     "/new": "/new",
     "/new/dashboard": "/new/dashboard",
+    "/new/dashboard/[category]": "/new/dashboard/[category]",
     ...externalLinksMap,
   },
 });
@@ -103,6 +99,9 @@ const pathnames = routing.pathnames;
 
 // Type definitions
 export type Pathnames = keyof typeof pathnames;
+export type PathnamesWithoutParameterizedPaths = {
+  [K in Pathnames]: K extends `${string}[${string}]` ? never : K;
+}[Pathnames];
 export type Locale = (typeof routing.locales)[number];
 export type Anchors =
   | {
