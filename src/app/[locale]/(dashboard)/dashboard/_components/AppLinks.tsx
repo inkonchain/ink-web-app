@@ -19,7 +19,7 @@ export function AppLinks({
     network === "Testnet" ? links.testnetWebsite : links.mainnetWebsite;
 
   return (
-    <div className="flex gap-2 mt-auto">
+    <div className="flex flex-wrap justify-end gap-2 mt-auto">
       {links.x && (
         <AppLink href={links.x}>
           <TwitterIcon size="icon-md" enforce="inherit" />

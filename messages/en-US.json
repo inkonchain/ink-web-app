@@ -121,5 +121,8 @@
       "date": "Feb 22, 2025",
       "cta": "RSVP Now!"
     }
+  },
+  "dashboard": {
+    "featured": "FEATURED"
   }
 }
