@@ -1,20 +1,39 @@
-.turbo
-node_modules
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
-# misc
-.DS_Store
-*.pem
+# dependencies
+.pnp
+.pnp.js
+.yarn/install-state.gz
+.pnpm-store
 
-# debug
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
+# testing
+/coverage
+
+# next.js
+.next/
+out/
+
+# production
+build
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+# Playwright
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
 
 # local env files
-.env*.local
+.env**
 
-# Git
-.gitconfig
-
-# scratchpad
-.scratchpad
+# cache
+cache/*

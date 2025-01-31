@@ -13,14 +13,14 @@ import { useRouter } from "@/routing";
 import { classNames } from "@/util/classes";
 import { isMobileUserAgent } from "@/util/detection";
 
-import { AppsTable } from "../../dashboard/_components/AppsTable";
-import { AppsTagsFilter } from "../../dashboard/_components/AppsTagsFilter";
+import { AppsTable } from "./AppsTable";
+import { AppsTagsFilter } from "./AppsTagsFilter";
 import {
   InkAppFilters,
   InkAppNetwork,
   inkApps,
   inkFeaturedApps,
-} from "../../dashboard/_components/InkApp";
+} from "./InkApp";
 
 import { AddYourAppButton } from "./AddYourAppButton";
 import { AppCard } from "./AppCard";
