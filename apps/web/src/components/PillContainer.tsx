@@ -10,6 +10,8 @@ const pillContainerVariants = cva(
       variant: {
         transparent: "bg-white/25 dark:bg-black/25",
         purple: "bg-purple-pill-gradient text-blackMagic",
+        "ink-kit":
+          "ink:bg-background-container ink:text-text-primary px-3 py-1",
       },
       withHover: {
         true: "hover:text-blackMagic/50 dark:hover:text-whiteMagic/50",

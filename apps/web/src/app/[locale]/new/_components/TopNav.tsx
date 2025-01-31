@@ -1,12 +1,15 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { useTranslations } from "next-intl";
 
+import { PillContainer } from "@/components/PillContainer";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { Link, routing, usePathname } from "@/routing";
 import { classNames } from "@/util/classes";
 
 export const TopNav = () => {
+  const t = useTranslations("Menu");
   const pathname = usePathname();
   const query = useRouterQuery();
   // To support an optimistic click
@@ -16,20 +19,35 @@ export const TopNav = () => {
   }, [pathname]);
 
   return (
-    <nav className="flex items-center gap-8">
-      <Link
-        href={{
-          pathname: routing.pathnames["/new/dashboard"],
-          query,
-        }}
-        className={classNames("text-sm hover:opacity-70", {
-          "ink:text-text-primary font-semibold": selected === "/new/dashboard",
-        })}
-        prefetch
-        onClick={() => setSelected("/new/dashboard")}
-      >
-        Dashboard (Placeholder)
-      </Link>
-    </nav>
+    <PillContainer variant="ink-kit">
+      <nav className="flex items-center *:px-3 *:h-10 *:flex *:items-center *:transition-opacity hover:*:opacity-50">
+        <Link
+          href={{
+            pathname: routing.pathnames["/new"],
+            query,
+          }}
+          className={classNames("ink:text-body-3-regular", {
+            "ink:text-body-3-bold": selected === "/new",
+          })}
+          prefetch
+          onClick={() => setSelected("/new")}
+        >
+          {t("about")}
+        </Link>
+        <Link
+          href={{
+            pathname: routing.pathnames["/new/dashboard"],
+            query,
+          }}
+          className={classNames("ink:text-body-3-regular", {
+            "ink:text-body-3-bold": selected === "/new/dashboard",
+          })}
+          prefetch
+          onClick={() => setSelected("/new/dashboard")}
+        >
+          {t("ecosystem")}
+        </Link>
+      </nav>
+    </PillContainer>
   );
 };
