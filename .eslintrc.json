@@ -53,7 +53,7 @@
   ],
   "settings": {
     "next": {
-      "rootDir": "apps/web"
+      "rootDir": "."
     }
   },
   "ignorePatterns": ["node_modules/", ".next/", "out/"],

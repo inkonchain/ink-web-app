@@ -3,7 +3,7 @@ on:
   push:
     branches: ["main", "feat/phrase"]
     paths:
-      - apps/web/messages/en-US.json
+      - messages/en-US.json
 jobs:
   deploy-phrase:
     if: github.repository == 'inkonchain/ink-web-app'

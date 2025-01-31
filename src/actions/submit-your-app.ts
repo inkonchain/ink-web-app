@@ -38,7 +38,7 @@ const GITHUB_CONFIG = {
   OWNER: INK_APP_SUBMISSION_TARGET_ORG,
   REPO: INK_APP_SUBMISSION_TARGET_REPO,
   FILE_PATH:
-    "apps/web/src/app/[locale]/(dashboard)/dashboard/_components/apps-data.json",
+    "src/app/[locale]/(dashboard)/dashboard/_components/apps-data.json",
   BRANCH: INK_APP_SUBMISSION_TARGET_BRANCH,
 } as const;
 
@@ -312,7 +312,7 @@ async function createPullRequest(
     base_tree: mainRef.data.object.sha,
     tree: [
       {
-        path: `apps/web/public/featured-apps/icons/${app.id}.webp`,
+        path: `public/featured-apps/icons/${app.id}.webp`,
         mode: "100644",
         type: "blob",
         sha: imageBlob.data.sha, // Reference the blob we created
