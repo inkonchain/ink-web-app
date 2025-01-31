@@ -13,20 +13,19 @@ import { useRouter } from "@/routing";
 import { classNames } from "@/util/classes";
 import { isMobileUserAgent } from "@/util/detection";
 
-import { AppsTable } from "../../dashboard/_components/AppsTable";
-import { AppsTagsFilter } from "../../dashboard/_components/AppsTagsFilter";
-import {
-  InkAppFilters,
-  InkAppNetwork,
-  inkApps,
-  inkFeaturedApps,
-} from "../../dashboard/_components/InkApp";
-
 import { AddYourAppButton } from "./AddYourAppButton";
 import { AppCard } from "./AppCard";
 import { AppMainnetToggle } from "./AppMainnetToggle";
 import { AppsCategoryFilter } from "./AppsCategoryFilter";
 import { AppsSideBar } from "./AppsSideBar";
+import { AppsTable } from "./AppsTable";
+import { AppsTagsFilter } from "./AppsTagsFilter";
+import {
+  InkAppFilters,
+  InkAppNetwork,
+  inkApps,
+  inkFeaturedApps,
+} from "./InkApp";
 import { RelayKitUI } from "./RelayKitUI";
 
 import "react-multi-carousel/lib/styles.css";
