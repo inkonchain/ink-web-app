@@ -1087,6 +1087,32 @@
       }
     },
     {
+      "id": "test-app",
+      "name": "Test App",
+      "description": "This is a test description for the app submission form",
+      "imageUrl": "/featured-apps/icons/test-app.webp",
+      "category": [
+        "Bridge",
+        "DeFi",
+        "Explorers"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain",
+        "data"
+      ],
+      "links": {
+        "mainnetWebsite": "https://example.com",
+        "testnetWebsite": "https://test.example.com",
+        "x": "https://x.com/test",
+        "discord": "https://discord.gg/test",
+        "telegram": "https://t.me/test",
+        "github": "https://github.com/test",
+        "farcaster": "https://warpcast.com/test",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x00000000E3dA5fC031282A39759bDDA78ae7fAE5"
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer",
