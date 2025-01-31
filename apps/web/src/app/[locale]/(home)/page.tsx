@@ -14,6 +14,7 @@ import { EventContent } from "../_components/EventContent/EventContent";
 import { FloatingButtons, MainContent } from "../_components/MainContent";
 
 import { HomeShortcuts } from "./HomeShortcuts";
+import { RedirectNewNav } from "./RedirectNewNav";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkonchain.com"),
@@ -55,6 +56,7 @@ export default async function HomePage() {
           ],
         }}
       />
+      <RedirectNewNav />
       <PageView />
       <HomeShortcuts />
       <div className="flex flex-col gap-12 lg:gap-28 mt-0 mb-12 lg:mb-24 pt-16 sm:pt-0">
