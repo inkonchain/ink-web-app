@@ -1,5 +1,7 @@
 import { ListItem } from "@inkonchain/ink-kit";
 
+import { useRouterQuery } from "@/hooks/useRouterQuery";
+import { Link } from "@/routing";
 import { classNames } from "@/util/classes";
 
 import { appCategories } from "./categories";
@@ -7,9 +9,15 @@ import { appCategories } from "./categories";
 interface AppsSideBarProps {
   selected: string | null;
   setSelected: (value: string | null) => void;
+  newLayout?: boolean;
 }
 
-export const AppsSideBar = ({ selected, setSelected }: AppsSideBarProps) => {
+export const AppsSideBar = ({
+  selected,
+  setSelected,
+  newLayout,
+}: AppsSideBarProps) => {
+  const query = useRouterQuery();
   return (
     <div className="flex flex-col gap-1 w-full">
       {appCategories.map((filter, index) => (
@@ -19,9 +27,22 @@ export const AppsSideBar = ({ selected, setSelected }: AppsSideBarProps) => {
             selected === filter.value && "ink:bg-background-container"
           )}
           iconLeft={filter.icon}
+          asChild={newLayout}
           onClick={() => setSelected(filter.value)}
         >
-          {filter.label}
+          {newLayout ? (
+            <Link
+              href={{
+                pathname: `/new/dashboard/[category]`,
+                params: { category: filter.value || "" },
+                query,
+              }}
+            >
+              {filter.label}
+            </Link>
+          ) : (
+            filter.label
+          )}
         </ListItem>
       ))}
     </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-import { EXTERNAL_LINKS_WITH_PARAMS, Link } from "@/routing";
+import { EXTERNAL_LINKS, Link } from "@/routing";
 
 interface BlockExplorerButtonProps {
   transactionHash: string;
@@ -12,7 +12,10 @@ export const BlockExplorerButton: React.FC<BlockExplorerButtonProps> = ({
 }) => {
   return (
     <Link
-      href={EXTERNAL_LINKS_WITH_PARAMS.l1Explorer(transactionHash)}
+      href={{
+        pathname: EXTERNAL_LINKS.l1Explorer,
+        params: { hash: transactionHash },
+      }}
       target="_blank"
       rel="noopener noreferrer"
       className="flex items-center gap-2 p-2 pr-4 bg-[#DDDCF0BF] hover:bg-[#c4c3dcbf] rounded-full transition-all duration-300 dark:bg-white/[0.06] dark:backdrop-blur-[32px]"

@@ -32,11 +32,16 @@ import { RelayKitUI } from "./RelayKitUI";
 import "react-multi-carousel/lib/styles.css";
 import "./AppsContent.scss";
 
-export function AppsContent({ newLayout }: { newLayout?: boolean }) {
+interface AppsContentProps {
+  newLayout?: boolean;
+  currentCategory?: string;
+}
+
+export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const network = getNetwork(searchParams.get("network"));
-  const category = searchParams.get("category");
+  const category = currentCategory || searchParams.get("category");
   const tags = searchParams.get("tags");
 
   const [page, setPage] = useState(0);
@@ -116,12 +121,17 @@ export function AppsContent({ newLayout }: { newLayout?: boolean }) {
       const { network, category, tags, ...params } = Object.fromEntries(
         searchParams.entries()
       );
+      const { category: newCategory, ...newParamsToUpdate } = newParams;
       router.replace(
         {
-          pathname: "/dashboard",
+          pathname: newLayout ? `/new/dashboard/[category]` : "/dashboard",
+          params: {
+            category: newCategory || "",
+          },
           query: {
             ...params,
-            ...newParams,
+            ...newParamsToUpdate,
+            ...(newLayout ? {} : { category: newCategory }),
           },
         },
         {
@@ -129,7 +139,7 @@ export function AppsContent({ newLayout }: { newLayout?: boolean }) {
         }
       );
     },
-    [searchParams, router]
+    [newLayout, searchParams, router]
   );
   const updateFilters = useCallback(
     (newFilters: Partial<InkAppFilters>) => {
@@ -215,6 +225,7 @@ export function AppsContent({ newLayout }: { newLayout?: boolean }) {
         </div>
         <div className="min-w-[240px] xl:hidden">
           <AppsCategoryFilter
+            newLayout={newLayout}
             selected={filters.categories?.[0]}
             setSelected={(value) => {
               updateFilters({
@@ -238,6 +249,7 @@ export function AppsContent({ newLayout }: { newLayout?: boolean }) {
       <div className="h-full hidden lg:block shrink-0 fixed left-8 w-[240px]">
         <div className="hide-on-very-narrow-screen">
           <AppsSideBar
+            newLayout={newLayout}
             selected={filters.categories?.[0] ?? null}
             setSelected={(value) => {
               updateFilters({
@@ -248,6 +260,7 @@ export function AppsContent({ newLayout }: { newLayout?: boolean }) {
         </div>
         <div className="hidden show-on-very-narrow-screen">
           <AppsCategoryFilter
+            newLayout={newLayout}
             selected={filters.categories?.[0]}
             setSelected={(value) => {
               updateFilters({
@@ -267,6 +280,7 @@ export function AppsContent({ newLayout }: { newLayout?: boolean }) {
           <div className="mx-6 min-w-[240px] flex items-center lg:hidden flex-wrap gap-2">
             <div className="w-min">
               <AppsCategoryFilter
+                newLayout={newLayout}
                 selected={filters.categories?.[0]}
                 setSelected={(value) => {
                   updateFilters({
