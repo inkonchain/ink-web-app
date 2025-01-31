@@ -1,10 +1,10 @@
 {
-  "name": "@ink-frontend/landingpage",
+  "name": "ink-web-app",
   "version": "0.1.0",
   "private": true,
+  "packageManager": "pnpm@9.11.0",
   "scripts": {
-    "dev": "next dev --turbo",
-    "dev:no-turbo": "next dev",
+    "dev": "next dev",
     "build": "NODE_OPTIONS='--max_old_space_size=8192' next build",
     "start": "next start",
     "lint": "next lint",
