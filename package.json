@@ -2,7 +2,7 @@
   "name": "ink-web-app",
   "private": true,
   "scripts": {
-    "dev": "next dev",
+    "dev": "next dev --turbo",
     "build": "NODE_OPTIONS='--max_old_space_size=8192' next build",
     "start": "next start",
     "lint": "next lint",
