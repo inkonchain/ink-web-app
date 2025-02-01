@@ -17,6 +17,7 @@ import { AddYourAppButton } from "./AddYourAppButton";
 import { AppCard } from "./AppCard";
 import { AppMainnetToggle } from "./AppMainnetToggle";
 import { AppsCategoryFilter } from "./AppsCategoryFilter";
+import { AppsGrid } from "./AppsGrid";
 import { AppsSideBar } from "./AppsSideBar";
 import { AppsTable } from "./AppsTable";
 import { AppsTagsFilter } from "./AppsTagsFilter";
@@ -181,9 +182,9 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
       ? categoryLabels[filters.categories[0]]
       : `Discover the best on Ink`;
 
-  const hasActiveFilters = (filters: InkAppFilters) => {
+  const hasActiveFilters = (filters: InkAppFilters): boolean => {
     return (
-      search ||
+      !!search ||
       (filters.network && filters.network !== "Mainnet") ||
       (filters.categories && filters.categories.length > 0) ||
       (filters.tags && filters.tags.length > 0)
@@ -356,7 +357,7 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
           <div className="flex gap-8 flex-col-reverse 2xl:flex-row">
             {/* Apps carousel & table */}
             <div className="flex-1 flex flex-col gap-12 overflow-x-hidden">
-              {!search && (
+              {!newLayout && !search && (
                 <div className="flex flex-col gap-4">
                   <div className="lg:pl-4">
                     <Carousel
@@ -403,47 +404,46 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
                   onLoadMore={() => setPage(page + 1)}
                   hasMore={page < Math.floor(filteredApps.length / 10)}
                 >
-                  <AppsTable
-                    apps={appsToDisplay}
-                    noAppsFound={
-                      <div className="flex flex-col gap-8">
-                        <div className="flex flex-col items-center gap-6">
-                          <div className="text-h5 font-bold text-blackMagic dark:text-whiteMagic">
-                            No matches found
-                          </div>
-                          <div className="text-body-2 text-blackMagic/50 dark:text-whiteMagic/50 text-center">
-                            {`Please change your keywords${
-                              hasActiveFilters(filters)
-                                ? " or reset your filters"
-                                : ""
-                            } and try again`}
-                          </div>
-                        </div>
-                        {(hasActiveFilters(filters) || search) && (
-                          <Button
-                            variant="primary"
-                            size="lg"
-                            onClick={() => {
-                              if (hasActiveFilters(filters)) {
-                                updateFilters({
-                                  network: "Mainnet",
-                                  categories: [],
-                                  tags: [],
-                                });
-                              } else {
-                                setSearch("");
-                              }
-                            }}
-                          >
-                            {hasActiveFilters(filters)
-                              ? "Reset Filters"
-                              : "Clear Keywords"}
-                          </Button>
-                        )}
-                      </div>
-                    }
-                    network={network}
-                  />
+                  {newLayout ? (
+                    <AppsGrid
+                      apps={appsToDisplay}
+                      featuredApps={inkFeaturedApps}
+                      noAppsFound={
+                        <NoAppsFound
+                          hasSearch={!!search}
+                          resetSearch={() => setSearch("")}
+                          hasActiveFilters={hasActiveFilters(filters)}
+                          resetFilters={() => {
+                            updateFilters({
+                              network: "Mainnet",
+                              categories: [],
+                              tags: [],
+                            });
+                          }}
+                        />
+                      }
+                      network={network}
+                    />
+                  ) : (
+                    <AppsTable
+                      apps={appsToDisplay}
+                      noAppsFound={
+                        <NoAppsFound
+                          hasSearch={!!search}
+                          resetSearch={() => setSearch("")}
+                          hasActiveFilters={hasActiveFilters(filters)}
+                          resetFilters={() => {
+                            updateFilters({
+                              network: "Mainnet",
+                              categories: [],
+                              tags: [],
+                            });
+                          }}
+                        />
+                      }
+                      network={network}
+                    />
+                  )}
                 </InfiniteScrollContainer>
               </div>
 
@@ -498,6 +498,48 @@ function AddYourAppSection({ className }: { className?: string }) {
       <div>
         <AddYourAppButton />
       </div>
+    </div>
+  );
+}
+
+function NoAppsFound({
+  hasSearch,
+  hasActiveFilters,
+  resetFilters,
+  resetSearch,
+}: {
+  hasSearch: boolean;
+  hasActiveFilters: boolean;
+  resetFilters: () => void;
+  resetSearch: () => void;
+}) {
+  return (
+    <div className="flex flex-col gap-8">
+      <div className="flex flex-col items-center gap-6">
+        <div className="text-h5 font-bold text-blackMagic dark:text-whiteMagic">
+          No matches found
+        </div>
+        <div className="text-body-2 text-blackMagic/50 dark:text-whiteMagic/50 text-center">
+          {`Please change your keywords${
+            hasActiveFilters ? " or reset your filters" : ""
+          } and try again`}
+        </div>
+      </div>
+      {(hasActiveFilters || hasSearch) && (
+        <Button
+          variant="primary"
+          size="lg"
+          onClick={() => {
+            if (hasActiveFilters) {
+              resetFilters();
+            } else {
+              resetSearch();
+            }
+          }}
+        >
+          {hasActiveFilters ? "Reset Filters" : "Clear Keywords"}
+        </Button>
+      )}
     </div>
   );
 }

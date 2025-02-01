@@ -129,6 +129,10 @@ radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 
           "radial-gradient(150% 740.74% at 135.63% 100%, #B9AAEF 0%, rgba(157, 130, 254, 0) 100%), linear-gradient(0deg, var(--fill-bg-100, #FFFFFF), var(--fill-bg-100, #FFFFFF))",
         "event-pill-gradient-dark":
           "radial-gradient(100.63% 100.63% at 50% -0.32%, #2E2E2E 0%, #080808 100%), radial-gradient(367.31% 2457.04% at 354.39% 128.21%, #8049F2 0%, rgba(109, 78, 174, 0) 100%)",
+        "featured-card-gradient":
+          "radial-gradient(115.71% 442.14% at 97.72% -9.91%, #8049F2 15.52%, rgba(109, 78, 174, 0) 100%),radial-gradient(100.63% 101.63% at 50% -0.32%, #2E2E2E 0%, #080808 100%),linear-gradient(0deg, #FFFFFF, #FFFFFF)",
+        "featured-card-gradient-dark":
+          "radial-gradient(115.71% 442.14% at 97.72% -9.91%, #8049F2 15.52%, rgba(109, 78, 174, 0) 100%),linear-gradient(0deg, #FFFFFF, #FFFFFF),radial-gradient(100.63% 101.63% at 50% -0.32%, #2E2E2E 0%, #080808 100%)",
       },
       backgroundSize: {
         "overflow-150": "150% 100%",
@@ -143,6 +147,7 @@ radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 
         "sm-landscape-only": {
           raw: "(max-height: 700px) and (min-width: 640px)",
         },
+        hd: "1920px",
       },
       rotate: {
         // For the arrow icon to point to the top-right.
