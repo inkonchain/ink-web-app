@@ -40,7 +40,7 @@ export const TopNav = () => {
             query,
           }}
           className={classNames("ink:text-body-3-regular", {
-            "ink:text-body-3-bold": selected === "/new/dashboard",
+            "ink:text-body-3-bold": selected.startsWith("/new/dashboard"),
           })}
           prefetch
           onClick={() => setSelected("/new/dashboard")}
