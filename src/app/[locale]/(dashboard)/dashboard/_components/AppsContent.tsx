@@ -17,7 +17,6 @@ import { AddYourAppButton } from "./AddYourAppButton";
 import { AppCard } from "./AppCard";
 import { AppMainnetToggle } from "./AppMainnetToggle";
 import { AppsCategoryFilter } from "./AppsCategoryFilter";
-import { AppsGrid } from "./AppsGrid";
 import { AppsSideBar } from "./AppsSideBar";
 import { AppsTable } from "./AppsTable";
 import { AppsTagsFilter } from "./AppsTagsFilter";
@@ -33,11 +32,10 @@ import "react-multi-carousel/lib/styles.css";
 import "./AppsContent.scss";
 
 interface AppsContentProps {
-  newLayout?: boolean;
   currentCategory?: string;
 }
 
-export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
+export function AppsContent({ currentCategory }: AppsContentProps) {
   const router = useRouter();
   const searchParams = useSearchParams();
   const network = getNetwork(searchParams.get("network"));
@@ -186,10 +184,10 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
 
   return (
     <>
+      {/* Floating section on desktop */}
       <div
         className={classNames(
-          "hidden xl:fixed xl:flex left-[20%] right-[20%] top-8 justify-center flex-wrap gap-4 mx-4 z-10",
-          newLayout ? "top-24" : "top-8"
+          "hidden xl:fixed xl:flex left-[20%] right-[20%] top-8 justify-center flex-wrap gap-4 mx-4 z-10"
         )}
       >
         <div>
@@ -213,7 +211,6 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
         </div>
         <div className="min-w-[240px] xl:hidden">
           <AppsCategoryFilter
-            newLayout={newLayout}
             selected={filters.categories?.[0]}
             setSelected={(value) => {
               updateFilters({
@@ -237,7 +234,6 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
       <div className="h-full hidden lg:block shrink-0 fixed left-8 w-[240px]">
         <div className="hide-on-very-narrow-screen">
           <AppsSideBar
-            newLayout={newLayout}
             selected={filters.categories?.[0] ?? null}
             setSelected={(value) => {
               updateFilters({
@@ -248,7 +244,6 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
         </div>
         <div className="hidden show-on-very-narrow-screen">
           <AppsCategoryFilter
-            newLayout={newLayout}
             selected={filters.categories?.[0]}
             setSelected={(value) => {
               updateFilters({
@@ -265,10 +260,9 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
         <div className="hidden lg:block" />
 
         <div className="flex flex-col gap-8 w-full xl:mx-auto xl:pr-8 max-w-[2000px]">
-          <div className="mx-6 min-w-[240px] flex items-center lg:hidden flex-wrap gap-2">
+          <div className="mx-4 min-w-[240px] flex items-center lg:hidden flex-wrap gap-2">
             <div className="w-min">
               <AppsCategoryFilter
-                newLayout={newLayout}
                 selected={filters.categories?.[0]}
                 setSelected={(value) => {
                   updateFilters({
@@ -289,43 +283,48 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
             </div>
           </div>
 
-          <div className={classNames("flex flex-wrap gap-2 mx-6 xl:hidden")}>
-            <div>
-              <SearchInput
-                className="max-w-md"
-                placeholder="Search"
-                disabled={!isUnderDesktopWindowSize}
-                value={search}
-                onValueChange={setSearch}
-              />
-            </div>
-            <div>
-              <AppMainnetToggle
-                value={filters.network ?? "Both"}
-                onChange={(value) => {
-                  updateFilters({
-                    network: value,
-                  });
-                }}
-              />
-            </div>
-            <div className="hidden lg:block">
-              <AppsTagsFilter
-                selected={filters.tags}
-                setSelected={(value) => {
-                  updateFilters({
-                    tags: value,
-                  });
-                }}
-              />
+          <div
+            className={classNames(
+              "flex flex-wrap justify-between gap-4 mx-4 xl:hidden"
+            )}
+          >
+            <div className="flex flex-wrap gap-2">
+              <div>
+                <SearchInput
+                  className="max-w-md"
+                  placeholder="Search"
+                  disabled={!isUnderDesktopWindowSize}
+                  value={search}
+                  onValueChange={setSearch}
+                />
+              </div>
+              <div>
+                <AppMainnetToggle
+                  value={filters.network ?? "Both"}
+                  onChange={(value) => {
+                    updateFilters({
+                      network: value,
+                    });
+                  }}
+                />
+              </div>
+              <div className="hidden lg:block">
+                <AppsTagsFilter
+                  selected={filters.tags}
+                  setSelected={(value) => {
+                    updateFilters({
+                      tags: value,
+                    });
+                  }}
+                />
+              </div>
             </div>
           </div>
 
           <div
             className={classNames(
               "flex justify-between w-full flex-wrap gap-8",
-              hasActiveFilters(filters) && "hidden lg:flex",
-              newLayout ? "xl:pt-16" : ""
+              hasActiveFilters(filters) && "hidden lg:flex"
             )}
           >
             <div className="flex flex-col gap-2 mx-6">
@@ -345,7 +344,7 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
           <div className="flex gap-8 flex-col-reverse 2xl:flex-row">
             {/* Apps carousel & table */}
             <div className="flex-1 flex flex-col gap-12 overflow-x-hidden">
-              {!newLayout && !search && (
+              {!search && (
                 <div className="flex flex-col gap-4">
                   <div className="lg:pl-4">
                     <Carousel
@@ -392,46 +391,24 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
                   onLoadMore={() => setPage(page + 1)}
                   hasMore={page < Math.floor(filteredApps.length / 10)}
                 >
-                  {newLayout ? (
-                    <AppsGrid
-                      apps={appsToDisplay}
-                      featuredApps={inkFeaturedApps}
-                      noAppsFound={
-                        <NoAppsFound
-                          hasSearch={!!search}
-                          resetSearch={() => setSearch("")}
-                          hasActiveFilters={hasActiveFilters(filters)}
-                          resetFilters={() => {
-                            updateFilters({
-                              network: "Mainnet",
-                              categories: [],
-                              tags: [],
-                            });
-                          }}
-                        />
-                      }
-                      network={network}
-                    />
-                  ) : (
-                    <AppsTable
-                      apps={appsToDisplay}
-                      noAppsFound={
-                        <NoAppsFound
-                          hasSearch={!!search}
-                          resetSearch={() => setSearch("")}
-                          hasActiveFilters={hasActiveFilters(filters)}
-                          resetFilters={() => {
-                            updateFilters({
-                              network: "Mainnet",
-                              categories: [],
-                              tags: [],
-                            });
-                          }}
-                        />
-                      }
-                      network={network}
-                    />
-                  )}
+                  <AppsTable
+                    apps={appsToDisplay}
+                    noAppsFound={
+                      <NoAppsFound
+                        hasSearch={!!search}
+                        resetSearch={() => setSearch("")}
+                        hasActiveFilters={hasActiveFilters(filters)}
+                        resetFilters={() => {
+                          updateFilters({
+                            network: "Mainnet",
+                            categories: [],
+                            tags: [],
+                          });
+                        }}
+                      />
+                    }
+                    network={network}
+                  />
                 </InfiniteScrollContainer>
               </div>
 

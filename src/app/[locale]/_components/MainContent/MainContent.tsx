@@ -38,37 +38,46 @@ export const MainContent: React.FC<{
       />
       <div className="flex flex-col items-center gap-5 sm:gap-6">
         <div className="flex gap-4 flex-col md:flex-row">
-          <MainCallToActionButton
-            copy={{
-              ctaLabel: t("bridge:cta"),
-              discordCtaLabel: t("discord:cta"),
-            }}
-            isMainCallToAction
-          />
-          <OnlyWithFeatureFlag flag="mainnet">
-            <Button
-              className="bg-blackMagic hover:shadow-blue-glow backdrop-blur-2xl hover:bg-blackMagic/80 dark:hover:bg-blackMagic/40 transition-all duration-300 text-white px-20"
-              iconLeft={<DotsIcon size="icon-lg" enforce="inherit" />}
-              size="lg"
-              asChild
-            >
-              <Link
-                href={{
-                  pathname: "/dashboard",
-                  query,
-                }}
-              >
-                {t("exploreApps:cta")}
-              </Link>
-            </Button>
+          <OnlyWithFeatureFlag
+            flag="newNav"
+            otherwise={
+              <>
+                <MainCallToActionButton
+                  copy={{
+                    bridgeNow: t("bridge:cta"),
+                    exploreApps: t("exploreApps:cta"),
+                  }}
+                  isMainCallToAction
+                />
+
+                <Button
+                  className="bg-blackMagic hover:shadow-blue-glow backdrop-blur-2xl hover:bg-blackMagic/80 dark:hover:bg-blackMagic/40 transition-all duration-300 text-white px-20"
+                  iconLeft={<DotsIcon size="icon-lg" enforce="inherit" />}
+                  size="lg"
+                  asChild
+                >
+                  <Link
+                    href={{
+                      pathname: "/dashboard",
+                      query,
+                    }}
+                  >
+                    {t("exploreApps:cta")}
+                  </Link>
+                </Button>
+              </>
+            }
+          >
+            <MainCallToActionButton
+              copy={{
+                bridgeNow: t("bridge:cta"),
+                exploreApps: t("exploreApps:cta"),
+              }}
+              isMainCallToAction
+            />
           </OnlyWithFeatureFlag>
         </div>
-        <OnlyWithFeatureFlag
-          flag="mainnet"
-          otherwise={<SocialLinksRow faded={true} includeDiscord={false} />}
-        >
-          <SocialLinksRow faded={true} />
-        </OnlyWithFeatureFlag>
+        <SocialLinksRow faded={true} />
       </div>
 
       <div className="flex flex-col gap-6 items-center sm:hidden">

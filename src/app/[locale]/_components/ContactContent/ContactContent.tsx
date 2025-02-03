@@ -29,8 +29,8 @@ export const ContactContent: React.FC<ContactContentProps> = ({}) => {
               <MainCallToActionButton
                 variant="spotlight"
                 copy={{
-                  ctaLabel: t("bridge:cta"),
-                  discordCtaLabel: t("discord:cta"),
+                  bridgeNow: t("bridge:cta"),
+                  exploreApps: t("exploreApps:cta"),
                 }}
               />
             </div>
