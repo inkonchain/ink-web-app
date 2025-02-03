@@ -121,25 +121,13 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
       const { network, category, tags, ...params } = Object.fromEntries(
         searchParams.entries()
       );
-      const { category: newCategory, ...newParamsToUpdate } = newParams;
-      router.replace(
-        {
-          pathname: newLayout ? `/new/dashboard/[category]` : "/dashboard",
-          params: {
-            category: newCategory || "",
-          },
-          query: {
-            ...params,
-            ...newParamsToUpdate,
-            ...(newLayout ? {} : { category: newCategory }),
-          },
-        },
-        {
-          scroll: false,
-        }
-      );
+      const queryParams = new URLSearchParams({
+        ...params,
+        ...newParams,
+      });
+      window.history.pushState("", "", `/dashboard?${queryParams}`);
     },
-    [newLayout, searchParams, router]
+    [searchParams]
   );
   const updateFilters = useCallback(
     (newFilters: Partial<InkAppFilters>) => {
@@ -151,7 +139,7 @@ export function AppsContent({ newLayout, currentCategory }: AppsContentProps) {
             ? { network: mergedFilters.network }
             : {}),
           ...(mergedFilters.tags && mergedFilters.tags.length > 0
-            ? { tags: mergedFilters.tags[0] }
+            ? { tags: mergedFilters.tags.join(",") }
             : {}),
           ...(mergedFilters.categories && mergedFilters.categories.length > 0
             ? { category: mergedFilters.categories[0] }
