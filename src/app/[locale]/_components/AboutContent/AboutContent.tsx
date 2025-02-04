@@ -127,8 +127,8 @@ export const AboutContent = () => {
             <div className="w-full sm:w-fit">
               <MainCallToActionButton
                 copy={{
-                  ctaLabel: t("bridge:cta"),
-                  discordCtaLabel: t("discord:cta"),
+                  bridgeNow: t("bridge:cta"),
+                  exploreApps: t("exploreApps:cta"),
                 }}
               />
             </div>

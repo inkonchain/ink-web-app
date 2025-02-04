@@ -5,7 +5,7 @@ import { AppSubmissionModalProvider } from "@/components/AppSubmissionModal/AppS
 import { JsonLd } from "@/components/JsonLd";
 import { PageView } from "@/components/PageView";
 
-import { AppsContent } from "../../../(dashboard)/dashboard/_components/AppsContent";
+import { AppsContent } from "../_components/AppsContent";
 
 export const metadata: Metadata = {
   title: "Ink Apps - Discover DeFi Applications on the Superchain",
@@ -31,7 +31,7 @@ export default async function AppsPage({
           }}
         />
         <PageView />
-        <AppsContent newLayout currentCategory={category} />
+        <AppsContent currentCategory={category} />
         <AppSubmissionModal />
       </>
     </AppSubmissionModalProvider>
