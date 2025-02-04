@@ -1,10 +1,13 @@
 import React from "react";
 
+import { classNames } from "@/util/classes";
+
 import { ColoredText } from "./ColoredText";
 
 export interface BigScalableTitleProps {
   title: React.ReactNode;
   subtitle?: React.ReactNode;
+  align?: "center" | "left";
   /**
    * Ratio of the title to the viewport width. TBH just test some values and see what works best.
    * Examples:
@@ -18,6 +21,7 @@ export const BigScalableTitle: React.FC<BigScalableTitleProps> = ({
   title,
   subtitle,
   ratio = 8,
+  align = "center",
 }) => {
   return (
     <div
@@ -26,7 +30,13 @@ export const BigScalableTitle: React.FC<BigScalableTitleProps> = ({
           "--ratio": `${ratio}vw`,
         } as React.CSSProperties
       }
-      className="flex flex-col items-center gap-[calc(clamp(1rem,min(var(--ratio)+1rem,2vh),200px)/3)] px-4"
+      className={classNames(
+        "flex flex-col gap-[calc(clamp(1rem,min(var(--ratio)+1rem,2vh),200px)/3)] px-4",
+        {
+          "items-start": align === "left",
+          "items-center": align === "center",
+        }
+      )}
     >
       <ColoredText
         noisy

@@ -19,17 +19,16 @@ export default function CommunityPage() {
             " mb-8 pb-8 sm:min-h-[calc(85vh)] gap-16"
           )}
         >
-          <div className="flex flex-col items-center">
-            <BigScalableTitle
-              title={t("title")}
-              subtitle={
-                <span className="ink:text-body-1 ink:text-text-muted text-center max-w-lg">
-                  {t("description")}
-                </span>
-              }
-              ratio={4}
-            />
-          </div>
+          <BigScalableTitle
+            title={t("title")}
+            subtitle={
+              <span className="ink:text-body-1 ink:text-text-muted max-w-lg">
+                {t("description")}
+              </span>
+            }
+            ratio={4}
+            align="left"
+          />
 
           <div className="px-4">
             <CommunityEvents />
