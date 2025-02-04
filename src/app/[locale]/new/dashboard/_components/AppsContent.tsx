@@ -5,8 +5,11 @@ import { Button } from "@inkonchain/ink-kit";
 import { useSearchParams } from "next/navigation";
 
 import { InfiniteScrollContainer } from "@/components/InfiniteScrollContainer";
+import { SearchInput } from "@/components/SearchBar/SearchInput";
+import { useOnWindowSize } from "@/hooks/useOnWindowSize";
 import { useRouter } from "@/routing";
 
+import { AppMainnetToggle } from "./AppMainnetToggle";
 import { AppsCategoryFilter } from "./AppsCategoryFilter";
 import { AppsGrid } from "./AppsGrid";
 import { AppsTagsFilter } from "./AppsTagsFilter";
@@ -147,10 +150,23 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
     [filteredApps, page]
   );
 
+  const isUnderDesktopWindowSize = useOnWindowSize({ size: "xl" });
+
   return (
     <>
-      <div className="flex flex-col gap-8 w-full max-w-[2000px]">
-        <div className="flex-1 mx-4 min-w-[240px] flex items-center justify-between gap-2">
+      <div className="flex flex-col gap-8 max-w-[2000px]">
+        {/* Floating section on desktop */}
+        <div className="lg:fixed lg:flex left-[20%] right-[20%] top-8 justify-center flex-wrap gap-4 mx-4 z-10">
+          <SearchInput
+            className="max-w-md"
+            placeholder="Search"
+            disabled={isUnderDesktopWindowSize}
+            value={search}
+            onValueChange={setSearch}
+          />
+        </div>
+
+        <div className="mx-4 flex items-center justify-between gap-4 flex-col sm:flex-row flex-1">
           <AppsCategoryFilter
             selected={filters.categories?.[0]}
             setSelected={(value) => {
@@ -159,7 +175,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
               });
             }}
           />
-          <div>
+          <div className="flex gap-2">
             <AppsTagsFilter
               selected={filters.tags}
               setSelected={(value) => {
@@ -168,18 +184,26 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
                 });
               }}
             />
+            <AppMainnetToggle
+              value={filters.network || "Mainnet"}
+              onChange={(value) => {
+                updateFilters({ network: value });
+              }}
+            />
           </div>
         </div>
 
         {/* Main flexbox */}
         <div className="flex gap-8 flex-col-reverse 2xl:flex-row">
-          <div className="flex flex-col gap-4 w-full">
+          <div className="flex flex-col gap-4">
             <InfiniteScrollContainer
               className="flex px-4 pr-2 lg:pr-4 xl:pr-0"
               onLoadMore={() => setPage(page + 1)}
               hasMore={page < Math.floor(filteredApps.length / 10)}
             >
+              {/** Calculations are manual here so that the grid takes up a good chunk of space, but doesn't make the window scroll. */}
               <AppsGrid
+                className="sm:max-h-[calc(100vh-16rem-20rem)] lg:max-h-[calc(100vh-10rem-18rem)] 2xl:max-h-[calc(100vh-10rem-14rem)] overflow-y-auto"
                 apps={appsToDisplay}
                 featuredApps={inkFeaturedApps}
                 noAppsFound={

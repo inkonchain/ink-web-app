@@ -47,7 +47,7 @@ export const AppsCategoryFilter = ({
     [selected, query]
   );
   return (
-    <ScrollWithGradient className="flex overflow-x-scroll max-w-[300px] md:max-w-[600px]">
+    <ScrollWithGradient className="flex overflow-x-scroll flex-1 w-full sm:w-auto">
       <SegmentedControl
         variant="primary"
         variableTabWidth

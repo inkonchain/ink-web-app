@@ -19,7 +19,7 @@ export default async function InfoLayout({
         </Link>
       </div>
 
-      <div className="flex-1 relative pb-24 pt-32 container mx-auto">
+      <div className="flex-1 relative pb-24 pt-32 container mx-auto flex flex-col gap-4">
         <div className="flex flex-col items-center justify-center">
           <div className="bg-whiteMagic/75 dark:bg-blackMagic/75 p-2 rounded-lg mb-8 mx-2 flex items-center justify-center max-w-4xl w-full">
             <div className="max-w-2xl p-4">{children}</div>

@@ -18,7 +18,7 @@ export default async function InfoLayout({
       <HomeHeader />
       <HomeShortcuts />
 
-      <div className="flex-1 relative pb-24 pt-32 container mx-auto">
+      <div className="flex-1 relative pb-24 pt-32 container mx-auto flex flex-col gap-4">
         <div className="flex flex-col items-center justify-center">
           {children}
         </div>

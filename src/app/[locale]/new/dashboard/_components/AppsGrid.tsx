@@ -3,19 +3,21 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { NoisyContainer } from "@/components/Noisy";
+import { classNames } from "@/util/classes";
 
 import { AppLinks } from "./AppLinks";
 import { InkApp, InkAppNetwork } from "./InkApp";
 import { TableRowPill } from "./TableRowPill";
 
 export const AppsGrid: React.FC<{
+  className?: string;
   apps: InkApp[];
   featuredApps: InkApp[];
   noAppsFound: React.ReactNode;
   network: InkAppNetwork;
-}> = ({ apps, featuredApps, noAppsFound, network }) => {
+}> = ({ className, apps, featuredApps, noAppsFound, network }) => {
   return (
-    <div>
+    <div className={classNames("w-full", className)}>
       {apps.length === 0 ? (
         <div className="min-h-[300px] flex flex-col gap-4 justify-center items-center">
           {noAppsFound}
@@ -70,14 +72,14 @@ function AppCard({
           {app.description}
         </div>
         <div className="relative">
-          <div className="w-full opacity-0 group-hover:opacity-100 transition-opacity">
-            <AppLinks links={app.links} network={network} />
-          </div>
-
-          <div className="flex justify-end items-center gap-1 flex-wrap max-w-[200px] group-hover:opacity-0 group-hover:pointer-events-none transition-opacity absolute right-0 bottom-0">
+          <div className="flex justify-end items-center gap-1 flex-wrap group-hover:opacity-0 group-hover:pointer-events-none transition-opacity w-full">
             {app.tags.map((tag) => (
               <TableRowPill key={tag}>{tag}</TableRowPill>
             ))}
+          </div>
+
+          <div className="w-full opacity-0 group-hover:opacity-100 transition-opacity absolute right-0 bottom-0">
+            <AppLinks links={app.links} network={network} />
           </div>
         </div>
       </div>

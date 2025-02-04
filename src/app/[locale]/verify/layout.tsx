@@ -30,7 +30,7 @@ export default async function InfoLayout({
         />
       </div>
 
-      <div className="flex-1 relative pb-24 pt-32 container mx-auto">
+      <div className="flex-1 relative pb-24 pt-32 container mx-auto flex flex-col gap-4">
         <div className="flex flex-col">{children}</div>
         <div>
           <Footer />
