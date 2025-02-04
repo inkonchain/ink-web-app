@@ -2,6 +2,7 @@
 
 import { InkLayoutMobileNav } from "@inkonchain/ink-kit";
 
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { Link } from "@/routing";
 
@@ -18,6 +19,7 @@ export function MobileNav({
 }
 
 function Nav({ closeMobileNavigation }: MobileNavProps) {
+  const hasVerifyPage = useFeatureFlag("verifyPage");
   const query = useRouterQuery();
   return (
     <InkLayoutMobileNav
@@ -34,6 +36,46 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
             </Link>
           ),
         },
+        {
+          href: "/new/bridge",
+          asChild: true,
+          children: (
+            <Link
+              href={{ pathname: "/new/bridge", query }}
+              onClick={closeMobileNavigation}
+            >
+              Bridge
+            </Link>
+          ),
+        },
+        {
+          href: "/new/community",
+          asChild: true,
+          children: (
+            <Link
+              href={{ pathname: "/new/community", query }}
+              onClick={closeMobileNavigation}
+            >
+              Community
+            </Link>
+          ),
+        },
+        ...(hasVerifyPage
+          ? [
+              {
+                href: "/new/verify",
+                asChild: true,
+                children: (
+                  <Link
+                    href={{ pathname: "/new/verify", query }}
+                    onClick={closeMobileNavigation}
+                  >
+                    Verify
+                  </Link>
+                ),
+              },
+            ]
+          : []),
       ]}
     />
   );

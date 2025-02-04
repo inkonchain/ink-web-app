@@ -12,7 +12,7 @@ export default function CommunityPage() {
   const t = useTranslations("Community");
   return (
     <>
-      <div className="flex flex-col gap-12 lg:gap-28 mt-0 mb-12 lg:mb-24 pt-16">
+      <div className="flex flex-col gap-12 lg:gap-28 mt-0">
         <div
           className={classNames(
             containerClasses(),

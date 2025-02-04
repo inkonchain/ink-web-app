@@ -1,3 +1,4 @@
+"use client";
 import { InkIcon } from "@inkonchain/ink-kit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { LinkedWallet, SwapWidget } from "@reservoir0x/relay-kit-ui";
