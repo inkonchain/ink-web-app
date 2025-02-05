@@ -87,6 +87,9 @@ export const routing = defineRouting({
     "/new": "/new",
     "/new/dashboard": "/new/dashboard",
     "/new/dashboard/[category]": "/new/dashboard/[category]",
+    "/new/bridge": "/new/bridge",
+    "/new/verify": "/new/verify",
+    "/new/community": "/new/community",
     ...externalLinksMap,
   },
 });
@@ -117,6 +120,15 @@ export function compactLanguage(lang: string) {
 
 export function pathFromHrefProp(href: HrefProp) {
   return typeof href === "object" && "pathname" in href ? href.pathname : href;
+}
+
+export function hrefObjectFromHrefPropWithQuery(
+  href: HrefProp,
+  query: string
+): HrefProp {
+  return typeof href === "object" && "pathname" in href
+    ? { ...href, query }
+    : ({ pathname: href, query } as HrefProp);
 }
 
 export function isExternalPath(href: Pathnames) {

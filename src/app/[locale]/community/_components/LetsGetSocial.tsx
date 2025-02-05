@@ -8,22 +8,41 @@ import { DiscordIcon } from "@/components/icons/Discord";
 import { FarcasterIcon } from "@/components/icons/Farcaster";
 import { TelegramIcon } from "@/components/icons/Telegram";
 import { TwitterIcon } from "@/components/icons/Twitter";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS, HrefProp, Link } from "@/routing";
+import { classNames } from "@/util/classes";
 
 export const LetsGetSocial = () => {
+  const newNav = useFeatureFlag("newNav");
   const t = useTranslations("Community");
 
   return (
-    <FlyWhenIntoView className="flex flex-col items-center gap-10 py-16 px-4">
-      <div className="flex flex-col items-center gap-6">
+    <FlyWhenIntoView
+      className={classNames("flex flex-col gap-10 py-16 px-4", {
+        "items-start": newNav,
+        "items-center": !newNav,
+      })}
+    >
+      <div
+        className={classNames("flex flex-col gap-6", {
+          "items-start": newNav,
+          "items-center": !newNav,
+        })}
+      >
         <BigScalableTitle
           title={t("letsGetSocial.title")}
           subtitle={
-            <span className="ink:text-body-1 ink:text-text-muted text-center max-w-lg">
+            <span
+              className={classNames("ink:text-body-1 ink:text-text-muted", {
+                "text-center": newNav,
+                "text-left": !newNav,
+              })}
+            >
               {t("letsGetSocial.description")}
             </span>
           }
           ratio={2}
+          align={newNav ? "left" : "center"}
         />
       </div>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6">

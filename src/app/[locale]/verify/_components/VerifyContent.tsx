@@ -15,7 +15,7 @@ export function VerifyContent() {
   const { address: connectedAddress, isConnected } = useAccount();
 
   return (
-    <div className="flex flex-col gap-8 flex-1 px-4 lg:px-16 pt-32">
+    <div className="flex flex-col gap-8 flex-1 px-4">
       <div className="flex flex-col sm:gap-10 gap-6 flex-1">
         <div className="flex flex-col items-start gap-4 max-w-2xl">
           <ColoredText
