@@ -85,6 +85,14 @@ jobs:
           docker-context: ./
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate a token for Ink CI Github App
+        id: generate-token
+        uses: actions/create-github-app-token@v1
+        with:
+          app-id: ${{ secrets.INK_CI_GITHUB_APP_ID }}
+          private-key: ${{ secrets.INK_CI_GITHUB_APP_PRIVATE_KEY }}
+          owner: ${{ github.repository_owner }}
+
       # https://docs.github.com/en/rest/actions/workflows?apiVersion=2022-11-28#create-a-workflow-dispatch-event
       - name: Trigger deployment
         run: |
@@ -94,7 +102,7 @@ jobs:
           curl -L \
             -X POST \
             -H "Accept: application/vnd.github+json" \
-            -H "Authorization: Bearer ${{ secrets.VICTOR_PAT_TOKEN }}" \
+            -H "Authorization: Bearer ${{ steps.generate-token.outputs.token }}" \
             -H "X-GitHub-Api-Version: 2022-11-28" \
             ${{ secrets.TARGET_REPOSITORY_DISPATCH_URL }} \
             -d '{"ref": "feat/ink-web-app","inputs":{"digest":"${{ steps.build-push.outputs.digest }}","branch":"'"${BRANCH_NAME}"'"}}'
