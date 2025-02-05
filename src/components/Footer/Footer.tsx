@@ -7,7 +7,7 @@ import { classNames } from "@/util/classes";
 
 export const Footer = () => {
   return (
-    <footer className={classNames(containerClasses(), "sm:pt-15")}>
+    <footer className={classNames(containerClasses())}>
       <div className="px-4 lg:px-0">
         <NoisyContainer
           className={classNames(

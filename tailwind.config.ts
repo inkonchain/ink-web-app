@@ -148,6 +148,7 @@ radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 
           raw: "(max-height: 700px) and (min-width: 640px)",
         },
         hd: "1920px",
+        "2xl": "1600px",
       },
       rotate: {
         // For the arrow icon to point to the top-right.

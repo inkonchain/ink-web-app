@@ -27,7 +27,7 @@ export default async function HomeLayout({
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
       <HomeHeader />
-      <div className="flex-1 relative pt-24 sm:pt-0 sm:pb-12 pb-48">
+      <div className="flex-1 relative pt-24 sm:pt-0 sm:pb-12 pb-48 flex flex-col gap-4">
         <div>{children}</div>
         <div>
           <Footer />

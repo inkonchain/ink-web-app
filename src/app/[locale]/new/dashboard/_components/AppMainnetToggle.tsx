@@ -29,7 +29,7 @@ export function AppMainnetToggle({ value, onChange }: AppMainnetToggleProps) {
     <Listbox value={selectedItem} onChange={(option) => onChange(option.value)}>
       <ListboxButton
         variant="muted"
-        className="backdrop-blur-xl ink:text-body-3-bold w-[160px] whitespace-nowrap"
+        className="backdrop-blur-xl ink:text-body-3-bold w-[160px] whitespace-nowrap h-10"
       >
         <span
           className={classNames(
