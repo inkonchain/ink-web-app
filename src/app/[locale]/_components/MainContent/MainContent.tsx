@@ -35,6 +35,7 @@ export const MainContent: React.FC<{
             disableRotating={disableRotating}
           />
         }
+        variant="reverse-purple"
       />
       <div className="flex flex-col items-center gap-5 sm:gap-6">
         <div className="flex gap-4 flex-col md:flex-row">

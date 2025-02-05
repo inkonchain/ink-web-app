@@ -2,7 +2,7 @@ import React from "react";
 
 import { classNames } from "@/util/classes";
 
-import { ColoredText } from "./ColoredText";
+import { ColoredText, ColoredTextProps } from "./ColoredText";
 
 export interface BigScalableTitleProps {
   title: React.ReactNode;
@@ -15,6 +15,7 @@ export interface BigScalableTitleProps {
    *  Community page title "Join the Ink Community" is 4vw
    * */
   ratio?: 2 | 4 | 8;
+  variant?: ColoredTextProps["variant"];
 }
 
 export const BigScalableTitle: React.FC<BigScalableTitleProps> = ({
@@ -22,6 +23,7 @@ export const BigScalableTitle: React.FC<BigScalableTitleProps> = ({
   subtitle,
   ratio = 8,
   align = "center",
+  variant = "purple",
 }) => {
   return (
     <div
@@ -40,7 +42,7 @@ export const BigScalableTitle: React.FC<BigScalableTitleProps> = ({
     >
       <ColoredText
         noisy
-        variant="reverse-purple"
+        variant={variant}
         className="font-medium antialiased"
         pulse="md"
       >
