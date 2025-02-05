@@ -4,7 +4,8 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-import Consent, { ConsentType } from "@/integrations/consent";
+import { clientEnv } from "../env-client";
+import Consent, { ConsentType } from "../integrations/consent";
 
 const integrations = [
   Sentry.replayIntegration({
@@ -24,8 +25,8 @@ const integrations = [
 
 Consent.on(ConsentType.CONSENT, () => {
   Sentry.init({
-    dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-    enabled: process.env.NEXT_PUBLIC_ENVIRONMENT !== "ci",
+    dsn: clientEnv.NEXT_PUBLIC_SENTRY_DSN,
+    enabled: clientEnv.NEXT_PUBLIC_ENVIRONMENT !== "ci",
 
     // Adjust this value in production, or use tracesSampler for greater control
     tracesSampleRate: 0.05,

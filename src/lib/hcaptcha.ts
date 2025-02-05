@@ -1,4 +1,4 @@
-import { HCAPTCHA_SECRET } from "@/env";
+import { env } from "@/env";
 
 interface HCaptchaVerifyResponse {
   success: boolean;
@@ -11,7 +11,7 @@ interface HCaptchaVerifyResponse {
 export async function validateCaptcha(token: string): Promise<boolean> {
   try {
     const formData = new URLSearchParams();
-    formData.append("secret", HCAPTCHA_SECRET);
+    formData.append("secret", env.HCAPTCHA_SECRET);
     formData.append("response", token);
 
     const response = await fetch("https://api.hcaptcha.com/siteverify", {

@@ -1,13 +1,12 @@
 import { SignJWT } from "jose";
 import { NextResponse } from "next/server";
 
-import { NEXT_PUBLIC_FAUCET_API_URL } from "@/env-client";
+import { env } from "@/env";
+import { clientEnv } from "@/env-client";
 import { formatDuration } from "@/util/formatDuration";
 
-const MULTIPLIER_JWT_SECRET = process.env.MULTIPLIER_JWT_SECRET!;
-
 const MULTIPLIER_JWT_SECRET_KEY = new TextEncoder().encode(
-  MULTIPLIER_JWT_SECRET!
+  env.MULTIPLIER_JWT_SECRET
 );
 
 const TWEET_AGE_LIMIT = 30 * 60 * 1000; // 30 minutes in milliseconds
@@ -93,7 +92,7 @@ export async function POST(request: Request) {
 
     // Check with faucet API if this X/Twitter user is rate limited
     const rateCheckResponse = await fetch(
-      `${NEXT_PUBLIC_FAUCET_API_URL}/api/check-tweet-user`,
+      `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/check-tweet-user`,
       {
         method: "POST",
         headers: {

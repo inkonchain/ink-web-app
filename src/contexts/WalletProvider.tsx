@@ -34,7 +34,7 @@ import {
 } from "wagmi";
 import { mainnet } from "wagmi/chains";
 
-import { NEXT_PUBLIC_WC_PROJECT_ID } from "@/env-client";
+import { clientEnv } from "@/env-client";
 import { useCurrentInkAppName } from "@/hooks/useCurrentInkAppName";
 
 import "@reservoir0x/relay-kit-ui/styles.css";
@@ -113,7 +113,7 @@ export const WalletProvider: React.FC<WalletProviderProps> = ({ children }) => {
           appName: "inkonchain.com",
           appIcon: "https://inkonchain.com/icon.svg",
           appUrl: "https://inkonchain.com",
-          projectId: NEXT_PUBLIC_WC_PROJECT_ID,
+          projectId: clientEnv.NEXT_PUBLIC_WC_PROJECT_ID,
           chains: (viemChains && viemChains.length === 0
             ? [mainnet]
             : viemChains) as [Chain, ...Chain[]],

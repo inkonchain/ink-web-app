@@ -3,13 +3,17 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 
-import { NEXT_PUBLIC_GELATO_BRIDGE_URL } from "@/env-client";
+import { clientEnv } from "@/env-client";
 
 export const BridgeButton: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleClick = () => {
-    window.open(NEXT_PUBLIC_GELATO_BRIDGE_URL, "_blank", "noopener,noreferrer");
+    window.open(
+      clientEnv.NEXT_PUBLIC_GELATO_BRIDGE_URL,
+      "_blank",
+      "noopener,noreferrer"
+    );
   };
 
   return (

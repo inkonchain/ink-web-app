@@ -1,11 +1,6 @@
 import { randomUUID } from "crypto";
 
-import {
-  BRAZE_API_KEY,
-  BRAZE_DEVELOPERS_WAITLIST_GROUP_ID,
-  BRAZE_GENERAL_WAITLIST_GROUP_ID,
-  BRAZE_INSTANCE_URL,
-} from "@/env";
+import { env } from "@/env";
 import { CustomError, ErrorCode } from "@/util/custom-error";
 
 import { captureError } from "./sentry";
@@ -68,11 +63,11 @@ export async function subscribeUserToGroup(
 
 function getSubscriptionGroupId(group: SubscriptionGroup) {
   if (group === SubscriptionGroup.DEVELOPER_WAITLIST) {
-    return BRAZE_DEVELOPERS_WAITLIST_GROUP_ID;
+    return env.BRAZE_DEVELOPERS_WAITLIST_GROUP_ID;
   }
 
   if (group === SubscriptionGroup.GENERAL_WAITLIST) {
-    return BRAZE_GENERAL_WAITLIST_GROUP_ID;
+    return env.BRAZE_GENERAL_WAITLIST_GROUP_ID;
   }
 
   throw new Error(`Invalid subscription group ${group}`);
@@ -251,7 +246,7 @@ export async function retrieveUserEmailById(
 }
 
 async function getFromBraze<T>(path: string) {
-  const url = `${BRAZE_INSTANCE_URL}${path}`;
+  const url = `${env.BRAZE_INSTANCE_URL}${path}`;
   const res = await fetch(url, {
     headers: getHeaders(),
   });
@@ -265,7 +260,7 @@ async function getFromBraze<T>(path: string) {
 }
 
 async function postToBraze<T>(path: string, data: Record<string, unknown>) {
-  const url = `${BRAZE_INSTANCE_URL}${path}`;
+  const url = `${env.BRAZE_INSTANCE_URL}${path}`;
   const res = await fetch(url, {
     method: "POST",
     headers: getHeaders(),
@@ -282,7 +277,7 @@ async function postToBraze<T>(path: string, data: Record<string, unknown>) {
 
 function getHeaders() {
   return {
-    Authorization: `Bearer ${BRAZE_API_KEY}`,
+    Authorization: `Bearer ${env.BRAZE_API_KEY}`,
     "Content-Type": "application/json",
   };
 }

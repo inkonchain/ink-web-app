@@ -1,0 +1,9 @@
+node_modules
+.next
+.git
+.env*
+!.env.production
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log* 

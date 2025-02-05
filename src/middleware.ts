@@ -38,5 +38,6 @@ export const config = {
   // - /_vercel (Vercel internals)
   // - /static (public files)
   // - /*.* (files with extensions)
-  matcher: ["/", "/((?!api|_next|_vercel|.*\\..*).*)"],
+  // - /monitoring (Sentry tunnel route)
+  matcher: ["/", "/((?!api|_next|_vercel|monitoring|.*\\..*).*)"],
 };

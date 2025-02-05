@@ -1,0 +1,39 @@
+name: image-build-push
+description: Build and push a Docker image to GitHub Container Registry
+inputs:
+  repository-name:
+    description: The name of the service to build and push
+    required: true
+  dockerfile-path:
+    description: The path to the Dockerfile for the service
+    required: true
+  github-token:
+    description: The GitHub token
+    required: true
+  docker-context:
+    description: The docker context path
+    required: true
+outputs:
+  digest:
+    description: The digest of the built image
+    value: ${{ steps.build.outputs.digest }}
+runs:
+  using: composite
+  steps:
+    - uses: docker/login-action@0d4c9c5ea7693da7b068278f7b52bda2a190a446
+      with:
+        registry: ghcr.io
+        username: ${{ github.actor }}
+        password: ${{ inputs.github-token }}
+    - id: metadata
+      uses: docker/metadata-action@8e5442c4ef9f78752691e2d8f8d19755c6f78e81
+      with:
+        images: ghcr.io/inkonchain/${{ inputs.repository-name }}
+    - id: build
+      uses: docker/build-push-action@1a162644f9a7e87d8f4b053101d1d9a712edc18c
+      with:
+        context: ${{ inputs.docker-context }}
+        file: ${{ inputs.dockerfile-path }}
+        push: true
+        tags: ${{ steps.metadata.outputs.tags }}
+        labels: ${{ steps.metadata.outputs.labels }}

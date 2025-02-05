@@ -1,0 +1,100 @@
+name: ship
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  push:
+    branches:
+      - main
+      - ops/preview-1
+      - ops/preview-2
+    paths:
+      - "**"
+jobs:
+  image-build-push:
+    runs-on: ubuntu-latest
+    environment: production
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Generate .env.production file
+        run: |
+          cat << EOF > .env.production
+          # Environment
+          NEXT_PUBLIC_ENVIRONMENT=${{ vars.NEXT_PUBLIC_ENVIRONMENT }}
+
+          # Sentry
+          NEXT_PUBLIC_SENTRY_DSN=${{ secrets.NEXT_PUBLIC_SENTRY_DSN }}
+          SENTRY_AUTH_TOKEN=${{ secrets.SENTRY_AUTH_TOKEN }}
+
+          # GTM
+          NEXT_PUBLIC_GTM_ID=${{ secrets.NEXT_PUBLIC_GTM_ID }}
+
+          # Braze
+          BRAZE_INSTANCE_URL=${{ secrets.BRAZE_INSTANCE_URL }}
+          BRAZE_API_KEY=${{ secrets.BRAZE_API_KEY }}
+          BRAZE_GENERAL_WAITLIST_GROUP_ID=${{ secrets.BRAZE_GENERAL_WAITLIST_GROUP_ID }}
+          BRAZE_DEVELOPERS_WAITLIST_GROUP_ID=${{ secrets.BRAZE_DEVELOPERS_WAITLIST_GROUP_ID }}
+
+          # OneTrust
+          NEXT_PUBLIC_ONE_TRUST_ID=${{ secrets.NEXT_PUBLIC_ONE_TRUST_ID }}
+
+          # Dune
+          NEXT_PUBLIC_DUNE_API_KEY=${{ secrets.NEXT_PUBLIC_DUNE_API_KEY }}
+
+          # WalletConnect
+          NEXT_PUBLIC_WC_PROJECT_ID=${{ secrets.NEXT_PUBLIC_WC_PROJECT_ID }}
+
+          # hCaptcha
+          HCAPTCHA_SECRET=${{ secrets.HCAPTCHA_SECRET }}
+          NEXT_PUBLIC_HCAPTCHA_SITEKEY=${{ secrets.NEXT_PUBLIC_HCAPTCHA_SITEKEY }}
+
+          # Segment
+          NEXT_PUBLIC_SEGMENT_WRITE_KEY=${{ secrets.NEXT_PUBLIC_SEGMENT_WRITE_KEY }}
+
+          # Kraken Connect
+          NEXT_PUBLIC_KRAKEN_CLIENT_ID=${{ secrets.NEXT_PUBLIC_KRAKEN_CLIENT_ID }}
+          KRAKEN_CLIENT_SECRET=${{ secrets.KRAKEN_CLIENT_SECRET }}
+
+          # App Submission Bot
+          INK_APP_SUBMISSION_BOT_GITHUB_APP_ID=${{ secrets.INK_APP_SUBMISSION_BOT_GITHUB_APP_ID }}
+          INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY=${{ secrets.INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY }}
+          INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID=${{ secrets.INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID }}
+          INK_APP_SUBMISSION_TARGET_ORG=${{ secrets.INK_APP_SUBMISSION_TARGET_ORG }}
+          INK_APP_SUBMISSION_TARGET_REPO=${{ secrets.INK_APP_SUBMISSION_TARGET_REPO }}
+          INK_APP_SUBMISSION_TARGET_BRANCH=${{ secrets.INK_APP_SUBMISSION_TARGET_BRANCH }}
+          INK_APP_SUBMISSION_SLACK_NOTIFICATION_CHANNEL=${{ secrets.INK_APP_SUBMISSION_SLACK_NOTIFICATION_CHANNEL }}
+          INK_APP_SUBMISSION_SLACK_BOT_TOKEN=${{ secrets.INK_APP_SUBMISSION_SLACK_BOT_TOKEN }}
+
+          # Smart Account Experiment
+          NEXT_PUBLIC_BUNDLER_URL=${{ secrets.NEXT_PUBLIC_BUNDLER_URL }}
+          NEXT_PUBLIC_PASSKEY_SERVER_URL=${{ secrets.NEXT_PUBLIC_PASSKEY_SERVER_URL }}
+          NEXT_PUBLIC_PAYMASTER_URL=${{ secrets.NEXT_PUBLIC_PAYMASTER_URL }}
+          NEXT_PUBLIC_GELATO_BRIDGE_URL=${{ secrets.NEXT_PUBLIC_GELATO_BRIDGE_URL }}
+          NEXT_PUBLIC_FAUCET_API_URL=${{ secrets.NEXT_PUBLIC_FAUCET_API_URL }}
+
+          # Testnet Faucet Experiment
+          MULTIPLIER_JWT_SECRET=${{ secrets.MULTIPLIER_JWT_SECRET }}
+          EOF
+
+      - id: build-push
+        uses: ./.github/actions/image-build-push
+        with:
+          repository-name: ink-web-app
+          dockerfile-path: ./Dockerfile
+          docker-context: ./
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+
+      # https://docs.github.com/en/rest/actions/workflows?apiVersion=2022-11-28#create-a-workflow-dispatch-event
+      - name: Trigger deployment
+        run: |
+          # Extract branch name from github.ref
+          BRANCH_NAME=${GITHUB_REF#refs/heads/}
+
+          curl -L \
+            -X POST \
+            -H "Accept: application/vnd.github+json" \
+            -H "Authorization: Bearer ${{ secrets.VICTOR_PAT_TOKEN }}" \
+            -H "X-GitHub-Api-Version: 2022-11-28" \
+            ${{ secrets.TARGET_REPOSITORY_DISPATCH_URL }} \
+            -d '{"ref": "feat/ink-web-app","inputs":{"digest":"${{ steps.build-push.outputs.digest }}","branch":"'"${BRANCH_NAME}"'"}}'

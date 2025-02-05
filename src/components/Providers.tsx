@@ -7,7 +7,7 @@ import { AnalyticsProvider } from "@/contexts/AnalyticsProvider";
 import { RelayProvider } from "@/contexts/RelayProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
 import { WalletProvider } from "@/contexts/WalletProvider";
-import { NEXT_PUBLIC_SEGMENT_WRITE_KEY } from "@/env-client";
+import { clientEnv } from "@/env-client";
 import { useGlobalKeyCallback } from "@/hooks/useGlobalKey";
 
 import { AppSubmissionModalProvider } from "./AppSubmissionModal/AppSubmissionModalContext";
@@ -22,7 +22,7 @@ export const Providers: React.FC<PropsWithChildren> = ({ children }) => {
 
   return (
     <ThemeProvider>
-      <AnalyticsProvider writeKey={NEXT_PUBLIC_SEGMENT_WRITE_KEY || ""}>
+      <AnalyticsProvider writeKey={clientEnv.NEXT_PUBLIC_SEGMENT_WRITE_KEY}>
         <QueryClientProvider client={queryClient}>
           <WalletProvider>
             <RelayProvider>

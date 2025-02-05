@@ -11,7 +11,7 @@ import { GlobalSvgStuff } from "@/components/icons/GlobalSvgStuff";
 import { NewsletterModal } from "@/components/NewsletterModal";
 import { Providers } from "@/components/Providers";
 import { ToggleThemeShortcut } from "@/components/ToggleThemeShortcut";
-import { NEXT_PUBLIC_GTM_ID } from "@/env-client";
+import { clientEnv } from "@/env-client";
 import { COOKIE_CONSENT } from "@/integrations/consent";
 
 import { inter, plus_jakarta_sans } from "../fonts";
@@ -49,7 +49,7 @@ export default async function LocaleLayout({
     >
       {userHasAcceptedCookiePolicy && (
         <>
-          <GoogleTagManager gtmId={NEXT_PUBLIC_GTM_ID} />
+          <GoogleTagManager gtmId={clientEnv.NEXT_PUBLIC_GTM_ID} />
         </>
       )}
 

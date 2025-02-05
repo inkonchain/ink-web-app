@@ -5,9 +5,11 @@
 
 import * as Sentry from "@sentry/nextjs";
 
+import { clientEnv } from "../env-client";
+
 Sentry.init({
-  dsn: process.env.NEXT_PUBLIC_SENTRY_DSN,
-  enabled: process.env.NEXT_PUBLIC_ENVIRONMENT !== "ci",
+  dsn: clientEnv.NEXT_PUBLIC_SENTRY_DSN,
+  enabled: clientEnv.NEXT_PUBLIC_ENVIRONMENT !== "ci",
 
   // Adjust this value in production, or use tracesSampler for greater control
   tracesSampleRate: 0.05,

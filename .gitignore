@@ -21,8 +21,7 @@ next-env.d.ts
 
 # Environment and local files
 .env*
-.env*.local
-.env.sentry-build-plugin
+!.env.example
 
 # Debug logs
 npm-debug.log*
