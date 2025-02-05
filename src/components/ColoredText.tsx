@@ -2,7 +2,7 @@ import { PropsWithChildren } from "react";
 
 import { classNames } from "@/util/classes";
 
-interface ColoredTextProps extends PropsWithChildren {
+export interface ColoredTextProps extends PropsWithChildren {
   variant:
     | "purple"
     | "purple-light"

@@ -19,8 +19,10 @@ export default async function InfoLayout({
   return (
     <OnlyWithFeatureFlag flag="newNav">
       <RoutedLayout>
-        <div className="relative pt-24 sm:pt-0 overflow-hidden flex flex-col gap-8 hd:flex-1 hd:items-center">
-          <div className="flex flex-col">{children}</div>
+        <div className="relative pt-24 sm:pt-0 overflow-hidden flex flex-col gap-8 w-full items-center">
+          <div className="flex flex-col w-full justify-center items-center">
+            {children}
+          </div>
           <div>
             <Footer />
           </div>
