@@ -123,7 +123,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
         ...params,
         ...newParams,
       });
-      window.history.pushState("", "", `/dashboard?${queryParams}`);
+      window.history.pushState(null, "", `/dashboard?${queryParams}`);
     },
     [searchParams]
   );

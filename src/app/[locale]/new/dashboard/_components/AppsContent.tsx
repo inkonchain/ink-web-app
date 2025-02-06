@@ -105,7 +105,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
       });
       // Doing this manually is *insanely* faster than using router.replace for some reason.
       window.history.pushState(
-        "",
+        null,
         "",
         `/new/dashboard${newCategory ? `/${newCategory}` : ""}?${queryParams}`
       );
