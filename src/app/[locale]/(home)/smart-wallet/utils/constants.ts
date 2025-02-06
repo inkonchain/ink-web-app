@@ -6,9 +6,11 @@ import {
 } from "viem/account-abstraction";
 import { inkSepolia } from "viem/chains";
 
-export const BUNDLER_URL = process.env.NEXT_PUBLIC_BUNDLER_URL!;
-export const PAYMASTER_URL = process.env.NEXT_PUBLIC_PAYMASTER_URL!;
-export const PASSKEY_SERVER_URL = process.env.NEXT_PUBLIC_PASSKEY_SERVER_URL!;
+import { clientEnv } from "@/env-client";
+
+export const BUNDLER_URL = clientEnv.NEXT_PUBLIC_BUNDLER_URL;
+export const PAYMASTER_URL = clientEnv.NEXT_PUBLIC_PAYMASTER_URL;
+export const PASSKEY_SERVER_URL = clientEnv.NEXT_PUBLIC_PASSKEY_SERVER_URL;
 export const CHAIN = inkSepolia;
 
 export const contractAddress = "0xA07F56aeeb535856FdEC39a9d685C62536150B1f";

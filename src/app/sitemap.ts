@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-import { ORIGIN } from "@/env";
+import { env } from "@/env";
 import { routing } from "@/routing";
 
 export default function sitemap(): MetadataRoute.Sitemap {
@@ -8,13 +8,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   return [
     {
-      url: ORIGIN,
+      url: env.ORIGIN,
       priority: 1,
     },
     ...basicPaths.flatMap((path) =>
       routing.locales.map((lang) => ({
         url:
-          ORIGIN +
+          env.ORIGIN +
           (lang !== routing.defaultLocale ? "/" + lang : "") +
           "/" +
           path,

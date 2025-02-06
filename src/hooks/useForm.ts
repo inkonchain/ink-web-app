@@ -8,7 +8,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
 
-import { NEXT_PUBLIC_HCAPTCHA_SITEKEY } from "@/env-client";
+import { clientEnv } from "@/env-client";
 
 import { useHCaptcha } from "./useHCaptcha";
 
@@ -32,7 +32,7 @@ export function useForm<FormState, FormValues extends FieldValues>(
 ): UseFormHook<FormState, FormValues> {
   const [isSubmitting, startTransition] = useTransition();
   const { executeHCaptcha, hcaptchaLoaded } = useHCaptcha(
-    NEXT_PUBLIC_HCAPTCHA_SITEKEY,
+    clientEnv.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
     true
   );
 

@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from "react";
 import { toast } from "react-toastify";
 
-import { NEXT_PUBLIC_FAUCET_API_URL } from "@/env-client";
+import { clientEnv } from "@/env-client";
 
 import { useHCaptcha } from "./useHCaptcha";
 
@@ -26,11 +26,14 @@ export function useFaucetInfoAndCaptcha(chainId: number | undefined) {
   const fetchFaucetInfo = useCallback(async () => {
     try {
       console.trace("Fetching faucet info for network:", chainId);
-      const res = await fetch(`${NEXT_PUBLIC_FAUCET_API_URL}/api/info`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chainId }),
-      });
+      const res = await fetch(
+        `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/info`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ chainId }),
+        }
+      );
       if (res.ok) {
         const newFaucetInfo = await res.json();
         console.trace("New faucet info:", newFaucetInfo);

@@ -19,7 +19,7 @@ import {
   inputContainerClassNames,
   inputIconClassNames,
 } from "@/components/InputWithSubmit/styles";
-import { NEXT_PUBLIC_FAUCET_API_URL } from "@/env-client";
+import { clientEnv } from "@/env-client";
 import { useFaucetInfoAndCaptcha } from "@/hooks/useFaucetInfoAndHCaptcha";
 
 interface FaucetRequestButtonProps {
@@ -188,7 +188,7 @@ export const FaucetRequestButton = forwardRef<
         try {
           // Check rate limit first
           const rateLimitRes = await fetch(
-            `${NEXT_PUBLIC_FAUCET_API_URL}/api/check-rate-limit`,
+            `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/check-rate-limit`,
             {
               method: "POST",
               headers: {
@@ -311,18 +311,21 @@ export const FaucetRequestButton = forwardRef<
           }
 
           // If captcha is solved, proceed with the claim
-          const res = await fetch(`${NEXT_PUBLIC_FAUCET_API_URL}/api/claim`, {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              address: resolvedAddress,
-              chainId,
-              hcaptchaToken,
-              multiplierToken: localStorage.getItem("multiplierToken"),
-            }),
-          });
+          const res = await fetch(
+            `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/claim`,
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify({
+                address: resolvedAddress,
+                chainId,
+                hcaptchaToken,
+                multiplierToken: localStorage.getItem("multiplierToken"),
+              }),
+            }
+          );
 
           const responseData = await res.json();
 

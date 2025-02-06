@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 
-import { ORIGIN } from "@/env";
+import { env } from "@/env";
 
 export default function robots(): MetadataRoute.Robots {
   return {
@@ -8,6 +8,6 @@ export default function robots(): MetadataRoute.Robots {
       userAgent: "*",
       allow: "/",
     },
-    sitemap: ORIGIN + "/sitemap.xml",
+    sitemap: env.ORIGIN + "/sitemap.xml",
   };
 }

@@ -1,10 +1,12 @@
 import { withSentryConfig } from "@sentry/nextjs";
 import createNextIntlPlugin from "next-intl/plugin";
+import type { NextConfig } from "next";
+import { env } from "@/env";
+import { clientEnv } from "@/env-client";
 
 const withNextIntl = createNextIntlPlugin();
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+const nextConfig: NextConfig = {
   transpilePackages: ["three"],
   images: {
     unoptimized: true,
@@ -18,18 +20,18 @@ const nextConfig = {
 };
 
 export default withSentryConfig(withNextIntl(nextConfig), {
-  // For all available options, see:
-  // https://github.com/getsentry/sentry-webpack-plugin#options
+  // For all available options, see node_modules/@sentry/nextjs/build/types/config/types.d.ts
 
   org: "payward-inc",
   project: "ink-web-app",
+  authToken: env.SENTRY_AUTH_TOKEN,
+  silent: true,
 
-  // Only print logs for uploading source maps in CI
-  silent: !process.env.CI,
-
-  authToken: process.env.SENTRY_AUTH_TOKEN,
-  // For all available options, see:
-  // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+  // Sourcemaps config
+  sourcemaps: {
+    // Send source maps to Sentry, but do not include them in the client bundle
+    deleteSourcemapsAfterUpload: true,
+  },
 
   // Upload a larger set of source maps for prettier stack traces (increases build time)
   widenClientFileUpload: true,
@@ -40,15 +42,6 @@ export default withSentryConfig(withNextIntl(nextConfig), {
   // side errors will fail.
   tunnelRoute: "/monitoring",
 
-  // Hides source maps from generated client bundles
-  hideSourceMaps: true,
-
   // Automatically tree-shake Sentry logger statements to reduce bundle size
   disableLogger: true,
-
-  // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
-  // See the following for more information:
-  // https://docs.sentry.io/product/crons/
-  // https://vercel.com/docs/cron-jobs
-  automaticVercelMonitors: true,
 });

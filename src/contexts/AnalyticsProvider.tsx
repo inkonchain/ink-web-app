@@ -9,7 +9,7 @@ import {
 } from "react";
 import { AnalyticsBrowser } from "@segment/analytics-next";
 
-import { NEXT_PUBLIC_ENVIRONMENT } from "@/env-client";
+import { clientEnv } from "@/env-client";
 import Consent, { ConsentType } from "@/integrations/consent";
 
 interface AnalyticsContextProps {
@@ -32,7 +32,7 @@ export const AnalyticsProvider = ({
   const analytics = useMemo(() => new AnalyticsBrowser(), []);
 
   useEffect(() => {
-    if (NEXT_PUBLIC_ENVIRONMENT === "local" && !writeKey) {
+    if (clientEnv.NEXT_PUBLIC_ENVIRONMENT === "local" && !writeKey) {
       return;
     }
 

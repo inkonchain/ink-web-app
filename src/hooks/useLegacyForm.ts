@@ -1,7 +1,7 @@
 // Adapted from https://allanlasser.com/posts/2024-01-26-avoid-using-reacts-useformstatus
 import { SyntheticEvent, useActionState, useTransition } from "react";
 
-import { NEXT_PUBLIC_HCAPTCHA_SITEKEY } from "@/env-client";
+import { clientEnv } from "@/env-client";
 
 import { useHCaptcha } from "./useHCaptcha";
 
@@ -17,7 +17,7 @@ export function useLegacyForm<FormState>(
   initialState: Awaited<FormState>
 ): UseLegacyFormHook<FormState> {
   const { executeHCaptcha, hcaptchaLoaded } = useHCaptcha(
-    NEXT_PUBLIC_HCAPTCHA_SITEKEY,
+    clientEnv.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
     true
   );
   const [isPending, startTransition] = useTransition();

@@ -6,7 +6,15 @@ import { WebClient } from "@slack/web-api";
 import sharp from "sharp";
 
 import { InkApp } from "@/app/[locale]/(dashboard)/dashboard/_components/InkApp";
+import { env } from "@/env";
+import { validateCaptcha } from "@/lib/hcaptcha";
 import {
+  AppSubmissionFormData,
+  appSubmissionSchema,
+} from "@/schemas/app-submission-schema";
+import { isSquareAspectRatio } from "@/util/validation";
+
+const {
   INK_APP_SUBMISSION_BOT_GITHUB_APP_ID,
   INK_APP_SUBMISSION_BOT_GITHUB_INSTALLATION_ID,
   INK_APP_SUBMISSION_BOT_GITHUB_PRIVATE_KEY,
@@ -15,13 +23,7 @@ import {
   INK_APP_SUBMISSION_TARGET_BRANCH,
   INK_APP_SUBMISSION_TARGET_ORG,
   INK_APP_SUBMISSION_TARGET_REPO,
-} from "@/env";
-import { validateCaptcha } from "@/lib/hcaptcha";
-import {
-  AppSubmissionFormData,
-  appSubmissionSchema,
-} from "@/schemas/app-submission-schema";
-import { isSquareAspectRatio } from "@/util/validation";
+} = env;
 
 const octokit = new Octokit({
   authStrategy: createAppAuth,

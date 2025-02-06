@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { motion } from "framer-motion";
 
 import { useWallet } from "@/contexts/WalletProvider";
-import { NEXT_PUBLIC_FAUCET_API_URL } from "@/env-client";
+import { clientEnv } from "@/env-client";
 import { useFaucetInfoAndCaptcha } from "@/hooks/useFaucetInfoAndHCaptcha";
 
 export interface FaucetButtonProps extends PropsWithChildren {
@@ -27,7 +27,7 @@ export const FaucetButton: React.FC<FaucetButtonProps> = ({ onChange }) => {
     try {
       // Check rate limit first
       const rateLimitRes = await fetch(
-        `${NEXT_PUBLIC_FAUCET_API_URL}/api/check-rate-limit`,
+        `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/check-rate-limit`,
         {
           method: "POST",
           headers: {
@@ -66,13 +66,16 @@ export const FaucetButton: React.FC<FaucetButtonProps> = ({ onChange }) => {
       }
 
       // If captcha is solved, proceed with the claim
-      const res = await fetch(`${NEXT_PUBLIC_FAUCET_API_URL}/api/claim`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ address, chainId, hcaptchaToken }),
-      });
+      const res = await fetch(
+        `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/claim`,
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ address, chainId, hcaptchaToken }),
+        }
+      );
 
       const responseData = await res.json();
 
