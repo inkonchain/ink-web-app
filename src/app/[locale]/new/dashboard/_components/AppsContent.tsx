@@ -201,9 +201,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
               onLoadMore={() => setPage(page + 1)}
               hasMore={page < Math.floor(filteredApps.length / 10)}
             >
-              {/** Calculations are manual here so that the grid takes up a good chunk of space, but doesn't make the window scroll. */}
               <AppsGrid
-                className="sm:max-h-[calc(100vh-16rem-20rem)] lg:max-h-[calc(100vh-10rem-18rem)] 2xl:max-h-[calc(100vh-10rem-14rem)] overflow-y-auto"
                 apps={appsToDisplay}
                 featuredApps={inkFeaturedApps}
                 noAppsFound={
