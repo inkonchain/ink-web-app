@@ -3,21 +3,19 @@ import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { NoisyContainer } from "@/components/Noisy";
-import { classNames } from "@/util/classes";
 
 import { AppLinks } from "./AppLinks";
 import { InkApp, InkAppNetwork } from "./InkApp";
 import { TableRowPill } from "./TableRowPill";
 
 export const AppsGrid: React.FC<{
-  className?: string;
   apps: InkApp[];
   featuredApps: InkApp[];
   noAppsFound: React.ReactNode;
   network: InkAppNetwork;
-}> = ({ className, apps, featuredApps, noAppsFound, network }) => {
+}> = ({ apps, featuredApps, noAppsFound, network }) => {
   return (
-    <div className={classNames("w-full", className)}>
+    <div className="w-full">
       {apps.length === 0 ? (
         <div className="min-h-[300px] flex flex-col gap-4 justify-center items-center">
           {noAppsFound}
