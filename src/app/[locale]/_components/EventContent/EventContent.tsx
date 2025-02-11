@@ -1,10 +1,10 @@
 import { PropsWithChildren } from "react";
+import { Card, CardContent, Tag } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { ButtonLink } from "@/components/Button/ButtonLink";
 import { ColoredText } from "@/components/ColoredText";
-import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
 import { CalendarIcon } from "@/components/icons/Calendar";
 import { DotsInCircleIcon } from "@/components/icons/DotsInCircle";
 import { LocationIcon } from "@/components/icons/Location";
@@ -12,8 +12,6 @@ import { MailIcon } from "@/components/icons/Mail";
 import { ParallaxedHoverImage } from "@/components/ParallaxedHoverImage";
 import { EXTERNAL_LINKS, HrefProp } from "@/routing";
 import { classNames } from "@/util/classes";
-
-import { GlossyPill } from "./GlossyPill";
 
 export const EventContent = () => {
   const t = useTranslations("events.ethdenver");
@@ -116,52 +114,24 @@ export const SpecificEventCard = ({
   className,
 }: SpecificEventCardProps) => {
   return (
-    <EventCard
+    <Card
       className={className}
-      title={
-        <h2 className="text-4xl xl:text-5xl xl:leading-normal">{title}</h2>
-      }
-      description={
-        <div className="flex flex-col items-start gap-8 text-base font-normal flex-1">
-          <div>{description}</div>
-          <div className="items-center w-full sm:w-fit">
-            <div className="self-start">
-              <ButtonLink
-                href={link}
-                aria-label="Apply for House of Ink"
-                target="_blank"
-                rel="noopener noreferrer"
-                size="lg"
-                variant={color === "purple" ? "primary" : "spotlight"}
-                compact
-                icon={
-                  <MailIcon
-                    className="shrink-0"
-                    size="icon-lg"
-                    enforce="inherit"
-                  />
-                }
-              >
-                {cta}
-              </ButtonLink>
-            </div>
-          </div>
-        </div>
-      }
       image={
-        <div
-          className={classNames(
-            "relative",
-            layout === "horizontal" ? "h-full" : "w-full"
-          )}
+        <CardContent.Image
+          mainLabels={<Tag variant="event">{pillLabel}</Tag>}
+          secondaryLabels={
+            <>
+              <Tag variant="event">
+                <CalendarIcon size="icon-md" enforce="inherit" />
+                {date}
+              </Tag>
+              <Tag variant="event">
+                <LocationIcon size="icon-md" enforce="inherit" />
+                {location}
+              </Tag>
+            </>
+          }
         >
-          <div className="absolute top-0 left-0 right-0 px-4 sm:px-6 md:px-9 pt-4 sm:pt-5 md:pt-7 z-10 flex justify-between items-start">
-            <EventPill>{pillLabel}</EventPill>
-            <div className="flex gap-2 flex-wrap flex-1 justify-end">
-              <GlossyPill text={date} Icon={CalendarIcon} />
-              <GlossyPill text={location} Icon={LocationIcon} />
-            </div>
-          </div>
           <ParallaxedHoverImage
             className={classNames(
               "object-cover scale-[1.3] aspect-video min-w-80 max-w-xl",
@@ -172,60 +142,31 @@ export const SpecificEventCard = ({
             width={1456}
             height={816}
           />
-        </div>
+        </CardContent.Image>
       }
-      layout={layout}
-      color={color}
-    />
-  );
-};
-
-export interface EventCardProps {
-  title: React.ReactNode;
-  description: React.ReactNode;
-  image: React.ReactNode;
-  layout?: "horizontal" | "vertical";
-  color?: "purple" | "purple-dark";
-  className?: string;
-}
-
-export const EventCard: React.FC<EventCardProps> = ({
-  title,
-  description,
-  image,
-  layout = "vertical",
-  color = "purple",
-  className,
-}) => {
-  return (
-    <FlyWhenIntoView
-      className={classNames(
-        "flex flex-wrap p-4 pb-6 lg:p-6 gap-6 rounded-spotlight-mobile lg:rounded-events justify-center",
-        layout === "horizontal" ? "flex-row" : "flex-col ",
-        color === "purple-dark" ? "bg-darkPurple" : "bg-lightPurple",
-        className
-      )}
+      imageLocation={layout === "horizontal" ? "left" : "top"}
     >
-      <div className="rounded-spotlight-mobile-content lg:rounded-events-content overflow-hidden">
-        {image}
-      </div>
-      <div className={classNames("flex flex-col flex-1 gap-4 xl:gap-9 p-6")}>
-        <ColoredText
-          className="text-4xl lg:text-7xl font-medium"
-          dampen="md"
-          variant={color === "purple" ? "purple-dark" : "purple"}
-        >
-          {title}
-        </ColoredText>
-        <div
-          className={classNames(
-            "flex-1 flex flex-col justify-between gap-6 text-blackMagic",
-            color === "purple-dark" ? "dark:text-whiteMagic" : "text-blackMagic"
-          )}
-        >
-          {description}
-        </div>
-      </div>
-    </FlyWhenIntoView>
+      <CardContent.CallToAction
+        variant="default"
+        title={title}
+        description={description}
+        button={
+          <ButtonLink
+            href={link}
+            aria-label="Apply for House of Ink"
+            target="_blank"
+            rel="noopener noreferrer"
+            size="lg"
+            variant={color === "purple" ? "primary" : "spotlight"}
+            compact
+            icon={
+              <MailIcon className="shrink-0" size="icon-lg" enforce="inherit" />
+            }
+          >
+            {cta}
+          </ButtonLink>
+        }
+      />
+    </Card>
   );
 };
