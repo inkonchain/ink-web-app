@@ -10,7 +10,7 @@ export function AddYourAppButton() {
     <Button
       className="whitespace-nowrap"
       variant="primary"
-      size="sm"
+      size="md"
       onClick={(e) => {
         e.preventDefault();
         setIsOpen(true);

@@ -18,7 +18,7 @@ interface ConnectWalletButtonProps {
   className?: string;
   connectLabel?: string;
   shrinkOnMobile?: boolean;
-  size?: "sm" | "md";
+  size?: "md" | "lg";
 }
 
 export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({

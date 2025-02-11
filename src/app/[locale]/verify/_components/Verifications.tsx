@@ -153,7 +153,7 @@ const DesktopVerificationsTable = () => {
                     Available
                   </span>
                 ) : (
-                  <ConnectWalletButton size="sm" />
+                  <ConnectWalletButton size="md" />
                 )}
               </div>
             </td>
@@ -234,7 +234,7 @@ const MobileVerificationsTable = () => {
                   Available
                 </span>
               ) : (
-                <ConnectWalletButton size="sm" />
+                <ConnectWalletButton size="md" />
               )}
             </div>
           </div>
