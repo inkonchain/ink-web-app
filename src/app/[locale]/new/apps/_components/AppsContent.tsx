@@ -107,7 +107,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
       window.history.pushState(
         null,
         "",
-        `/new/dashboard${newCategory ? `/${newCategory}` : ""}?${queryParams}`
+        `/new/apps${newCategory ? `/${newCategory}` : ""}?${queryParams}`
       );
     },
     [searchParams]

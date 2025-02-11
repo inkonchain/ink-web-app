@@ -22,7 +22,7 @@ export default function CommunityPage() {
           <BigScalableTitle
             title={t("title")}
             subtitle={
-              <span className="ink:text-body-1 ink:text-text-muted max-w-lg">
+              <span className="ink:text-body-1 ink:text-text-muted max-w-screen-md">
                 {t("description")}
               </span>
             }

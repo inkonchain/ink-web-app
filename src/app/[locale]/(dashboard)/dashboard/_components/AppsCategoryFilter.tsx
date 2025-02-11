@@ -47,7 +47,7 @@ export const AppsCategoryFilter = ({
             {newLayout ? (
               <Link
                 href={{
-                  pathname: `/new/dashboard/[category]`,
+                  pathname: `/new/apps/[category]`,
                   params: { category: item.value || "" },
                   query,
                 }}

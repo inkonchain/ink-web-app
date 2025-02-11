@@ -33,7 +33,7 @@ export const AppsSideBar = ({
           {newLayout ? (
             <Link
               href={{
-                pathname: `/new/dashboard/[category]`,
+                pathname: `/new/apps/[category]`,
                 params: { category: filter.value || "" },
                 query,
               }}

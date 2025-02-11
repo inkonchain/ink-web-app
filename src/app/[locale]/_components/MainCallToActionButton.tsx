@@ -109,7 +109,7 @@ const ExploreAppsMainCallToActionButton: React.FC<
     return (
       <LegacyButtonLink
         href={{
-          pathname: "/new/dashboard",
+          pathname: "/new/apps",
           query: {
             ...Object.fromEntries(new URLSearchParams(query) || {}),
           },
@@ -151,7 +151,7 @@ const ExploreAppsMainCallToActionButton: React.FC<
     >
       <Link
         href={{
-          pathname: "/new/dashboard",
+          pathname: "/new/apps",
           query: {
             ...Object.fromEntries(new URLSearchParams(query) || {}),
           },

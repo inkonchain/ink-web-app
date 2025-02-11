@@ -111,6 +111,14 @@
       "description": "Discover the latest verifications on Ink"
     }
   },
+  "About": {
+    "title": "About Ink",
+    "description": "Ink is a blockchain platform that enables developers to build and deploy smart contracts on a decentralized network. It is designed to be a secure and scalable platform for building and deploying smart contracts on a decentralized network."
+  },
+  "Builders": {
+    "title": "Start building on Ink",
+    "description": "Our commitment to builders: Ink will provide you with a world class development environment, complete with the tools, support, and users you need to bring your ideas to life."
+  },
   "events": {
     "ethdenver": {
       "title": "Join us at the House of Ink in Denver",

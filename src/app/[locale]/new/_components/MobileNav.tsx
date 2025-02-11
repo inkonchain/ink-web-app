@@ -25,11 +25,23 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
     <InkLayoutMobileNav
       links={[
         {
-          href: "/new/dashboard",
+          href: "/new",
           asChild: true,
           children: (
             <Link
-              href={{ pathname: "/new/dashboard", query }}
+              href={{ pathname: "/new", query }}
+              onClick={closeMobileNavigation}
+            >
+              Home
+            </Link>
+          ),
+        },
+        {
+          href: "/new/apps",
+          asChild: true,
+          children: (
+            <Link
+              href={{ pathname: "/new/apps", query }}
               onClick={closeMobileNavigation}
             >
               Dashboard
@@ -45,18 +57,6 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
               onClick={closeMobileNavigation}
             >
               Bridge
-            </Link>
-          ),
-        },
-        {
-          href: "/new/community",
-          asChild: true,
-          children: (
-            <Link
-              href={{ pathname: "/new/community", query }}
-              onClick={closeMobileNavigation}
-            >
-              Community
             </Link>
           ),
         },
@@ -76,6 +76,42 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
               },
             ]
           : []),
+        {
+          href: "/new/build",
+          asChild: true,
+          children: (
+            <Link
+              href={{ pathname: "/new/builders", query }}
+              onClick={closeMobileNavigation}
+            >
+              Build
+            </Link>
+          ),
+        },
+        {
+          href: "/new/community",
+          asChild: true,
+          children: (
+            <Link
+              href={{ pathname: "/new/community", query }}
+              onClick={closeMobileNavigation}
+            >
+              Community
+            </Link>
+          ),
+        },
+        {
+          href: "/new/about",
+          asChild: true,
+          children: (
+            <Link
+              href={{ pathname: "/new/about", query }}
+              onClick={closeMobileNavigation}
+            >
+              About
+            </Link>
+          ),
+        },
       ]}
     />
   );

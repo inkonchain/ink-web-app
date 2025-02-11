@@ -12,6 +12,7 @@ export interface SpotlightSectionProps {
   image: React.ReactNode;
   imagePosition: "left" | "right";
   pill: React.ReactNode;
+  newLayout?: boolean;
 }
 
 export const SpotlightSection: React.FC<SpotlightSectionProps> = ({
@@ -20,14 +21,16 @@ export const SpotlightSection: React.FC<SpotlightSectionProps> = ({
   image,
   imagePosition,
   pill,
+  newLayout = false,
 }) => {
   return (
     <div
       className={classNames(
-        "flex flex-wrap bg-softDarkPurple p-3 pb-6 lg:p-6 rounded-spotlight-mobile lg:rounded-spotlight flex-1 gap-8 lg:gap-0",
+        "flex flex-wrap p-3 pb-6 lg:p-6 rounded-spotlight-mobile lg:rounded-spotlight flex-1 gap-8 lg:gap-0",
         {
           "flex-row-reverse": imagePosition === "right",
-        }
+        },
+        newLayout ? "ink:bg-background-container" : "bg-softDarkPurple"
       )}
     >
       <ImageContainer>{image}</ImageContainer>
