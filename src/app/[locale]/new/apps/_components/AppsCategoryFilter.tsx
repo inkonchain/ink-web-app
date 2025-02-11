@@ -32,7 +32,7 @@ export const AppsCategoryFilter = ({
           <Link
             className="whitespace-nowrap"
             href={{
-              pathname: `/new/dashboard/[category]`,
+              pathname: `/new/apps/[category]`,
               params: { category: item.value || "" },
               query,
             }}
@@ -47,7 +47,7 @@ export const AppsCategoryFilter = ({
     [selected, query]
   );
   return (
-    <ScrollWithGradient className="flex overflow-x-scroll flex-1 w-full sm:w-auto">
+    <ScrollWithGradient className="flex overflow-x-scroll flex-1 w-full sm:w-auto no-scrollbar">
       <SegmentedControl
         variant="primary"
         variableTabWidth

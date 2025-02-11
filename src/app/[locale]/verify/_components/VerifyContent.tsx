@@ -1,5 +1,6 @@
 "use client";
 
+import { Card, CardContent } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useAccount } from "wagmi";
@@ -8,7 +9,6 @@ import { ConnectWalletButton } from "@/app/[locale]/_components/ConnectWalletBut
 import { ColoredText } from "@/components/ColoredText";
 
 import { Verifications } from "./Verifications";
-import { VerifyInfoCard } from "./VerifyInfoCard";
 
 export function VerifyContent() {
   const t = useTranslations("Verify");
@@ -25,7 +25,7 @@ export function VerifyContent() {
           >
             <h2>{t("title")}</h2>
           </ColoredText>
-          <div className="text-blackMagic/50 dark:text-whiteMagic/50 text-md max-w-lg">
+          <div className="text-blackMagic/50 dark:text-whiteMagic/50 text-md max-w-screen-lg">
             {t("description")}
           </div>
         </div>
@@ -38,45 +38,48 @@ export function VerifyContent() {
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-        <VerifyInfoCard
-          className="flex-1"
-          icon={
-            <Image
-              src="/verify/info-checkmark.png"
-              alt="A coin with a checkmark inside"
-              width={100}
-              height={100}
-            />
-          }
-          title={t("whatIsVerify.title")}
-          description={<div>{t("whatIsVerify.description")}</div>}
-        />
-        <VerifyInfoCard
-          className="flex-1"
-          icon={
-            <Image
-              src="/verify/info-lock.png"
-              alt="An hexagonal coin with a lock inside"
-              width={100}
-              height={100}
-            />
-          }
-          title={t("whyVerify.title")}
-          description={<div>{t("whyVerify.description")}</div>}
-        />
-        <VerifyInfoCard
-          className="flex-1"
-          icon={
-            <Image
-              src="/verify/info-checkmark.png"
-              alt="A coin with a checkmark inside"
-              width={100}
-              height={100}
-            />
-          }
-          title={t("yourPrivacy.title")}
-          description={<div>{t("yourPrivacy.description")}</div>}
-        />
+        <Card variant="secondary" className="flex-1">
+          <CardContent.Tiny
+            title={t("whatIsVerify.title")}
+            description={t("whatIsVerify.description")}
+            icon={
+              <Image
+                src="/verify/info-checkmark.png"
+                alt="A coin with a checkmark inside"
+                width={100}
+                height={100}
+              />
+            }
+          />
+        </Card>
+        <Card variant="secondary" className="flex-1">
+          <CardContent.Tiny
+            title={t("whyVerify.title")}
+            description={t("whyVerify.description")}
+            icon={
+              <Image
+                src="/verify/info-lock.png"
+                alt="A hexagonal coin with a lock inside"
+                width={100}
+                height={100}
+              />
+            }
+          />
+        </Card>
+        <Card variant="secondary" className="flex-1">
+          <CardContent.Tiny
+            title={t("yourPrivacy.title")}
+            description={t("yourPrivacy.description")}
+            icon={
+              <Image
+                src="/verify/info-checkmark.png"
+                alt="A coin with a checkmark inside"
+                width={100}
+                height={100}
+              />
+            }
+          />
+        </Card>
       </div>
 
       <Verifications />

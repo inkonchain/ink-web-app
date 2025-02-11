@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { InkIcon } from "@inkonchain/ink-kit";
+import { InkIcon, Tag } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { useAccount } from "wagmi";
@@ -9,8 +9,6 @@ import { useAccount } from "wagmi";
 import { ColoredText } from "@/components/ColoredText";
 
 import { ConnectWalletButton } from "../../_components/ConnectWalletButton";
-// TODO: replace this with the InkKit Tag component
-import { TableRowPill } from "../../(dashboard)/dashboard/_components/TableRowPill";
 
 type Perks = "Ink" | "Zora";
 type Networks = "Ink" | "BASE" | "Arbitrum" | "Mode" | "Optimism";
@@ -108,7 +106,7 @@ const DesktopVerificationsTable = () => {
             </td>
             <td className="py-4 px-6">
               <div className="flex justify-end items-center gap-2">
-                <TableRowPill>{verification.category}</TableRowPill>
+                <Tag>{verification.category}</Tag>
               </div>
             </td>
             <td className="py-4 px-6">
@@ -179,7 +177,7 @@ const MobileVerificationsTable = () => {
                 {verification.icon}
               </div>
               <div>
-                <TableRowPill>{verification.category}</TableRowPill>
+                <Tag>{verification.category}</Tag>
               </div>
             </div>
 

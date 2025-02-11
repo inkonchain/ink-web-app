@@ -50,10 +50,7 @@ export const AppsTagsFilter: React.FC<AppsTagsFilterProps> = ({
 
   return (
     <Listbox value={selected || []} onChange={setSelected} multiple>
-      <ListboxButton
-        className="whitespace-nowrap backdrop-blur-xl ink:text-body-3-bold w-[120px] h-10"
-        variant="muted"
-      >
+      <ListboxButton className="w-[120px]" variant="muted">
         <div className="flex items-center gap-2">
           <div>
             {selectedTags.length === 0 ? (

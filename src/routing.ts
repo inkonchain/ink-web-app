@@ -45,6 +45,7 @@ export const EXTERNAL_LINKS = {
   inkVerify: "https://verify.inkonchain.com/",
   relayTxHistory: "https://relay.link/transactions?address=[address]",
   l1Explorer: "https://sepolia.etherscan.io/tx/[hash]",
+  optimism: "https://www.optimism.io/",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
@@ -85,11 +86,13 @@ export const routing = defineRouting({
     "/newsletter/resubscribe": "/newsletter/resubscribe",
     "/newsletter/unsubscribe": "/newsletter/unsubscribe",
     "/new": "/new",
-    "/new/dashboard": "/new/dashboard",
-    "/new/dashboard/[category]": "/new/dashboard/[category]",
+    "/new/apps": "/new/apps",
+    "/new/apps/[category]": "/new/apps/[category]",
     "/new/bridge": "/new/bridge",
     "/new/verify": "/new/verify",
     "/new/community": "/new/community",
+    "/new/about": "/new/about",
+    "/new/builders": "/new/builders",
     ...externalLinksMap,
   },
 });

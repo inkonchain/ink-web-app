@@ -1,4 +1,5 @@
 import React from "react";
+import { Tag } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
@@ -6,7 +7,6 @@ import { NoisyContainer } from "@/components/Noisy";
 
 import { AppLinks } from "./AppLinks";
 import { InkApp, InkAppNetwork } from "./InkApp";
-import { TableRowPill } from "./TableRowPill";
 
 export const AppsGrid: React.FC<{
   apps: InkApp[];
@@ -72,7 +72,7 @@ function AppCard({
         <div className="relative">
           <div className="flex justify-end items-center gap-1 flex-wrap group-hover:opacity-0 group-hover:pointer-events-none transition-opacity w-full">
             {app.tags.map((tag) => (
-              <TableRowPill key={tag}>{tag}</TableRowPill>
+              <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
 

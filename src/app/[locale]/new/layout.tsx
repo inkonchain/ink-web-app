@@ -5,7 +5,7 @@ import { OnlyWithFeatureFlag } from "@/components/OnlyWithFeatureFlag";
 import { routing } from "@/routing";
 
 import { MainPageBackground } from "./_components/MainPageBackground";
-import { RoutedLayout } from "./dashboard/_components/RoutedLayout";
+import { RoutedLayout } from "./apps/_components/RoutedLayout";
 
 export async function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

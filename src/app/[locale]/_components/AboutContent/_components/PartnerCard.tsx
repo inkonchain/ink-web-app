@@ -1,14 +1,15 @@
 import React from "react";
+import { Card } from "@inkonchain/ink-kit";
 
 import { ColoredText } from "@/components/ColoredText";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
-import { NoisyCard } from "@/components/Noisy";
+import { HrefProp, Link } from "@/routing";
 
 interface PartnerCardProps {
   image: React.ReactNode;
   heading: string;
   text: string;
-  url: string;
+  url: HrefProp;
 }
 
 export const PartnerCard: React.FC<PartnerCardProps> = ({
@@ -18,25 +19,27 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
   url,
 }) => {
   return (
-    <FlyWhenIntoView className="flex-1 min-w-[300px] max-w-[600px] flex flex-col">
-      <NoisyCard
-        className="flex-1 flex flex-col bg-white/30 dark:bg-black/30 min-h-full [box-shadow:0px_3px_34px_-10px_rgb(0_0_0_/_6%)]"
-        url={url}
+    <FlyWhenIntoView className="flex-1 min-w-[300px] flex flex-col">
+      <Card
+        variant="secondary"
+        clickable
+        className="flex flex-col flex-1"
+        asChild
       >
-        <div className="flex items-center justify-center sm:flex-1 h-[244px] sm:h-full">
-          {image}
-        </div>
-        <div className="flex flex-col gap-4 justify-end">
-          <ColoredText
-            className="text-2xl font-medium"
-            dampen="md"
-            variant="purple"
-          >
-            <h3>{heading}</h3>
-          </ColoredText>
-          <div>{text}</div>
-        </div>
-      </NoisyCard>
+        <Link className="flex-1" href={url}>
+          <div className="flex items-center justify-center h-[244px]">
+            {image}
+          </div>
+          <div className="flex flex-col gap-4 justify-end">
+            <ColoredText className="ink:text-h5" dampen="md" variant="purple">
+              <h3>{heading}</h3>
+            </ColoredText>
+            <div className="ink:text-body-2-regular ink:text-text-muted">
+              {text}
+            </div>
+          </div>
+        </Link>
+      </Card>
     </FlyWhenIntoView>
   );
 };

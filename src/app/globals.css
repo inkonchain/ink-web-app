@@ -80,6 +80,15 @@
     background-color: var(--ink-scrollbar); /* color of the scroll thumb */
     border-radius: 20px; /* roundness of the scroll thumb */
   }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
 }
 
 :root {
