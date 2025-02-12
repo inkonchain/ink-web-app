@@ -1,34 +1,17 @@
 import { useTranslations } from "next-intl";
 
-import { BigScalableTitle } from "@/components/BigScallableTitle";
-import { containerClasses } from "@/components/styles/container";
-import { classNames } from "@/util/classes";
+import { newLayoutContainerClasses } from "@/components/styles/container";
+
+import { PageHeader } from "../_components/PageHeader";
 
 import { DeveloperContent } from "./_components/DeveloperContent";
 
 export default function BuildersPage() {
   const t = useTranslations("Builders");
   return (
-    <div className="flex flex-col gap-12 lg:gap-28 mt-0">
-      <div
-        className={classNames(
-          containerClasses(),
-          " mb-8 pb-8 sm:min-h-[calc(85vh)] gap-16"
-        )}
-      >
-        <BigScalableTitle
-          title={t("title")}
-          subtitle={
-            <span className="ink:text-body-1 ink:text-text-muted max-w-screen-md">
-              {t("description")}
-            </span>
-          }
-          ratio={4}
-          align="left"
-        />
-
-        <DeveloperContent />
-      </div>
+    <div className={newLayoutContainerClasses()}>
+      <PageHeader title={t("title")} description={t("description")} />
+      <DeveloperContent />
     </div>
   );
 }

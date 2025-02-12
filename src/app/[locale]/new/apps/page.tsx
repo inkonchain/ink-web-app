@@ -4,6 +4,7 @@ import { AppSubmissionModal } from "@/components/AppSubmissionModal/AppSubmissio
 import { AppSubmissionModalProvider } from "@/components/AppSubmissionModal/AppSubmissionModalContext";
 import { JsonLd } from "@/components/JsonLd";
 import { PageView } from "@/components/PageView";
+import { newLayoutContainerClasses } from "@/components/styles/container";
 
 import { AppsContent } from "./_components/AppsContent";
 
@@ -26,7 +27,9 @@ export default function AppsPage() {
           }}
         />
         <PageView />
-        <AppsContent />
+        <div className={newLayoutContainerClasses()}>
+          <AppsContent />
+        </div>
         <AppSubmissionModal />
       </>
     </AppSubmissionModalProvider>

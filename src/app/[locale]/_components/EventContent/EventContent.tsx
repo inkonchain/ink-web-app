@@ -91,7 +91,6 @@ export interface SpecificEventCardProps {
   link: HrefProp;
   date: string;
   location: string;
-  pillLabel: string;
   image: string;
   imageAlt: string;
   className?: string;
@@ -106,7 +105,6 @@ export const SpecificEventCard = ({
   link,
   date,
   location,
-  pillLabel,
   image,
   imageAlt,
   layout = "vertical",
@@ -118,8 +116,7 @@ export const SpecificEventCard = ({
       className={className}
       image={
         <CardContent.Image
-          mainLabels={<Tag variant="event">{pillLabel}</Tag>}
-          secondaryLabels={
+          mainLabels={
             <>
               <Tag variant="event">
                 <CalendarIcon size="icon-md" enforce="inherit" />
@@ -134,7 +131,7 @@ export const SpecificEventCard = ({
         >
           <ParallaxedHoverImage
             className={classNames(
-              "object-cover scale-[1.3] aspect-video min-w-80 max-w-xl",
+              "max-w-xl sm:max-w-full",
               layout === "horizontal" ? "h-full" : "w-full"
             )}
             src={image}
@@ -145,26 +142,33 @@ export const SpecificEventCard = ({
         </CardContent.Image>
       }
       imageLocation={layout === "horizontal" ? "left" : "top"}
+      variant={color === "purple" ? "light-purple" : "secondary"}
     >
       <CardContent.CallToAction
         variant="default"
         title={title}
         description={description}
         button={
-          <ButtonLink
-            href={link}
-            aria-label="Apply for House of Ink"
-            target="_blank"
-            rel="noopener noreferrer"
-            size="lg"
-            variant={color === "purple" ? "primary" : "spotlight"}
-            compact
-            icon={
-              <MailIcon className="shrink-0" size="icon-lg" enforce="inherit" />
-            }
-          >
-            {cta}
-          </ButtonLink>
+          <div>
+            <ButtonLink
+              href={link}
+              aria-label="Apply for House of Ink"
+              target="_blank"
+              rel="noopener noreferrer"
+              size="lg"
+              variant={color === "purple" ? "primary" : "spotlight"}
+              compact
+              icon={
+                <MailIcon
+                  className="shrink-0"
+                  size="icon-lg"
+                  enforce="inherit"
+                />
+              }
+            >
+              {cta}
+            </ButtonLink>
+          </div>
         }
       />
     </Card>

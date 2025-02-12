@@ -5,14 +5,22 @@ import { useTranslations } from "next-intl";
 import { ColoredText } from "@/components/ColoredText";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
 import { ParallaxedHoverImage } from "@/components/ParallaxedHoverImage";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS, Link } from "@/routing";
+import { classNames } from "@/util/classes";
 
 export const CommunityBrandKit = () => {
+  const newNav = useFeatureFlag("newNav");
   const t = useTranslations("Community");
 
   return (
     <FlyWhenIntoView>
-      <div className="flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-6 mx-4 bg-featuredCardPurple relative rounded-spotlight-mobile overflow-hidden">
+      <div
+        className={classNames(
+          "flex flex-col-reverse lg:flex-row items-center justify-between lg:gap-6 bg-featuredCardPurple relative rounded-spotlight-mobile overflow-hidden",
+          newNav ? "" : "mx-4"
+        )}
+      >
         <div className="flex flex-col gap-4 px-14 py-16">
           <ColoredText
             variant="purple"

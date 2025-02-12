@@ -9,7 +9,6 @@ export const InkLogo: React.FC = () => {
   const query = useRouterQuery();
   return (
     <Link
-      className="rounded-full ink:bg-background-light size-12 flex items-center justify-center"
       href={{
         pathname: routing.pathnames["/new"],
         query,

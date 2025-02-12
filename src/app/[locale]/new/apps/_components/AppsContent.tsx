@@ -154,7 +154,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
 
   return (
     <>
-      <div className="flex flex-col gap-8 w-full max-w-[2000px]">
+      <div className="flex flex-col gap-6 w-full">
         {/* Floating section on desktop */}
         <div className="lg:fixed lg:flex left-[20%] right-[20%] top-8 justify-center flex-wrap gap-4 mx-4 z-10">
           <SearchInput
