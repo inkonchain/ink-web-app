@@ -405,6 +405,32 @@
       }
     },
     {
+      "id": "holyheld",
+      "name": "Holyheld",
+      "description": "One card for all crypto",
+      "imageUrl": "/featured-apps/icons/holyheld.webp",
+      "category": [
+        "Other",
+        "DeFi",
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "tokens",
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://holyheld.com/",
+        "testnetWebsite": "https://holyheld.com/",
+        "x": "https://x.com/holyheld?s=21",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "hypernative",
       "name": "Hypernative",
       "description": "Hypernative stops web3 threats before they do any damage with the most accurate real-time advanced warning system and connection to automated onchain actions.",
