@@ -23,7 +23,6 @@ export const CommunityEvents = () => {
     link: EXTERNAL_LINKS.inkdenver,
     date: t("ethdenver.date"),
     location: t("ethdenver.location"),
-    pillLabel: t("ethdenver.pillLabel"),
     image: "/ethdenver.webp",
     imageAlt: "ETHDenver",
     layout: "vertical",

@@ -33,10 +33,10 @@ export const BigScalableTitle: React.FC<BigScalableTitleProps> = ({
         } as React.CSSProperties
       }
       className={classNames(
-        "flex flex-col gap-[calc(clamp(1rem,min(var(--ratio)+1rem,2vh),200px)/3)] px-4",
+        "flex flex-col gap-[calc(clamp(1rem,min(var(--ratio)+1rem,2vh),200px)/3)]",
         {
           "items-start": align === "left",
-          "items-center": align === "center",
+          "items-center px-4": align === "center",
         }
       )}
     >

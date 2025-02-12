@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 
 import { BigScalableTitle } from "@/components/BigScallableTitle";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
+import { newLayoutSectionClasses } from "@/components/styles/container";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 import { classNames } from "@/util/classes";
@@ -14,7 +15,7 @@ export const LetsGetSocial = () => {
 
   return (
     <FlyWhenIntoView
-      className={classNames("flex flex-col gap-10 py-16 px-4", {
+      className={classNames(newLayoutSectionClasses(), {
         "items-start": newNav,
         "items-center": !newNav,
       })}
