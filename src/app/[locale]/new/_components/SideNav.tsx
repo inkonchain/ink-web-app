@@ -1,11 +1,8 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { InkIcon, InkLayoutSideNav } from "@inkonchain/ink-kit";
 
-import { AppsIcon } from "@/components/icons/Apps";
-import { BridgeIcon } from "@/components/icons/Bridge";
-import { AboutBulletIcon } from "@/components/icons/bullets/About";
-import { BuildersBulletIcon } from "@/components/icons/bullets/Builders";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import {
@@ -37,13 +34,13 @@ export const SideNav = () => {
           asChild: true,
           children: <SideNavLink href="/new/apps">Apps</SideNavLink>,
           href: "/new/apps",
-          icon: <AppsIcon size="icon-lg" enforce="inherit" />,
+          icon: <InkIcon.Apps size="icon-lg" enforce="inherit" />,
         },
         {
           asChild: true,
           children: <SideNavLink href="/new/bridge">Bridge</SideNavLink>,
           href: "/new/bridge",
-          icon: <BridgeIcon size="icon-lg" enforce="inherit" />,
+          icon: <InkIcon.Bridge size="icon-lg" enforce="inherit" />,
         },
 
         ...(hasVerifyPage
@@ -60,19 +57,19 @@ export const SideNav = () => {
           asChild: true,
           children: <SideNavLink href="/new/builders">Build</SideNavLink>,
           href: "/new/builders",
-          icon: <BuildersBulletIcon size="icon-lg" enforce="inherit" />,
+          icon: <InkIcon.Code size="icon-lg" enforce="inherit" />,
         },
         {
           asChild: true,
           children: <SideNavLink href="/new/community">Community</SideNavLink>,
           href: "/new/community",
-          icon: <InkIcon.Profile size="icon-lg" enforce="inherit" />,
+          icon: <InkIcon.Users size="icon-lg" enforce="inherit" />,
         },
         {
           asChild: true,
           children: <SideNavLink href="/new/about">About</SideNavLink>,
           href: "/new/about",
-          icon: <AboutBulletIcon size="icon-lg" enforce="inherit" />,
+          icon: <InkIcon.Info size="icon-lg" enforce="inherit" />,
         },
       ]}
     />
@@ -95,16 +92,27 @@ function SideNavLink({
   const query = useRouterQuery();
   const hrefPath = pathFromHrefProp(href);
   const hrefObject = hrefObjectFromHrefPropWithQuery(href, query);
+  const [selected, setSelected] = useState(
+    exactHref ? path === hrefPath : path.startsWith(hrefPath)
+  );
+  useEffect(() => {
+    setSelected(exactHref ? path === hrefPath : path.startsWith(hrefPath));
+  }, [path, hrefPath, exactHref]);
 
   return (
     <Link
       {...rest}
       className={classNames(
         className,
-        (exactHref ? path === hrefPath : path.startsWith(hrefPath)) &&
+        ((exactHref ? path === hrefPath : path.startsWith(hrefPath)) ||
+          selected) &&
           "ink:text-text-on-secondary ink:bg-button-secondary"
       )}
       href={hrefObject}
+      onClick={() => {
+        setSelected(true);
+      }}
+      prefetch={true}
     >
       {children}
     </Link>

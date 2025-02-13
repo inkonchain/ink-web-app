@@ -145,7 +145,6 @@ export const SpecificEventCard = ({
       variant={color === "purple" ? "light-purple" : "secondary"}
     >
       <CardContent.CallToAction
-        variant="default"
         title={title}
         description={description}
         button={

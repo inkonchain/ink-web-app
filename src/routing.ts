@@ -141,3 +141,9 @@ export function isExternalPath(href: Pathnames) {
       : pathnames[href];
   return !url.startsWith("/") && !url.startsWith("#");
 }
+
+export function parseHrefProp(href: HrefProp) {
+  return typeof href === "object" && "pathname" in href
+    ? `${href.pathname}?${href.query}`
+    : href;
+}
