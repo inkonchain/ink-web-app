@@ -49,7 +49,7 @@ export const AppsCategoryFilter = ({
   return (
     <ScrollWithGradient className="flex overflow-x-scroll flex-1 w-full sm:w-auto no-scrollbar">
       <SegmentedControl
-        variant="primary"
+        variant="tag"
         variableTabWidth
         options={options}
         onOptionChange={(option) =>
