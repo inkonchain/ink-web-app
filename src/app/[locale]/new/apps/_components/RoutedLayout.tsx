@@ -1,7 +1,9 @@
 "use client";
 
 import { Suspense } from "react";
-import { ConnectWallet, InkLayout } from "@inkonchain/ink-kit";
+import { InkLayout } from "@inkonchain/ink-kit";
+
+import { ConnectWalletButton } from "@/app/[locale]/_components/ConnectWalletButton";
 
 import { InkLogo, InkLogoImage } from "../../_components/InkLogo";
 import { MobileNav } from "../../_components/MobileNav";
@@ -15,7 +17,7 @@ export function RoutedLayout({ children }: { children: React.ReactNode }) {
           <InkLogo />
         </Suspense>
       }
-      headerContent={<ConnectWallet />}
+      headerContent={<ConnectWalletButton shrinkOnMobile />}
       mobileNavigation={MobileNav}
       sideNavigation={<SideNav />}
     >
