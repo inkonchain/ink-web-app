@@ -21,10 +21,6 @@
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #f0efff;
-    background-image: url(/gradient-light.svg);
-    background-size: 100% 100%;
-    -o-background-size: 100% 100%;
-    -webkit-background-size: 100% 100%;
     background-size: cover;
   }
   html {
@@ -34,7 +30,6 @@
 
   .dark body {
     background-color: #160f1f;
-    background-image: url(/gradient-dark.svg);
   }
   /** https://github.com/tailwindlabs/tailwindcss/discussions/3654#discussioncomment-2327745 */
   .pause {

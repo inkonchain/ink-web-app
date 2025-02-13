@@ -6,7 +6,7 @@ import { useTranslations } from "next-intl";
 import { NoisyContainer } from "@/components/Noisy";
 
 import { AppLinks } from "./AppLinks";
-import { InkApp, InkAppNetwork } from "./InkApp";
+import { InkApp, InkAppNetwork, mainUrl } from "./InkApp";
 
 export const AppsGrid: React.FC<{
   apps: InkApp[];
@@ -21,7 +21,7 @@ export const AppsGrid: React.FC<{
           {noAppsFound}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 hd:grid-cols-4 gap-0.5 w-full">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 hd:grid-cols-4 gap-2 w-full">
           {featuredApps.map((app) => (
             <AppCard key={app.id} app={app} network={network} featured />
           ))}
@@ -45,7 +45,12 @@ function AppCard({
 }) {
   const t = useTranslations("dashboard");
   return (
-    <div className="flex flex-col gap-6 backdrop-blur-sm ink:bg-background-container p-4 group">
+    <button
+      className="flex flex-col gap-6 backdrop-blur-sm ink:bg-background-container ink:rounded-lg p-4 text-left group"
+      onClick={() => {
+        window.open(mainUrl(app, network), "_blank");
+      }}
+    >
       <div className="flex w-full justify-between">
         <NoisyContainer className="bg-dapps-icon-gradient rounded-xl overflow-hidden size-16 shrink-0">
           <Image
@@ -81,6 +86,6 @@ function AppCard({
           </div>
         </div>
       </div>
-    </div>
+    </button>
   );
 }
