@@ -31,92 +31,85 @@ export function AboutContent() {
         imageLocation="left"
       >
         <CardContent.TitleAndDescription title="DeFi expectations" />
-        <CardContent.CardInfo>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={
-                <Image
-                  src="/icons/1s-block-times.svg"
-                  width={24}
-                  height={24}
-                  alt="Sub-second block times"
-                />
-              }
-              title="Sub-second block times"
-              description="1s block times Day 1, sub-second blocks coming soon."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={
-                <Image
-                  src="/icons/Smol-Gas.svg"
-                  width={24}
-                  height={24}
-                  alt="smol gas"
-                />
-              }
-              title="Smol Gas"
-              description="Ape more, pay less."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={
-                <Image
-                  src="/icons/Security.svg"
-                  width={24}
-                  height={24}
-                  alt="security"
-                />
-              }
-              title="Security"
-              description="Sequencer-level security to protect users from malicious intents and exploits."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={
-                <Image
-                  src="/icons/Interoperability.svg"
-                  width={24}
-                  height={24}
-                  alt="interoperability"
-                />
-              }
-              title="Interoperability"
-              description="A commitment to the seamless flow of capital across the Superchain and beyond."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={
-                <Image
-                  src="/icons/Unleashed-by-Kraken.svg"
-                  width={24}
-                  height={24}
-                  alt="Unleashed by kraken"
-                />
-              }
-              title="Unleashed by Kraken"
-              description="Ink will leverage Kraken's security and crypto expertise to support builders and users alike as they move towards independent financial sovereignty."
-            />
-          </Card>
-          <Card variant="secondary">
-            <CardContent.Tiny
-              icon={
-                <Image
-                  src="/icons/ethereum-eth-logo.svg"
-                  width={24}
-                  height={24}
-                  alt="Scaling Ethereum"
-                />
-              }
-              title="Scaling Ethereum"
-              description="Ink is dedicated to scaling Ethereum with a powerful L2 that enhances performance and accessibility."
-            />
-          </Card>
-        </CardContent.CardInfo>
+        <CardContent.CardInfos>
+          <CardContent.CardInfo
+            icon={
+              <Image
+                src="/icons/1s-block-times.svg"
+                width={24}
+                height={24}
+                alt="Sub-second block times"
+              />
+            }
+            title="Sub-second block times"
+            description="1s block times Day 1, sub-second blocks coming soon."
+          />
+
+          <CardContent.CardInfo
+            icon={
+              <Image
+                src="/icons/Smol-Gas.svg"
+                width={24}
+                height={24}
+                alt="smol gas"
+              />
+            }
+            title="Smol Gas"
+            description="Ape more, pay less."
+          />
+
+          <CardContent.CardInfo
+            icon={
+              <Image
+                src="/icons/Security.svg"
+                width={24}
+                height={24}
+                alt="security"
+              />
+            }
+            title="Security"
+            description="Sequencer-level security to protect users from malicious intents and exploits."
+          />
+
+          <CardContent.CardInfo
+            icon={
+              <Image
+                src="/icons/Interoperability.svg"
+                width={24}
+                height={24}
+                alt="interoperability"
+              />
+            }
+            title="Interoperability"
+            description="A commitment to the seamless flow of capital across the Superchain and beyond."
+          />
+
+          <CardContent.CardInfo
+            icon={
+              <Image
+                src="/icons/Unleashed-by-Kraken.svg"
+                width={24}
+                height={24}
+                alt="Unleashed by kraken"
+              />
+            }
+            title="Unleashed by Kraken"
+            description="Ink will leverage Kraken's security and crypto expertise to support builders and users alike as they move towards independent financial sovereignty."
+          />
+
+          <CardContent.CardInfo
+            icon={
+              <Image
+                src="/icons/ethereum-eth-logo.svg"
+                width={24}
+                height={24}
+                alt="Scaling Ethereum"
+              />
+            }
+            title="Scaling Ethereum"
+            description="Ink is dedicated to scaling Ethereum with a powerful L2 that enhances performance and accessibility."
+          />
+        </CardContent.CardInfos>
       </Card>
 
       <div className="flex flex-col gap-6">

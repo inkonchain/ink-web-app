@@ -20,7 +20,7 @@ export default function VerifyPage() {
           description={t("description")}
           cta={
             <div className="relative w-full">
-              <ConnectWalletButton connectLabel={t("cta")} />
+              <ConnectWalletButton connectLabel={t("cta")} size="lg" />
             </div>
           }
         />

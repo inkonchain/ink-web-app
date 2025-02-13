@@ -26,7 +26,7 @@ export const PartnerCard: React.FC<PartnerCardProps> = ({
         className="flex flex-col flex-1"
         asChild
       >
-        <Link className="flex-1" href={url}>
+        <Link className="flex-1" href={url} target="_blank">
           <div className="flex items-center justify-center h-[244px]">
             {image}
           </div>

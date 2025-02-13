@@ -31,8 +31,8 @@ export const PageHeader = ({
       >
         <ColoredText
           className={classNames({
-            "text-4xl sm:text-6xl": size === "default",
-            "text-5xl sm:text-6xl md:text-[110px] lg:text-[120px] sm:leading-[95%] xl:text-[130px]":
+            "font-medium text-4xl sm:text-6xl": size === "default",
+            "font-medium text-5xl sm:text-6xl md:text-[110px] lg:text-[120px] sm:leading-[95%] xl:text-[130px]":
               size === "home",
           })}
           variant="purple"

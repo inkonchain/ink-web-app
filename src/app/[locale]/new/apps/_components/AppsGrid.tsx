@@ -69,7 +69,7 @@ function AppCard({
           </div>
         )}
       </div>
-      <div className="flex flex-col gap-4 flex-1">
+      <div className="flex flex-col gap-4 flex-1 w-full">
         <div className="ink:text-h5">{app.name}</div>
         <div className="flex-1 ink:text-body-3-regular ink:text-text-muted">
           {app.description}

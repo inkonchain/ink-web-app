@@ -18,6 +18,7 @@ interface ConnectWalletButtonProps {
   className?: string;
   connectLabel?: string;
   shrinkOnMobile?: boolean;
+  noIcon?: boolean;
   size?: "md" | "lg";
 }
 
@@ -26,6 +27,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   connectLabel = "Connect",
   shrinkOnMobile = false,
   size = "md",
+  noIcon = false,
 }) => {
   return (
     <ConnectButton.Custom>
@@ -59,9 +61,11 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                 size={size}
                 variant="primary"
               >
-                <div className={shrinkOnMobile ? "sm:hidden" : ""}>
-                  <InkIcon.Wallet className="size-6" enforce="inherit" />
-                </div>
+                {!noIcon && (
+                  <div className={shrinkOnMobile ? "sm:hidden" : ""}>
+                    <InkIcon.Wallet className="size-6" enforce="inherit" />
+                  </div>
+                )}
                 <div className={shrinkOnMobile ? "hidden sm:block" : ""}>
                   {connectLabel}
                 </div>
