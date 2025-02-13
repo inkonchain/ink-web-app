@@ -316,6 +316,29 @@
       }
     },
     {
+      "id": "fxwallet",
+      "name": "FxWallet",
+      "description": "FxWallet is a decentralized, secure cryptocurrency wallet that offers detailed transaction information, multi-chain support, and a user-friendly experience for managing digital assets.",
+      "imageUrl": "/featured-apps/icons/fxwallet.webp",
+      "category": [
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "wallet"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.fxwallet.com/",
+        "testnetWebsite": "https://www.fxwallet.com/",
+        "x": "https://x.com/FxWallet",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "gas.zip",
       "name": "Gas.zip",
       "description": "Fastest one-stop gas refuel bridge for over 300+ chains.",
