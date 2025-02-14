@@ -1,24 +1,22 @@
 "use client";
 
-import { InkLayoutMobileNav } from "@inkonchain/ink-kit";
+import {
+  InkIcon,
+  InkLayoutMobileNav,
+  useInkLayoutContext,
+} from "@inkonchain/ink-kit";
 
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { Link } from "@/routing";
 
-interface MobileNavProps {
-  closeMobileNavigation: () => void;
-}
+export function MobileNav() {
+  const { setIsMobileNavOpen } = useInkLayoutContext();
 
-export function MobileNav({
-  closeMobileNavigation,
-}: {
-  closeMobileNavigation: () => void;
-}) {
-  return <Nav closeMobileNavigation={closeMobileNavigation} />;
-}
+  function closeMobileNavigation() {
+    setIsMobileNavOpen(false);
+  }
 
-function Nav({ closeMobileNavigation }: MobileNavProps) {
   const hasVerifyPage = useFeatureFlag("verifyPage");
   const query = useRouterQuery();
   return (
@@ -27,10 +25,12 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
         {
           href: "/new",
           asChild: true,
+          icon: <InkIcon.Home />,
           children: (
             <Link
               href={{ pathname: "/new", query }}
               onClick={closeMobileNavigation}
+              prefetch
             >
               Home
             </Link>
@@ -39,22 +39,26 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
         {
           href: "/new/apps",
           asChild: true,
+          icon: <InkIcon.Apps />,
           children: (
             <Link
               href={{ pathname: "/new/apps", query }}
               onClick={closeMobileNavigation}
+              prefetch
             >
-              Dashboard
+              Apps
             </Link>
           ),
         },
         {
           href: "/new/bridge",
           asChild: true,
+          icon: <InkIcon.Bridge />,
           children: (
             <Link
               href={{ pathname: "/new/bridge", query }}
               onClick={closeMobileNavigation}
+              prefetch
             >
               Bridge
             </Link>
@@ -65,10 +69,12 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
               {
                 href: "/new/verify",
                 asChild: true,
+                icon: <InkIcon.CheckFill />,
                 children: (
                   <Link
                     href={{ pathname: "/new/verify", query }}
                     onClick={closeMobileNavigation}
+                    prefetch
                   >
                     Verify
                   </Link>
@@ -79,10 +85,12 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
         {
           href: "/new/build",
           asChild: true,
+          icon: <InkIcon.Code />,
           children: (
             <Link
               href={{ pathname: "/new/builders", query }}
               onClick={closeMobileNavigation}
+              prefetch
             >
               Build
             </Link>
@@ -91,10 +99,12 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
         {
           href: "/new/community",
           asChild: true,
+          icon: <InkIcon.Users />,
           children: (
             <Link
               href={{ pathname: "/new/community", query }}
               onClick={closeMobileNavigation}
+              prefetch
             >
               Community
             </Link>
@@ -103,10 +113,12 @@ function Nav({ closeMobileNavigation }: MobileNavProps) {
         {
           href: "/new/about",
           asChild: true,
+          icon: <InkIcon.Info />,
           children: (
             <Link
               href={{ pathname: "/new/about", query }}
               onClick={closeMobileNavigation}
+              prefetch
             >
               About
             </Link>

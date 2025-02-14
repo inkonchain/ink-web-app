@@ -6,8 +6,6 @@ import { useSearchParams } from "next/navigation";
 
 import { InfiniteScrollContainer } from "@/components/InfiniteScrollContainer";
 import { SearchInput } from "@/components/SearchBar/SearchInput";
-import { useOnWindowSize } from "@/hooks/useOnWindowSize";
-import { useRouter } from "@/routing";
 
 import { AppMainnetToggle } from "./AppMainnetToggle";
 import { AppsCategoryFilter } from "./AppsCategoryFilter";
@@ -25,7 +23,6 @@ interface AppsContentProps {
 }
 
 export function AppsContent({ currentCategory }: AppsContentProps) {
-  const router = useRouter();
   const searchParams = useSearchParams();
   const network = getNetwork(searchParams.get("network"));
   const category = currentCategory || searchParams.get("category");
@@ -150,8 +147,6 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
     [filteredApps, page]
   );
 
-  const isUnderDesktopWindowSize = useOnWindowSize({ size: "xl" });
-
   return (
     <>
       <div className="flex flex-col gap-6 w-full">
@@ -160,7 +155,6 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
           <SearchInput
             className="max-w-md"
             placeholder="Search"
-            disabled={isUnderDesktopWindowSize}
             value={search}
             onValueChange={setSearch}
           />
@@ -203,7 +197,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
             >
               <AppsGrid
                 apps={appsToDisplay}
-                featuredApps={inkFeaturedApps}
+                featuredApps={!hasActiveFilters(filters) ? inkFeaturedApps : []}
                 noAppsFound={
                   <NoAppsFound
                     hasSearch={!!search}
