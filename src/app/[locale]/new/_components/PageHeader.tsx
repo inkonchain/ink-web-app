@@ -38,7 +38,7 @@ export const PageHeader = ({
         )}
         <ColoredText
           className={classNames({
-            "font-medium text-4xl sm:text-6xl": size === "default",
+            "ink:text-h2": size === "default",
             "font-medium text-5xl sm:text-6xl md:text-[110px] lg:text-[120px] sm:leading-[95%] xl:text-[130px]":
               size === "home",
           })}
@@ -49,7 +49,8 @@ export const PageHeader = ({
         </ColoredText>
         <div
           className={classNames("max-w-screen-lg", {
-            "ink:text-body-1-regular ink:text-text-muted": size === "default",
+            "ink:text-body-2-regular sm:text-(--ink-text-body-1-regular) ink:text-text-muted":
+              size === "default",
             "ink:text-h5 ink:xl:text-h3": size === "home",
           })}
         >
