@@ -5,21 +5,29 @@ import { GateIcon } from "@/components/icons/Gate";
 import { GitHubIcon } from "@/components/icons/GitHub";
 import { TelegramIcon } from "@/components/icons/Telegram";
 import { TwitterIcon } from "@/components/icons/Twitter";
+import { classNames } from "@/util/classes";
 
 import { InkApp, InkAppNetwork } from "./InkApp";
 
 export function AppLinks({
+  className,
   links,
   network,
 }: {
+  className?: string;
   links: InkApp["links"];
   network: InkAppNetwork;
 }) {
-  const websiteUrl =
-    network === "Testnet" ? links.testnetWebsite : links.mainnetWebsite;
+  // const websiteUrl =
+  //   network === "Testnet" ? links.testnetWebsite : links.mainnetWebsite;
 
   return (
-    <div className="flex flex-wrap justify-end gap-2 mt-auto">
+    <div
+      className={classNames(
+        "flex flex-wrap justify-end gap-2 mt-auto",
+        className
+      )}
+    >
       {links.x && (
         <AppLink href={links.x}>
           <TwitterIcon size="icon-md" enforce="inherit" />

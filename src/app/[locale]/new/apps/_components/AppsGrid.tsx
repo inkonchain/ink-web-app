@@ -74,15 +74,19 @@ function AppCard({
         <div className="flex-1 ink:text-body-3-regular ink:text-text-muted">
           {app.description}
         </div>
-        <div className="relative">
-          <div className="flex justify-end items-center gap-1 flex-wrap group-hover:opacity-0 group-hover:pointer-events-none transition-opacity w-full">
+        <div className="relative flex flex-col gap-2">
+          <div className="flex lg:justify-end items-center gap-1 flex-wrap lg:group-hover:opacity-0 lg:group-hover:pointer-events-none transition-opacity w-full">
             {app.tags.map((tag) => (
               <Tag key={tag}>{tag}</Tag>
             ))}
           </div>
 
-          <div className="w-full opacity-0 group-hover:opacity-100 transition-opacity absolute right-0 bottom-0">
-            <AppLinks links={app.links} network={network} />
+          <div className="w-full lg:opacity-0 group-hover:opacity-100 transition-opacity lg:absolute lg:right-0 lg:bottom-0">
+            <AppLinks
+              className="justify-start lg:justify-end"
+              links={app.links}
+              network={network}
+            />
           </div>
         </div>
       </div>

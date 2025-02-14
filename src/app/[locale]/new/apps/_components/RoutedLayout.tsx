@@ -18,7 +18,7 @@ export function RoutedLayout({ children }: { children: React.ReactNode }) {
         </Suspense>
       }
       headerContent={<ConnectWalletButton shrinkOnMobile />}
-      mobileNavigation={MobileNav}
+      mobileNavigation={<MobileNav />}
       sideNavigation={<SideNav />}
     >
       {children}
