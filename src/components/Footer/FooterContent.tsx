@@ -76,9 +76,9 @@ export const FooterContent: React.FC<FooterContentProps> = ({ enforce }) => (
     <div className={classNames("block sm:hidden", "order-2")}>
       <OnlyWithFeatureFlag
         flag="mainnet"
-        otherwise={<span>© 2024 Ink Limited</span>}
+        otherwise={<span>© 2024-2025 Ink Limited</span>}
       >
-        © 2024 Ink Foundation
+        © 2024-2025 Ink Foundation
       </OnlyWithFeatureFlag>
     </div>
 
@@ -86,9 +86,9 @@ export const FooterContent: React.FC<FooterContentProps> = ({ enforce }) => (
       <div className="hidden sm:block">
         <OnlyWithFeatureFlag
           flag="mainnet"
-          otherwise={<span>© 2024 Ink Limited</span>}
+          otherwise={<span>© 2024-2025 Ink Limited</span>}
         >
-          © 2024 Ink Foundation
+          © 2024-2025 Ink Foundation
         </OnlyWithFeatureFlag>
       </div>
 
