@@ -360,6 +360,29 @@
       }
     },
     {
+      "id": "gem-wallet",
+      "name": "Gem Wallet",
+      "description": "Open-source self-custody wallet for iOS and Android. Buy, exchange, and securely store crypto assets on Ink and other blockchains.",
+      "imageUrl": "/featured-apps/icons/gem-wallet.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "wallet"
+      ],
+      "links": {
+        "mainnetWebsite": "https://gemwallet.com/",
+        "testnetWebsite": "https://gemwallet.com/",
+        "x": "https://twitter.com/GemWalletApp",
+        "discord": "https://discord.gg/4jpxtwT8r6",
+        "telegram": "https://t.me/gemwallet",
+        "github": "https://github.com/gemwalletcom/",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "gm",
       "name": "GM",
       "description": "Tap to GM! Check in daily, say GM to friends, collect streaks, and climb the leaderboard.",
