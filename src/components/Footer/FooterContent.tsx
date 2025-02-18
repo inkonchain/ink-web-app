@@ -6,7 +6,7 @@ import { TextUnderline } from "@/components/TextUnderline";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 import { classNames } from "@/util/classes";
 
-import { CookieSettingsButton } from "../../app/[locale]/_components/CookieSettingsButton";
+import { CookieSettingsButton } from "../CookieSettingsButton";
 
 interface FooterContentProps {
   enforce?: "black";

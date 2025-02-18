@@ -5,41 +5,23 @@ import { useTranslations } from "next-intl";
 import { BigScalableTitle } from "@/components/BigScallableTitle";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
 import { newLayoutSectionClasses } from "@/components/styles/container";
-import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS, Link } from "@/routing";
-import { classNames } from "@/util/classes";
 
 export const LetsGetSocial = () => {
-  const newNav = useFeatureFlag("newNav");
   const t = useTranslations("Community");
 
   return (
-    <FlyWhenIntoView
-      className={classNames(newLayoutSectionClasses(), {
-        "items-start": newNav,
-        "items-center": !newNav,
-      })}
-    >
-      <div
-        className={classNames("flex flex-col gap-6", {
-          "items-start": newNav,
-          "items-center": !newNav,
-        })}
-      >
+    <FlyWhenIntoView className={newLayoutSectionClasses()}>
+      <div className="flex flex-col gap-6 items-start">
         <BigScalableTitle
           title={t("letsGetSocial.title")}
           subtitle={
-            <span
-              className={classNames("ink:text-body-1 ink:text-text-muted", {
-                "text-center": newNav,
-                "text-left": !newNav,
-              })}
-            >
+            <span className="ink:text-body-1 ink:text-text-muted text-center">
               {t("letsGetSocial.description")}
             </span>
           }
           ratio={2}
-          align={newNav ? "left" : "center"}
+          align="left"
         />
       </div>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 self-center">

@@ -34,20 +34,20 @@ export const HomeAppsToggle: React.FC<{}> = () => {
               <InkIcon size="icon-lg" enforce="inherit" />
             </Link>
           ),
-          selectedByDefault: pathname !== "/dashboard",
+          selectedByDefault: pathname !== "/apps",
           value: "home",
         },
         {
           asChild: true,
           children: (
             <Link
-              href={{ pathname: "/dashboard", query }}
+              href={{ pathname: "/apps", query }}
               className={classNames("px-4 transition-all duration-200")}
             >
               <DotsIcon size="icon-lg" enforce="inherit" />
             </Link>
           ),
-          selectedByDefault: pathname === "/dashboard",
+          selectedByDefault: pathname === "/apps",
           value: "apps",
         },
       ]}

@@ -2,7 +2,7 @@
 import { PropsWithChildren } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { NewsletterFormContextProvider } from "@/app/[locale]/_components/NewsletterForm/NewsletterFormContext";
+import { NewsletterFormContextProvider } from "@/components/NewsletterForm/NewsletterFormContext";
 import { AnalyticsProvider } from "@/contexts/AnalyticsProvider";
 import { RelayProvider } from "@/contexts/RelayProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
