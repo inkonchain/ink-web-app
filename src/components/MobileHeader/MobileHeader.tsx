@@ -3,7 +3,7 @@
 import React, { PropsWithChildren } from "react";
 import FocusLock from "react-focus-lock";
 
-import { ConnectWalletButton } from "@/app/[locale]/_components/ConnectWalletButton";
+import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { MobileMenuButton } from "@/components/MobileMenu";
 import { useMobileMenuContext } from "@/components/MobileMenu/MobileMenuContext";
 import { usePathname } from "@/routing";

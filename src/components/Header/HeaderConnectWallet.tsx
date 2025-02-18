@@ -2,7 +2,7 @@
 
 import { Suspense } from "react";
 
-import { ConnectWalletButton } from "@/app/[locale]/_components/ConnectWalletButton";
+import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 
 import { OnlyWithFeatureFlag } from "../OnlyWithFeatureFlag";
 

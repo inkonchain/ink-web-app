@@ -6,17 +6,14 @@ import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS } from "@/routing";
 import { classNames } from "@/util/classes";
 
-import {
-  SpecificEventCard,
-  SpecificEventCardProps,
-} from "../../_components/EventContent/EventContent";
+import { EventCard, EventCardProps } from "../../../../components/EventCard";
 
 export const CommunityEvents = () => {
   const featureFlag = useFeatureFlag("fakeEvents");
 
   const t = useTranslations("events");
 
-  const ethDenverEventProps: SpecificEventCardProps = {
+  const ethDenverEventProps: EventCardProps = {
     title: t("ethdenver.cardTitle"),
     description: t("ethdenver.description"),
     cta: t("ethdenver.cta"),
@@ -45,7 +42,7 @@ export const CommunityEvents = () => {
       })}
     >
       {events.map((event, index) => (
-        <SpecificEventCard
+        <EventCard
           key={index}
           {...event}
           className={classNames({

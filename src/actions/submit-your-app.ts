@@ -5,7 +5,7 @@ import { Octokit } from "@octokit/rest";
 import { WebClient } from "@slack/web-api";
 import sharp from "sharp";
 
-import { InkApp } from "@/app/[locale]/(dashboard)/dashboard/_components/InkApp";
+import { InkApp } from "@/app/[locale]/apps/_components/InkApp";
 import { env } from "@/env";
 import { validateCaptcha } from "@/lib/hcaptcha";
 import {
@@ -39,8 +39,7 @@ const slackClient = new WebClient(INK_APP_SUBMISSION_SLACK_BOT_TOKEN);
 const GITHUB_CONFIG = {
   OWNER: INK_APP_SUBMISSION_TARGET_ORG,
   REPO: INK_APP_SUBMISSION_TARGET_REPO,
-  FILE_PATH:
-    "src/app/[locale]/(dashboard)/dashboard/_components/apps-data.json",
+  FILE_PATH: "src/app/[locale]/apps/_components/apps-data.json",
   BRANCH: INK_APP_SUBMISSION_TARGET_BRANCH,
 } as const;
 

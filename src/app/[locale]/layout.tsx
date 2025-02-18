@@ -7,6 +7,7 @@ import { getMessages } from "next-intl/server";
 import { ContactUsModal } from "@/components/ContactUsModal";
 import { ConsentLogger } from "@/components/CookieConsent/ConsentLogger";
 import { CookieConsent } from "@/components/CookieConsent/CookieConsent";
+import { Footer } from "@/components/Footer";
 import { GlobalSvgStuff } from "@/components/icons/GlobalSvgStuff";
 import { NewsletterModal } from "@/components/NewsletterModal";
 import { Providers } from "@/components/Providers";
@@ -15,6 +16,9 @@ import { clientEnv } from "@/env-client";
 import { COOKIE_CONSENT } from "@/integrations/consent";
 
 import { inter, plus_jakarta_sans } from "../fonts";
+
+import { MainPageBackground } from "./_components/MainPageBackground";
+import { RoutedLayout } from "./_components/RoutedLayout";
 
 const themeClassesMapping: Record<string, string> = {
   dark: "dark ink:dark-theme",
@@ -81,9 +85,19 @@ export default async function LocaleLayout({
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
             <ToggleThemeShortcut />
-            <div className="flex flex-col relative min-h-screen">
-              {children}
-            </div>
+
+            <RoutedLayout>
+              <div className="relative pt-0 overflow-hidden flex flex-col gap-8 w-full items-center">
+                <div className="flex flex-col w-full items-center min-h-[80vh]">
+                  {children}
+                </div>
+                <div>
+                  <Footer />
+                </div>
+              </div>
+
+              <MainPageBackground />
+            </RoutedLayout>
 
             <CookieConsent />
             <ConsentLogger />

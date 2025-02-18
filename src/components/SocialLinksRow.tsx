@@ -1,6 +1,6 @@
 import React from "react";
 
-import { MailIconButton } from "@/app/[locale]/_components/MailIconButton/MailIconButton";
+import { MailIconButton } from "@/components/MailIconButton/MailIconButton";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 import { classNames } from "@/util/classes";
 
