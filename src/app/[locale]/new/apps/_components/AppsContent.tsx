@@ -4,6 +4,7 @@ import { useCallback, useMemo, useState } from "react";
 import { Button } from "@inkonchain/ink-kit";
 import { useSearchParams } from "next/navigation";
 
+import { ColoredText } from "@/components/ColoredText";
 import { InfiniteScrollContainer } from "@/components/InfiniteScrollContainer";
 import { SearchInput } from "@/components/SearchBar/SearchInput";
 
@@ -17,6 +18,7 @@ import {
   inkApps,
   inkFeaturedApps,
 } from "./InkApp";
+import { SubmitAppButton } from "./SubmitAppButton";
 
 interface AppsContentProps {
   currentCategory?: string;
@@ -149,9 +151,15 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
 
   return (
     <>
+      <div className="flex items-center justify-between w-full lg:hidden">
+        <ColoredText className="ink:text-h2" variant="purple">
+          Apps
+        </ColoredText>
+        <SubmitAppButton />
+      </div>
       <div className="flex flex-col gap-6 w-full">
         {/* Floating section on desktop */}
-        <div className="lg:fixed lg:flex left-[20%] right-[20%] top-8 justify-center flex-wrap gap-4 mx-4 z-10">
+        <div className="lg:fixed lg:flex left-[20%] right-[20%] top-8 justify-center flex-wrap gap-4 z-10">
           <SearchInput
             className="max-w-md"
             placeholder="Search"
@@ -160,7 +168,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
           />
         </div>
 
-        <div className="mx-4 flex items-center justify-between gap-4 flex-col sm:flex-row flex-1">
+        <div className="flex items-center justify-between gap-4 flex-col sm:flex-row flex-1">
           <AppsCategoryFilter
             selected={filters.categories?.[0]}
             setSelected={(value) => {
@@ -184,6 +192,9 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
                 updateFilters({ network: value });
               }}
             />
+            <div className="hidden lg:flex">
+              <SubmitAppButton />
+            </div>
           </div>
         </div>
 
@@ -191,7 +202,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
         <div className="flex gap-8 flex-col-reverse 2xl:flex-row">
           <div className="flex flex-col gap-4">
             <InfiniteScrollContainer
-              className="flex px-4 pr-2 lg:pr-4 xl:pr-0"
+              className="flex"
               onLoadMore={() => setPage(page + 1)}
               hasMore={page < Math.floor(filteredApps.length / 10)}
             >
