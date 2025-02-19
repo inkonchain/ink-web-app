@@ -14,11 +14,18 @@ import {
 } from "@/routing";
 import { classNames } from "@/util/classes";
 
+import { ThemeToggle } from "./ThemeToggle";
+
 export const SideNav = () => {
   const hasVerifyPage = useFeatureFlag("verifyPage");
 
   return (
     <InkLayoutSideNav
+      bottom={
+        <div>
+          <ThemeToggle />
+        </div>
+      }
       links={[
         {
           asChild: true,
