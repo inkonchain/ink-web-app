@@ -10,6 +10,8 @@ import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { Link } from "@/routing";
 
+import { ThemeToggle } from "./ThemeToggle";
+
 export function MobileNav() {
   const { setIsMobileNavOpen } = useInkLayoutContext();
 
@@ -21,6 +23,11 @@ export function MobileNav() {
   const query = useRouterQuery();
   return (
     <InkLayoutMobileNav
+      bottom={
+        <div className="flex justify-center">
+          <ThemeToggle />
+        </div>
+      }
       links={[
         {
           href: "/",
