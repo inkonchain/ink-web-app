@@ -112,8 +112,8 @@
     }
   },
   "About": {
-    "title": "About Ink",
-    "description": "Ink is a blockchain platform that enables developers to build and deploy smart contracts on a decentralized network. It is designed to be a secure and scalable platform for building and deploying smart contracts on a decentralized network."
+    "title": "What is Ink?",
+    "description": "Ink is an Ethereum layer 2 blockchain, built on the OP Stack, designed to be the house of DeFi for the Superchain. Ink will empower onchain builders to deploy new and innovative DeFi protocols for the next billion users onchain."
   },
   "Builders": {
     "title": "Start building on Ink",
