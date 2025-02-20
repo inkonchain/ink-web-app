@@ -1,21 +1,17 @@
 import { TextUnderline } from "@/components/TextUnderline";
 
-interface CookieSettingsButtonProps {
-  enforce: "black" | undefined;
-}
+interface CookieSettingsButtonProps {}
 
-export const CookieSettingsButton: React.FC<CookieSettingsButtonProps> = ({
-  enforce,
-}) => {
+export const CookieSettingsButton: React.FC<CookieSettingsButtonProps> = () => {
   return (
     <button
-      className="group relative"
+      className="group relative text-left"
       onClick={() => {
         window.OneTrust.ToggleInfoDisplay();
       }}
     >
       <div className="relative inline-block">Cookie Settings</div>
-      <TextUnderline halfOpacity enforce={enforce} />
+      <TextUnderline halfOpacity />
     </button>
   );
 };
