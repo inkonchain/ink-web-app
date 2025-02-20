@@ -1135,6 +1135,29 @@
       }
     },
     {
+      "id": "test-poc",
+      "name": "test poc",
+      "description": "aaaaa",
+      "imageUrl": "/featured-apps/icons/test-poc.webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "faucet"
+      ],
+      "links": {
+        "mainnetWebsite": "https://securyhub.com",
+        "testnetWebsite": "https://securyhub.com",
+        "x": "https://x.com/securyhub",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer",
