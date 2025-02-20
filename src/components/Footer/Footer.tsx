@@ -1,12 +1,14 @@
 "use client";
 
-import { classNames } from "@/util/classes";
-import { CookieSettingsButton } from "../CookieSettingsButton";
-import { EXTERNAL_LINKS } from "@/routing";
-import Link from "next/link";
-import { TextUnderline } from "../TextUnderline";
 import Image from "next/image";
+
+import { Link } from "@/routing";
+import { EXTERNAL_LINKS } from "@/routing";
+import { classNames } from "@/util/classes";
+
+import { CookieSettingsButton } from "../CookieSettingsButton";
 import { SocialLinksRow } from "../SocialLinksRow";
+import { TextUnderline } from "../TextUnderline";
 
 export const Footer = () => {
   return (

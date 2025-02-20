@@ -1,9 +1,0 @@
-.pill-gradient {
-  /** I don't know why, but I needed to switch the two colors copied over from Figma to get the right gradient */
-  background: radial-gradient(
-      367.31% 2457.04% at 354.39% 128.21%,
-      #8049f2 0%,
-      rgba(109, 78, 174, 0) 100%
-    ),
-    radial-gradient(100.63% 100.63% at 50% -0.32%, #2e2e2e 0%, #080808 100%);
-}
