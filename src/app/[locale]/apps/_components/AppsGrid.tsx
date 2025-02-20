@@ -3,8 +3,6 @@ import { Tag } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { NoisyContainer } from "@/components/Noisy";
-
 import { AppLinks } from "./AppLinks";
 import { InkApp, InkAppNetwork, mainUrl } from "./InkApp";
 
@@ -52,7 +50,7 @@ function AppCard({
       }}
     >
       <div className="flex w-full justify-between">
-        <NoisyContainer className="bg-dapps-icon-gradient rounded-xl overflow-hidden size-16 shrink-0">
+        <div className="bg-dapps-icon-gradient rounded-xl overflow-hidden size-16 shrink-0">
           <Image
             src={app.imageUrl || "/apps/app-icon-placeholder.png"}
             alt={"dapps icon"}
@@ -60,7 +58,7 @@ function AppCard({
             height={64}
             className="object-cover w-full h-full"
           />
-        </NoisyContainer>
+        </div>
         {featured && <Tag variant="featured">{t("featured")}</Tag>}
       </div>
       <div className="flex flex-col gap-4 flex-1 w-full">

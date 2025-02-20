@@ -29,6 +29,21 @@ export const InkLogo: React.FC = () => {
 
 export const InkLogoImage: React.FC = () => {
   return (
-    <Image src="/logo/ink-mark.png?1" alt="Ink Logo" width={40} height={40} />
+    <>
+      <Image
+        src="/logo/ink-mark-light.png"
+        alt="Ink Logo"
+        width={40}
+        height={40}
+        className="dark:hidden"
+      />
+      <Image
+        src="/logo/ink-mark-dark.png"
+        alt="Ink Logo"
+        width={40}
+        height={40}
+        className="hidden dark:block"
+      />
+    </>
   );
 };

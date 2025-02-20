@@ -82,6 +82,6 @@ export const LetsGetSocial = () => {
   );
 };
 
-export const ExternalLinkArrow = () => {
+const ExternalLinkArrow = () => {
   return <InkIcon.Arrow className="size-4 rotate-225" />;
 };

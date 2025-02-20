@@ -6,7 +6,6 @@ import { Button } from "@/components/Button/Button";
 import { ColoredText } from "@/components/ColoredText";
 import { useFeatureRequestModalContext } from "@/components/FeatureRequestModal/FeatureRequestModalContext";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
-import { NoisyContainer } from "@/components/Noisy";
 import { useVerificationModalContext } from "@/components/VerificationModal/VerificationModalContext";
 
 export function VerificationContent() {
@@ -19,10 +18,7 @@ export function VerificationContent() {
       {/* First section with two noisy containers */}
       <div className="flex flex-col lg:flex-row gap-8 max-w-[1200px] mx-auto">
         <FlyWhenIntoView className="flex-1">
-          <NoisyContainer
-            className="flex-1 flex flex-col bg-white/30 dark:bg-black/30 min-h-full relative shadow-[0px_3px_34px_-10px_#B4B4B466] dark:shadow-[0px_3px_34px_-10px_rgba(0,0,0,0.7)]"
-            rounded="events"
-          >
+          <div className="flex-1 flex flex-col ink:bg-container-background ink:rounded-lg min-h-full relative shadow-[0px_3px_34px_-10px_#B4B4B466] dark:shadow-[0px_3px_34px_-10px_rgba(0,0,0,0.7)]">
             {/* Add background noise div with matching rounded corners */}
             <div
               className="absolute inset-0 opacity-50 rounded-events dark:hidden mix-blend-soft-light dark:mix-blend-multiply"
@@ -58,14 +54,11 @@ export function VerificationContent() {
                 </div>
               </div>
             </div>
-          </NoisyContainer>
+          </div>
         </FlyWhenIntoView>
 
         <FlyWhenIntoView className="flex-1">
-          <NoisyContainer
-            className="flex-1 flex flex-col bg-white/30 dark:bg-black/30 min-h-full relative shadow-[0px_3px_34px_-10px_#B4B4B466] dark:shadow-[0px_3px_34px_-10px_rgba(0,0,0,0.7)]"
-            rounded="events"
-          >
+          <div className="flex-1 flex flex-col ink:bg-container-background ink:rounded-lg min-h-full relative shadow-[0px_3px_34px_-10px_#B4B4B466] dark:shadow-[0px_3px_34px_-10px_rgba(0,0,0,0.7)]">
             <div className="flex flex-col lg:flex-row gap-6 p-8 relative z-10">
               <div className="flex items-center justify-center shrink-0">
                 <div className="relative w-[207px] h-[152px]">
@@ -92,7 +85,7 @@ export function VerificationContent() {
                 </div>
               </div>
             </div>
-          </NoisyContainer>
+          </div>
         </FlyWhenIntoView>
       </div>
 
@@ -186,10 +179,7 @@ export function VerificationContent() {
 
             {/* Discord badge - 50% width */}
             <div className="lg:w-1/2">
-              <NoisyContainer
-                className="bg-dapps-icon-gradient p-8 flex flex-col h-full"
-                rounded="events"
-              >
+              <div className="bg-dapps-icon-gradient p-8 flex flex-col h-full ink:rounded-lg">
                 <div className="flex justify-center">
                   <div className="relative w-[140px] h-[100px]">
                     <Image
@@ -210,7 +200,7 @@ export function VerificationContent() {
                   By verifying your attendance of Ink DevJam, you&apos;ll get a
                   one of a kind Discord badge to display on your profile.
                 </div>
-              </NoisyContainer>
+              </div>
             </div>
           </div>
         </div>

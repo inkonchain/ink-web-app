@@ -91,9 +91,7 @@ export default async function LocaleLayout({
                 <div className="flex flex-col w-full items-center min-h-[80vh]">
                   {children}
                 </div>
-                <div>
-                  <Footer />
-                </div>
+                <Footer />
               </div>
 
               <MainPageBackground />
