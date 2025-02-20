@@ -9,7 +9,7 @@ export const HomeTagLine = () => {
     <Card>
       <CardContent.Tagline
         title={
-          <ColoredText variant="purple">
+          <ColoredText variant="ink">
             The future isn&apos;t written,
             <br />
             it&apos;s waiting to be inked.

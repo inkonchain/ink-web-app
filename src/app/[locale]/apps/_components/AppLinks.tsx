@@ -85,7 +85,7 @@ function AppLink({
   return (
     <a
       href={href}
-      className="text-sm hover:text-krakenPurple hover:border-krakenPurple hover:dark:border-krakenPurple  transition-colors font-medium p-2 rounded-2xl border border-blackMagic/10 dark:border-whiteMagic/10"
+      className="text-sm hover:text-krakenPurple hover:border-krakenPurple hover:dark:border-krakenPurple transition-colors font-medium p-2 rounded-2xl"
       target="_blank"
       rel="noopener noreferrer"
       draggable={false}

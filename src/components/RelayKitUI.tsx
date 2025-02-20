@@ -15,11 +15,8 @@ export const RelayKitUI: React.FC = () => {
 
   return (
     <div className="flex flex-col gap-4 items-center">
-      <div className="flex flex-col gap-4 p-6 pt-5 bg-[rgba(100,81,170,0.15)] rounded-3xl">
-        <div className="flex justify-between items-center">
-          <p className="text-blackMagic dark:text-whiteMagic text-xl font-bold">
-            Bridge
-          </p>
+      <div className="flex flex-col gap-4 p-6 pt-5">
+        <div className="flex justify-end items-center">
           {address && (
             <Link
               href={{

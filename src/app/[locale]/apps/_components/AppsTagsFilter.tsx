@@ -50,11 +50,11 @@ export const AppsTagsFilter: React.FC<AppsTagsFilterProps> = ({
 
   return (
     <Listbox value={selected || []} onChange={setSelected} multiple>
-      <ListboxButton className="w-[120px]" variant="muted">
+      <ListboxButton className="w-min" variant="muted">
         <div className="flex items-center gap-2">
           <div>
             {selectedTags.length === 0 ? (
-              <span>All Tags</span>
+              <span>Tags</span>
             ) : (
               <span className="text-[var(--ink-text-default)]">Tags</span>
             )}

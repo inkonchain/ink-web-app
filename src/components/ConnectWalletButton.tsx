@@ -59,7 +59,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                 type="button"
                 className={classNames(className)}
                 size={size}
-                variant="primary"
+                variant="transparent"
               >
                 {!noIcon && (
                   <div className={shrinkOnMobile ? "sm:hidden" : ""}>
@@ -83,7 +83,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                     className
                   )}
                   size={size}
-                  variant="wallet"
+                  variant="transparent"
                   rounded="full"
                 >
                   <InkIcon.Profile className="size-6" enforce="inherit" />
@@ -99,7 +99,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                     className
                   )}
                   size={size}
-                  variant="wallet"
+                  variant="transparent"
                 >
                   <div className="ink:-my-1 whitespace-nowrap">
                     {account.ensAvatar && account.ensName ? (

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { InkIcon, InkLayoutSideNav } from "@inkonchain/ink-kit";
+import { InkIcon, InkLayoutSideNav, InkNavLink } from "@inkonchain/ink-kit";
 
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
@@ -12,7 +12,6 @@ import {
   pathFromHrefProp,
   usePathname,
 } from "@/routing";
-import { classNames } from "@/util/classes";
 
 import { ThemeToggle } from "./ThemeToggle";
 
@@ -107,21 +106,18 @@ function SideNavLink({
   }, [path, hrefPath, exactHref]);
 
   return (
-    <Link
-      {...rest}
-      className={classNames(
-        className,
-        ((exactHref ? path === hrefPath : path.startsWith(hrefPath)) ||
-          selected) &&
-          "ink:text-text-on-secondary ink:bg-button-secondary"
-      )}
-      href={hrefObject}
+    <InkNavLink
       onClick={() => {
         setSelected(true);
       }}
-      prefetch={true}
+      active={
+        (exactHref ? path === hrefPath : path.startsWith(hrefPath)) || selected
+      }
+      asChild
     >
-      {children}
-    </Link>
+      <Link href={hrefObject} prefetch={true} {...rest}>
+        {children}
+      </Link>
+    </InkNavLink>
   );
 }

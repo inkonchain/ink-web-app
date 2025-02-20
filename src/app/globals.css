@@ -201,3 +201,16 @@ div[type="button"] > button {
 .relay-fw_500:not(#\#):not(#\#):not(#\#):not(#\#) {
   font-weight: 700 !important;
 }
+
+/* A fix that must be applied to all h2 so that they don't cut off the text */
+.ink\:text-h2 {
+  margin-top: -12px;
+  margin-bottom: -12px;
+  line-height: calc(var(--ink-text-h2--line-height) + 12px);
+}
+
+.ink\:text-h3 {
+  margin-top: -12px;
+  margin-bottom: -12px;
+  line-height: calc(var(--ink-text-h3--line-height) + 12px);
+}

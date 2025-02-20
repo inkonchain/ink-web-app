@@ -10,7 +10,7 @@ const SPRING_EASE_CONFIG = { damping: 50, stiffness: 200 };
 const DEFAULT_MAX_DISTANCE_Y = 0.2;
 const DEFAULT_MAX_DISTANCE_X = 0.1;
 
-interface MagneticHoverEffectProps {
+export interface MagneticHoverEffectProps {
   className?: string;
   maxDistanceY?: number;
   maxDistanceX?: number;
@@ -21,14 +21,14 @@ interface MagneticHoverEffectProps {
    * This is because the motion.div used here has a transform, which creates a layer that would otherwise
    *   not recompute blend properly, leaving us with a white icon only when hovering it.
    */
-  withBlend?: boolean;
+  blendMode?: "hard-light";
 }
 
 export const MagneticHoverEffect: React.FC<
   PropsWithChildren<MagneticHoverEffectProps>
 > = ({
   className,
-  withBlend,
+  blendMode,
   children,
   easeType,
   direction,
@@ -86,7 +86,10 @@ export const MagneticHoverEffect: React.FC<
 
   return (
     <motion.div
-      className={classNames({ "mix-blend-difference": withBlend }, className)}
+      className={classNames(
+        { "mix-blend-hard-light": blendMode === "hard-light" },
+        className
+      )}
       ref={ref}
       onMouseMove={handleMouse}
       onMouseLeave={reset}
