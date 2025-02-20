@@ -9,7 +9,8 @@ export interface ColoredTextProps extends PropsWithChildren {
     | "purple-dark"
     | "reverse-purple"
     | "white-to-gray"
-    | "white";
+    | "white"
+    | "ink";
   dampen?: "md" | "lg";
   pulse?: "slow" | "md";
   noisy?: boolean;
@@ -29,7 +30,7 @@ export const ColoredText: React.FC<ColoredTextProps> = ({
   return (
     <span
       className={classNames(
-        "inline-block w-fit text-transparent bg-clip-text transition-colors relative leading-normal",
+        "inline-block w-fit text-transparent bg-clip-text transition-colors relative",
         {
           "from-blackMagic dark:from-whiteMagic to-gradientPurple dark:to-gradientPurple bg-gradient-to-r":
             variant === "purple",
@@ -42,6 +43,8 @@ export const ColoredText: React.FC<ColoredTextProps> = ({
           "from-whiteMagic to-[#8049F2] bg-gradient-to-r":
             variant === "white-to-gray",
           "text-white bg-none": variant === "white",
+          "from-black dark:from-white to-inkGradient dark:to-inkGradient bg-gradient-to-r":
+            variant === "ink",
         },
         {
           "bg-overflow-150 animate-slightPulse": !noAnimation,

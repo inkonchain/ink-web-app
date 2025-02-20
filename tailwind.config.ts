@@ -113,6 +113,7 @@ const config: Config = {
         glossyPill: "#160F1F33",
         lightPurple: "#B9AAEF",
         darkPurple: "#5C479D",
+        inkGradient: "var(--ink-button-primary)",
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
@@ -153,6 +154,7 @@ radial-gradient(50% 50% at 50% 50%, rgba(255, 255, 255, 0.7) 0%, rgba(255, 255, 
       rotate: {
         // For the arrow icon to point to the top-right.
         225: "225deg",
+        270: "270deg",
       },
     },
   },

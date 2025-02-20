@@ -61,29 +61,25 @@ function AppCard({
             className="object-cover w-full h-full"
           />
         </NoisyContainer>
-        {featured && (
-          <div>
-            <div className="ink:text-caption-2-bold px-2 py-1 ink:bg-background-container ink:text-text-on-secondary rounded-xl">
-              {t("featured")}
-            </div>
-          </div>
-        )}
+        {featured && <Tag variant="featured">{t("featured")}</Tag>}
       </div>
       <div className="flex flex-col gap-4 flex-1 w-full">
-        <div className="ink:text-h5">{app.name}</div>
+        <div className="ink:text-h5 -my-1">{app.name}</div>
         <div className="flex-1 ink:text-body-3-regular ink:text-text-muted">
           {app.description}
         </div>
         <div className="relative flex flex-col gap-2">
-          <div className="flex lg:justify-end items-center gap-1 flex-wrap lg:group-hover:opacity-0 lg:group-hover:pointer-events-none transition-opacity w-full">
+          <div className="flex justify-start gap-1 flex-wrap lg:group-hover:opacity-0 lg:group-hover:pointer-events-none transition-opacity w-full">
             {app.tags.map((tag) => (
-              <Tag key={tag}>{tag}</Tag>
+              <Tag variant="outline" key={tag}>
+                {tag}
+              </Tag>
             ))}
           </div>
 
           <div className="w-full lg:opacity-0 group-hover:opacity-100 transition-opacity lg:absolute lg:right-0 lg:bottom-0">
             <AppLinks
-              className="justify-start lg:justify-end"
+              className="justify-start"
               links={app.links}
               network={network}
             />

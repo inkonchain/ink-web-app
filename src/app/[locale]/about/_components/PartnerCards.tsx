@@ -1,11 +1,12 @@
 "use client";
 
+import Image from "next/image";
+
 import { ColoredText } from "@/components/ColoredText";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
 import { EXTERNAL_LINKS } from "@/routing";
 
 import { PartnerCard } from "./PartnerCard";
-import Image from "next/image";
 
 export function PartnerCards() {
   return (
@@ -17,7 +18,7 @@ export function PartnerCards() {
       </FlyWhenIntoView>
 
       <div className="flex flex-col gap-4">
-        <div className="flex gap-4 flex-wrap max-w-[1200px] mx-auto">
+        <div className="flex gap-4 flex-wrap">
           <PartnerCard
             url={EXTERNAL_LINKS.optimism}
             image={

@@ -1,8 +1,9 @@
 "use client";
 
+import { Card, CardContent } from "@inkonchain/ink-kit";
+
 import { ColoredText } from "@/components/ColoredText";
 import { ParallaxedHoverImage } from "@/components/ParallaxedHoverImage";
-import { Card, CardContent } from "@inkonchain/ink-kit";
 
 export function InkTheFuture() {
   return (

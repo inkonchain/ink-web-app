@@ -51,7 +51,7 @@ export const SearchInput = forwardRef<
         className
       )}
       iconLeft={
-        <SearchIcon className="duration-0" enforce="inherit" size="icon-lg" />
+        <SearchIcon className="duration-0" enforce="inherit" size="icon-md" />
       }
       iconRight={
         <div className="px-2 py-1 rounded-lg bg-krakenPurple/10 font-bold text-blackMagic/20 dark:text-whiteMagic/50">
