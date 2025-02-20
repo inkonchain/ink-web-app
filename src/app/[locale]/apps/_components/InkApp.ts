@@ -54,6 +54,17 @@ export const inkApps: InkApp[] = apps;
 export const inkFeaturedApps = inkApps.filter((a) =>
   ["kraken-wallet", "reservoir:-relay", "velodrome"].includes(a.id)
 );
+export const inkHomeApps = inkApps.filter((a) =>
+  [
+    "kraken-wallet",
+    "deep-on-ink",
+    "velodrome",
+    "dinero",
+    "gm",
+    "inkypump",
+    "superswap",
+  ].includes(a.id)
+);
 export const inkTags: string[] = apps.reduce((acc, app) => {
   app.tags.forEach((tag) => {
     if (!acc.includes(tag)) {

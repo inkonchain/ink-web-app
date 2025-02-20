@@ -7,11 +7,10 @@ import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { Link } from "@/routing";
 
 import { AppsGrid } from "../../apps/_components/AppsGrid";
-import { inkApps } from "../../apps/_components/InkApp";
+import { inkHomeApps } from "../../apps/_components/InkApp";
 
 export const HomeApps = () => {
   const query = useRouterQuery();
-  const apps = inkApps.slice(0, 8);
   return (
     <div className={newLayoutSectionClasses()}>
       <div className="flex justify-between">
@@ -23,7 +22,7 @@ export const HomeApps = () => {
         </Button>
       </div>
       <AppsGrid
-        apps={apps}
+        apps={inkHomeApps}
         featuredApps={[]}
         noAppsFound={null}
         network="Mainnet"
