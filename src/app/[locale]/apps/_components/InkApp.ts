@@ -65,6 +65,7 @@ export const inkHomeApps = inkApps.filter((a) =>
     "superswap",
   ].includes(a.id)
 );
+export const inkTransparentIcons: string[] = [];
 export const inkTags: string[] = apps.reduce((acc, app) => {
   app.tags.forEach((tag) => {
     if (!acc.includes(tag)) {
@@ -75,6 +76,7 @@ export const inkTags: string[] = apps.reduce((acc, app) => {
 }, [] as string[]);
 
 export interface InkAppFilters {
+  search: string;
   categories: string[];
   tags: string[];
   network?: InkAppNetwork;

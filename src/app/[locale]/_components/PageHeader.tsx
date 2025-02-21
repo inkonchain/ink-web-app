@@ -8,14 +8,12 @@ interface PageHeaderProps {
   description: React.ReactNode;
   cta?: React.ReactNode;
   size?: "default" | "home" | "section";
-  pre?: React.ReactNode;
 }
 
 export const PageHeader = ({
   title,
   description,
   cta,
-  pre,
   size = "default",
 }: PageHeaderProps) => {
   return (
@@ -32,11 +30,6 @@ export const PageHeader = ({
           "max-w-screen-2xl": size === "home",
         })}
       >
-        {pre && (
-          <div className="flex flex-col items-start w-full ink:text-body-3-regular ink:text-text-default">
-            {pre}
-          </div>
-        )}
         <ColoredText
           className={classNames({
             "ink:text-h2": size === "default",

@@ -20,7 +20,8 @@ export const Footer = () => {
           </div>
         </div>
         <div className="flex-1 flex gap-4 ink:text-text-muted ink:text-caption-2-regular">
-          <div className="flex flex-col gap-4 opacity-50">
+          {/** Need a pt-1 here to align the "Terms of Service" text with the images (since the images are _exactly_ at 0px from the top, contrary to standard text) */}
+          <div className="flex flex-col gap-4 opacity-50 pt-1">
             <Link
               className="shrink-0"
               href={EXTERNAL_LINKS.superchain}

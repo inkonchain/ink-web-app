@@ -44,9 +44,9 @@ export const DeveloperContent = () => {
               revolutions.
             </p>
             <p>
-              Our commitment to builders: Ink will provide you with a world-
-              class development environment, complete with the tools, support,
-              and users you need to bring your ideas to life.
+              Our commitment to builders: Ink will provide you with a
+              world-class development environment, complete with the tools,
+              support, and users you need to bring your ideas to life.
             </p>
             <p>
               {isMainnet ? (

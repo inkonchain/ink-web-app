@@ -6,6 +6,7 @@ import { newLayoutContainerClasses } from "@/components/styles/container";
 
 import { HomeApps } from "./_components/Home/HomeApps";
 import { HomeEvent } from "./_components/Home/HomeEvent";
+import { HomeSmallTag } from "./_components/Home/HomeSmallTag";
 import { HomeTagLine } from "./_components/Home/HomeTagLine";
 import { HomeTitle } from "./_components/Home/HomeTitle";
 
@@ -52,6 +53,7 @@ export default async function HomePage() {
       <PageView />
       <div className={newLayoutContainerClasses()}>
         <HomeTitle />
+        <HomeSmallTag />
         <HomeEvent />
         <HomeApps />
         <HomeTagLine />

@@ -24,15 +24,27 @@ interface AppsContentProps {
   currentCategory?: string;
 }
 
+function hasActiveFilters(filters: InkAppFilters): boolean {
+  return (
+    (filters.network && filters.network !== "Mainnet") ||
+    (filters.categories && filters.categories.length > 0) ||
+    (filters.tags && filters.tags.length > 0)
+  );
+}
+
+function hasActiveFiltersOrSearch(filters: InkAppFilters): boolean {
+  return !!filters.search || hasActiveFilters(filters);
+}
+
 export function AppsContent({ currentCategory }: AppsContentProps) {
   const searchParams = useSearchParams();
   const network = getNetwork(searchParams.get("network"));
   const category = currentCategory || searchParams.get("category");
   const tags = searchParams.get("tags");
-
+  const search = searchParams.get("search");
   const [page, setPage] = useState(0);
-  const [search, setSearch] = useState<string>("");
-  const [filters, setFilters] = useState<Omit<InkAppFilters, "search">>({
+  const [filters, setFilters] = useState<InkAppFilters>({
+    search: search || "",
     categories: category ? category.split(",") : [],
     tags: tags ? tags.split(",") : [],
     network: network ? network : "Mainnet",
@@ -68,6 +80,14 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
         )
           return false;
 
+        if (hasActiveFiltersOrSearch(filters)) {
+          if (
+            inkFeaturedApps.some((featuredApp) => featuredApp.id === app.id)
+          ) {
+            return true;
+          }
+        }
+
         return true;
       }),
     [filters]
@@ -76,7 +96,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
   const filteredApps = useMemo(
     () =>
       filteredAppsWithoutSearchTerms.filter((app) => {
-        const searchTerm = search.toLowerCase();
+        const searchTerm = filters.search.toLowerCase();
         if (
           searchTerm &&
           !app.name.toLowerCase().includes(searchTerm) &&
@@ -89,14 +109,18 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
           return false;
         return true;
       }),
-    [filteredAppsWithoutSearchTerms, search]
+    [filteredAppsWithoutSearchTerms, filters.search]
   );
 
   const updateSearchParams = useCallback(
     (newParams: Record<string, string>) => {
-      const { network, category, tags, ...params } = Object.fromEntries(
-        searchParams.entries()
-      );
+      const {
+        network,
+        category,
+        tags,
+        search: _search,
+        ...params
+      } = Object.fromEntries(searchParams.entries());
       const { category: newCategory, ...newParamsToUpdate } = newParams;
       const queryParams = new URLSearchParams({
         ...params,
@@ -126,6 +150,9 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
           ...(mergedFilters.categories && mergedFilters.categories.length > 0
             ? { category: mergedFilters.categories[0] }
             : {}),
+          ...(mergedFilters.search && mergedFilters.search.length > 0
+            ? { search: mergedFilters.search }
+            : {}),
         });
 
         setPage(0);
@@ -134,15 +161,6 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
     },
     [updateSearchParams]
   );
-
-  const hasActiveFilters = (filters: InkAppFilters): boolean => {
-    return (
-      !!search ||
-      (filters.network && filters.network !== "Mainnet") ||
-      (filters.categories && filters.categories.length > 0) ||
-      (filters.tags && filters.tags.length > 0)
-    );
-  };
 
   const appsToDisplay = useMemo(
     () => filteredApps.slice(0, (page + 1) * 10),
@@ -163,8 +181,10 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
           <SearchInput
             className="max-w-md"
             placeholder="Search"
-            value={search}
-            onValueChange={setSearch}
+            value={filters.search}
+            onValueChange={(value) => {
+              updateFilters({ search: value });
+            }}
           />
         </div>
 
@@ -208,11 +228,13 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
             >
               <AppsGrid
                 apps={appsToDisplay}
-                featuredApps={!hasActiveFilters(filters) ? inkFeaturedApps : []}
+                featuredApps={
+                  !hasActiveFiltersOrSearch(filters) ? inkFeaturedApps : []
+                }
                 noAppsFound={
                   <NoAppsFound
-                    hasSearch={!!search}
-                    resetSearch={() => setSearch("")}
+                    hasSearch={!!filters.search}
+                    resetSearch={() => updateFilters({ search: "" })}
                     hasActiveFilters={hasActiveFilters(filters)}
                     resetFilters={() => {
                       updateFilters({
@@ -255,10 +277,10 @@ function NoAppsFound({
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col items-center gap-6">
-        <div className="text-h5 font-bold text-blackMagic dark:text-whiteMagic">
+        <div className="ink:text-h5 font-bold ink:text-text-default">
           No matches found
         </div>
-        <div className="text-body-2 text-blackMagic/50 dark:text-whiteMagic/50 text-center">
+        <div className="ink:text-body-2-regular ink:text-text-muted text-center">
           {`Please change your keywords${
             hasActiveFilters ? " or reset your filters" : ""
           } and try again`}

@@ -54,7 +54,9 @@
     "pre": "Ink, the Ethereum L2 unleashed by Kraken, is live on the Superchain",
     "title": "Ink the future",
     "tagLine": "Simplified DeFi for|builders,degens,gigachads,institutions,normies,ALL",
-    "cta:exploreApps": "Explore Apps"
+    "cta:exploreApps": "Explore Apps",
+    "appsTitle": "Featured apps on Ink",
+    "appsCta": "View all apps"
   },
   "Community": {
     "title": "Join the Ink Community",
@@ -64,7 +66,7 @@
       "description": "Join the Ink community, vibe with fellow developers and get support"
     },
     "twitter": {
-      "title": "Follow us on Twitter",
+      "title": "Follow us on X",
       "description": "Stay tuned to receive all ink updates first hand"
     },
     "discord": {
@@ -87,7 +89,7 @@
   },
   "Verify": {
     "title": "Get Verified and Start Your On-Chain Journey Today",
-    "description": "Ink Verify — Seamlessly authenticate your activity, unlock rewards, and explore the limitless potential of Ink",
+    "description": "Ink Verify — Seamlessly authenticate your activity, unlock rewards, and explore the limitless potential of Ink.",
     "cta": "Connect to verify",
     "whatIsVerify": {
       "title": "What is Ink Verify?",
@@ -103,12 +105,12 @@
     },
     "haveASuggestion": {
       "title": "Have a suggestion?",
-      "description": "Ink Verify is a tool for both users and developers! Have a suggestion? Reach out to the Ink team to request additional categories here",
+      "description": "Ink Verify is a tool for both users and developers! Have a suggestion? Reach out to the Ink team to request additional categories here.",
       "contactTeam": "Contact Team"
     },
     "verifications": {
       "title": "Available verifications",
-      "description": "Discover the latest verifications on Ink"
+      "description": "Discover the latest verifications on Ink."
     }
   },
   "About": {
