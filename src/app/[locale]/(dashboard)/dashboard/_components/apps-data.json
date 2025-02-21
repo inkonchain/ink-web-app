@@ -544,6 +544,40 @@
       }
     },
     {
+      "id": "jack-daniels",
+      "name": "Jack-Daniels",
+      "description": "New Project",
+      "imageUrl": "/featured-apps/icons/jack-daniels.webp",
+      "category": [
+        "Bridge",
+        "DeFi",
+        "Explorers",
+        "Infra",
+        "Social",
+        "Other"
+      ],
+      "network": "Both",
+      "tags": [
+        "explorer",
+        "faucet",
+        "fun",
+        "domain names",
+        "dex",
+        "data",
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "http://www.paypal.me/Fineblanketjaclyn",
+        "testnetWebsite": "http://www.paypal.me/Fineblanketjaclyn",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "kraken",
       "name": "Kraken",
       "description": "Kraken is your bridge to the world of crypto. Spot, Futures, Margin, NFTs, Staking & OTC Buy, sell, trade, earn, explore and learn",
