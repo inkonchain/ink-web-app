@@ -34,8 +34,9 @@ export const HomeTitle = () => {
             variant="primary"
             size="lg"
             iconRight={<InkIcon.Arrow className="rotate-270" />}
+            asChild
           >
-            <Link href={{ pathname: "/apps", query }}>
+            <Link href={{ pathname: "/apps", query }} prefetch>
               {t("cta:exploreApps")}
             </Link>
           </Button>
