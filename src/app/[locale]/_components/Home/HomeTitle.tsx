@@ -1,6 +1,5 @@
 "use client";
 import { Button, InkIcon } from "@inkonchain/ink-kit";
-import Image from "next/image";
 import { useTranslations } from "next-intl";
 
 import { ColoredText } from "@/components/ColoredText";
@@ -16,17 +15,6 @@ export const HomeTitle = () => {
   return (
     <>
       <PageHeader
-        pre={
-          <div className="flex items-center justify-center ink:gap-1">
-            <Image
-              alt="a lighting bolt in a circle"
-              src="/icons/1s-block-times.svg"
-              width={20}
-              height={20}
-            />
-            <div>{t("pre")}</div>
-          </div>
-        }
         title="Ink the future"
         description={<TagLineWithHighlight text={t("tagLine")} />}
         cta={

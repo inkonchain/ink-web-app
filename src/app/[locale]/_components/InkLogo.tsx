@@ -31,14 +31,14 @@ export const InkLogoImage: React.FC = () => {
   return (
     <>
       <Image
-        src="/logo/ink-mark-light.png"
+        src="/logo/ink-mark-light.webp"
         alt="Ink Logo"
         width={40}
         height={40}
         className="dark:hidden"
       />
       <Image
-        src="/logo/ink-mark-dark.png"
+        src="/logo/ink-mark-dark.webp"
         alt="Ink Logo"
         width={40}
         height={40}

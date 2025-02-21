@@ -13,7 +13,7 @@ export function InkTheFuture() {
       image={
         <CardContent.Image>
           <ParallaxedHoverImage
-            src="/ink-the-future.png"
+            src="/ink-the-future.webp"
             className="scale-150 object-[0px_80px] rotate-180 sm:object-[-80px_80px] sm:rotate-0 sm:scale-125"
             width={400}
             height={400}
