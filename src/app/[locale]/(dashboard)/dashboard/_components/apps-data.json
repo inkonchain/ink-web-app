@@ -820,6 +820,33 @@
       }
     },
     {
+      "id": "pwnedclub",
+      "name": "PwnedClub",
+      "description": "PwnedClub is a blockchain-based cybersecurity platform that alerts users about email breaches, rewards security actions, and promotes Web3 privacy protection",
+      "imageUrl": "/featured-apps/icons/pwnedclub.webp",
+      "category": [
+        "Social",
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "data",
+        "fun",
+        "tokens",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.pwnedclub.com/",
+        "testnetWebsite": "https://www.pwnedclub.com/",
+        "x": "https://x.com/PwnedClub",
+        "discord": "",
+        "telegram": "https://t.me/PwnedClub",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "pyth",
       "name": "Pyth",
       "description": "Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.",
