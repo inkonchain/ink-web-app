@@ -2,7 +2,6 @@
 import { PropsWithChildren } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
-import { NewsletterFormContextProvider } from "@/app/[locale]/_components/NewsletterForm/NewsletterFormContext";
 import { AnalyticsProvider } from "@/contexts/AnalyticsProvider";
 import { RelayProvider } from "@/contexts/RelayProvider";
 import { ThemeProvider } from "@/contexts/ThemeProvider";
@@ -12,7 +11,6 @@ import { useGlobalKeyCallback } from "@/hooks/useGlobalKey";
 
 import { AppSubmissionModalProvider } from "./AppSubmissionModal/AppSubmissionModalContext";
 import { ContactUsModalContextProvider } from "./ContactUsModal/ContactUsModalContext";
-import { MobileMenuContextProvider } from "./MobileMenu/MobileMenuContext";
 import { NewsletterModalContextProvider } from "./NewsletterModal/NewsletterModalContext";
 
 const queryClient = new QueryClient();
@@ -26,17 +24,13 @@ export const Providers: React.FC<PropsWithChildren> = ({ children }) => {
         <QueryClientProvider client={queryClient}>
           <WalletProvider>
             <RelayProvider>
-              <NewsletterFormContextProvider>
-                <MobileMenuContextProvider>
-                  <NewsletterModalContextProvider>
-                    <ContactUsModalContextProvider>
-                      <AppSubmissionModalProvider>
-                        {children}
-                      </AppSubmissionModalProvider>
-                    </ContactUsModalContextProvider>
-                  </NewsletterModalContextProvider>
-                </MobileMenuContextProvider>
-              </NewsletterFormContextProvider>
+              <NewsletterModalContextProvider>
+                <ContactUsModalContextProvider>
+                  <AppSubmissionModalProvider>
+                    {children}
+                  </AppSubmissionModalProvider>
+                </ContactUsModalContextProvider>
+              </NewsletterModalContextProvider>
             </RelayProvider>
           </WalletProvider>
         </QueryClientProvider>

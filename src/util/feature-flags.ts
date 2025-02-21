@@ -12,7 +12,6 @@ export const hardcodedFeatureFlags = {
   publicRepo: false,
   fakeEvents: 0,
   verifyPage: false,
-  newNav: false,
 };
 
 export type FeatureFlagKey = keyof typeof hardcodedFeatureFlags;

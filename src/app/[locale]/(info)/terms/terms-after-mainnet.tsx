@@ -1,8 +1,7 @@
 import { ColoredText } from "@/components/ColoredText";
+import { ContactUsPrivacyButton } from "@/components/ContactUsPrivacyButton";
 import { containerClasses } from "@/components/styles/container";
 import { EXTERNAL_LINKS, Link } from "@/routing";
-
-import { ContactUsPrivacyButton } from "../../_components/ContactUsPrivacyButton";
 
 export default function TermsAfterMainnet() {
   return (

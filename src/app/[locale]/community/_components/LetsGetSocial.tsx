@@ -2,49 +2,31 @@
 import { Card, CardContent, InkIcon } from "@inkonchain/ink-kit";
 import { useTranslations } from "next-intl";
 
-import { BigScalableTitle } from "@/components/BigScallableTitle";
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
 import { newLayoutSectionClasses } from "@/components/styles/container";
-import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS, Link } from "@/routing";
-import { classNames } from "@/util/classes";
+
+import { PageHeader } from "../../_components/PageHeader";
 
 export const LetsGetSocial = () => {
-  const newNav = useFeatureFlag("newNav");
   const t = useTranslations("Community");
 
   return (
-    <FlyWhenIntoView
-      className={classNames(newLayoutSectionClasses(), {
-        "items-start": newNav,
-        "items-center": !newNav,
-      })}
-    >
-      <div
-        className={classNames("flex flex-col gap-6", {
-          "items-start": newNav,
-          "items-center": !newNav,
-        })}
-      >
-        <BigScalableTitle
+    <FlyWhenIntoView className={newLayoutSectionClasses()}>
+      <div className="flex flex-col gap-6 items-start">
+        <PageHeader
           title={t("letsGetSocial.title")}
-          subtitle={
-            <span
-              className={classNames("ink:text-body-1 ink:text-text-muted", {
-                "text-center": newNav,
-                "text-left": !newNav,
-              })}
-            >
-              {t("letsGetSocial.description")}
-            </span>
-          }
-          ratio={2}
-          align={newNav ? "left" : "center"}
+          description={t("letsGetSocial.description")}
+          size="section"
         />
       </div>
       <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 self-center">
         <Card className="w-full" variant="secondary" clickable asChild>
-          <Link href={EXTERNAL_LINKS.twitter}>
+          <Link
+            href={EXTERNAL_LINKS.twitter}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CardContent.Link
               title={t("twitter.title")}
               description={t("twitter.description")}
@@ -54,7 +36,11 @@ export const LetsGetSocial = () => {
           </Link>
         </Card>
         <Card variant="secondary" clickable asChild>
-          <Link href={EXTERNAL_LINKS.discord}>
+          <Link
+            href={EXTERNAL_LINKS.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CardContent.Link
               title={t("discord.title")}
               description={t("discord.description")}
@@ -64,7 +50,11 @@ export const LetsGetSocial = () => {
           </Link>
         </Card>
         <Card variant="secondary" clickable asChild>
-          <Link href={EXTERNAL_LINKS.telegram}>
+          <Link
+            href={EXTERNAL_LINKS.telegram}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CardContent.Link
               title={t("telegram.title")}
               description={t("telegram.description")}
@@ -74,7 +64,11 @@ export const LetsGetSocial = () => {
           </Link>
         </Card>
         <Card variant="secondary" clickable asChild>
-          <Link href={EXTERNAL_LINKS.farcaster}>
+          <Link
+            href={EXTERNAL_LINKS.farcaster}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <CardContent.Link
               title={t("farcaster.title")}
               description={t("farcaster.description")}
@@ -88,6 +82,6 @@ export const LetsGetSocial = () => {
   );
 };
 
-export const ExternalLinkArrow = () => {
+const ExternalLinkArrow = () => {
   return <InkIcon.Arrow className="size-4 rotate-225" />;
 };

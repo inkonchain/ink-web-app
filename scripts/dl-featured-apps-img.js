@@ -12,7 +12,7 @@ const exceptions = ["Kraken", "Kraken Wallet"];
 const run = async () => {
   const appsDataFile = path.join(
     ROOT,
-    "src/app/[locale]/(dashboard)/dashboard/_components/apps-data.json"
+    "src/app/[locale]/apps/_components/apps-data.json"
   );
   const appsDataRaw = await fs.readFile(appsDataFile, "utf8");
   const appsData = JSON.parse(appsDataRaw);

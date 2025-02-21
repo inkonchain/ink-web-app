@@ -7,8 +7,7 @@ import { useTranslations } from "next-intl";
 import { useAccount } from "wagmi";
 
 import { ColoredText } from "@/components/ColoredText";
-
-import { ConnectWalletButton } from "../../_components/ConnectWalletButton";
+import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 
 type Perks = "Ink" | "Zora";
 type Networks = "Ink" | "BASE" | "Arbitrum" | "Mode" | "Optimism";
