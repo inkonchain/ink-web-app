@@ -1,6 +1,5 @@
 "use client";
 import { InkIcon } from "@inkonchain/ink-kit";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { LinkedWallet, SwapWidget } from "@reservoir0x/relay-kit-ui";
 import { useAccount } from "wagmi";
 
@@ -10,7 +9,6 @@ import { EXTERNAL_LINKS, Link } from "@/routing";
 import "@reservoir0x/relay-kit-ui/styles.css";
 
 export const RelayKitUI: React.FC = () => {
-  const { openConnectModal } = useConnectModal();
   const { address } = useAccount();
 
   return (
@@ -63,7 +61,7 @@ export const RelayKitUI: React.FC = () => {
           defaultAmount="0"
           defaultToAddress={address}
           supportedWalletVMs={["evm"]}
-          onConnectWallet={openConnectModal}
+          onConnectWallet={() => alert("TODO: OPEN DYNAMIC WALLET")}
           onAnalyticEvent={(eventName, data) => {
             console.debug("Analytic Event", eventName, data); // TODO: Adjust this
           }}

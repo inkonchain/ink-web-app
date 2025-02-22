@@ -13,6 +13,7 @@ export const clientEnv = createEnv({
     NEXT_PUBLIC_DUNE_API_KEY: z.string().optional(),
     NEXT_PUBLIC_WC_PROJECT_ID: z.string().min(1),
     NEXT_PUBLIC_HCAPTCHA_SITEKEY: z.string().min(1),
+    NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID: z.string(),
     NEXT_PUBLIC_FAUCET_API_URL: z.string().url(),
   },
   runtimeEnv: {
@@ -24,6 +25,8 @@ export const clientEnv = createEnv({
     NEXT_PUBLIC_DUNE_API_KEY: process.env.NEXT_PUBLIC_DUNE_API_KEY,
     NEXT_PUBLIC_WC_PROJECT_ID: process.env.NEXT_PUBLIC_WC_PROJECT_ID,
     NEXT_PUBLIC_HCAPTCHA_SITEKEY: process.env.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
+    NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID:
+      process.env.NEXT_PUBLIC_DYNAMIC_ENVIRONMENT_ID,
     NEXT_PUBLIC_FAUCET_API_URL: process.env.NEXT_PUBLIC_FAUCET_API_URL,
   },
 });

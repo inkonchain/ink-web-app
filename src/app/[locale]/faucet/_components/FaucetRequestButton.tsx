@@ -2,7 +2,6 @@
 
 import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
-import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { CloudflareProvider, getAddress } from "ethers";
 import { useAccount } from "wagmi";
 
@@ -148,7 +147,7 @@ export const FaucetRequestButton = forwardRef<
     const { hcaptchaLoaded, executeHCaptcha } =
       useFaucetInfoAndCaptcha(chainId);
     const { isConnected } = useAccount();
-    const { openConnectModal } = useConnectModal();
+    // const { openConnectModal } = useConnectModal(); TODO: SET UP DYNAMIC
     const [showTweetPrompt, setShowTweetPrompt] = useState(false);
     const [tweetUrl, setTweetUrl] = useState("");
     const [isHCaptchaVisible, setIsHCaptchaVisible] = useState(false);
@@ -160,12 +159,13 @@ export const FaucetRequestButton = forwardRef<
       async (forceSkip?: boolean, setLoading = setRequestLoading) => {
         setLoading(true);
 
-        if (!isConnected && address.trim() === "" && openConnectModal) {
-          setWaitingForConnection(true);
-          openConnectModal();
-          setLoading(false);
-          return;
-        }
+        //  TODO: SET UP DYNAMIC
+        // if (!isConnected && address.trim() === "" && openConnectModal) {
+        //   setWaitingForConnection(true);
+        //   openConnectModal();
+        //   setLoading(false);
+        //   return;
+        // }
 
         if (address.trim() === "") {
           toast.error("Please enter an address or ENS name first.", {
@@ -353,8 +353,8 @@ export const FaucetRequestButton = forwardRef<
       },
       [
         address,
-        isConnected,
-        openConnectModal,
+        // isConnected,
+        // openConnectModal,  TODO: SET UP DYNAMIC
         onChange,
         hcaptchaLoaded,
         executeHCaptcha,

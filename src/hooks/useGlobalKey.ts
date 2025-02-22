@@ -16,7 +16,8 @@ function shouldHandleAsNativeEvent(event: KeyboardEvent) {
   return (
     event.key !== "Escape" &&
     event.target instanceof Element &&
-    ["wcm-modal", "input"].includes(event.target.tagName.toLowerCase())
+    (["wcm-modal", "input"].includes(event.target.tagName.toLowerCase()) ||
+      event.target.className.includes("dynamic-shadow-dom"))
   );
 }
 
