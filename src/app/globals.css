@@ -1,8 +1,175 @@
-@import "@inkonchain/ink-kit/style.css";
+@import "@inkonchain/ink-kit/style.css" layer(base);
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@config '../../tailwind.config.ts';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@theme {
+  /** Colors */
+  --color-default: var(--ink-text-default);
+  --color-inkGradient: var(--ink-button-primary);
+  --color-gradientPurple: #8049f2;
+  --color-blackMagic: #0b0d12;
+  --color-whiteMagic: #f6f4ff;
+  --color-purpleMagic: #7132f5;
+  --color-redMagic-100: #ff7386;
+  --color-redMagic-400: #d11d45;
+  --color-redMagic-500: #f5395e;
+
+  --animation-marquee: "marquee 25s linear infinite";
+  --animation-pulse: "slight-pulse 3s ease-in-out infinite";
+  --animation-slightPulse: "slight-pulse 5.5s ease-in-out infinite";
+
+  --blur-xs: "2px";
+  --backdrop-blur-xs: "2px";
+
+  --border-radius-4xl: "30px";
+
+  --font-size-h1: "64px";
+  --font-size-h1-line-height: "60.8px";
+  --font-size-h1-letter-spacing: "-2%";
+
+  --font-size-h2: "38px";
+  --font-size-h2-line-height: "38px";
+  --font-size-h2-letter-spacing: "-1%";
+
+  --font-size-h3: "32px";
+  --font-size-h3-line-height: "32px";
+  --font-size-h3-letter-spacing: "-1%";
+
+  --font-size-body: "16px";
+  --font-size-body-line-height: "22px";
+
+  --font-size-body-2: "16px";
+  --font-size-body-2-line-height: "20px";
+
+  --font-size-body-3: "14px";
+  --font-size-body-3-line-height: "18px";
+
+  --font-size-4xl: "36px";
+  --font-size-4xl-line-height: "47px";
+  --font-size-4xl-letter-spacing: "-2%";
+
+  --font-size-6xl: "60px";
+  --font-size-6xl-line-height: "72px";
+  --font-size-6xl-letter-spacing: "-2%";
+
+  --duration-150: "150ms";
+  --duration-600: "600ms";
+
+  --background-size-overflow-150: "150% 100%";
+  --background-size-overflow-200: "200% 100%";
+
+  /* Generated using: https://linear-easing-generator.netlify.app/ */
+  --ease-spring: linear(
+    0,
+    0.002,
+    0.007 1.1%,
+    0.027,
+    0.06,
+    0.108 5.1%,
+    0.214 7.7%,
+    0.58 15.8%,
+    0.686,
+    0.774,
+    0.847,
+    0.907,
+    0.955,
+    0.991 32.1%,
+    1.011 34.6%,
+    1.026 37.3%,
+    1.034 40.2%,
+    1.037 43.5%,
+    1.034 48.2%,
+    1.012 62.1%,
+    1.003 71%,
+    0.999 81.9% 100%
+  );
+
+  --breakpoint-menu: 1035px;
+  --breakpoint-sm-landscape-only: \(max-height: 700px\)and \(min-width: 640px\);
+  --breakpoint-hd: 1920px;
+  --breakpoint-2xl: 1600px;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes slightPulse {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+@utility dark {
+  /** To optimise **/
+
+  & body {
+    background-color: #160f1f;
+  }
+}
+
+@utility pause {
+  /** https://github.com/tailwindlabs/tailwindcss/discussions/3654#discussioncomment-2327745 */
+  animation-play-state: paused;
+}
+
+@utility scrollbar-custom {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--ink-scrollbar) transparent; /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+  f &::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ink-scrollbar); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
 
 @layer utilities {
   body {
@@ -26,25 +193,6 @@
   html {
     scroll-behavior: smooth;
   }
-  /** To optimise **/
-
-  .dark body {
-    background-color: #160f1f;
-  }
-  /** https://github.com/tailwindlabs/tailwindcss/discussions/3654#discussioncomment-2327745 */
-  .pause {
-    animation-play-state: paused;
-  }
-
-  /** Transform matching Tailwind 4 new 3D transforms. Remove this once we migrate to Tailwind 4. */
-  .transform-3d {
-    transform: translate3d(
-        var(--tw-translate-x),
-        var(--tw-translate-y),
-        var(--tw-translate-z)
-      )
-      var(--tw-rotate-x) !important;
-  }
 
   :root {
     --ink-button-primary: rgb(113, 50, 245);
@@ -53,36 +201,6 @@
       var(--ink-button-primary) 20%,
       transparent
     );
-  }
-
-  .-rotate-x-180 {
-    --tw-rotate-x: rotateX(-180deg);
-  }
-
-  .scrollbar-custom {
-    scrollbar-width: thin; /* Firefox */
-    scrollbar-color: var(--ink-scrollbar) transparent; /* Firefox */
-  }
-
-  .scrollbar-custom::-webkit-scrollbar {
-    width: 12px; /* width of the entire scrollbar */
-  }
-  f .scrollbar-custom::-webkit-scrollbar-track {
-    background: transparent; /* color of the tracking area */
-  }
-
-  .scrollbar-custom::-webkit-scrollbar-thumb {
-    background-color: var(--ink-scrollbar); /* color of the scroll thumb */
-    border-radius: 20px; /* roundness of the scroll thumb */
-  }
-
-  .no-scrollbar::-webkit-scrollbar {
-    display: none;
-  }
-
-  .no-scrollbar {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
   }
 }
 

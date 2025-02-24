@@ -75,12 +75,12 @@ export const NewsletterModal: React.FC<NewsletterModalProps> = () => {
   if (!isOpen) return null;
 
   return (
-    <CenteredModalContainer className="fixed inset-0 isolate z-[9999]">
+    <CenteredModalContainer className="fixed inset-0 isolate z-9999">
       <Backdrop isVisible={isOpen} onClick={closeModal} />
       <CenteredModal
         isOpen={isOpen}
         closeModal={closeModal}
-        contentClassName="max-w-[536px] flex-1 relative z-[10000]"
+        contentClassName="max-w-[536px] flex-1 relative z-10000"
       >
         <div className="flex flex-col gap-8 items-center w-full p-8">
           <div className="flex flex-col gap-4 items-center">
@@ -205,13 +205,13 @@ const CheckboxField: React.FC<{
   <Field className="flex items-center gap-2 group">
     <Checkbox
       name={name}
-      className="group relative flex items-center justify-center bg-zinc-300 p-3 rounded-lg group-hover:bg-zinc-400 ring-transparent ring-2 group-focus-within:ring-krakenPurple data-[checked]:bg-krakenPurple data-[checked]:group-hover:bg-krakenPurple/80"
+      className="group relative flex items-center justify-center bg-zinc-300 p-3 rounded-lg group-hover:bg-zinc-400 ring-transparent ring-2 group-focus-within:ring-krakenPurple data-checked:bg-krakenPurple group-hover:data-checked:bg-krakenPurple/80"
     >
-      <div className="text-whiteMagic absolute inset-0 hidden items-center justify-center group-data-[checked]:flex">
+      <div className="text-whiteMagic absolute inset-0 hidden items-center justify-center group-data-checked:flex">
         <CheckmarkIcon size="icon-xs" enforce="white" />
       </div>
     </Checkbox>
-    <Label className="font-bold text-label">{label}</Label>
+    <Label className="font-bold">{label}</Label>
   </Field>
 );
 

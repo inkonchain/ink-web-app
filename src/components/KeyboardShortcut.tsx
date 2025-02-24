@@ -11,7 +11,7 @@ export const KeyboardShortcut: React.FC<{
       "w-fit inline-flex items-center justify-center select-none rounded-[4px]",
       "font-bold backdrop-invert backdrop-grayscale mx-0.5 opacity-60",
       {
-        "text-caption size-4": size === "sm",
+        "ink:text-caption-2-regular size-4": size === "sm",
         "text-body-2 size-6": size === "md",
       },
       {

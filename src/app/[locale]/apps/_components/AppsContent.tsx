@@ -197,7 +197,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
               });
             }}
           />
-          <div className="flex gap-2">
+          <div className="flex items-center gap-2">
             <AppsTagsFilter
               selected={filters.tags}
               setSelected={(value) => {

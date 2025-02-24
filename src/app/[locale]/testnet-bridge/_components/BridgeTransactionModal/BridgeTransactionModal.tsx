@@ -35,12 +35,12 @@ export const BridgeTransactionModal: React.FC<
   if (!txHash) return null;
 
   return (
-    <CenteredModalContainer className="fixed inset-0 isolate z-[9999]">
+    <CenteredModalContainer className="fixed inset-0 isolate z-9999">
       <Backdrop isVisible={isOpen} onClick={closeModal} />
       <CenteredModal
         isOpen={isOpen}
         closeModal={closeModal}
-        contentClassName="max-w-[390px] flex-1 relative z-[10000] dark:text-white/50 shadow-[0px_4px_45px_0px_rgba(0,0,0,0.25)] dark:bg-softDarkPurple"
+        contentClassName="max-w-[390px] flex-1 relative z-10000 dark:text-white/50 shadow-[0px_4px_45px_0px_rgba(0,0,0,0.25)] dark:bg-softDarkPurple"
       >
         <div className="flex flex-col gap-2 items-center">
           <Lottie

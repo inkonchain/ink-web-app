@@ -30,20 +30,17 @@ export const ColoredText: React.FC<ColoredTextProps> = ({
   return (
     <span
       className={classNames(
-        "inline-block w-fit text-transparent bg-clip-text transition-colors relative",
+        "inline-block w-fit text-transparent bg-clip-text transition-colors relative bg-linear-to-r",
         {
-          "from-blackMagic dark:from-whiteMagic to-gradientPurple dark:to-gradientPurple bg-gradient-to-r":
+          "from-blackMagic dark:from-whiteMagic to-gradientPurple dark:to-gradientPurple":
             variant === "purple",
-          "from-gradientPurple dark:from-gradientPurple to-blackMagic dark:to-whiteMagic bg-gradient-to-r":
+          "from-gradientPurple dark:from-gradientPurple to-blackMagic dark:to-whiteMagic":
             variant === "reverse-purple",
-          "from-whiteMagic to-gradientPurple bg-gradient-to-r":
-            variant === "purple-light",
-          "from-blackMagic to-gradientPurple bg-gradient-to-r":
-            variant === "purple-dark",
-          "from-whiteMagic to-[#8049F2] bg-gradient-to-r":
-            variant === "white-to-gray",
+          "from-whiteMagic to-gradientPurple": variant === "purple-light",
+          "from-blackMagic to-gradientPurple": variant === "purple-dark",
+          "from-whiteMagic to-[#8049F2]": variant === "white-to-gray",
           "text-white bg-none": variant === "white",
-          "from-black dark:from-white to-inkGradient dark:to-inkGradient bg-gradient-to-r":
+          "from-black dark:from-white to-inkGradient dark:to-inkGradient":
             variant === "ink",
         },
         {

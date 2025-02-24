@@ -394,7 +394,7 @@ const SelectField = <T extends string>({
         }}
       >
         <ListboxButton>{selected.label}</ListboxButton>
-        <ListboxOptions className="z-[10001] shadow rounded-3xl">
+        <ListboxOptions className="z-10001 shadow-sm rounded-3xl">
           {options.map((option) => (
             <ListboxOption key={option.value} value={option}>
               {option.label}
@@ -455,7 +455,7 @@ const MultiSelectField = <T extends string>({
             "Select options..."
           )}
         </ListboxButton>
-        <ListboxOptions className="z-[10001] shadow rounded-3xl">
+        <ListboxOptions className="z-10001 shadow-sm rounded-3xl">
           {options.map((option) => (
             <ListboxOption key={option.value} value={option}>
               {option.label}

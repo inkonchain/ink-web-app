@@ -56,7 +56,7 @@ export function Faucet() {
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
                     placeholder={t("enterAddress")}
-                    className="w-full bg-transparent text-black/50 [&:not(:placeholder-shown)]:text-[#101114] focus:outline-none font-[Plus_Jakarta_Sans] font-bold text-[18px]"
+                    className="w-full bg-transparent text-black/50 not-placeholder-shown:text-[#101114] focus:outline-hidden font-[Plus_Jakarta_Sans] font-bold text-[18px]"
                   />
                 </div>
                 <div className="pr-1">

@@ -68,7 +68,7 @@ export const CenteredModal: React.FC<PropsWithChildren<CenteredModalProps>> = (
           )}
         >
           <button
-            className="absolute top-0 right-0 p-6 focus-visible:outline-none focus-visible:opacity-60"
+            className="absolute top-0 right-0 p-6 focus-visible:outline-hidden focus-visible:opacity-60"
             onClick={closeModal}
           >
             <CloseIcon size="icon-md" enforce="inherit" />

@@ -64,7 +64,7 @@ export const UnsubscribeForm: React.FC<UnsubscribeFormProps> = ({
             type="checkbox"
             id="generalWailist"
             name="generalWailist"
-            className="h-4 w-4 rounded border-gray-300 text-whiteMagic"
+            className="h-4 w-4 rounded-sm border-gray-300 text-whiteMagic"
           />
         </div>
 
@@ -79,7 +79,7 @@ export const UnsubscribeForm: React.FC<UnsubscribeFormProps> = ({
             type="checkbox"
             id="developerWailist"
             name="developerWailist"
-            className="h-4 w-4 rounded border-gray-300 text-whiteMagic"
+            className="h-4 w-4 rounded-sm border-gray-300 text-whiteMagic"
           />
         </div>
 

@@ -283,7 +283,7 @@ export function Bridge() {
               <div
                 className={classNames(
                   "rounded-3xl sm:px-12 px-6 py-4 sm:py-6 inline-block mx-auto w-full sm:min-w-[700px]",
-                  "[.light_&]:bg-[#EDF1F9]/50",
+                  "in-[.light]:bg-[#EDF1F9]/50",
                   "dark:bg-[#160F1F]"
                 )}
               >
@@ -424,7 +424,7 @@ export function Bridge() {
                     </div>
 
                     <div
-                      className="bg-white rounded-xl p-3 shadow-sm w-full cursor-pointer"
+                      className="bg-white rounded-xl p-3 shadow-xs w-full cursor-pointer"
                       onClick={() =>
                         document.getElementById("amount-input")?.focus()
                       }
@@ -435,7 +435,7 @@ export function Bridge() {
                             id="amount-input"
                             type="number"
                             placeholder="0"
-                            className={`dark:bg-white text-black w-full outline-none text-4xl font-medium [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${error ? "border-red-500 border-b" : ""}`}
+                            className={`dark:bg-white text-black w-full outline-hidden text-4xl font-medium [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${error ? "border-red-500 border-b" : ""}`}
                             min="0"
                             step="any"
                             value={amount}
@@ -445,7 +445,7 @@ export function Bridge() {
                             }}
                           />
                           <div
-                            className="flex items-center gap-2 rounded-full px-4 py-2 flex-shrink-0 ml-4"
+                            className="flex items-center gap-2 rounded-full px-4 py-2 shrink-0 ml-4"
                             style={{
                               backgroundColor: "rgba(221, 220, 240, 0.75)",
                             }}

@@ -36,12 +36,12 @@ export const FeatureRequestModal: React.FC<FeatureRequestModalProps> = ({
   if (!isOpen) return null;
 
   return (
-    <CenteredModalContainer className="fixed inset-0 isolate z-[9999]">
+    <CenteredModalContainer className="fixed inset-0 isolate z-9999">
       <Backdrop isVisible={isOpen} onClick={closeModal} />
       <CenteredModal
         isOpen={isOpen}
         closeModal={closeModal}
-        contentClassName="relative z-[10000]"
+        contentClassName="relative z-10000"
       >
         <div className="sm:w-96 max-h-[600px] h-[450px] pt-6">
           <iframe
