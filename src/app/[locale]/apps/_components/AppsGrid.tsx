@@ -3,8 +3,10 @@ import { Tag } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+import { classNames } from "@/util/classes";
+
 import { AppLinks } from "./AppLinks";
-import { InkApp, InkAppNetwork, mainUrl } from "./InkApp";
+import { InkApp, InkAppNetwork, inkTransparentIcons, mainUrl } from "./InkApp";
 
 export const AppsGrid: React.FC<{
   apps: InkApp[];
@@ -50,7 +52,11 @@ function AppCard({
       }}
     >
       <div className="flex w-full justify-between">
-        <div className="bg-dapps-icon-gradient rounded-xl overflow-hidden size-16 shrink-0">
+        <div
+          className={classNames("rounded-xl overflow-hidden size-16 shrink-0", {
+            "bg-dapps-icon-gradient": inkTransparentIcons.includes(app.id),
+          })}
+        >
           <Image
             src={app.imageUrl || "/apps/app-icon-placeholder.png"}
             alt={"dapps icon"}

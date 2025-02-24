@@ -8,7 +8,7 @@ import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useOnWindowSize } from "@/hooks/useOnWindowSize";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 
-export const DeveloperContent = () => {
+export const WriteYourCodeWithInk = () => {
   const t = useTranslations("Landing");
   const isMainnet = useFeatureFlag("mainnet");
 
@@ -44,9 +44,9 @@ export const DeveloperContent = () => {
               revolutions.
             </p>
             <p>
-              Our commitment to builders: Ink will provide you with a world-
-              class development environment, complete with the tools, support,
-              and users you need to bring your ideas to life.
+              Our commitment to builders: Ink will provide you with a
+              world-class development environment, complete with the tools,
+              support, and users you need to bring your ideas to life.
             </p>
             <p>
               {isMainnet ? (

@@ -8,14 +8,12 @@ interface PageHeaderProps {
   description: React.ReactNode;
   cta?: React.ReactNode;
   size?: "default" | "home" | "section";
-  pre?: React.ReactNode;
 }
 
 export const PageHeader = ({
   title,
   description,
   cta,
-  pre,
   size = "default",
 }: PageHeaderProps) => {
   return (
@@ -28,15 +26,10 @@ export const PageHeader = ({
     >
       <div
         className={classNames("flex flex-col items-start gap-4", {
-          "max-w-screen-lg": size === "default" || size === "section",
-          "max-w-screen-2xl": size === "home",
+          "max-w-(--breakpoint-lg)": size === "default" || size === "section",
+          "max-w-(--breakpoint-2xl)": size === "home",
         })}
       >
-        {pre && (
-          <div className="flex flex-col items-start w-full ink:text-body-3-regular ink:text-text-default">
-            {pre}
-          </div>
-        )}
         <ColoredText
           className={classNames({
             "ink:text-h2": size === "default",
@@ -49,7 +42,7 @@ export const PageHeader = ({
           <h2>{title}</h2>
         </ColoredText>
         <div
-          className={classNames("max-w-screen-lg", {
+          className={classNames("max-w-(--breakpoint-lg)", {
             "ink:text-body-2-regular sm:text-[length:var(--ink-text-body-1-regular)] sm:leading-[var(--ink-text-body-1-regular--line-height)] ink:text-text-muted":
               size === "default" || size === "section",
             "ink:text-h5 lg:text-[length:var(--ink-text-h3)] lg:leading-[var(--ink-text-h3--line-height)]":

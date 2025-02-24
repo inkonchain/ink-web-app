@@ -47,7 +47,7 @@
     {
       "id": "astra-swap",
       "name": "Astra Swap",
-      "description": "Trade, earn, and own crypto on the all-in-one multichain DEX",
+      "description": "Trade, earn, and own crypto on the all-in-one multichain DEX.",
       "imageUrl": "/featured-apps/icons/astraswap.webp",
       "category": [
         "DeFi"
@@ -138,7 +138,7 @@
     {
       "id": "comet-protocol",
       "name": "Comet Protocol",
-      "description": "Bridge to other chains",
+      "description": "Bridge to other chains.",
       "imageUrl": "/featured-apps/icons/cometprotocol.webp",
       "category": [
         "Bridge"
@@ -160,7 +160,7 @@
     {
       "id": "curve",
       "name": "Curve",
-      "description": "Creating deep on-chain liquidity using advanced bonding curves",
+      "description": "Creating deep on-chain liquidity using advanced bonding curves.",
       "imageUrl": "/featured-apps/icons/curve.webp",
       "category": [
         "DeFi"
@@ -182,7 +182,7 @@
     {
       "id": "deep-on-ink",
       "name": "The Deep",
-      "description": "Dive into DeFi on Ink",
+      "description": "Dive into DeFi on Ink.",
       "imageUrl": "/featured-apps/icons/thedeep.webp",
       "category": [
         "DeFi"
@@ -226,7 +226,7 @@
     {
       "id": "dune",
       "name": "Dune",
-      "description": "Query, visualize, share and export data across 75+ blockchains — build together with Web3’s biggest data community.",
+      "description": "Query, visualize, share and export data across 75+ blockchains — build together with Web3's biggest data community.",
       "imageUrl": "/featured-apps/icons/dune.webp",
       "category": [
         "Infra"
@@ -249,7 +249,7 @@
     {
       "id": "dyorswap",
       "name": "DYORSWAP",
-      "description": "DYORSWAP is a multi-chain decentralized exchange (DEX) operating on multichain .",
+      "description": "DYORSWAP is a multi-chain decentralized exchange (DEX) operating on multichain.",
       "imageUrl": "/featured-apps/icons/dyorswap.webp",
       "category": [
         "DeFi"
@@ -294,7 +294,7 @@
     {
       "id": "frax",
       "name": "Frax",
-      "description": "The Decentralized Central Bank of Crypto",
+      "description": "The Decentralized Central Bank of Crypto.",
       "imageUrl": "/featured-apps/icons/frax.webp",
       "category": [
         "DeFi"
@@ -340,7 +340,7 @@
     {
       "id": "gelato",
       "name": "Gelato",
-      "description": "Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated",
+      "description": "Build scalable, custom enterprise-grade Rollups with Gelato's Web3 Services natively integrated.",
       "imageUrl": "/featured-apps/icons/gelato.webp",
       "category": [
         "Bridge"
@@ -407,7 +407,7 @@
     {
       "id": "holyheld",
       "name": "Holyheld",
-      "description": "One card for all crypto",
+      "description": "One card for all crypto.",
       "imageUrl": "/featured-apps/icons/holyheld.webp",
       "category": [
         "Other",
@@ -477,7 +477,7 @@
     {
       "id": "inkypump",
       "name": "InkyPump",
-      "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image. ",
+      "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image.",
       "imageUrl": "/featured-apps/icons/inkypump.webp",
       "category": [
         "DeFi"
@@ -546,7 +546,7 @@
     {
       "id": "kraken",
       "name": "Kraken",
-      "description": "Kraken is your bridge to the world of crypto. Spot, Futures, Margin, NFTs, Staking & OTC Buy, sell, trade, earn, explore and learn",
+      "description": "Kraken is your bridge to the world of crypto. Spot, Futures, Margin, NFTs, Staking & OTC Buy, sell, trade, earn, explore and learn.",
       "imageUrl": "https://cdn.sanity.io/images/51n36hrp/facade/a925939f448a3a410f4f32334165623ad4cccba1-512x512.svg",
       "category": [
         "On-ramps"
@@ -590,7 +590,7 @@
     {
       "id": "layerzero",
       "name": "LayerZero",
-      "description": "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts",
+      "description": "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.",
       "imageUrl": "/featured-apps/icons/layerzero.webp",
       "category": [
         "Infra"
@@ -613,7 +613,7 @@
     {
       "id": "meme-bridge",
       "name": "Meme Bridge",
-      "description": "The cheapest Layer2 bridge. Earn points and bridge through Layer2s within seconds",
+      "description": "The cheapest Layer2 bridge. Earn points and bridge through Layer2s within seconds.",
       "imageUrl": "/featured-apps/icons/meme-bridge.webp",
       "category": [
         "Bridge"
@@ -636,7 +636,7 @@
     {
       "id": "merkly",
       "name": "Merkly",
-      "description": "Multifunctional Interoperability Platform |   Bridge & Refuel across 50+ Chains",
+      "description": "Multifunctional Interoperability Platform |   Bridge & Refuel across 50+ Chains.",
       "imageUrl": "/featured-apps/icons/merkly.webp",
       "category": [
         "Bridge"
@@ -659,7 +659,7 @@
     {
       "id": "mini-bridge",
       "name": "Mini Bridge",
-      "description": "MiniBridge is a \"zero-fee\" cross-chain tool that offers multi-chain support for BTC/EVM/non-EVM and features such as fast transactions. ",
+      "description": "MiniBridge is a \"zero-fee\" cross-chain tool that offers multi-chain support for BTC/EVM/non-EVM and features such as fast transactions.",
       "imageUrl": "/featured-apps/icons/mini-bridge.webp",
       "category": [
         "Bridge"
@@ -888,7 +888,7 @@
     {
       "id": "reservoir:-relay",
       "name": "Reservoir: Relay",
-      "description": "Instant, low-cost bridging\nand swapping",
+      "description": "Instant, low-cost bridging\nand swapping.",
       "imageUrl": "/featured-apps/icons/reservoir_relay.webp",
       "category": [
         "Bridge"
@@ -910,7 +910,7 @@
     {
       "id": "reservoir:-swap",
       "name": "Reservoir: Swap",
-      "description": "Buy, sell & trade Ethereum and other top tokens on Swap",
+      "description": "Buy, sell & trade Ethereum and other top tokens on Swap.",
       "imageUrl": "/featured-apps/icons/reservoir_swap.webp",
       "category": [
         "DeFi"
@@ -998,7 +998,7 @@
     {
       "id": "squidswap",
       "name": "SquidSwap",
-      "description": "SquidSwap is  designed to provide a secure and efficient way to launch, lock, and trade tokens. ",
+      "description": "SquidSwap is  designed to provide a secure and efficient way to launch, lock, and trade tokens.",
       "imageUrl": "/featured-apps/icons/squidswap.webp",
       "category": [
         "DeFi",
@@ -1137,7 +1137,7 @@
     {
       "id": "token-deployer",
       "name": "Token Deployer",
-      "description": "1-click token deployer",
+      "description": "1-click token deployer.",
       "imageUrl": "",
       "category": [
         "DeFi"
@@ -1182,7 +1182,7 @@
     {
       "id": "trade-on-ink",
       "name": "Trade On INK",
-      "description": "A fast and secure telegram trading bot for  INK, enabling instant token buys and sells with real-time transaction tracking and no private key storage",
+      "description": "A fast and secure telegram trading bot for  INK, enabling instant token buys and sells with real-time transaction tracking and no private key storage.",
       "imageUrl": "/featured-apps/icons/trade-on-ink.webp",
       "category": [
         "Bridge"
@@ -1271,7 +1271,7 @@
     {
       "id": "zkcodex-wallet-tracker",
       "name": "zkCodex Wallet Tracker",
-      "description": "zkCodex is a comprehensive wallet analysis platform for Layer 2. Track transaction volume, Chain Score, NFTs, DApp interactions, and airdrop eligibility across 15+ blockchains with ease and efficiency",
+      "description": "zkCodex is a comprehensive wallet analysis platform for Layer 2. Track transaction volume, Chain Score, NFTs, DApp interactions, and airdrop eligibility across 15+ blockchains with ease and efficiency.",
       "imageUrl": "/featured-apps/icons/zkcodex-wallet-tracker.webp",
       "category": [
         "Infra",
@@ -1296,7 +1296,7 @@
     {
       "id": "zns-connect",
       "name": "ZNS Connect",
-      "description": "Decentralized ID platform powered by decentralized addresses",
+      "description": "Decentralized ID platform powered by decentralized addresses.",
       "imageUrl": "/featured-apps/icons/znsconnect.webp",
       "category": [
         "Social"

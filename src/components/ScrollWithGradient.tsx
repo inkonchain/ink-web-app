@@ -21,7 +21,10 @@ const useScrollTracking = ({
     const scrollElement = scrollRef.current;
     const totalOverflow = scrollElement.scrollWidth - scrollElement.clientWidth;
     const scrollPosition = scrollElement.scrollLeft;
-    onPercent((scrollPosition / totalOverflow) * 100, scrollPosition);
+    onPercent(
+      totalOverflow <= 0 ? 0 : (scrollPosition / totalOverflow) * 100,
+      scrollPosition
+    );
   }, [scrollRef, onPercent]);
 
   useEffect(() => {
@@ -64,10 +67,15 @@ export const ScrollWithGradient: React.FC<
   return (
     <div
       className={classNames(
-        "overflow-x-scroll [mask:linear-gradient(to_right,_var(--tw-gradient-stops))] from-80% from-white to-transparent",
+        "overflow-x-scroll from-80% from-white to-transparent",
         className
       )}
       ref={scrollRef}
+      style={
+        {
+          mask: "linear-gradient(to right, var(--tw-gradient-from) var(--tw-gradient-from-position), var(--tw-gradient-to) var(--tw-gradient-to-position))",
+        } as React.CSSProperties
+      }
     >
       {children}
     </div>

@@ -1,6 +1,6 @@
 .gradient-border {
   position: relative;
-  --border-width: 2px;
+  --gradient-border-width: 2px;
 }
 
 .gradient-border:hover::before {
@@ -16,12 +16,16 @@
   z-index: 1;
 
   box-sizing: border-box;
-  padding: var(--border-width);
+  padding: var(--gradient-border-width);
   border-radius: 999px;
   background: linear-gradient(to right, #fff 0%, #fff 50%, #8049f2 100%);
+  -webkit-mask:
+    linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
   mask:
     linear-gradient(#fff 0 0) content-box,
     linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
   mask-composite: exclude, xor;
 
   background-position: 100% 100%;

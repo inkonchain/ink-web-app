@@ -418,7 +418,7 @@ export const FaucetRequestButton = forwardRef<
         )}
 
         {showTweetPrompt && (
-          <CenteredModalContainer className="fixed inset-0 isolate z-[9999]">
+          <CenteredModalContainer className="fixed inset-0 isolate z-9999">
             <Backdrop
               isVisible={showTweetPrompt}
               onClick={() => setShowTweetPrompt(false)}
@@ -426,7 +426,7 @@ export const FaucetRequestButton = forwardRef<
             <CenteredModal
               isOpen={showTweetPrompt}
               closeModal={() => setShowTweetPrompt(false)}
-              contentClassName="max-w-[536px] flex-1 relative z-[10000]"
+              contentClassName="max-w-[536px] flex-1 relative z-10000"
             >
               <div className="flex flex-col gap-8 items-center w-full p-8">
                 <div className="flex flex-col gap-4 items-center">

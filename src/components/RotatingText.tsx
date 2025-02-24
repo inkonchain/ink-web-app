@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 
 import { useOnInterval } from "@/hooks/useOnInterval";
-import { usePrevious } from "@/hooks/usePrevious";
 import { classNames } from "@/util/classes";
 
 export interface RotatingTextProps {
@@ -10,7 +9,7 @@ export interface RotatingTextProps {
 
 export const RotatingText: React.FC<RotatingTextProps> = ({ sections }) => {
   const [index, setIndex] = useState(0);
-  const previousIndex = usePrevious(index);
+  const previousIndex = index - 1 < 0 ? sections.length - 1 : index - 1;
   useOnInterval(() => {
     setIndex((state) => {
       if (state >= sections.length - 1) return 0;
@@ -25,12 +24,12 @@ export const RotatingText: React.FC<RotatingTextProps> = ({ sections }) => {
         return (
           <div
             className={classNames(
-              "transform-3d transition-transform h-0 duration-600 opacity-0",
+              "transition-transform h-0 duration-600 opacity-0 transform rotate-x-0",
               {
                 "-translate-y-12": i !== index && i !== previousIndex,
                 "-translate-y-0 opacity-100": i === index,
                 // Translate animation doesn't work on Safari for some awkward reason, the text flickers in some insane fashion.
-                "-rotate-x-180 opacity-100": i === previousIndex,
+                "-rotate-x-90 translate-y-12 opacity-100": i === previousIndex,
               }
             )}
             key={i}
