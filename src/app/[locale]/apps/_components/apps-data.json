@@ -1135,6 +1135,30 @@
       }
     },
     {
+      "id": "test.svg#",
+      "name": "test.svg#",
+      "description": "test.svg#",
+      "imageUrl": "/featured-apps/icons/test.svg#.webp",
+      "category": [
+        "Explorers"
+      ],
+      "network": "Testnet",
+      "tags": [
+        "cross-chain",
+        "data"
+      ],
+      "links": {
+        "mainnetWebsite": "https://test.com",
+        "testnetWebsite": "https://test.com",
+        "x": "",
+        "discord": "https://discord.gg/invite/",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer.",
