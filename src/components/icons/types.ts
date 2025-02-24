@@ -14,7 +14,7 @@ export interface ImageProps {
   sizes?: string;
   quality?: number;
   priority?: boolean;
-  placeholder?: "blur" | "empty";
+  placeholder?: "blur-sm" | "empty";
   style?: React.CSSProperties;
   onLoad?: (event: React.SyntheticEvent<HTMLImageElement, Event>) => void;
   onError?: (error: React.SyntheticEvent<HTMLImageElement, Event>) => void;

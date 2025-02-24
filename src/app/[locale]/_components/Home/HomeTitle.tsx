@@ -1,4 +1,5 @@
 "use client";
+import { useMemo } from "react";
 import { Button, InkIcon } from "@inkonchain/ink-kit";
 import { useTranslations } from "next-intl";
 
@@ -39,8 +40,19 @@ const TagLineWithHighlight: React.FC<{
   text?: string;
   disableRotating?: boolean;
 }> = ({ text }) => {
-  const [first, second] = text?.split("|") || [];
-  const sections = second?.split(",") || [];
+  const [first, second] = useMemo(() => text?.split("|") || [], [text]);
+  const allSections = useMemo(() => {
+    const sections = second?.split(",") || [];
+    return sections.map((s, i) => {
+      return i === sections.length - 1 ? (
+        <ColoredText key={s} variant="reverse-purple">
+          {s}
+        </ColoredText>
+      ) : (
+        <span key={s}>{s}</span>
+      );
+    });
+  }, [second]);
   return (
     <div className="flex items-baseline ink:text-h3 flex-wrap justify-start ink:text-button-primary">
       {/** Height should match the height of the PillContainer+Rotating text for the text to be aligned. */}
@@ -51,15 +63,7 @@ const TagLineWithHighlight: React.FC<{
       >
         {first}
       </ColoredText>
-      <RotatingText
-        sections={sections.map((s, i) => {
-          return i === sections.length - 1 ? (
-            <ColoredText variant="reverse-purple">{s}</ColoredText>
-          ) : (
-            s
-          );
-        })}
-      />
+      <RotatingText sections={allSections} />
     </div>
   );
 };

@@ -21,7 +21,7 @@ export function VerificationContent() {
           <div className="flex-1 flex flex-col ink:bg-container-background ink:rounded-lg min-h-full relative shadow-[0px_3px_34px_-10px_#B4B4B466] dark:shadow-[0px_3px_34px_-10px_rgba(0,0,0,0.7)]">
             {/* Add background noise div with matching rounded corners */}
             <div
-              className="absolute inset-0 opacity-50 rounded-events dark:hidden mix-blend-soft-light dark:mix-blend-multiply"
+              className="absolute inset-0 opacity-50 dark:hidden mix-blend-soft-light dark:mix-blend-multiply"
               style={{
                 backgroundImage: 'url("/bg/bg-noise.png")',
                 backgroundRepeat: "repeat",
@@ -90,7 +90,7 @@ export function VerificationContent() {
       </div>
 
       {/* Benefits section */}
-      <div className="bg-softDarkPurple rounded-spotlight-mobile lg:rounded-spotlight p-8 lg:p-16">
+      <div className="bg-softDarkPurple p-8 lg:p-16">
         <div className="flex justify-center mb-8 lg:mb-16">
           <ColoredText
             variant="purple-light"
@@ -106,7 +106,7 @@ export function VerificationContent() {
             <div className="lg:w-1/2">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {/* QuickNode */}
-                <div className="bg-gradient-to-b from-[#B9AAEF] to-[#9680E5] rounded-3xl p-5">
+                <div className="bg-linear-to-b from-[#B9AAEF] to-[#9680E5] rounded-3xl p-5">
                   <div className="flex items-center gap-3 mb-3">
                     <Image
                       src="/icons/quicknode.png"
@@ -124,7 +124,7 @@ export function VerificationContent() {
                 </div>
 
                 {/* Tenderly */}
-                <div className="bg-gradient-to-b from-[#B9AAEF] to-[#9680E5] rounded-3xl p-5">
+                <div className="bg-linear-to-b from-[#B9AAEF] to-[#9680E5] rounded-3xl p-5">
                   <div className="flex items-center gap-3 mb-3">
                     <Image
                       src="/icons/tenderly.png"
@@ -142,7 +142,7 @@ export function VerificationContent() {
                 </div>
 
                 {/* Goldsky */}
-                <div className="bg-gradient-to-b from-[#B9AAEF] to-[#9680E5] rounded-3xl p-5">
+                <div className="bg-linear-to-b from-[#B9AAEF] to-[#9680E5] rounded-3xl p-5">
                   <div className="flex items-center gap-3 mb-3">
                     <Image
                       src="/icons/goldsky.png"
@@ -221,7 +221,7 @@ export function VerificationContent() {
       </div>
 
       {/* Request a feature section */}
-      <div className="flex flex-col lg:flex-row items-center bg-krakenPurple rounded-spotlight-mobile lg:rounded-spotlight p-8 lg:p-16 relative overflow-hidden">
+      <div className="flex flex-col lg:flex-row items-center bg-krakenPurple p-8 lg:p-16 relative overflow-hidden">
         {/* Left side content */}
         <div className="flex flex-col gap-6 z-10 w-full lg:w-1/2">
           <ColoredText

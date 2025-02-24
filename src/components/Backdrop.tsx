@@ -35,7 +35,7 @@ export const Backdrop: React.FC<BackdropProps> = ({
   return (
     <div
       className={classNames(
-        "fixed sm:inset-0 transition-all duration-150 z-[40] opacity-0 backdrop-blur-none",
+        "fixed sm:inset-0 transition-all duration-150 z-40 opacity-0 backdrop-blur-none",
         {
           "opacity-95 backdrop-blur-sm": !noBlur && isVisible,
         }

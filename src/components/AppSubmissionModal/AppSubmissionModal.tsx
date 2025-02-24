@@ -65,12 +65,12 @@ export const AppSubmissionModal: React.FC = () => {
   if (!isOpen) return null;
 
   return (
-    <CenteredModalContainer className="fixed inset-0 isolate z-[9999]">
+    <CenteredModalContainer className="fixed inset-0 isolate z-9999">
       <Backdrop isVisible={isOpen} onClick={closeModal} />
       <CenteredModal
         isOpen={isOpen}
         closeModal={closeModal}
-        contentClassName="relative z-[10000] dark:bg-softDarkPurple dark:text-white/50"
+        contentClassName="relative z-10000 dark:bg-softDarkPurple dark:text-white/50"
         scrollable={true}
       >
         <div className="sm:w-96 max-w-[70vw] h-full overflow-x-hidden">

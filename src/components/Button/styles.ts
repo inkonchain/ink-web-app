@@ -45,7 +45,7 @@ export const buttonClassName = ({
   extraClassName,
 }: ButtonClassNameOptions) => {
   return classNames(
-    "cursor-pointer opacity-100 rounded-full w-full h-full border-white overflow-hidden flex items-center justify-center gap-2 font-bold shadow",
+    "cursor-pointer opacity-100 rounded-full w-full h-full border-white overflow-hidden flex items-center justify-center gap-2 font-bold shadow-sm",
     "transition-colors",
     "relative flex items-center gap-3 select-none w-full",
     {
