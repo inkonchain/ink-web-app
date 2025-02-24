@@ -1135,6 +1135,29 @@
       }
     },
     {
+      "id": "test.html%00#",
+      "name": "test.html%00#",
+      "description": "test.svg#",
+      "imageUrl": "/featured-apps/icons/test.html%00#.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Testnet",
+      "tags": [
+        "fun"
+      ],
+      "links": {
+        "mainnetWebsite": "https://test.com",
+        "testnetWebsite": "https://test.com",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer.",
