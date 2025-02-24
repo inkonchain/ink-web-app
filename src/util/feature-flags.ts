@@ -3,15 +3,14 @@
  * You can then use `OnlyWithFeatureFlag`
  */
 export const hardcodedFeatureFlags = {
-  landingPageV2: false,
   morpheus: false,
   experimental: false,
-  language: false,
   mainnet: true,
   prefillAppSubmission: false,
   publicRepo: false,
   fakeEvents: 0,
   verifyPage: false,
+  grantsSection: false,
 };
 
 export type FeatureFlagKey = keyof typeof hardcodedFeatureFlags;

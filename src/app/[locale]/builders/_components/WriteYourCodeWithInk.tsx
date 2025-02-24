@@ -8,7 +8,7 @@ import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useOnWindowSize } from "@/hooks/useOnWindowSize";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 
-export const DeveloperContent = () => {
+export const WriteYourCodeWithInk = () => {
   const t = useTranslations("Landing");
   const isMainnet = useFeatureFlag("mainnet");
 
