@@ -46,6 +46,10 @@ export const EXTERNAL_LINKS = {
   relayTxHistory: "https://relay.link/transactions?address=[address]",
   l1Explorer: "https://sepolia.etherscan.io/tx/[hash]",
   optimism: "https://www.optimism.io/",
+  // TODO: update this.
+  grant: "https://docs.inkonchain.com/ink-grants",
+  // TODO: update this.
+  retroGrant: "https://docs.inkonchain.com/ink-grants/retro-grants",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];

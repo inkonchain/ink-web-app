@@ -119,7 +119,19 @@
   },
   "Builders": {
     "title": "Start building on Ink",
-    "description": "Our commitment to builders: Ink will provide you with a world class development environment, complete with the tools, support, and users you need to bring your ideas to life."
+    "description": "Our commitment to builders: Ink will provide you with a world class development environment, complete with the tools, support, and users you need to bring your ideas to life.",
+    "grants": {
+      "title": "Grants",
+      "description": "Recognizing Ink builders"
+    },
+    "applyForGrant": {
+      "title": "Apply for Grant",
+      "description": "Do you have an amazing project you want to deploy on Ink? Apply to receive a grant!"
+    },
+    "applyForRetroGrant": {
+      "title": "Apply for Retro Grant",
+      "description": "Saw something amazing deployed on Ink? Submit a project, team, or builder for a retroactive grant."
+    }
   },
   "events": {
     "ethdenver": {
