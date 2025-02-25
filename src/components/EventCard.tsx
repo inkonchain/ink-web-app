@@ -1,7 +1,5 @@
 import { Button, Card, CardContent, InkIcon, Tag } from "@inkonchain/ink-kit";
 
-import { CalendarIcon } from "@/components/icons/Calendar";
-import { LocationIcon } from "@/components/icons/Location";
 import { ParallaxedHoverImage } from "@/components/ParallaxedHoverImage";
 import { HrefProp, Link } from "@/routing";
 import { classNames } from "@/util/classes";
@@ -41,11 +39,15 @@ export const EventCard = ({
           mainLabels={
             <>
               <Tag variant="event">
-                <CalendarIcon size="icon-md" enforce="inherit" />
+                <div className="ink:size-3">
+                  <InkIcon.Calendar />
+                </div>
                 {date}
               </Tag>
               <Tag variant="event">
-                <LocationIcon size="icon-md" enforce="inherit" />
+                <div className="ink:size-3">
+                  <InkIcon.Location />
+                </div>
                 {location}
               </Tag>
             </>

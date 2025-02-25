@@ -1,8 +1,7 @@
 import { Metadata } from "next";
 
-import { AppSubmissionModal } from "@/components/AppSubmissionModal/AppSubmissionModal";
-import { AppSubmissionModalProvider } from "@/components/AppSubmissionModal/AppSubmissionModalContext";
 import { JsonLd } from "@/components/JsonLd";
+import { AppSubmissionModal } from "@/components/Modals/AppSubmissionModal/AppSubmissionModal";
 import { PageView } from "@/components/PageView";
 import { newLayoutContainerClasses } from "@/components/styles/container";
 
@@ -16,22 +15,20 @@ export const metadata: Metadata = {
 
 export default function AppsPage() {
   return (
-    <AppSubmissionModalProvider>
-      <>
-        <JsonLd
-          schema={{
-            "@type": "CollectionPage",
-            name: "Ink Apps Directory",
-            description: "Directory of DeFi applications built on Ink",
-            url: "https://inkonchain.com/apps",
-          }}
-        />
-        <PageView />
-        <div className={newLayoutContainerClasses()}>
-          <AppsContent />
-        </div>
-        <AppSubmissionModal />
-      </>
-    </AppSubmissionModalProvider>
+    <>
+      <JsonLd
+        schema={{
+          "@type": "CollectionPage",
+          name: "Ink Apps Directory",
+          description: "Directory of DeFi applications built on Ink",
+          url: "https://inkonchain.com/apps",
+        }}
+      />
+      <PageView />
+      <div className={newLayoutContainerClasses()}>
+        <AppsContent />
+      </div>
+      <AppSubmissionModal />
+    </>
   );
 }

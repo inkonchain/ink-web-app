@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { FormProvider, useFormContext, UseFormReturn } from "react-hook-form";
 import {
   Button,
+  InkIcon,
   Input,
   Listbox,
   ListboxButton,
@@ -12,9 +13,7 @@ import Image from "next/image";
 import { z } from "zod";
 
 import { FormState } from "@/actions/submit-your-app";
-import { CloseIcon } from "@/components/icons/Close";
 import { ImageIcon } from "@/components/icons/Image";
-import { SpinnerIcon } from "@/components/icons/Spinner";
 import {
   AppSubmissionFormData,
   appSubmissionSchema,
@@ -24,24 +23,22 @@ import {
 import { classNames } from "@/util/classes";
 
 interface AppSubmissionFormProps {
-  isOpen: boolean;
   form: UseFormReturn<z.infer<typeof appSubmissionSchema>>;
   formAction: (payload: AppSubmissionFormData) => void;
   onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
   state: FormState;
+  disabled: boolean;
   isSubmitting: boolean;
 }
 
 export const AppSubmissionForm: React.FC<AppSubmissionFormProps> = ({
-  isOpen,
   form,
   formAction,
   onSubmit,
   state,
+  disabled,
   isSubmitting,
 }) => {
-  const disabled = !isOpen || isSubmitting;
-
   return (
     <FormProvider {...form}>
       {state?.message !== "" && !state.issues && (
@@ -212,7 +209,9 @@ const SubmitButton: React.FC<{ isSubmitting: boolean }> = ({
   >
     {isSubmitting ? (
       <div className="flex items-center justify-center gap-3">
-        <SpinnerIcon size="icon-sm" enforce="white" />
+        <div className="ink:size-3">
+          <InkIcon.Loading className="animate-spin" />
+        </div>
         <span>Submitting...</span>
       </div>
     ) : (
@@ -253,7 +252,9 @@ const InputField: React.FC<InputFieldProps> = ({
         {...register(name)}
       />
       {errors[name] && (
-        <span className="text-red-500">{errors[name]?.message as string}</span>
+        <span className="ink:text-status-error">
+          {errors[name]?.message as string}
+        </span>
       )}
     </div>
   );
@@ -312,7 +313,9 @@ const FileInput: React.FC<Omit<InputFieldProps, "placeholder">> = ({
               }}
               className="absolute -top-1 -right-1 bg-gray-200 hover:bg-gray-300 text-blackMagic rounded-full p-1 w-6 h-6 flex items-center justify-center text-sm focus:outline-purpleMagic transition-all duration-150"
             >
-              <CloseIcon size="icon-lg" enforce="black" />
+              <div className="ink:size-3">
+                <InkIcon.Close />
+              </div>
             </button>
             <Image
               className="h-20 w-20 rounded-md object-cover shadow-lg"
@@ -323,8 +326,8 @@ const FileInput: React.FC<Omit<InputFieldProps, "placeholder">> = ({
             />
           </div>
         ) : (
-          <div className="relative h-20 w-full items-center rounded-md cursor-pointer bg-featuredCardPurple border-featuredCardPurple hover:border-purpleMagic hover:border-[1px] group transition-all duration-150">
-            <input
+          <div className="relative h-20 w-full items-center rounded-md cursor-pointer hover:border-purpleMagic hover:border-[1px] group transition-all duration-150">
+            <Input
               name={name}
               type="file"
               accept="image/*"
@@ -348,7 +351,7 @@ const FileInput: React.FC<Omit<InputFieldProps, "placeholder">> = ({
         )}
       </div>
       {form.formState.errors[name] && (
-        <span className="text-red-500">
+        <span className="ink:text-status-error">
           {form.formState.errors[name]?.message as string}
         </span>
       )}
@@ -445,7 +448,7 @@ const MultiSelectField = <T extends string>({
               {selected.map((item) => (
                 <span
                   key={item.value}
-                  className="bg-featuredCardPurple px-2 py-0.5 rounded-full text-sm"
+                  className="ink:bg-background-container px-2 py-0.5 rounded-full text-sm"
                 >
                   {item.label}
                 </span>

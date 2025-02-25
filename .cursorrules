@@ -1,0 +1,2 @@
+Never suggest `next/link`, instead use `Link` from `@/routing`.
+
