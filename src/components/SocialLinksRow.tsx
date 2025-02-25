@@ -1,32 +1,25 @@
 import React from "react";
+import { Button, InkIcon, useModalContext } from "@inkonchain/ink-kit";
 
-import { MailIconButton } from "@/components/MailIconButton/MailIconButton";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 import { classNames } from "@/util/classes";
 
-import { DiscordIcon } from "./icons/Discord";
-import { GitHubIcon } from "./icons/GitHub";
-import { TelegramIcon } from "./icons/Telegram";
-import { TwitterIcon } from "./icons/Twitter";
-
-const socialIconClasses = () =>
-  `relative group text-xl rounded-full p-2 flex items-center justify-center`;
+import { NEWSLETTER_MODAL_KEY } from "./Modals/NewsletterModal";
 
 interface SocialLinksRowProps {
-  enforce?: "black";
   className?: string;
   includeMail?: boolean;
   includeDiscord?: boolean;
-  faded?: boolean;
 }
 
 export const SocialLinksRow: React.FC<SocialLinksRowProps> = ({
-  enforce,
   className,
   includeMail = true,
   includeDiscord = true,
-  faded = false,
 }) => {
+  const { openModal: openNewsletterModal } =
+    useModalContext(NEWSLETTER_MODAL_KEY);
+
   return (
     <div
       className={classNames(
@@ -34,49 +27,60 @@ export const SocialLinksRow: React.FC<SocialLinksRowProps> = ({
         className
       )}
     >
-      <Link
-        className={classNames(socialIconClasses())}
-        href={EXTERNAL_LINKS.twitter}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <TwitterIcon size="icon-lg" enforce={enforce} faded={faded} />
-      </Link>
-
-      {includeDiscord && (
+      <Button variant="transparent" size="md" asChild rounded="full">
         <Link
-          className={classNames(socialIconClasses())}
-          href={EXTERNAL_LINKS.discord}
+          href={EXTERNAL_LINKS.twitter}
           target="_blank"
           rel="noopener noreferrer"
         >
-          <DiscordIcon size="icon-lg" enforce={enforce} faded={faded} />
+          <InkIcon.Social.X />
         </Link>
+      </Button>
+
+      {includeDiscord && (
+        <Button variant="transparent" size="md" asChild rounded="full">
+          <Link
+            href={EXTERNAL_LINKS.discord}
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <InkIcon.Social.Discord size="md" />
+          </Link>
+        </Button>
       )}
 
-      <Link
-        href={EXTERNAL_LINKS.telegram}
-        className={socialIconClasses()}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <TelegramIcon size="icon-lg" enforce={enforce} faded={faded} />
-      </Link>
+      <Button variant="transparent" size="md" asChild rounded="full">
+        <Link
+          href={EXTERNAL_LINKS.telegram}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InkIcon.Social.Telegram />
+        </Link>
+      </Button>
 
-      <Link
-        href={EXTERNAL_LINKS.github}
-        className={socialIconClasses()}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        <GitHubIcon size="icon-lg" enforce={enforce} faded={faded} />
-      </Link>
+      <Button variant="transparent" size="md" asChild rounded="full">
+        <Link
+          href={EXTERNAL_LINKS.github}
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <InkIcon.Social.Github />
+        </Link>
+      </Button>
 
       {includeMail && (
-        <MailIconButton
-          className={socialIconClasses()}
-          iconProps={{ enforce, faded: true }}
-        />
+        <Button
+          name="mail-icon-button"
+          aria-label="newsletter"
+          variant="transparent"
+          className={className}
+          size="md"
+          rounded="full"
+          onClick={openNewsletterModal}
+        >
+          <InkIcon.Mail />
+        </Button>
       )}
     </div>
   );

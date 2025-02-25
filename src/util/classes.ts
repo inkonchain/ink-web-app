@@ -24,7 +24,6 @@ const customTwMerge = extendTailwindMerge({
         "text-caption-2-regular",
         "text-caption-2-bold",
       ],
-      shadow: ["shadow-large-pop", "shadow-inner-form", "box-shadow"],
     },
   },
 });

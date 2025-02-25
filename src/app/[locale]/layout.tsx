@@ -4,12 +4,11 @@ import { cookies, headers } from "next/headers";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
-import { ContactUsModal } from "@/components/ContactUsModal";
 import { ConsentLogger } from "@/components/CookieConsent/ConsentLogger";
 import { CookieConsent } from "@/components/CookieConsent/CookieConsent";
 import { Footer } from "@/components/Footer";
 import { GlobalSvgStuff } from "@/components/icons/GlobalSvgStuff";
-import { NewsletterModal } from "@/components/NewsletterModal";
+import { ContactUsModal, NewsletterModal } from "@/components/Modals";
 import { Providers } from "@/components/Providers";
 import { ToggleThemeShortcut } from "@/components/ToggleThemeShortcut";
 import { clientEnv } from "@/env-client";
