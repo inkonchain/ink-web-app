@@ -1,13 +1,13 @@
 "use client";
-import { Button, InkIcon } from "@inkonchain/ink-kit";
+import { Button, InkIcon, useModalContext } from "@inkonchain/ink-kit";
 
-import { useAppSubmissionModalContext } from "@/components/AppSubmissionModal/AppSubmissionModalContext";
+import { APP_SUBMISSION_MODAL_KEY } from "@/components/Modals/AppSubmissionModal/AppSubmissionModal";
 import { classNames } from "@/util/classes";
 
 import "./SubmitAppButton.css";
 
 export function SubmitAppButton() {
-  const { setIsOpen } = useAppSubmissionModalContext();
+  const { openModal } = useModalContext(APP_SUBMISSION_MODAL_KEY);
 
   return (
     <Button
@@ -15,10 +15,7 @@ export function SubmitAppButton() {
       variant="secondary"
       size="md"
       iconLeft={<InkIcon.Plus className="ink:size-3" />}
-      onClick={(e) => {
-        e.preventDefault();
-        setIsOpen(true);
-      }}
+      onClick={openModal}
     >
       Submit app
     </Button>

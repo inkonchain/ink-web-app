@@ -72,7 +72,7 @@ export const Verifications = () => {
 const DesktopVerificationsTable = () => {
   const { isConnected } = useAccount();
   return (
-    <table className="w-full border-collapse bg-featuredCardPurple backdrop-blur-xl rounded-xl hidden lg:block">
+    <table className="w-full border-collapse ink:bg-background-container backdrop-blur-xl rounded-xl hidden lg:block">
       <thead>
         <tr className="text-right border-b border-blackMagic/10 dark:border-whiteMagic/10 ink:text-text-muted ink:text-body-3-bold">
           <th className="py-4 px-6 text-left">Verification</th>
@@ -164,7 +164,7 @@ const DesktopVerificationsTable = () => {
 const MobileVerificationsTable = () => {
   const { isConnected } = useAccount();
   return (
-    <div className="w-full border-collapse bg-featuredCardPurple rounded-2xl lg:hidden">
+    <div className="w-full border-collapse ink:bg-background-container rounded-2xl lg:hidden">
       <div className="text-right border-b border-blackMagic/10 dark:border-whiteMagic/10 ink:text-text-muted ink:text-body-3-bold">
         <th className="py-4 px-6 text-left">Verification</th>
       </div>

@@ -1,14 +1,15 @@
 "use client";
 
-import { Button } from "@inkonchain/ink-kit";
+import { Button, useModalContext } from "@inkonchain/ink-kit";
 import { useTranslations } from "next-intl";
 
 import { ColoredText } from "@/components/ColoredText";
-import { useContactUsModalContext } from "@/components/ContactUsModal/ContactUsModalContext";
+import { CONTACT_US_MODAL_KEY } from "@/components/Modals/ContactUsModal";
 
 export function VerifyHaveASuggestion() {
   const t = useTranslations("Verify.haveASuggestion");
-  const { setIsOpen } = useContactUsModalContext();
+  const { openModal: openContactUsModal } =
+    useModalContext(CONTACT_US_MODAL_KEY);
 
   return (
     <div className="flex flex-col items-center gap-6 text-center px-4">
@@ -24,7 +25,7 @@ export function VerifyHaveASuggestion() {
         {t("description")}
       </div>
 
-      <Button variant="secondary" size="md" onClick={() => setIsOpen(true)}>
+      <Button variant="secondary" size="md" onClick={openContactUsModal}>
         {t("contactTeam")}
       </Button>
     </div>

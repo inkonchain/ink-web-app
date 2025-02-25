@@ -1,8 +1,9 @@
 "use client";
 
 import React from "react";
+import { Button, useModalContext } from "@inkonchain/ink-kit";
 
-import { useContactUsModalContext } from "@/components/ContactUsModal/ContactUsModalContext";
+import { CONTACT_US_MODAL_KEY } from "./Modals/ContactUsModal";
 
 export interface ContactUsPrivacyButtonProps {
   text: string;
@@ -11,11 +12,11 @@ export interface ContactUsPrivacyButtonProps {
 export const ContactUsPrivacyButton: React.FC<ContactUsPrivacyButtonProps> = ({
   text,
 }) => {
-  const { setIsOpen } = useContactUsModalContext();
+  const { openModal } = useModalContext(CONTACT_US_MODAL_KEY);
   return (
     <button
-      onClick={() => setIsOpen(true)}
-      className="text-blue-500 hover:underline"
+      className="ml-1 underline inline-text hover:cursor-pointer"
+      onClick={openModal}
     >
       {text}
     </button>

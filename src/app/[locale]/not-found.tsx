@@ -1,8 +1,9 @@
+import { Button } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
-import { ButtonLink } from "@/components/Button/ButtonLink";
 import { ColoredText } from "@/components/ColoredText";
+import { Link } from "@/routing";
 
 export const metadata = {
   robots: {
@@ -33,9 +34,9 @@ export default function NotFoundPage() {
               <h2>{t("title")}</h2>
             </ColoredText>
             <div>
-              <ButtonLink href="/" variant="primary" size={"lg"}>
-                {t("cta")}
-              </ButtonLink>
+              <Button variant="primary" size="lg" asChild>
+                <Link href="/">{t("cta")}</Link>
+              </Button>
             </div>
           </div>
         </div>

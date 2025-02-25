@@ -1,7 +1,11 @@
 import { Metadata } from "next";
+import { useTranslations } from "next-intl";
 
 import { JsonLd } from "@/components/JsonLd";
 import { PageView } from "@/components/PageView";
+import { newLayoutContainerClasses } from "@/components/styles/container";
+
+import { PageHeader } from "../_components/PageHeader";
 
 import { Faucet } from "./_components/Faucet";
 
@@ -27,6 +31,7 @@ export const metadata: Metadata = {
 };
 
 export default function FaucetPage() {
+  const t = useTranslations("Faucet");
   return (
     <>
       <JsonLd
@@ -49,7 +54,10 @@ export default function FaucetPage() {
       />
       <PageView />
 
-      <Faucet />
+      <div className={newLayoutContainerClasses()}>
+        <PageHeader title={t("title")} description={t("description")} />
+        <Faucet />
+      </div>
     </>
   );
 }

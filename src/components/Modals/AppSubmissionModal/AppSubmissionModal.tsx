@@ -1,6 +1,6 @@
 "use client";
 import React from "react";
-import { Button } from "@inkonchain/ink-kit";
+import { Button, Modal, useModalContext } from "@inkonchain/ink-kit";
 import Lottie from "lottie-react";
 import Image from "next/image";
 
@@ -8,31 +8,26 @@ import type { FormState } from "@/actions/submit-your-app";
 import { submitYourApp } from "@/actions/submit-your-app";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useForm } from "@/hooks/useForm";
-import { useModal } from "@/hooks/useModal";
 import {
   AppSubmissionFormData,
   appSubmissionSchema,
 } from "@/schemas/app-submission-schema";
 
-import { Backdrop } from "../Backdrop";
-import { CenteredModal, CenteredModalContainer } from "../CenteredModal";
-import { ColoredText } from "../ColoredText";
+import { ColoredText } from "../../ColoredText";
 
 import { AppSubmissionForm } from "./_components/AppSubmissionForm";
 import { PullRequestButton } from "./_components/PullRequestButton";
 import animation from "./animation.json";
-import { useAppSubmissionModalContext } from "./AppSubmissionModalContext";
+
+export const APP_SUBMISSION_MODAL_KEY = "app-submission-modal";
 
 export const AppSubmissionModal: React.FC = () => {
-  const { isOpen, setIsOpen } = useAppSubmissionModalContext();
+  const { isModalOpen } = useModalContext(APP_SUBMISSION_MODAL_KEY);
 
-  function closeModal() {
+  function onCloseModal() {
     reset();
-    setIsOpen(false);
     form.reset();
   }
-
-  useModal({ isOpen, closeModal, modalKey: "app-submission-modal" });
 
   const { state, form, formAction, onSubmit, reset, isSubmitting } = useForm<
     FormState,
@@ -62,18 +57,15 @@ export const AppSubmissionModal: React.FC = () => {
       : {}
   );
 
-  if (!isOpen) return null;
-
   return (
-    <CenteredModalContainer className="fixed inset-0 isolate z-9999">
-      <Backdrop isVisible={isOpen} onClick={closeModal} />
-      <CenteredModal
-        isOpen={isOpen}
-        closeModal={closeModal}
-        contentClassName="relative z-10000 dark:bg-softDarkPurple dark:text-white/50"
-        scrollable={true}
-      >
-        <div className="sm:w-96 max-w-[70vw] h-full overflow-x-hidden">
+    <Modal
+      id={APP_SUBMISSION_MODAL_KEY}
+      hasBackdrop
+      onClose={onCloseModal}
+      title="App Submission"
+    >
+      {() => (
+        <div className="max-h-[60vh] overflow-x-hidden">
           {state.success ? (
             <div className="flex flex-col gap-2 items-center h-full">
               <Lottie
@@ -105,7 +97,7 @@ export const AppSubmissionModal: React.FC = () => {
                   variant="primary"
                   className="w-full"
                   size="lg"
-                  onClick={closeModal}
+                  onClick={onCloseModal}
                 >
                   Close
                 </Button>
@@ -128,17 +120,17 @@ export const AppSubmissionModal: React.FC = () => {
                 </ColoredText>
               </div>
               <AppSubmissionForm
-                isOpen={isOpen}
                 form={form}
                 formAction={formAction}
                 onSubmit={onSubmit}
                 state={state}
+                disabled={!isModalOpen || isSubmitting}
                 isSubmitting={isSubmitting}
               />
             </>
           )}
         </div>
-      </CenteredModal>
-    </CenteredModalContainer>
+      )}
+    </Modal>
   );
 };
