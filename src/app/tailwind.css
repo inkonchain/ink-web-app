@@ -1,0 +1,220 @@
+@import "@inkonchain/ink-kit/style.css" layer(base);
+
+@import "tailwindcss";
+@import "./globals.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+  The default border color has changed to `currentColor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentColor);
+  }
+}
+
+@theme {
+  /** Colors */
+  --color-default: var(--ink-text-default);
+  --color-inkGradient: var(--ink-button-primary);
+  --color-gradientPurple: #8049f2;
+  --color-blackMagic: #0b0d12;
+  --color-whiteMagic: #f6f4ff;
+
+  --color-dapps-icon-gradient: linear-gradient(
+      144.22deg,
+      #c7e1ff -40.26%,
+      #c6c7d2 66.08%,
+      #7132f5 125.73%
+    ),
+    radial-gradient(
+      61.23% 153.65% at -4.6% -9.33%,
+      #c7e1ff 0%,
+      rgba(199, 225, 255, 0.6) 33.33%,
+      #f6f4ff 66.67%,
+      rgba(198, 199, 210, 0) 100%
+    ),
+    linear-gradient(0deg, rgba(130, 215, 251, 0), rgba(130, 215, 251, 0)),
+    radial-gradient(
+      50% 50% at 50% 50%,
+      rgba(255, 255, 255, 0.7) 0%,
+      rgba(255, 255, 255, 0) 100%
+    );
+
+  --animation-marquee: "marquee 25s linear infinite";
+  --animation-pulse: "slight-pulse 3s ease-in-out infinite";
+  --animation-slightPulse: "slight-pulse 5.5s ease-in-out infinite";
+
+  --blur-xs: "2px";
+  --backdrop-blur-xs: "2px";
+
+  --border-radius-4xl: "30px";
+
+  --font-size-h1: "64px";
+  --font-size-h1-line-height: "60.8px";
+  --font-size-h1-letter-spacing: "-2%";
+
+  --font-size-h2: "38px";
+  --font-size-h2-line-height: "38px";
+  --font-size-h2-letter-spacing: "-1%";
+
+  --font-size-h3: "32px";
+  --font-size-h3-line-height: "32px";
+  --font-size-h3-letter-spacing: "-1%";
+
+  --font-size-body: "16px";
+  --font-size-body-line-height: "22px";
+
+  --font-size-body-2: "16px";
+  --font-size-body-2-line-height: "20px";
+
+  --font-size-body-3: "14px";
+  --font-size-body-3-line-height: "18px";
+
+  --font-size-4xl: "36px";
+  --font-size-4xl-line-height: "47px";
+  --font-size-4xl-letter-spacing: "-2%";
+
+  --font-size-6xl: "60px";
+  --font-size-6xl-line-height: "72px";
+  --font-size-6xl-letter-spacing: "-2%";
+
+  --duration-150: "150ms";
+  --duration-600: "600ms";
+
+  --background-size-overflow-150: "150% 100%";
+  --background-size-overflow-200: "200% 100%";
+
+  /* Generated using: https://linear-easing-generator.netlify.app/ */
+  --ease-spring: linear(
+    0,
+    0.002,
+    0.007 1.1%,
+    0.027,
+    0.06,
+    0.108 5.1%,
+    0.214 7.7%,
+    0.58 15.8%,
+    0.686,
+    0.774,
+    0.847,
+    0.907,
+    0.955,
+    0.991 32.1%,
+    1.011 34.6%,
+    1.026 37.3%,
+    1.034 40.2%,
+    1.037 43.5%,
+    1.034 48.2%,
+    1.012 62.1%,
+    1.003 71%,
+    0.999 81.9% 100%
+  );
+
+  --breakpoint-menu: 1035px;
+  --breakpoint-sm-landscape-only: \(max-height: 700px\)and \(min-width: 640px\);
+  --breakpoint-hd: 1920px;
+  --breakpoint-2xl: 1600px;
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes slightPulse {
+    0% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0% 50%;
+    }
+  }
+}
+
+@utility dark {
+  /** To optimise **/
+
+  & body {
+    background-color: #160f1f;
+  }
+}
+
+@utility pause {
+  /** https://github.com/tailwindlabs/tailwindcss/discussions/3654#discussioncomment-2327745 */
+  animation-play-state: paused;
+}
+
+@utility scrollbar-custom {
+  scrollbar-width: thin; /* Firefox */
+  scrollbar-color: var(--ink-scrollbar) transparent; /* Firefox */
+
+  &::-webkit-scrollbar {
+    width: 12px; /* width of the entire scrollbar */
+  }
+  f &::-webkit-scrollbar-track {
+    background: transparent; /* color of the tracking area */
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: var(--ink-scrollbar); /* color of the scroll thumb */
+    border-radius: 20px; /* roundness of the scroll thumb */
+  }
+}
+
+@utility no-scrollbar {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@layer utilities {
+  body {
+    font-family:
+      var(--font-plus-jakarta-sans),
+      var(--font-inter),
+      -apple-system,
+      BlinkMacSystemFont,
+      "Segoe UI",
+      Helvetica,
+      "Apple Color Emoji",
+      Arial,
+      sans-serif,
+      "Segoe UI Emoji",
+      "Segoe UI Symbol";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #f0efff;
+    background-size: cover;
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+
+  :root {
+    --ink-button-primary: rgb(113, 50, 245);
+    --ink-scrollbar: color-mix(
+      in srgb,
+      var(--ink-button-primary) 20%,
+      transparent
+    );
+  }
+}

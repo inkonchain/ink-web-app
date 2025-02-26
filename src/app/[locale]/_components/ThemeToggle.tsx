@@ -1,10 +1,8 @@
 "use client";
 
-import { Button } from "@inkonchain/ink-kit";
+import { Button, InkIcon } from "@inkonchain/ink-kit";
 import { useTheme } from "next-themes";
 
-import { MoonIcon } from "@/components/icons/Moon";
-import { SunIcon } from "@/components/icons/Sun";
 import { classNames } from "@/util/classes";
 
 export const ThemeToggle = () => {
@@ -19,7 +17,7 @@ export const ThemeToggle = () => {
       className="ink:text-text-muted duration-0 bg-transparent"
       iconLeft={
         <div className="relative">
-          <SunIcon
+          <InkIcon.Sun
             className={classNames(
               "absolute inset-0 opacity-0",
               theme === "dark" && "opacity-100"
@@ -27,7 +25,7 @@ export const ThemeToggle = () => {
             size="icon-lg"
             enforce="inherit"
           />
-          <MoonIcon
+          <InkIcon.Moon
             className={classNames(
               "absolute inset-0 opacity-100",
               theme === "dark" && "opacity-0"

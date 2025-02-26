@@ -11,7 +11,7 @@ export default async function InfoLayout({
 }) {
   return (
     <div className="ink:bg-background-container p-2 rounded-lg pt-8 mb-8 mx-2 flex items-center justify-center max-w-4xl w-full">
-      <div className="max-w-2xl p-4">{children}</div>
+      <div className="max-w-2xl p-4 flex flex-col gap-4 mb-16">{children}</div>
     </div>
   );
 }

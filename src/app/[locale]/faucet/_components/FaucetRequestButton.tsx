@@ -1,24 +1,20 @@
 "use client";
 
-import { forwardRef, useCallback, useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { toast } from "react-toastify";
+import {
+  Button,
+  InkIcon,
+  Input,
+  Modal,
+  useModalContext,
+} from "@inkonchain/ink-kit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { CloudflareProvider, getAddress } from "ethers";
 import { useAccount } from "wagmi";
 
 import { Backdrop } from "@/components/Backdrop";
-import { Button } from "@/components/Button/Button";
-import {
-  CenteredModal,
-  CenteredModalContainer,
-} from "@/components/CenteredModal";
 import { ColoredText } from "@/components/ColoredText";
-import { TwitterIcon } from "@/components/icons/Twitter";
-import {
-  inputClassNames,
-  inputContainerClassNames,
-  inputIconClassNames,
-} from "@/components/InputWithSubmit/styles";
 import { clientEnv } from "@/env-client";
 import { useFaucetInfoAndCaptcha } from "@/hooks/useFaucetInfoAndHCaptcha";
 
@@ -133,417 +129,389 @@ const getRandomTweetTemplate = () => {
   return TWEET_TEMPLATES[randomIndex];
 };
 
-export const FaucetRequestButton = forwardRef<
-  HTMLButtonElement,
-  FaucetRequestButtonProps
->(
-  (
-    { disabled, children, className, type = "button", onChange, address },
-    ref
-  ) => {
-    const chainId = 763373; // Ink Sepolia
-    const [requestLoading, setRequestLoading] = useState(false);
-    const [waitingForConnection, setWaitingForConnection] = useState(false);
-    const hasAutoRequested = useRef(false);
-    const { hcaptchaLoaded, executeHCaptcha } =
-      useFaucetInfoAndCaptcha(chainId);
-    const { isConnected } = useAccount();
-    const { openConnectModal } = useConnectModal();
-    const [showTweetPrompt, setShowTweetPrompt] = useState(false);
-    const [tweetUrl, setTweetUrl] = useState("");
-    const [isHCaptchaVisible, setIsHCaptchaVisible] = useState(false);
-    const [showBackdrop, setShowBackdrop] = useState(false);
-    const [skipTweetPrompt, setSkipTweetPrompt] = useState(false);
-    const [tweetModalLoading, setTweetModalLoading] = useState(false);
+export const FaucetRequestButton: React.FC<FaucetRequestButtonProps> = ({
+  disabled,
+  children,
+  type = "button",
+  onChange,
+  address,
+}) => {
+  const chainId = 763373; // Ink Sepolia
+  const [requestLoading, setRequestLoading] = useState(false);
+  const [waitingForConnection, setWaitingForConnection] = useState(false);
+  const hasAutoRequested = useRef(false);
+  const { hcaptchaLoaded, executeHCaptcha } = useFaucetInfoAndCaptcha(chainId);
+  const { isConnected } = useAccount();
+  const { openConnectModal } = useConnectModal();
+  const [tweetUrl, setTweetUrl] = useState("");
+  const [isHCaptchaVisible, setIsHCaptchaVisible] = useState(false);
+  const [showBackdrop, setShowBackdrop] = useState(false);
+  const [skipTweetPrompt, setSkipTweetPrompt] = useState(false);
+  const [tweetModalLoading, setTweetModalLoading] = useState(false);
+  const modalId = "tweet-prompt-modal";
+  const { openModal: openTweetPrompt } = useModalContext(modalId);
 
-    const handleRequest = useCallback(
-      async (forceSkip?: boolean, setLoading = setRequestLoading) => {
-        setLoading(true);
+  const handleRequest = useCallback(
+    async (forceSkip?: boolean, setLoading = setRequestLoading) => {
+      setLoading(true);
 
-        if (!isConnected && address.trim() === "" && openConnectModal) {
-          setWaitingForConnection(true);
-          openConnectModal();
-          setLoading(false);
-          return;
-        }
+      if (!isConnected && address.trim() === "" && openConnectModal) {
+        setWaitingForConnection(true);
+        openConnectModal();
+        setLoading(false);
+        return;
+      }
 
-        if (address.trim() === "") {
-          toast.error("Please enter an address or ENS name first.", {
-            toastId: "address-error",
-            ...TOAST_STYLE,
-          });
-          setLoading(false);
-          return;
-        }
+      if (address.trim() === "") {
+        toast.error("Please enter an address or ENS name first.", {
+          toastId: "address-error",
+          ...TOAST_STYLE,
+        });
+        setLoading(false);
+        return;
+      }
 
-        let resolvedAddress: string;
-        try {
-          resolvedAddress = await resolveAddress(address);
-        } catch (error) {
-          toast.error((error as Error).message, TOAST_STYLE);
-          setLoading(false);
-          return;
-        }
+      let resolvedAddress: string;
+      try {
+        resolvedAddress = await resolveAddress(address);
+      } catch (error) {
+        toast.error((error as Error).message, TOAST_STYLE);
+        setLoading(false);
+        return;
+      }
 
-        try {
-          // Check rate limit first
-          const rateLimitRes = await fetch(
-            `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/check-rate-limit`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({ address: resolvedAddress, chainId }),
-            }
-          );
-
-          if (!rateLimitRes.ok) {
-            const errorData = await rateLimitRes.json();
-            toast.error(
-              <>
-                <span
-                  style={{
-                    color: "inherit",
-                    display: "block",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {errorData.message ??
-                    "Faucet is temporarily unavailable. Please try again later."}
-                </span>
-                <span style={{ color: "inherit" }}>
-                  See{" "}
-                  <a
-                    href="https://docs.inkonchain.com/quick-start/faucets"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "#60A5FA", textDecoration: "underline" }}
-                  >
-                    docs.inkonchain.com
-                  </a>{" "}
-                  for other faucet options.
-                </span>
-              </>,
-              TOAST_STYLE
-            );
-            setLoading(false);
-            return;
+      try {
+        // Check rate limit first
+        const rateLimitRes = await fetch(
+          `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/check-rate-limit`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({ address: resolvedAddress, chainId }),
           }
+        );
 
-          const rateLimitData = await rateLimitRes.json();
-
-          if (!rateLimitData.allowed) {
-            toast.error(
-              <>
-                <span
-                  style={{
-                    color: "inherit",
-                    display: "block",
-                    marginBottom: "0.5rem",
-                  }}
-                >
-                  {rateLimitData.message ??
-                    "Faucet is temporarily unavailable. Please try again later."}
-                </span>
-                <span style={{ color: "inherit" }}>
-                  See{" "}
-                  <a
-                    href="https://docs.inkonchain.com/quick-start/faucets"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{ color: "#60A5FA", textDecoration: "underline" }}
-                  >
-                    docs.inkonchain.com
-                  </a>{" "}
-                  for other faucet options.
-                </span>
-              </>,
-              TOAST_STYLE
-            );
-            setLoading(false);
-            return;
-          }
-
-          if (forceSkip) {
-            setTweetUrl("");
-          } else if (!tweetUrl && !skipTweetPrompt) {
-            setLoading(false);
-            setShowTweetPrompt(true);
-            return;
-          } else if (tweetUrl && !validateTweetUrl(tweetUrl)) {
-            toast.error(
-              "Please provide a valid X/Twitter post URL.",
-              TOAST_STYLE
-            );
-            setLoading(false);
-            return;
-          }
-
-          // If not rate limited, proceed with captcha verification
-          let hcaptchaToken = undefined;
-          if (hcaptchaLoaded) {
-            try {
-              setIsHCaptchaVisible(true);
-
-              // Small delay before showing backdrop
-              setTimeout(() => {
-                setShowBackdrop(true);
-              }, 600);
-
-              hcaptchaToken = await executeHCaptcha();
-
-              setShowBackdrop(false);
-              setIsHCaptchaVisible(false);
-            } catch (error) {
-              setShowBackdrop(false);
-              setIsHCaptchaVisible(false);
-              console.error("hCaptcha execution error:", error);
-              toast.error("Failed to verify captcha.", TOAST_STYLE);
-              setLoading(false);
-              return;
-            }
-          } else {
-            console.warn("hCaptcha not loaded or not ready");
-            toast.warning("hCaptcha not ready. Please try again.", TOAST_STYLE);
-            setLoading(false);
-            return;
-          }
-
-          // If captcha is solved, proceed with the claim
-          const res = await fetch(
-            `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/claim`,
-            {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify({
-                address: resolvedAddress,
-                chainId,
-                hcaptchaToken,
-                multiplierToken: localStorage.getItem("multiplierToken"),
-              }),
-            }
-          );
-
-          const responseData = await res.json();
-
-          await onChange(true);
-
-          res.ok
-            ? toast.success(
-                `🎉 Testnet ETH successfully claimed! Enjoy!`,
-                TOAST_STYLE
-              )
-            : toast.error(`${responseData.message}`, TOAST_STYLE);
-        } catch (error) {
-          console.error("Request error:", error);
-          await onChange(false);
+        if (!rateLimitRes.ok) {
+          const errorData = await rateLimitRes.json();
           toast.error(
-            `${error instanceof Error ? error.message : "❌ Failed to claim testnet ETH. Please try again."}`,
+            <>
+              <span
+                style={{
+                  color: "inherit",
+                  display: "block",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {errorData.message ??
+                  "Faucet is temporarily unavailable. Please try again later."}
+              </span>
+              <span style={{ color: "inherit" }}>
+                See{" "}
+                <a
+                  href="https://docs.inkonchain.com/quick-start/faucets"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#60A5FA", textDecoration: "underline" }}
+                >
+                  docs.inkonchain.com
+                </a>{" "}
+                for other faucet options.
+              </span>
+            </>,
             TOAST_STYLE
           );
-        } finally {
-          localStorage.removeItem("multiplierToken");
           setLoading(false);
-          setSkipTweetPrompt(false);
-          setTweetUrl("");
+          return;
         }
-      },
-      [
-        address,
-        isConnected,
-        openConnectModal,
-        onChange,
-        hcaptchaLoaded,
-        executeHCaptcha,
-        tweetUrl,
-        skipTweetPrompt,
-        setTweetUrl,
-      ]
-    );
 
-    // Watch for connection success and address being populated
-    useEffect(() => {
-      if (
-        waitingForConnection &&
-        isConnected &&
-        address &&
-        !hasAutoRequested.current
-      ) {
-        setWaitingForConnection(false);
-        hasAutoRequested.current = true;
-        handleRequest();
-      }
-    }, [isConnected, waitingForConnection, address, handleRequest]);
+        const rateLimitData = await rateLimitRes.json();
 
-    // Reset auto-request flag when address changes
-    useEffect(() => {
-      hasAutoRequested.current = false;
-    }, [address]);
-
-    return (
-      <>
-        <Button
-          ref={ref}
-          onClick={(e) => {
-            e.preventDefault(); // Prevent form submission
-            handleRequest(false, setRequestLoading);
-          }}
-          disabled={requestLoading || disabled}
-          type={type}
-          className={`bg-[#7538F5] hover:bg-[#7538F5]/90 shadow-blue-glow
-          rounded-full text-center text-white text-base font-bold uppercase font-[Plus_Jakarta_Sans] min-w-[160px] ${
-            requestLoading ? "opacity-50 cursor-not-allowed" : ""
-          } ${className}`}
-          variant="primary"
-          size="md"
-        >
-          {requestLoading ? "Requesting..." : children}
-        </Button>
-
-        {isHCaptchaVisible && (
-          <Backdrop
-            isVisible={showBackdrop}
-            onClick={() => {
-              const closeButton = document.querySelector(
-                'iframe[title="close"]'
-              ) as HTMLIFrameElement;
-              if (closeButton) {
-                closeButton.click();
-              }
-            }}
-          />
-        )}
-
-        {showTweetPrompt && (
-          <CenteredModalContainer className="fixed inset-0 isolate z-9999">
-            <Backdrop
-              isVisible={showTweetPrompt}
-              onClick={() => setShowTweetPrompt(false)}
-            />
-            <CenteredModal
-              isOpen={showTweetPrompt}
-              closeModal={() => setShowTweetPrompt(false)}
-              contentClassName="max-w-[536px] flex-1 relative z-10000"
-            >
-              <div className="flex flex-col gap-8 items-center w-full p-8">
-                <div className="flex flex-col gap-4 items-center">
-                  <ColoredText
-                    variant="purple-dark"
-                    className="text-2xl text-center font-medium"
-                  >
-                    Share a tweet for a 2x bonus!
-                  </ColoredText>
-                  <p className="text-body text-center">
-                    Tweet about our faucet and include the faucet URL to get 2x
-                    more testnet ETH.
-                  </p>
-                </div>
-
-                <div className="flex flex-col items-center -my-2">
-                  <Button
-                    type="button"
-                    onClick={() => {
-                      const tweetText = getRandomTweetTemplate();
-                      const shareUrl = new URL("https://x.com/intent/tweet");
-                      shareUrl.searchParams.set("text", tweetText);
-                      shareUrl.searchParams.set("url", TWEET_PARAMS.url);
-                      shareUrl.searchParams.set("cards", "summary_large_image");
-                      window.open(shareUrl.toString(), "_blank");
-                    }}
-                    variant="spotlight"
-                    size="xs"
-                    disabled={tweetModalLoading}
-                  >
-                    Generate Tweet
-                  </Button>
-                </div>
-
-                <div
-                  className={inputContainerClassNames({
-                    variant: "gray",
-                    hasIcon: true,
-                    hasError: tweetUrl !== "" && !validateTweetUrl(tweetUrl),
-                    size: "lg",
-                  })}
+        if (!rateLimitData.allowed) {
+          toast.error(
+            <>
+              <span
+                style={{
+                  color: "inherit",
+                  display: "block",
+                  marginBottom: "0.5rem",
+                }}
+              >
+                {rateLimitData.message ??
+                  "Faucet is temporarily unavailable. Please try again later."}
+              </span>
+              <span style={{ color: "inherit" }}>
+                See{" "}
+                <a
+                  href="https://docs.inkonchain.com/quick-start/faucets"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{ color: "#60A5FA", textDecoration: "underline" }}
                 >
-                  <input
-                    type="text"
-                    placeholder="Paste your tweet URL here"
-                    className={inputClassNames({
-                      extraClassName: "pb-[3px]",
-                      variant: "gray",
-                    })}
-                    value={tweetUrl}
-                    onChange={(e) => setTweetUrl(e.target.value)}
-                    onKeyDown={async (e) => {
-                      if (e.key === "Enter") {
-                        e.preventDefault();
-                        try {
-                          await validateAndProcessTweet(chainId, tweetUrl);
-                          handleRequest(false, setTweetModalLoading);
-                        } catch (error) {
-                          toast.error(
-                            error instanceof Error
-                              ? error.message
-                              : "Failed to validate tweet. Please try again.",
-                            TOAST_STYLE
-                          );
-                        }
-                      }
-                    }}
-                  />
-                  <div className={inputIconClassNames({ variant: "gray" })}>
-                    <TwitterIcon size="icon-md" enforce="black" />
-                  </div>
-                </div>
+                  docs.inkonchain.com
+                </a>{" "}
+                for other faucet options.
+              </span>
+            </>,
+            TOAST_STYLE
+          );
+          setLoading(false);
+          return;
+        }
 
-                <div className="flex gap-4">
-                  <Button
-                    type="button"
-                    onClick={() => {
-                      setShowTweetPrompt(false);
-                      setSkipTweetPrompt(true);
-                      handleRequest(true, setTweetModalLoading);
-                    }}
-                    variant="spotlight"
-                    size="md"
-                    disabled={tweetModalLoading}
-                  >
-                    Skip
-                  </Button>
-                  <Button
-                    onClick={async () => {
-                      try {
-                        await validateAndProcessTweet(chainId, tweetUrl);
-                        handleRequest(false, setTweetModalLoading);
-                      } catch (error) {
-                        toast.error(
-                          error instanceof Error
-                            ? error.message
-                            : "Failed to validate tweet. Please try again.",
-                          TOAST_STYLE
-                        );
-                      }
-                    }}
-                    type="button"
-                    variant="primary"
-                    size="md"
-                    disabled={tweetModalLoading}
-                    className="shadow-large-pop shadow-krakenPurple/50"
-                  >
-                    {tweetModalLoading ? "Processing..." : "Continue"}
-                  </Button>
-                </div>
-              </div>
-            </CenteredModal>
-          </CenteredModalContainer>
+        if (forceSkip) {
+          setTweetUrl("");
+        } else if (!tweetUrl && !skipTweetPrompt) {
+          setLoading(false);
+          openTweetPrompt();
+          return;
+        } else if (tweetUrl && !validateTweetUrl(tweetUrl)) {
+          toast.error(
+            "Please provide a valid X/Twitter post URL.",
+            TOAST_STYLE
+          );
+          setLoading(false);
+          return;
+        }
+
+        // If not rate limited, proceed with captcha verification
+        let hcaptchaToken = undefined;
+        if (hcaptchaLoaded) {
+          try {
+            setIsHCaptchaVisible(true);
+
+            // Small delay before showing backdrop
+            setTimeout(() => {
+              setShowBackdrop(true);
+            }, 600);
+
+            hcaptchaToken = await executeHCaptcha();
+
+            setShowBackdrop(false);
+            setIsHCaptchaVisible(false);
+          } catch (error) {
+            setShowBackdrop(false);
+            setIsHCaptchaVisible(false);
+            console.error("hCaptcha execution error:", error);
+            toast.error("Failed to verify captcha.", TOAST_STYLE);
+            setLoading(false);
+            return;
+          }
+        } else {
+          console.warn("hCaptcha not loaded or not ready");
+          toast.warning("hCaptcha not ready. Please try again.", TOAST_STYLE);
+          setLoading(false);
+          return;
+        }
+
+        // If captcha is solved, proceed with the claim
+        const res = await fetch(
+          `${clientEnv.NEXT_PUBLIC_FAUCET_API_URL}/api/claim`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              address: resolvedAddress,
+              chainId,
+              hcaptchaToken,
+              multiplierToken: localStorage.getItem("multiplierToken"),
+            }),
+          }
+        );
+
+        const responseData = await res.json();
+
+        await onChange(true);
+
+        res.ok
+          ? toast.success(
+              `🎉 Testnet ETH successfully claimed! Enjoy!`,
+              TOAST_STYLE
+            )
+          : toast.error(`${responseData.message}`, TOAST_STYLE);
+      } catch (error) {
+        console.error("Request error:", error);
+        await onChange(false);
+        toast.error(
+          `${error instanceof Error ? error.message : "❌ Failed to claim testnet ETH. Please try again."}`,
+          TOAST_STYLE
+        );
+      } finally {
+        localStorage.removeItem("multiplierToken");
+        setLoading(false);
+        setSkipTweetPrompt(false);
+        setTweetUrl("");
+      }
+    },
+    [
+      address,
+      isConnected,
+      openConnectModal,
+      onChange,
+      hcaptchaLoaded,
+      executeHCaptcha,
+      tweetUrl,
+      skipTweetPrompt,
+      setTweetUrl,
+      openTweetPrompt,
+    ]
+  );
+
+  // Watch for connection success and address being populated
+  useEffect(() => {
+    if (
+      waitingForConnection &&
+      isConnected &&
+      address &&
+      !hasAutoRequested.current
+    ) {
+      setWaitingForConnection(false);
+      hasAutoRequested.current = true;
+      handleRequest();
+    }
+  }, [isConnected, waitingForConnection, address, handleRequest]);
+
+  // Reset auto-request flag when address changes
+  useEffect(() => {
+    hasAutoRequested.current = false;
+  }, [address]);
+
+  return (
+    <>
+      <Button
+        onClick={(e) => {
+          e.preventDefault(); // Prevent form submission
+          handleRequest(false, setRequestLoading);
+        }}
+        disabled={requestLoading || disabled}
+        type={type}
+        variant="primary"
+        size="md"
+      >
+        {requestLoading ? "Requesting..." : children}
+      </Button>
+
+      {isHCaptchaVisible && (
+        <Backdrop
+          isVisible={showBackdrop}
+          onClick={() => {
+            const closeButton = document.querySelector(
+              'iframe[title="close"]'
+            ) as HTMLIFrameElement;
+            if (closeButton) {
+              closeButton.click();
+            }
+          }}
+        />
+      )}
+
+      <Modal title="Share a tweet!" id={modalId} hasBackdrop>
+        {({ closeModal }) => (
+          <div className="flex flex-col gap-8 items-center w-full p-8">
+            <div className="flex flex-col gap-4 items-center">
+              <ColoredText
+                variant="purple"
+                className="text-2xl text-center font-medium"
+              >
+                Share a tweet for a 2x bonus!
+              </ColoredText>
+              <p className="text-body text-center">
+                Tweet about our faucet and include the faucet URL to get 2x more
+                testnet ETH.
+              </p>
+            </div>
+
+            <div className="flex flex-col items-center -my-2">
+              <Button
+                type="button"
+                onClick={() => {
+                  const tweetText = getRandomTweetTemplate();
+                  const shareUrl = new URL("https://x.com/intent/tweet");
+                  shareUrl.searchParams.set("text", tweetText);
+                  shareUrl.searchParams.set("url", TWEET_PARAMS.url);
+                  shareUrl.searchParams.set("cards", "summary_large_image");
+                  window.open(shareUrl.toString(), "_blank");
+                }}
+                variant="primary"
+                size="md"
+                disabled={tweetModalLoading}
+              >
+                Generate Tweet
+              </Button>
+            </div>
+
+            <Input
+              className={
+                tweetUrl !== "" && !validateTweetUrl(tweetUrl)
+                  ? "ink:border-status-error"
+                  : ""
+              }
+              value={tweetUrl}
+              iconRight={<InkIcon.Social.X />}
+              onChange={(e) => setTweetUrl(e.target.value)}
+              placeholder="Paste your tweet URL here"
+              onKeyDown={async (e) => {
+                if (e.key === "Enter") {
+                  e.preventDefault();
+                  try {
+                    await validateAndProcessTweet(chainId, tweetUrl);
+                    handleRequest(false, setTweetModalLoading);
+                    closeModal();
+                  } catch (error) {
+                    toast.error(
+                      error instanceof Error
+                        ? error.message
+                        : "Failed to validate tweet. Please try again.",
+                      TOAST_STYLE
+                    );
+                  }
+                }
+              }}
+            />
+
+            <div className="flex gap-4">
+              <Button
+                onClick={() => {
+                  closeModal();
+                  setSkipTweetPrompt(true);
+                  handleRequest(true, setTweetModalLoading);
+                }}
+                variant="secondary"
+                size="md"
+                disabled={tweetModalLoading}
+              >
+                Skip
+              </Button>
+              <Button
+                onClick={async () => {
+                  try {
+                    await validateAndProcessTweet(chainId, tweetUrl);
+                    handleRequest(false, setTweetModalLoading);
+                    closeModal();
+                  } catch (error) {
+                    toast.error(
+                      error instanceof Error
+                        ? error.message
+                        : "Failed to validate tweet. Please try again.",
+                      TOAST_STYLE
+                    );
+                  }
+                }}
+                variant="primary"
+                size="md"
+                disabled={tweetModalLoading}
+              >
+                {tweetModalLoading ? "Processing..." : "Continue"}
+              </Button>
+            </div>
+          </div>
         )}
-      </>
-    );
-  }
-);
+      </Modal>
+    </>
+  );
+};
 
 FaucetRequestButton.displayName = "FaucetRequestButton";
