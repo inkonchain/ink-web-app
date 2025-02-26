@@ -1,9 +1,7 @@
 // Adapted from https://allanlasser.com/posts/2024-01-26-avoid-using-reacts-useformstatus
 import { SyntheticEvent, useActionState, useTransition } from "react";
 
-import { clientEnv } from "@/env-client";
-
-import { useHCaptcha } from "./useHCaptcha";
+import { useCaptcha } from "@/contexts/CaptchaProvider";
 
 export interface UseLegacyFormHook<FormState> {
   state: FormState;
@@ -16,10 +14,7 @@ export function useLegacyForm<FormState>(
   action: (state: Awaited<FormState>, formData: FormData) => Promise<FormState>,
   initialState: Awaited<FormState>
 ): UseLegacyFormHook<FormState> {
-  const { executeHCaptcha, hcaptchaLoaded } = useHCaptcha(
-    clientEnv.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
-    true
-  );
+  const { isReady, executeHCaptcha } = useCaptcha();
   const [isPending, startTransition] = useTransition();
   const [state, formAction] = useActionState(action, initialState);
 
@@ -27,7 +22,7 @@ export function useLegacyForm<FormState>(
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
 
-    if (hcaptchaLoaded) {
+    if (isReady) {
       try {
         const captcha = await executeHCaptcha();
         formData.append("captchaToken", captcha.response);

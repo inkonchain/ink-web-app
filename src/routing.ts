@@ -71,6 +71,7 @@ export const routing = defineRouting({
   pathnames: {
     "#": "/#",
     "/": "/",
+    "/dashboard": "/",
     "/testnet-bridge": "/testnet-bridge",
     "/apps": "/apps",
     "/apps/[category]": "/apps/[category]",

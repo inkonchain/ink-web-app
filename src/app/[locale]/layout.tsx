@@ -68,19 +68,6 @@ export default async function LocaleLayout({
       />
 
       <body>
-        <div
-          id="hcaptcha-container"
-          style={{
-            display: "none",
-            position: "fixed",
-            top: 0,
-            bottom: 0,
-            left: 0,
-            right: 0,
-            zIndex: 9999,
-            overflow: "hidden",
-          }}
-        />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <Providers>
             <ToggleThemeShortcut />

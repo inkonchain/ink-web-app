@@ -90,7 +90,7 @@ export const appSubmissionSchema = z
         if (typeof window === "undefined") return true;
 
         // Check aspect ratio
-        return new Promise((resolve) => {
+        return new Promise<boolean>((resolve) => {
           const img = new Image();
           img.onload = () => {
             resolve(isSquareAspectRatio(img.width, img.height));

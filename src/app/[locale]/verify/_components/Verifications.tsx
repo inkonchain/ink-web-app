@@ -144,7 +144,7 @@ const DesktopVerificationsTable = () => {
               <div className="flex justify-end items-center gap-2">
                 {isConnected ? (
                   <span
-                    className="px-3 py-1 rounded-full bg-purpleMagic/10 text-sm"
+                    className="px-3 py-1 rounded-full ink:bg-background-container text-sm"
                     title="This is a placeholder"
                   >
                     Available
@@ -225,7 +225,7 @@ const MobileVerificationsTable = () => {
             <div className="flex justify-start items-center gap-2">
               {isConnected ? (
                 <span
-                  className="px-3 py-1 rounded-full bg-purpleMagic/10 text-sm"
+                  className="px-3 py-1 rounded-full ink:bg-background-container text-sm"
                   title="This is a placeholder"
                 >
                   Available

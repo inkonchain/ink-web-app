@@ -20,7 +20,6 @@ import {
   CategoryValue,
   TagValue,
 } from "@/schemas/app-submission-schema";
-import { classNames } from "@/util/classes";
 
 interface AppSubmissionFormProps {
   form: UseFormReturn<z.infer<typeof appSubmissionSchema>>;
@@ -42,10 +41,10 @@ export const AppSubmissionForm: React.FC<AppSubmissionFormProps> = ({
   return (
     <FormProvider {...form}>
       {state?.message !== "" && !state.issues && (
-        <div className="text-red-500">{state.message}</div>
+        <div className="ink:text-status-error">{state.message}</div>
       )}
       {state?.issues && (
-        <div className="text-red-500">
+        <div className="ink:text-status-error">
           <ul>
             {state.issues.map((issue, index) => (
               <li key={`error-${index}`} className="flex gap-1">
@@ -189,18 +188,16 @@ export const AppSubmissionForm: React.FC<AppSubmissionFormProps> = ({
   );
 };
 
-const SubmitButton: React.FC<{ isSubmitting: boolean }> = ({
-  isSubmitting,
-}) => (
+const SubmitButton: React.FC<{
+  isSubmitting: boolean;
+}> = ({ isSubmitting }) => (
   // Not using "disabled" property as it seems to mess up the scroll position when submitting...
   // TODO: Figure out root cause of this weird behavior
   <Button
     variant="primary"
     size="md"
     type="submit"
-    className={classNames({
-      "opacity-60 cursor-not-allowed hover:cursor-not-allowed": isSubmitting,
-    })}
+    disabled={isSubmitting}
     onClick={(e) => {
       if (isSubmitting) {
         e.preventDefault();
@@ -244,7 +241,7 @@ const InputField: React.FC<InputFieldProps> = ({
     <div className="flex flex-col gap-1">
       <label className="font-semibold" htmlFor={name}>
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="ink:text-status-error ml-0.5">*</span>}
       </label>
       <Input
         placeholder={placeholder}
@@ -300,7 +297,7 @@ const FileInput: React.FC<Omit<InputFieldProps, "placeholder">> = ({
     <div className="flex flex-col gap-1">
       <label className="font-semibold" htmlFor={name}>
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="ink:text-status-error ml-0.5">*</span>}
       </label>
       <div className="flex flex-col items-start">
         {preview ? (
@@ -311,7 +308,7 @@ const FileInput: React.FC<Omit<InputFieldProps, "placeholder">> = ({
                 setPreview(null);
                 form.setValue(name, null);
               }}
-              className="absolute -top-1 -right-1 bg-gray-200 hover:bg-gray-300 text-blackMagic rounded-full p-1 w-6 h-6 flex items-center justify-center text-sm focus:outline-purpleMagic transition-all duration-150"
+              className="absolute -top-1 -right-1 bg-gray-200 hover:bg-gray-300 text-blackMagic rounded-full p-1 w-6 h-6 flex items-center justify-center text-sm focus:outline-(--ink-button-primary) transition-all duration-150"
             >
               <div className="ink:size-3">
                 <InkIcon.Close />
@@ -326,16 +323,16 @@ const FileInput: React.FC<Omit<InputFieldProps, "placeholder">> = ({
             />
           </div>
         ) : (
-          <div className="relative h-20 w-full items-center rounded-md cursor-pointer hover:border-purpleMagic hover:border-[1px] group transition-all duration-150">
-            <Input
+          <div className="relative h-20 w-full items-center rounded-md hover:border-(--ink-button-primary) border-[1px] group transition-all duration-150">
+            <input
               name={name}
               type="file"
               accept="image/*"
               disabled={disabled}
               onChange={handleFileChange}
-              className="h-full w-full opacity-0 z-10 absolute cursor-pointer"
+              className="absolute inset-0 z-10 opacity-0 cursor-pointer box-border"
             />
-            <div className="h-full w-full absolute z-1 flex justify-center items-center top-0 group-hover:text-purpleMagic transition-all duration-150">
+            <div className="h-full w-full absolute z-1 flex justify-center items-center top-0 group-hover:text-(--ink-button-primary) transition-all duration-150">
               <div className="flex flex-col items-center gap-1">
                 <ImageIcon
                   size="icon-xl"
@@ -386,7 +383,7 @@ const SelectField = <T extends string>({
     <div className="flex flex-col gap-1">
       <label className="font-semibold" htmlFor={name}>
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="ink:text-status-error ml-0.5">*</span>}
       </label>
       <input type="hidden" {...register(name)} value={selected.value} />
       <Listbox
@@ -429,7 +426,7 @@ const MultiSelectField = <T extends string>({
     <div className="flex flex-col gap-1">
       <label className="font-semibold" htmlFor={name}>
         {label}
-        {required && <span className="text-red-500 ml-0.5">*</span>}
+        {required && <span className="ink:text-status-error ml-0.5">*</span>}
       </label>
       <Listbox
         multiple

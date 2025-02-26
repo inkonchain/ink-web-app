@@ -15,8 +15,8 @@ import { useAccount } from "wagmi";
 
 import { Backdrop } from "@/components/Backdrop";
 import { ColoredText } from "@/components/ColoredText";
+import { useCaptcha } from "@/contexts/CaptchaProvider";
 import { clientEnv } from "@/env-client";
-import { useFaucetInfoAndCaptcha } from "@/hooks/useFaucetInfoAndHCaptcha";
 
 interface FaucetRequestButtonProps {
   onClick?: () => void;
@@ -140,7 +140,7 @@ export const FaucetRequestButton: React.FC<FaucetRequestButtonProps> = ({
   const [requestLoading, setRequestLoading] = useState(false);
   const [waitingForConnection, setWaitingForConnection] = useState(false);
   const hasAutoRequested = useRef(false);
-  const { hcaptchaLoaded, executeHCaptcha } = useFaucetInfoAndCaptcha(chainId);
+  const { isReady, executeHCaptcha } = useCaptcha();
   const { isConnected } = useAccount();
   const { openConnectModal } = useConnectModal();
   const [tweetUrl, setTweetUrl] = useState("");
@@ -277,7 +277,7 @@ export const FaucetRequestButton: React.FC<FaucetRequestButtonProps> = ({
 
         // If not rate limited, proceed with captcha verification
         let hcaptchaToken = undefined;
-        if (hcaptchaLoaded) {
+        if (isReady) {
           try {
             setIsHCaptchaVisible(true);
 
@@ -351,7 +351,7 @@ export const FaucetRequestButton: React.FC<FaucetRequestButtonProps> = ({
       isConnected,
       openConnectModal,
       onChange,
-      hcaptchaLoaded,
+      isReady,
       executeHCaptcha,
       tweetUrl,
       skipTweetPrompt,
