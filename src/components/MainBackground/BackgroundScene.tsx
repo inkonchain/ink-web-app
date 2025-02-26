@@ -165,7 +165,7 @@ export const BackgroundScene: React.FC<BackgroundSceneProps> = ({
   return (
     <Suspense>
       <Canvas
-        className="!overflow-visible"
+        className="overflow-visible!"
         camera={{ position: [0, 0, 15], far: 16, fov: 18 }}
         frameloop={limitFPS ? "never" : "always"}
         dpr={0.75}

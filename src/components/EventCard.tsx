@@ -1,11 +1,7 @@
-import { Card, CardContent, Tag } from "@inkonchain/ink-kit";
+import { Button, Card, CardContent, InkIcon, Tag } from "@inkonchain/ink-kit";
 
-import { ButtonLink } from "@/components/Button/ButtonLink";
-import { CalendarIcon } from "@/components/icons/Calendar";
-import { LocationIcon } from "@/components/icons/Location";
-import { MailIcon } from "@/components/icons/Mail";
 import { ParallaxedHoverImage } from "@/components/ParallaxedHoverImage";
-import { HrefProp } from "@/routing";
+import { HrefProp, Link } from "@/routing";
 import { classNames } from "@/util/classes";
 
 export interface EventCardProps {
@@ -43,11 +39,15 @@ export const EventCard = ({
           mainLabels={
             <>
               <Tag variant="event">
-                <CalendarIcon size="icon-md" enforce="inherit" />
+                <div className="ink:size-3">
+                  <InkIcon.Calendar />
+                </div>
                 {date}
               </Tag>
               <Tag variant="event">
-                <LocationIcon size="icon-md" enforce="inherit" />
+                <div className="ink:size-3">
+                  <InkIcon.Location />
+                </div>
                 {location}
               </Tag>
             </>
@@ -72,26 +72,16 @@ export const EventCard = ({
         title={title}
         description={description}
         button={
-          <div>
-            <ButtonLink
-              href={link}
-              aria-label="Apply for House of Ink"
-              target="_blank"
-              rel="noopener noreferrer"
-              size="lg"
-              variant={color === "purple" ? "primary" : "spotlight"}
-              compact
-              icon={
-                <MailIcon
-                  className="shrink-0"
-                  size="icon-lg"
-                  enforce="inherit"
-                />
-              }
-            >
+          <Button
+            variant="primary"
+            size="lg"
+            iconLeft={<InkIcon.Mail size="icon-lg" />}
+            asChild
+          >
+            <Link href={link} target="_blank" rel="noopener noreferrer">
               {cta}
-            </ButtonLink>
-          </div>
+            </Link>
+          </Button>
         }
       />
     </Card>

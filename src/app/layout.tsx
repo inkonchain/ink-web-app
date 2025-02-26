@@ -1,7 +1,7 @@
 import React from "react";
 import { Metadata, Viewport } from "next";
 
-import "@/app/globals.css";
+import "@/app/tailwind.css";
 
 export const metadata: Metadata = {
   verification: {

@@ -8,6 +8,7 @@ import { RelayLogo } from "@/components/icons/RelayLogo";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 
 import "@reservoir0x/relay-kit-ui/styles.css";
+import "./RelayKitUI.css";
 
 export const RelayKitUI: React.FC = () => {
   const { openConnectModal } = useConnectModal();

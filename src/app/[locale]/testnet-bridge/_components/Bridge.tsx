@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { Button, useModalContext } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 import { parseEther } from "viem";
@@ -15,8 +16,10 @@ import {
 } from "wagmi";
 import { sepolia } from "wagmi/chains";
 
-import { useBridgeTransactionModal } from "@/app/[locale]/testnet-bridge/_components/BridgeTransactionModal";
-import { Button } from "@/components/Button/Button";
+import {
+  BRIDGE_TRANSACTION_MODAL_KEY,
+  useBridgeTransactionModal,
+} from "@/app/[locale]/testnet-bridge/_components/BridgeTransactionModal";
 import { ColoredText } from "@/components/ColoredText";
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { Loader } from "@/components/Loader";
@@ -37,8 +40,8 @@ export function Bridge() {
   const { address, isConnected, chain } = useAccount();
   const { switchChain } = useSwitchChain();
 
-  const { setIsOpen: setIsBridgeTransactionModalOpen, setTxHash } =
-    useBridgeTransactionModal();
+  const { setTxHash } = useBridgeTransactionModal();
+  const { openModal } = useModalContext(BRIDGE_TRANSACTION_MODAL_KEY);
 
   const isCorrectNetwork = chain?.id === sepolia.id;
   const isWrongNetwork = isConnected && !isCorrectNetwork;
@@ -84,8 +87,8 @@ export function Bridge() {
       onSuccess: (hash: Hash) => {
         if (hash) {
           setStatus(`success:${hash}`);
-          setIsBridgeTransactionModalOpen(true);
           setTxHash(hash);
+          openModal();
           setAmount("");
         } else {
           console.error("Unexpected transaction response:", hash);
@@ -283,7 +286,7 @@ export function Bridge() {
               <div
                 className={classNames(
                   "rounded-3xl sm:px-12 px-6 py-4 sm:py-6 inline-block mx-auto w-full sm:min-w-[700px]",
-                  "[.light_&]:bg-[#EDF1F9]/50",
+                  "in-[.light]:bg-[#EDF1F9]/50",
                   "dark:bg-[#160F1F]"
                 )}
               >
@@ -424,7 +427,7 @@ export function Bridge() {
                     </div>
 
                     <div
-                      className="bg-white rounded-xl p-3 shadow-sm w-full cursor-pointer"
+                      className="bg-white rounded-xl p-3 shadow-xs w-full cursor-pointer"
                       onClick={() =>
                         document.getElementById("amount-input")?.focus()
                       }
@@ -435,7 +438,7 @@ export function Bridge() {
                             id="amount-input"
                             type="number"
                             placeholder="0"
-                            className={`dark:bg-white text-black w-full outline-none text-4xl font-medium [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${error ? "border-red-500 border-b" : ""}`}
+                            className={`dark:bg-white text-black w-full outline-hidden text-4xl font-medium [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none ${error ? "border-red-500 border-b" : ""}`}
                             min="0"
                             step="any"
                             value={amount}
@@ -445,7 +448,7 @@ export function Bridge() {
                             }}
                           />
                           <div
-                            className="flex items-center gap-2 rounded-full px-4 py-2 flex-shrink-0 ml-4"
+                            className="flex items-center gap-2 rounded-full px-4 py-2 shrink-0 ml-4"
                             style={{
                               backgroundColor: "rgba(221, 220, 240, 0.75)",
                             }}

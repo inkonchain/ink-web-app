@@ -65,7 +65,7 @@ export const CookieConsentForm: React.FC<CookieConsentProps> = (props) => {
   }
 
   const buttonClasses =
-    "flex-1 uppercase flex items-center justify-center py-3 hover:text-blackMagic/60 hover:dark:text-whiteMagic/80";
+    "flex-1 uppercase flex items-center justify-center py-3 hover:text-blackMagic/60 dark:hover:text-whiteMagic/80";
 
   return (
     <motion.div

@@ -20,7 +20,7 @@ export const FormStatus: React.FC<FormStatusProps> = ({
     <>
       {errorMessage && (
         <TemporaryMessage timeout={3000}>
-          <div className="flex items-center gap-3 py-3 px-4 text-redMagic-400 dark:text-redMagic-100 bg-redMagic-500/15 rounded-full w-full">
+          <div className="flex items-center gap-3 py-3 px-4 ink:text-status-error ink:bg-status-error rounded-full w-full">
             <WarningTriangleIcon size="icon-md" enforce="inherit" />
             <p className="text-base font-medium">{errorMessage}</p>
           </div>

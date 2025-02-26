@@ -2,11 +2,11 @@
 
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
+import { Button } from "@inkonchain/ink-kit";
 
 import { resubscribeToBraze } from "@/actions/resubscribe-to-braze";
-import { Button } from "@/components/Button/Button";
-import { ButtonLink } from "@/components/Button/ButtonLink";
 import { FormStatus } from "@/components/FormStatus";
+import { Link } from "@/routing";
 
 interface ResubscribeFormProps {
   userBrazeId: string;
@@ -30,17 +30,16 @@ export const ResubscribeForm: React.FC<ResubscribeFormProps> = ({
           was a mistake, use the button below to unsubscribe
         </h1>
 
-        <ButtonLink
-          href={{
-            pathname: "/newsletter/unsubscribe",
-            query: { id: userBrazeId },
-          }}
-          variant="primary"
-          size="md"
-          className="uppercase mt-12"
-        >
-          Unsuscribe
-        </ButtonLink>
+        <Button asChild variant="primary" size="md" className="uppercase mt-12">
+          <Link
+            href={{
+              pathname: "/newsletter/unsubscribe",
+              query: { id: userBrazeId },
+            }}
+          >
+            Unsuscribe
+          </Link>
+        </Button>
       </div>
     );
   }
@@ -64,7 +63,7 @@ export const ResubscribeForm: React.FC<ResubscribeFormProps> = ({
             type="checkbox"
             id="generalWailist"
             name="generalWailist"
-            className="h-4 w-4 rounded border-gray-300 text-whiteMagic"
+            className="h-4 w-4 rounded-sm border-gray-300 text-whiteMagic"
           />
         </div>
 
@@ -79,7 +78,7 @@ export const ResubscribeForm: React.FC<ResubscribeFormProps> = ({
             type="checkbox"
             id="developerWailist"
             name="developerWailist"
-            className="h-4 w-4 rounded border-gray-300 text-whiteMagic"
+            className="h-4 w-4 rounded-sm border-gray-300 text-whiteMagic"
           />
         </div>
 
@@ -116,7 +115,7 @@ const Submit = () => {
 
   return (
     <Button
-      pending={pending}
+      disabled={pending}
       type="submit"
       variant="primary"
       size="md"

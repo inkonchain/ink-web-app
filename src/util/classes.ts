@@ -11,10 +11,6 @@ const customTwMerge = extendTailwindMerge({
         "text-h3",
         "text-h4",
         "text-h5",
-        "text-header",
-        "text-footer",
-        "text-very-large",
-        "text-label",
         "text-body-2",
         "text-body-3",
         "text-body-1-regular",
@@ -28,7 +24,6 @@ const customTwMerge = extendTailwindMerge({
         "text-caption-2-regular",
         "text-caption-2-bold",
       ],
-      shadow: ["shadow-large-pop", "shadow-inner-form", "box-shadow"],
     },
   },
 });
