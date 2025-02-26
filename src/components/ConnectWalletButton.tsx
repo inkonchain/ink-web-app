@@ -78,7 +78,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                   }
                   className={classNames(
                     chain.unsupported &&
-                      "bg-red-500/15 hover:bg-red-500/25 dark:text-red-400",
+                      "ink:text-status-error ink:bg-status-error-bg",
                     shrinkOnMobile ? "sm:hidden" : "hidden",
                     className
                   )}
@@ -94,7 +94,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                   }
                   className={classNames(
                     chain.unsupported &&
-                      "bg-red-500/15 hover:bg-red-500/25 dark:text-red-400",
+                      "ink:text-status-error ink:bg-status-error-bg",
                     shrinkOnMobile ? "hidden sm:block" : "",
                     className
                   )}

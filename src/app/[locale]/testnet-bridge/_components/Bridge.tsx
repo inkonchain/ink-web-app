@@ -269,7 +269,7 @@ export function Bridge() {
   const renderNetworkError = () => {
     if (networkError) {
       return (
-        <div className="text-red-500 text-sm mt-2 text-center">
+        <div className="ink:text-status-error text-sm mt-2 text-center">
           {networkError}
         </div>
       );
@@ -482,7 +482,9 @@ export function Bridge() {
                           )}
                         </div>
                         {error && (
-                          <span className="text-red-500 text-sm">{error}</span>
+                          <span className="ink:text-status-error text-sm">
+                            {error}
+                          </span>
                         )}
                       </div>
                     </div>

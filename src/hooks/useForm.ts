@@ -8,9 +8,7 @@ import {
 import { zodResolver } from "@hookform/resolvers/zod";
 import { ZodSchema } from "zod";
 
-import { clientEnv } from "@/env-client";
-
-import { useHCaptcha } from "./useHCaptcha";
+import { useCaptcha } from "@/contexts/CaptchaProvider";
 
 export interface UseFormHook<FormState, FormValues extends FieldValues> {
   state: FormState;
@@ -31,10 +29,7 @@ export function useForm<FormState, FormValues extends FieldValues>(
   defaultValues?: Partial<FormValues>
 ): UseFormHook<FormState, FormValues> {
   const [isSubmitting, startTransition] = useTransition();
-  const { executeHCaptcha, hcaptchaLoaded } = useHCaptcha(
-    clientEnv.NEXT_PUBLIC_HCAPTCHA_SITEKEY,
-    true
-  );
+  const { isReady, executeHCaptcha } = useCaptcha();
 
   const [state, formAction] = useActionState(
     async (state: Awaited<FormState>, payload: FormValues | null) => {
@@ -57,7 +52,7 @@ export function useForm<FormState, FormValues extends FieldValues>(
     event.preventDefault();
 
     form.handleSubmit(async (formData) => {
-      if (hcaptchaLoaded) {
+      if (isReady) {
         try {
           const captcha = await executeHCaptcha();
           startTransition(() =>

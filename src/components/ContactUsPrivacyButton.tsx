@@ -1,7 +1,7 @@
 "use client";
 
 import React from "react";
-import { Button, useModalContext } from "@inkonchain/ink-kit";
+import { useModalContext } from "@inkonchain/ink-kit";
 
 import { CONTACT_US_MODAL_KEY } from "./Modals/ContactUsModal";
 
