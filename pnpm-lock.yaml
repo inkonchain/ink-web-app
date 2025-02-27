@@ -18,8 +18,8 @@ importers:
         specifier: 3.9.1
         version: 3.9.1(react-hook-form@7.54.1(react@19.0.0))
       '@inkonchain/ink-kit':
-        specifier: 0.9.1-beta.9
-        version: 0.9.1-beta.9(@tanstack/react-query@5.60.6(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@4.0.8)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(wagmi@2.14.9(@tanstack/query-core@5.60.6)(@tanstack/react-query@5.60.6(react@19.0.0))(@types/react@19.0.7)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(zod@3.24.1))
+        specifier: 0.9.1-beta.11
+        version: 0.9.1-beta.11(@tanstack/react-query@5.60.6(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@4.0.8)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(wagmi@2.14.9(@tanstack/query-core@5.60.6)(@tanstack/react-query@5.60.6(react@19.0.0))(@types/react@19.0.7)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(zod@3.24.1))
       '@next/third-parties':
         specifier: 15.1.6
         version: 15.1.6(next@15.1.6(@babel/core@7.26.7)(@opentelemetry/api@1.9.0)(@playwright/test@1.45.0)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(sass@1.77.6))(react@19.0.0)
@@ -865,13 +865,13 @@ packages:
     cpu: [x64]
     os: [win32]
 
-  '@inkonchain/ink-kit@0.9.1-beta.9':
-    resolution: {integrity: sha512-Ni7NLiT1/Z4o0MKJgu4XtAo6L6kx60gur3phWJYuLOE9svrCGtiHnHBr54tIWwhBAXKgJSN9oROEKjMUXpnXaw==}
+  '@inkonchain/ink-kit@0.9.1-beta.11':
+    resolution: {integrity: sha512-4ltxrrWE7P0nLZsLE6Js6VJmOB1IPAsOs9T13h1tHwLEBbDPkckcvDKs5GsDz1hET+6n7iFLLMCvMaQrBmTKhQ==}
     peerDependencies:
       '@tanstack/react-query': ^5
       react: 19.0.0
       react-dom: 19.0.0
-      tailwindcss: ^3
+      tailwindcss: ^3 || ^4
       viem: ^2
       wagmi: ^2
 
@@ -7247,7 +7247,7 @@ snapshots:
   '@img/sharp-win32-x64@0.33.5':
     optional: true
 
-  '@inkonchain/ink-kit@0.9.1-beta.9(@tanstack/react-query@5.60.6(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@4.0.8)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(wagmi@2.14.9(@tanstack/query-core@5.60.6)(@tanstack/react-query@5.60.6(react@19.0.0))(@types/react@19.0.7)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(zod@3.24.1))':
+  '@inkonchain/ink-kit@0.9.1-beta.11(@tanstack/react-query@5.60.6(react@19.0.0))(react-dom@19.0.0(react@19.0.0))(react@19.0.0)(tailwindcss@4.0.8)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(wagmi@2.14.9(@tanstack/query-core@5.60.6)(@tanstack/react-query@5.60.6(react@19.0.0))(@types/react@19.0.7)(bufferutil@4.0.9)(react@19.0.0)(typescript@5.7.3)(utf-8-validate@5.0.10)(viem@2.22.11(bufferutil@4.0.9)(typescript@5.7.3)(utf-8-validate@5.0.10)(zod@3.24.1))(zod@3.24.1))':
     dependencies:
       '@headlessui/react': 2.2.0(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@tanstack/react-query': 5.60.6(react@19.0.0)

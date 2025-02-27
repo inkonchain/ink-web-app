@@ -1,9 +1,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { InkIcon, InkLayoutSideNav, InkNavLink } from "@inkonchain/ink-kit";
+import { InkLayoutSideNav, InkNavLink } from "@inkonchain/ink-kit";
 
-import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import {
   hrefObjectFromHrefPropWithQuery,
@@ -13,10 +12,11 @@ import {
   usePathname,
 } from "@/routing";
 
+import { useLinks } from "./links";
 import { ThemeToggle } from "./ThemeToggle";
 
 export const SideNav = () => {
-  const hasVerifyPage = useFeatureFlag("verifyPage");
+  const links = useLinks();
 
   return (
     <InkLayoutSideNav
@@ -25,59 +25,16 @@ export const SideNav = () => {
           <ThemeToggle />
         </div>
       }
-      links={[
-        {
-          asChild: true,
-          children: (
-            <SideNavLink href="/" exactHref>
-              Home
-            </SideNavLink>
-          ),
-          href: "/",
-          icon: <InkIcon.Home size="icon-lg" enforce="inherit" />,
-        },
-        {
-          asChild: true,
-          children: <SideNavLink href="/apps">Apps</SideNavLink>,
-          href: "/apps",
-          icon: <InkIcon.Apps size="icon-lg" enforce="inherit" />,
-        },
-        {
-          asChild: true,
-          children: <SideNavLink href="/bridge">Bridge</SideNavLink>,
-          href: "/bridge",
-          icon: <InkIcon.Bridge size="icon-lg" enforce="inherit" />,
-        },
-
-        ...(hasVerifyPage
-          ? [
-              {
-                asChild: true,
-                children: <SideNavLink href="/verify">Verify</SideNavLink>,
-                href: "/verify",
-                icon: <InkIcon.CheckFill size="icon-lg" enforce="inherit" />,
-              },
-            ]
-          : []),
-        {
-          asChild: true,
-          children: <SideNavLink href="/builders">Build</SideNavLink>,
-          href: "/builders",
-          icon: <InkIcon.Code size="icon-lg" enforce="inherit" />,
-        },
-        {
-          asChild: true,
-          children: <SideNavLink href="/community">Community</SideNavLink>,
-          href: "/community",
-          icon: <InkIcon.Users size="icon-lg" enforce="inherit" />,
-        },
-        {
-          asChild: true,
-          children: <SideNavLink href="/about">About</SideNavLink>,
-          href: "/about",
-          icon: <InkIcon.Info size="icon-lg" enforce="inherit" />,
-        },
-      ]}
+      links={links.map(({ href, icon, label, exactHref }) => ({
+        href,
+        asChild: true,
+        icon,
+        children: (
+          <SideNavLink href={href} exactHref={exactHref}>
+            {label}
+          </SideNavLink>
+        ),
+      }))}
     />
   );
 };
