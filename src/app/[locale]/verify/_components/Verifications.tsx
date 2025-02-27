@@ -166,7 +166,7 @@ const MobileVerificationsTable = () => {
   return (
     <div className="w-full border-collapse ink:bg-background-container rounded-2xl lg:hidden">
       <div className="text-right border-b border-blackMagic/10 dark:border-whiteMagic/10 ink:text-text-muted ink:text-body-3-bold">
-        <th className="py-4 px-6 text-left">Verification</th>
+        <div className="py-4 px-6 text-left">Verification</div>
       </div>
       <div className="flex flex-col gap-4">
         {VERIFICATIONS.map((verification) => (
