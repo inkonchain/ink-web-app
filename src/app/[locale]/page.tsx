@@ -54,7 +54,7 @@ export default async function HomePage() {
       <div className={newLayoutContainerClasses()}>
         <HomeTitle />
         <HomeSmallTag />
-        <HomeEvent />
+        {/* <HomeEvent /> */}
         <HomeApps />
         <HomeTagLine />
       </div>

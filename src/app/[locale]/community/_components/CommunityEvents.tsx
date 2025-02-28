@@ -30,7 +30,12 @@ export const CommunityEvents = () => {
     length: typeof featureFlag === "number" ? featureFlag : 0,
   }).map((_) => ethDenverEventProps);
 
-  const events = [ethDenverEventProps, ...extraEventsFromFeatureFlag];
+  // const events = [ethDenverEventProps, ...extraEventsFromFeatureFlag];
+  const events = [...extraEventsFromFeatureFlag];
+
+  if (events.length === 0) {
+    return undefined;
+  }
 
   return (
     <div
