@@ -1,12 +1,11 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { InkLayoutSideNav, InkNavLink } from "@inkonchain/ink-kit";
+import { InkLayoutSideNav } from "@inkonchain/ink-kit";
 
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import {
   hrefObjectFromHrefPropWithQuery,
-  HrefProp,
   Link,
   pathFromHrefProp,
   usePathname,
@@ -18,6 +17,15 @@ import { ThemeToggle } from "./ThemeToggle";
 export const SideNav = () => {
   const links = useLinks();
 
+  const query = useRouterQuery();
+  const path = usePathname();
+
+  const [selected, setSelected] = useState(path);
+
+  useEffect(() => {
+    setSelected(path);
+  }, [path]);
+
   return (
     <InkLayoutSideNav
       bottom={
@@ -25,56 +33,28 @@ export const SideNav = () => {
           <ThemeToggle />
         </div>
       }
-      links={links.map(({ href, icon, label, exactHref }) => ({
-        href,
-        asChild: true,
-        icon,
-        children: (
-          <SideNavLink href={href} exactHref={exactHref}>
-            {label}
-          </SideNavLink>
-        ),
-      }))}
+      links={links.map(({ href, icon, label, exactHref }) => {
+        const hrefPath = pathFromHrefProp(href);
+        return {
+          href,
+          asChild: true,
+          leftIcon: icon,
+          active: exactHref
+            ? selected === hrefPath
+            : selected.startsWith(hrefPath),
+          children: (
+            <Link
+              href={hrefObjectFromHrefPropWithQuery(href, query)}
+              prefetch
+              onClick={() => {
+                setSelected(href);
+              }}
+            >
+              {label}
+            </Link>
+          ),
+        };
+      })}
     />
   );
 };
-
-function SideNavLink({
-  className,
-  href,
-  exactHref,
-  children,
-  ...rest
-}: {
-  className?: string;
-  href: HrefProp;
-  exactHref?: boolean;
-  children: React.ReactNode;
-}) {
-  const path = usePathname();
-  const query = useRouterQuery();
-  const hrefPath = pathFromHrefProp(href);
-  const hrefObject = hrefObjectFromHrefPropWithQuery(href, query);
-  const [selected, setSelected] = useState(
-    exactHref ? path === hrefPath : path.startsWith(hrefPath)
-  );
-  useEffect(() => {
-    setSelected(exactHref ? path === hrefPath : path.startsWith(hrefPath));
-  }, [path, hrefPath, exactHref]);
-
-  return (
-    <InkNavLink
-      onClick={() => {
-        setSelected(true);
-      }}
-      active={
-        (exactHref ? path === hrefPath : path.startsWith(hrefPath)) || selected
-      }
-      asChild
-    >
-      <Link href={hrefObject} prefetch={true} {...rest}>
-        {children}
-      </Link>
-    </InkNavLink>
-  );
-}

@@ -28,7 +28,7 @@ export function MobileNav() {
       links={links.map(({ href, icon, label }) => ({
         href,
         asChild: true,
-        icon,
+        leftIcon: icon,
         children: (
           <Link
             href={{ pathname: href, query }}
