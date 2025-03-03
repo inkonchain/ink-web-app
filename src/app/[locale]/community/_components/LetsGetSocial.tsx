@@ -4,12 +4,15 @@ import { useTranslations } from "next-intl";
 
 import { FlyWhenIntoView } from "@/components/FlyWhenIntoView";
 import { newLayoutSectionClasses } from "@/components/styles/container";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { EXTERNAL_LINKS, Link } from "@/routing";
+import { classNames } from "@/util/classes";
 
 import { PageHeader } from "../../_components/PageHeader";
 
 export const LetsGetSocial = () => {
   const t = useTranslations("Community");
+  const walletColumn = useFeatureFlag("walletColumn");
 
   return (
     <FlyWhenIntoView className={newLayoutSectionClasses()}>
@@ -20,7 +23,14 @@ export const LetsGetSocial = () => {
           size="section"
         />
       </div>
-      <div className="grid lg:grid-cols-4 sm:grid-cols-2 gap-6 self-center">
+      <div
+        className={classNames(
+          "grid gap-6 self-center",
+          walletColumn
+            ? "xl:grid-cols-4 sm:grid-cols-2"
+            : "lg:grid-cols-4 sm:grid-cols-2"
+        )}
+      >
         <Card className="w-full" variant="secondary" clickable asChild>
           <Link
             href={EXTERNAL_LINKS.twitter}

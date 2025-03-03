@@ -1,18 +1,11 @@
 "use client";
 
-import { Button, InkIcon } from "@inkonchain/ink-kit";
+import { Button, ButtonProps, InkIcon } from "@inkonchain/ink-kit";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import Image from "next/image";
 
 import { classNames } from "@/util/classes";
-
-const truncateEnsName = (ensName: string, maxLength = 16) => {
-  if (!ensName || !ensName.endsWith(".eth")) return ensName;
-
-  const namePart = ensName.slice(0, -4); // Remove .eth
-  if (namePart.length <= maxLength) return ensName;
-  return `${namePart.slice(0, maxLength)}...eth`;
-};
+import { truncateEnsName } from "@/util/formatWallet";
 
 interface ConnectWalletButtonProps {
   className?: string;
@@ -20,6 +13,7 @@ interface ConnectWalletButtonProps {
   shrinkOnMobile?: boolean;
   noIcon?: boolean;
   size?: "md" | "lg";
+  variant?: ButtonProps["variant"];
 }
 
 export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
@@ -28,6 +22,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
   shrinkOnMobile = false,
   size = "md",
   noIcon = false,
+  variant = "transparent",
 }) => {
   return (
     <ConnectButton.Custom>
@@ -59,7 +54,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                 type="button"
                 className={classNames(className)}
                 size={size}
-                variant="transparent"
+                variant={variant}
               >
                 {!noIcon && (
                   <div className={shrinkOnMobile ? "sm:hidden" : ""}>
@@ -83,7 +78,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                     className
                   )}
                   size={size}
-                  variant="transparent"
+                  variant={variant}
                   rounded="full"
                 >
                   <InkIcon.Profile className="size-6" enforce="inherit" />
@@ -99,7 +94,7 @@ export const ConnectWalletButton: React.FC<ConnectWalletButtonProps> = ({
                     className
                   )}
                   size={size}
-                  variant="transparent"
+                  variant={variant}
                 >
                   <div className="ink:-my-1 whitespace-nowrap">
                     {account.ensAvatar && account.ensName ? (

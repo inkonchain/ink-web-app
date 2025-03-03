@@ -188,7 +188,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
           />
         </div>
 
-        <div className="flex items-center justify-between gap-4 flex-col sm:flex-row flex-1">
+        <div className="flex items-center justify-between gap-4 flex-row flex-1 flex-wrap">
           <AppsCategoryFilter
             selected={filters.categories?.[0]}
             setSelected={(value) => {
@@ -197,7 +197,7 @@ export function AppsContent({ currentCategory }: AppsContentProps) {
               });
             }}
           />
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 gap-y-4 flex-wrap">
             <AppsTagsFilter
               selected={filters.tags}
               setSelected={(value) => {
