@@ -5,7 +5,6 @@ import { PageView } from "@/components/PageView";
 import { newLayoutContainerClasses } from "@/components/styles/container";
 
 import { HomeApps } from "./_components/Home/HomeApps";
-import { HomeEvent } from "./_components/Home/HomeEvent";
 import { HomeSmallTag } from "./_components/Home/HomeSmallTag";
 import { HomeTagLine } from "./_components/Home/HomeTagLine";
 import { HomeTitle } from "./_components/Home/HomeTitle";
