@@ -11,6 +11,7 @@ export const hardcodedFeatureFlags = {
   fakeEvents: 0,
   verifyPage: false,
   grantsSection: false,
+  walletColumn: false,
 };
 
 export type FeatureFlagKey = keyof typeof hardcodedFeatureFlags;

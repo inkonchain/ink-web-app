@@ -3,6 +3,7 @@ import { Tag } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
 
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { classNames } from "@/util/classes";
 
 import { AppLinks } from "./AppLinks";
@@ -14,6 +15,7 @@ export const AppsGrid: React.FC<{
   noAppsFound: React.ReactNode;
   network: InkAppNetwork;
 }> = ({ apps, featuredApps, noAppsFound, network }) => {
+  const walletColumn = useFeatureFlag("walletColumn");
   return (
     <div className="w-full">
       {apps.length === 0 ? (
@@ -21,7 +23,14 @@ export const AppsGrid: React.FC<{
           {noAppsFound}
         </div>
       ) : (
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 hd:grid-cols-4 gap-2 w-full">
+        <div
+          className={classNames(
+            "grid gap-2 w-full",
+            walletColumn
+              ? "grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 hd:grid-cols-4"
+              : "grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 hd:grid-cols-4"
+          )}
+        >
           {featuredApps.map((app) => (
             <AppCard key={app.id} app={app} network={network} featured />
           ))}

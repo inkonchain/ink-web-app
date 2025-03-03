@@ -16,6 +16,7 @@ import { COOKIE_CONSENT } from "@/integrations/consent";
 
 import { inter, plus_jakarta_sans } from "../fonts";
 
+import { LayoutColumns } from "./_components/LayoutColumns";
 import { MainPageBackground } from "./_components/MainPageBackground";
 import { RoutedLayout } from "./_components/RoutedLayout";
 
@@ -75,7 +76,7 @@ export default async function LocaleLayout({
             <RoutedLayout>
               <div className="relative pt-0 overflow-hidden flex flex-col gap-8 w-full items-center">
                 <div className="flex flex-col w-full items-center min-h-[80vh]">
-                  {children}
+                  <LayoutColumns>{children}</LayoutColumns>
                 </div>
                 <Footer />
               </div>
