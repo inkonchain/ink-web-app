@@ -952,6 +952,29 @@
       }
     },
     {
+      "id": "rishe",
+      "name": "Rishe",
+      "description": "This is just a sample",
+      "imageUrl": "/featured-apps/icons/rishe.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Both",
+      "tags": [
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://rishe.com",
+        "testnetWebsite": "https://rishe.com",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "safe",
       "name": "SAFE",
       "description": "Single unified balance. Instant cross-chain transactions.\nExecution guarantees. On any network.",
