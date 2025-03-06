@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const response = await fetch(
-      `${env.INK_VERIFY_API_BASE_URL}/v1/auth/challenge/new`,
+      `${env.INK_VERIFY_API_BASE_URL}/v1/auth/challenges/new`,
       {
         method: request.method,
         headers: request.headers,
