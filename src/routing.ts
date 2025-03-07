@@ -70,6 +70,7 @@ export const routing = defineRouting({
   defaultLocale,
   pathnames: {
     "#": "/#",
+    "#contact": "#contact",
     "/": "/",
     "/dashboard": "/",
     "/testnet-bridge": "/testnet-bridge",

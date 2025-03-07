@@ -1,8 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { InkLayoutSideNav } from "@inkonchain/ink-kit";
+import {
+  InkIcon,
+  InkLayoutSideNav,
+  useModalContext,
+} from "@inkonchain/ink-kit";
 
+import { CONTACT_US_MODAL_KEY } from "@/components/Modals";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import {
   hrefObjectFromHrefPropWithQuery,
@@ -21,6 +26,7 @@ export const SideNav = () => {
   const path = usePathname();
 
   const [selected, setSelected] = useState(path);
+  const { openModal } = useModalContext(CONTACT_US_MODAL_KEY);
 
   useEffect(() => {
     setSelected(path);
@@ -33,28 +39,41 @@ export const SideNav = () => {
           <ThemeToggle />
         </div>
       }
-      links={links.map(({ href, icon, label, exactHref }) => {
-        const hrefPath = pathFromHrefProp(href);
-        return {
-          href,
+      links={[
+        ...links.map(({ href, icon, label, exactHref }) => {
+          const hrefPath = pathFromHrefProp(href);
+          return {
+            href,
+            asChild: true,
+            leftIcon: icon,
+            active: exactHref
+              ? selected === hrefPath
+              : selected.startsWith(hrefPath),
+            children: (
+              <Link
+                href={hrefObjectFromHrefPropWithQuery(href, query)}
+                prefetch
+                onClick={() => {
+                  setSelected(href);
+                }}
+              >
+                {label}
+              </Link>
+            ),
+          };
+        }),
+        {
+          href: "#contact",
           asChild: true,
-          leftIcon: icon,
-          active: exactHref
-            ? selected === hrefPath
-            : selected.startsWith(hrefPath),
+          leftIcon: <InkIcon.Mail />,
+          active: false,
           children: (
-            <Link
-              href={hrefObjectFromHrefPropWithQuery(href, query)}
-              prefetch
-              onClick={() => {
-                setSelected(href);
-              }}
-            >
-              {label}
-            </Link>
+            <button className="cursor-pointer" onClick={openModal}>
+              Contact
+            </button>
           ),
-        };
-      })}
+        },
+      ]}
     />
   );
 };
