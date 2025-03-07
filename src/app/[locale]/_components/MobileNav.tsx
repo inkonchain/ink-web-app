@@ -1,7 +1,13 @@
 "use client";
 
-import { InkLayoutMobileNav, useInkLayoutContext } from "@inkonchain/ink-kit";
+import {
+  InkIcon,
+  InkLayoutMobileNav,
+  useInkLayoutContext,
+  useModalContext,
+} from "@inkonchain/ink-kit";
 
+import { CONTACT_US_MODAL_KEY } from "@/components/Modals";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { Link } from "@/routing";
 
@@ -18,6 +24,8 @@ export function MobileNav() {
   const query = useRouterQuery();
   const links = useLinks();
 
+  const { openModal } = useModalContext(CONTACT_US_MODAL_KEY);
+
   return (
     <InkLayoutMobileNav
       bottom={
@@ -25,20 +33,38 @@ export function MobileNav() {
           <ThemeToggle />
         </div>
       }
-      links={links.map(({ href, icon, label }) => ({
-        href,
-        asChild: true,
-        leftIcon: icon,
-        children: (
-          <Link
-            href={{ pathname: href, query }}
-            onClick={closeMobileNavigation}
-            prefetch
-          >
-            {label}
-          </Link>
-        ),
-      }))}
+      links={[
+        ...links.map(({ href, icon, label }) => ({
+          href,
+          asChild: true,
+          leftIcon: icon,
+          children: (
+            <Link
+              href={{ pathname: href, query }}
+              onClick={closeMobileNavigation}
+              prefetch
+            >
+              {label}
+            </Link>
+          ),
+        })),
+        {
+          href: "#contact",
+          asChild: true,
+          leftIcon: <InkIcon.Mail />,
+          children: (
+            <button
+              className="cursor-pointer"
+              onClick={() => {
+                closeMobileNavigation();
+                openModal();
+              }}
+            >
+              Contact
+            </button>
+          ),
+        },
+      ]}
     />
   );
 }
