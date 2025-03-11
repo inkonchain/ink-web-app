@@ -1225,6 +1225,31 @@
       }
     },
     {
+      "id": "watchdogs-nft-marketplace",
+      "name": "WatchDogs NFT marketplace",
+      "description": "First NFT investigation project and marketplace on INK! 🌊  Bringing the hottest NFTs from INK! 🔥",
+      "imageUrl": "/featured-apps/icons/watchdogs-nft-marketplace.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "data",
+        "nfts",
+        "tokens"
+      ],
+      "links": {
+        "mainnetWebsite": "https://watchdogs.ink/",
+        "testnetWebsite": "https://watchdogs.ink/",
+        "x": "https://x.com/WatchDogsOnInk",
+        "discord": "",
+        "telegram": "https://t.me/WatchDogsOnInk",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x846d9804Fa21E467119C1e3DE1294f8b060A4881"
+      }
+    },
+    {
       "id": "wormhole",
       "name": "Wormhole",
       "description": "Wormhole is the leading interoperability platform powering multichain applications and bridges at scale.",
