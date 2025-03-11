@@ -1,14 +1,10 @@
 import { useTranslations } from "next-intl";
 
-import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { OnlyWithFeatureFlag } from "@/components/OnlyWithFeatureFlag";
 import { newLayoutContainerClasses } from "@/components/styles/container";
 
 import { PageHeader } from "../_components/PageHeader";
-
-import { Verifications } from "./_components/Verifications";
-import { VerifyContent } from "./_components/VerifyContent";
-import { VerifyHaveASuggestion } from "./_components/VerifyHaveASuggestion";
+import { VerifyCta } from "./_components/VerifyCta";
 
 export default function VerifyPage() {
   const t = useTranslations("Verify");
@@ -18,15 +14,11 @@ export default function VerifyPage() {
         <PageHeader
           title={t("title")}
           description={t("description")}
-          cta={
-            <div className="relative w-full">
-              <ConnectWalletButton connectLabel={t("cta")} size="lg" />
-            </div>
-          }
+          cta={<VerifyCta />}
         />
-        <VerifyContent />
-        <Verifications />
-        <VerifyHaveASuggestion />
+        {/* <VerifyContent /> */}
+        {/* <Verifications /> */}
+        {/* <VerifyHaveASuggestion /> */}
       </div>
     </OnlyWithFeatureFlag>
   );
