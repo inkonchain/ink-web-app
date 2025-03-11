@@ -17,7 +17,7 @@ export function useAddressVerificationStatus(address: string | undefined) {
         throw new Error("No address provided");
       }
 
-      const response = await fetch(`/api/auth/verification/${address}`);
+      const response = await fetch(`/api/auth/verifications/${address}`);
 
       if (!response.ok) {
         throw new Error(
