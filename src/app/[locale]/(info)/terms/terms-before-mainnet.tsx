@@ -215,7 +215,7 @@ export default function TermsBeforeMainnet() {
         software, including any upgrades, that the Ink is built on may introduce
         bugs, viruses, Trojan horses, or other vulnerabilities or changes to Ink
         that could result in a partial or complete disruption of Ink or loss,
-        damage, or destruction of your Digital Assets. IWe do not control third
+        damage, or destruction of your Digital Assets. We do not control third
         party applications, including their development or deployment, on Ink,
         or any activity or transactions occurring on Ink. Therefore, you
         acknowledge and agree that Ink, including its Bridge Smart Contracts,
