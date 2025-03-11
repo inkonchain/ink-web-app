@@ -644,7 +644,7 @@ export default function TermsBeforeMainnet() {
       <div className="underline">Survival.</div>
       <div>
         If these Terms expire or terminate, the following Sections will remain
-        fully binding upon you and us: 1, 2, 2, 3, 4, 5, 6, 8, 9, 10, and 11.
+        fully binding upon you and us: 1, 2, 3, 4, 5, 6, 8, 9, 10, and 11.
         Termination won&apos;t limit any of our rights or remedies at law or
         equity.
       </div>
