@@ -92,13 +92,13 @@ export default function TrainingGroundRules() {
       </p>
 
       <ColoredText variant="purple" className="text-4xl">
-        3. Daap Cosponsors
+        3. Dapp Cosponsors
       </ColoredText>
 
       <p>
         In the event that an Academy Session is co-sponsored by a Dapp, such
         co-sponsorship does not constitute an endorsement of the Dapp, its
-        personnel, or its products or services by Ink. Further, the Daap
+        personnel, or its products or services by Ink. Further, the Dapp
         cosponsor will be solely responsible and liable for the determination
         and notification of winners and providing any prizes. As a result, you
         acknowledge and agree that Ink makes no representations or warranties,
@@ -116,7 +116,7 @@ export default function TrainingGroundRules() {
       <p>
         If a task requires submission of content for judgment, each participant
         is limited to submitting one eligible entry. Multiple submissions will
-        not be considered. Each submission will be judged by Ink or the Daap
+        not be considered. Each submission will be judged by Ink or the Dapp
         co-sponsor, in its sole discretion, in accordance with the judging
         criteria announced for that task. In the event no criteria is mentioned,
         judging will be based on originality and creativity (equally weighted)
