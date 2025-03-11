@@ -17,8 +17,8 @@ export async function resubscribeToBraze(
   formData: FormData
 ): Promise<FormState> {
   const brazeId = formData.get("brazeId");
-  const generalWailist = formData.get("generalWailist");
-  const developerWailist = formData.get("developerWailist");
+  const generalWaitlist = formData.get("generalWaitlist");
+  const developerWaitlist = formData.get("developerWaitlist");
 
   if (!brazeId || typeof brazeId !== "string") {
     return {
@@ -27,14 +27,14 @@ export async function resubscribeToBraze(
     };
   }
 
-  if (generalWailist !== "on" && developerWailist !== "on") {
+  if (generalWaitlist !== "on" && developerWaitlist !== "on") {
     return {
       error: "Make sure to select at least one of the waitlists",
       success: false,
     };
   }
 
-  if (generalWailist === "on") {
+  if (generalWaitlist === "on") {
     try {
       await changeUserSubscriptionGroupStatus(
         brazeId,
@@ -50,7 +50,7 @@ export async function resubscribeToBraze(
     }
   }
 
-  if (developerWailist === "on") {
+  if (developerWaitlist === "on") {
     try {
       await changeUserSubscriptionGroupStatus(
         brazeId,
