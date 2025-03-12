@@ -952,6 +952,29 @@
       }
     },
     {
+      "id": "routescan",
+      "name": "Routescan",
+      "description": "Multichain Unified Block Explorer",
+      "imageUrl": "/featured-apps/icons/routescan.webp",
+      "category": [
+        "Explorers"
+      ],
+      "network": "Both",
+      "tags": [
+        "explorer"
+      ],
+      "links": {
+        "mainnetWebsite": "https://inkonscan.xyz/",
+        "testnetWebsite": "https://sepolia.inkonscan.xyz/",
+        "x": "https://x.com/routescan_io",
+        "discord": "",
+        "telegram": "https://t.me/routescan_io",
+        "github": "",
+        "farcaster": "https://warpcast.com/routescan",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "safe",
       "name": "SAFE",
       "description": "Single unified balance. Instant cross-chain transactions.\nExecution guarantees. On any network.",
