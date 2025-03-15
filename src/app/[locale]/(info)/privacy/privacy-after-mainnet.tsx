@@ -361,7 +361,7 @@ export default function PrivacyAfterMainnet() {
           here
         </a>
         &nbsp;for a list of countries with adequacy decisions. If personal data
-        is transferred from the EEA or UK to the US, we may rely on
+        is transferred from the EEA or UK to the US, we may rely on{' '}
         <a
           href="https://commission.europa.eu/law/law-topic/data-protection/international-dimension-data-protection/standard-contractual-clauses-scc_en"
           target="_blank"
