@@ -30,7 +30,7 @@ importers:
         specifier: 21.0.2
         version: 21.0.2
       '@radix-ui/react-tooltip':
-        specifier: ^1.1.8
+        specifier: 1.1.8
         version: 1.1.8(@types/react-dom@19.0.3(@types/react@19.0.7))(@types/react@19.0.7)(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       '@rainbow-me/rainbowkit':
         specifier: 2.2.3

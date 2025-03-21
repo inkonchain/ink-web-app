@@ -25,10 +25,6 @@ import { useRevokeVerification } from "@/hooks/useRevokeVerification";
 import { Stepper } from "./Stepper";
 import { VerifyToast } from "./VerifyToast";
 
-interface VerifyCtaProps {
-  className?: string;
-}
-
 const toastOptions: ToastOptions = {
   position: "top-center",
   autoClose: 5000,
@@ -46,7 +42,7 @@ const successToastOptions: ToastOptions = {
   className: "!p-0 !bg-transparent !shadow-none",
 };
 
-export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
+export const VerifyCta: FC = () => {
   const searchParams = useSearchParams();
   const t = useTranslations("Verify");
   const { isConnected, address, isConnecting, isReconnecting } = useAccount();
@@ -161,11 +157,10 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
     }
   };
 
-  // Loading skeleton with same height as final content
   if (isLoading) {
     return (
-      <div className={`relative w-80 ${className ?? ""}`}>
-        <div className="h-12 animate-pulse rounded-full bg-whiteMagic dark:bg-gray-800" />
+      <div className="relative w-90">
+        <div className="h-16 animate-pulse rounded-full bg-inkPurple/15" />
       </div>
     );
   }
@@ -234,13 +229,9 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
 
   // Show action buttons
   return (
-    <div className={`relative w-full space-y-12 ${className ?? ""}`}>
+    <div className="relative w-full space-y-12">
       <Stepper steps={verificationSteps} />
-      {isLoading ? (
-        <div className={`relative w-80 ${className ?? ""}`}>
-          <div className="h-12 animate-pulse rounded-full bg-whiteMagic dark:bg-gray-800" />
-        </div>
-      ) : isConnected ? (
+      {isConnected ? (
         <Button
           size="lg"
           variant="primary"

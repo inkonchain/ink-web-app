@@ -3,14 +3,12 @@
 import { Card, CardContent } from "@inkonchain/ink-kit";
 import Image from "next/image";
 import { useTranslations } from "next-intl";
-import { useAccount } from "wagmi";
 
 import { ColoredText } from "@/components/ColoredText";
 import { Link } from "@/routing";
 
 export function VerifyPerks() {
   const t = useTranslations("Verify.perks");
-  const { address: connectedAddress, isConnected } = useAccount();
 
   return (
     <div className="space-y-8">
