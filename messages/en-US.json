@@ -112,7 +112,9 @@
     "verifications": {
       "title": "Available verifications",
       "description": "Discover the latest verifications on Ink."
-    }
+    },
+    "revokeVerification": "Revoke Verification",
+    "revokingVerification": "Revoking Verification..."
   },
   "About": {
     "title": "What is Ink?",

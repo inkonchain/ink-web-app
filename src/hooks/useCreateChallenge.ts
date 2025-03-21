@@ -1,18 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
-import { z } from "zod";
-
-export const ChallengeResponseSchema = z.object({
-  id: z.string(),
-  user_address: z.string(),
-  message: z.string(),
-});
-
-export type Challenge = z.infer<typeof ChallengeResponseSchema>;
+import { ChallengeResponse, ChallengeResponseBody } from "@/types/verification";
 
 export const useCreateChallenge = () => {
-  return useMutation<Challenge, Error, { user_address: string }>({
+  return useMutation<ChallengeResponse, Error, { user_address: string }>({
     mutationFn: async (variables) => {
-      const response = await fetch("/api/auth/challenge/new", {
+      const response = await fetch("/api/auth/challenges/new", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -25,7 +17,7 @@ export const useCreateChallenge = () => {
       }
 
       const data = await response.json();
-      return ChallengeResponseSchema.parse(data);
+      return ChallengeResponseBody.parse(data);
     },
   });
 };
