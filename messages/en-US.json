@@ -92,6 +92,8 @@
     "description": "Securely connect your Kraken account with your wallet to access exclusive rewards on GM.",
     "cta": "Connect to verify",
     "initVerificationCta": "Confirm ownership",
+    "confirmingInWallet": "Confirming in wallet...",
+    "redirecting": "Redirecting to Kraken...",
     "whatIsVerify": {
       "title": "What is Ink Verify?",
       "description": "Ink Verify is your gateway to effortless cross chain attestations. With Ink Verify, you can easily validate your DeFi activity, NFT mints and Kraken account all with zero gas fees. Just connect any wallet, including Kraken Wallet, Rainbow, or MetaMask to get started."
@@ -157,6 +159,10 @@
       "error": {
         "revoke": "Failed to revoke verification"
       }
+    },
+    "badge": {
+      "verified": "Your Kraken account is verified",
+      "getVerified": "Get verified today"
     }
   },
   "About": {

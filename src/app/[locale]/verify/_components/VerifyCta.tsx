@@ -57,6 +57,8 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
   const router = useRouter();
   const initVerification = useInitVerification();
   const revokeVerification = useRevokeVerification();
+  const [isRevoking, setIsRevoking] = React.useState(false);
+  const [isConfirming, setIsConfirming] = React.useState(false);
 
   // Check for status and message in URL params
   useEffect(() => {
@@ -88,6 +90,7 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
 
   const handleProveIdentity = async () => {
     if (!address) return;
+    setIsConfirming(true);
 
     try {
       // Create challenge
@@ -112,11 +115,14 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
       }
     } catch (error) {
       console.error("Error during verification:", error);
+    } finally {
+      setIsConfirming(false);
     }
   };
 
   const handleRevokeVerification = async () => {
     if (!address) return;
+    setIsRevoking(true);
 
     try {
       // Create challenge
@@ -149,10 +155,9 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
       }
     } catch (error) {
       console.error("Error during revocation:", error);
-      toast.error(
-        error instanceof Error ? error.message : t("toast.error.revoke"),
-        toastOptions
-      );
+      toast.error(t("toast.error.revoke"), toastOptions);
+    } finally {
+      setIsRevoking(false);
     }
   };
 
@@ -204,10 +209,14 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
               size="lg"
               rounded="full"
               variant="wallet"
-              disabled={isLoading}
+              disabled={isRevoking}
             >
               <div className="size-8">
-                <InkIcon.Dots />
+                {isRevoking ? (
+                  <InkIcon.Loading className="animate-spin text-default/70" />
+                ) : (
+                  <InkIcon.Dots />
+                )}
               </div>
             </Button>
           </PopoverButton>
@@ -232,9 +241,19 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
           size="lg"
           variant="primary"
           onClick={handleProveIdentity}
-          disabled={isLoading}
+          disabled={isConfirming || initVerification.isSuccess}
+          className="flex gap-2"
         >
-          {t("initVerificationCta")}
+          <p>
+            {initVerification.isSuccess
+              ? t("redirecting")
+              : isConfirming
+                ? t("confirmingInWallet")
+                : t("initVerificationCta")}
+          </p>
+          {(isConfirming || initVerification.isSuccess) && (
+            <InkIcon.Loading className="size-10 animate-spin grow-0" />
+          )}
         </Button>
       ) : (
         <ConnectWalletButton
