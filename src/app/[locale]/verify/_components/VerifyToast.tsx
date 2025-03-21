@@ -17,9 +17,9 @@ type VerifyToastProps = Partial<ToastContentProps> & {
 
 export const VerifyToast = ({ closeToast, data }: VerifyToastProps) => {
   return (
-    <div className="flex items-start gap-4 min-w-[320px] p-4 bg-inkSuccess/8 rounded-2xl w-2xl">
+    <div className="flex items-start gap-4 p-4 bg-inkSuccess/8 rounded-2xl backdrop-blur-xl w-[min(90vw,700px)]">
       <div className="flex-shrink-0 size-8 rounded-full bg-inkSuccess flex items-center justify-center mt-1">
-        <InkIcon.Check className="size-6 text-blackMagic" />
+        <InkIcon.Check className="size-6 text-whiteMagic" />
       </div>
       <div className="flex-1 text-left">
         <h3 className="text-lg font-semibold text-default/90">{data.title}</h3>

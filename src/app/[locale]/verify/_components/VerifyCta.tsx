@@ -38,13 +38,12 @@ const toastOptions: ToastOptions = {
   draggable: false,
   progress: undefined,
   transition: Bounce,
-  className: "w-2xl ml-[-50%]",
+  closeButton: false,
 };
 
 const successToastOptions: ToastOptions = {
   ...toastOptions,
-  className: "!p-0 !bg-transparent !shadow-none w-2xl ml-[-50%]",
-  bodyClassName: "!p-0 !m-0",
+  className: "!p-0 !bg-transparent !shadow-none",
 };
 
 export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
