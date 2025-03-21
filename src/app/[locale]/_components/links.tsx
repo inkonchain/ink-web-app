@@ -33,8 +33,8 @@ const links = [
   },
   {
     href: "/verify",
-    icon: <InkIcon.CheckFill />,
-    label: "Verify",
+    icon: <InkIcon.VerifiedIcon />,
+    label: "Kraken Verify ",
     flagKey: "verifyPage",
   },
   {
