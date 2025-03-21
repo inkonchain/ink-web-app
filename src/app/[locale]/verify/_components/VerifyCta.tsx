@@ -200,8 +200,8 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
   if (verificationStatus?.isVerified) {
     return (
       <div className="flex items-center gap-8">
-        <p className="text-center text-xl font-bold text-green-600 px-8 py-4.5 bg-green-500/10 rounded-full">
-          You wallet is verified
+        <p className="text-center text-xl font-bold text-inkSuccess px-8 py-4.5 bg-inkSuccess/10 rounded-full">
+          {t("status.walletVerified")}
         </p>
         <Popover>
           <PopoverButton asChild>
@@ -221,7 +221,11 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
             </Button>
           </PopoverButton>
           <PopoverPanel>
-            <ListItem onClick={handleRevokeVerification}>Revoke</ListItem>
+            <PopoverButton asChild>
+              <ListItem onClick={handleRevokeVerification}>
+                {t("actions.revoke")}
+              </ListItem>
+            </PopoverButton>
           </PopoverPanel>
         </Popover>
       </div>

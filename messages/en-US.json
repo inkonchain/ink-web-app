@@ -163,6 +163,12 @@
     "badge": {
       "verified": "Your Kraken account is verified",
       "getVerified": "Get verified today"
+    },
+    "status": {
+      "walletVerified": "Your wallet is verified"
+    },
+    "actions": {
+      "revoke": "Revoke"
     }
   },
   "About": {
