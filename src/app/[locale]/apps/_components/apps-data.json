@@ -820,6 +820,30 @@
       }
     },
     {
+      "id": "project-zero",
+      "name": "Project Zero",
+      "description": "Project Zero is unlocking the next-gen of AI agents and dApps with actionable blockchain intelligence, by transforming and extracting vast amounts of data into insights and real-time decisions.",
+      "imageUrl": "/featured-apps/icons/project-zero.webp",
+      "category": [
+        "Infra"
+      ],
+      "network": "Both",
+      "tags": [
+        "data",
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://projectzero.io/",
+        "testnetWebsite": "https://projectzero.io/",
+        "x": "https://x.com/ProjectZeroIO",
+        "discord": "https://discord.gg/JQyHYWmAtA",
+        "telegram": "https://t.me/projectzeroio",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "pyth",
       "name": "Pyth",
       "description": "Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.",
