@@ -1,17 +1,18 @@
 "use client";
 
+import type { FC } from "react";
+import { useEffect, useState } from "react";
+import { Bounce, toast, ToastOptions } from "react-toastify";
+import { Button } from "@inkonchain/ink-kit";
+import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
+import { useAccount, useSignMessage } from "wagmi";
+
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { useAddressVerificationStatus } from "@/hooks/useAddressVerificationStatus";
 import { useCreateChallenge } from "@/hooks/useCreateChallenge";
 import { useInitVerification } from "@/hooks/useInitVerification";
 import { useRevokeVerification } from "@/hooks/useRevokeVerification";
-import { Button } from "@inkonchain/ink-kit";
-import { useTranslations } from "next-intl";
-import { useRouter, useSearchParams } from "next/navigation";
-import type { FC } from "react";
-import { useEffect, useState } from "react";
-import { Bounce, toast, ToastOptions } from "react-toastify";
-import { useAccount, useSignMessage } from "wagmi";
 
 interface VerifyCtaProps {
   className?: string;

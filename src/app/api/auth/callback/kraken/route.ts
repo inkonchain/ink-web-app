@@ -1,5 +1,6 @@
-import { env } from "@/env";
 import { NextResponse } from "next/server";
+
+import { env } from "@/env";
 
 export async function GET(request: Request) {
   try {

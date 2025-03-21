@@ -1,4 +1,5 @@
 import { useMutation } from "@tanstack/react-query";
+
 import { ChallengeResponse, ChallengeResponseBody } from "@/types/verification";
 
 export const useCreateChallenge = () => {

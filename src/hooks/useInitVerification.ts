@@ -1,9 +1,10 @@
 import { useMutation } from "@tanstack/react-query";
+import { type Hex, parseSignature } from "viem";
+
 import {
   InitVerificationResponse,
   InitVerificationResponseBody,
 } from "@/types/verification";
-import { parseSignature, type Hex } from "viem";
 
 export const useInitVerification = () => {
   return useMutation<

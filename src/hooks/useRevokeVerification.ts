@@ -1,5 +1,6 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
-import { parseSignature, type Hex } from "viem";
+import { type Hex, parseSignature } from "viem";
+
 import {
   RevokeVerificationResponse,
   RevokeVerificationResponseBody,
