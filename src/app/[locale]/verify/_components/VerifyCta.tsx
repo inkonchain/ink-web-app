@@ -20,7 +20,7 @@ interface VerifyCtaProps {
 const toastOptions: ToastOptions = {
   position: "top-center",
   autoClose: 5000,
-  className: "w-xl",
+  className: "w-2xl",
   hideProgressBar: true,
   closeOnClick: false,
   pauseOnHover: false,

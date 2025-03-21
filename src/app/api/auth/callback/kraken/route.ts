@@ -12,7 +12,7 @@ export async function GET(request: Request) {
     }
 
     const response = await fetch(
-      `${env.INK_VERIFY_API_BASE_URL}/v1/auth/verifications/complete`,
+      `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/auth/verifications/complete`,
       {
         method: "POST",
         headers: {
