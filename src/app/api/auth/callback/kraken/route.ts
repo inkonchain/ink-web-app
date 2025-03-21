@@ -28,7 +28,11 @@ export async function GET(request: Request) {
     const redirectUrl = new URL("/verify", request.url);
     redirectUrl.searchParams.set("verifyPage", "true");
     redirectUrl.searchParams.set("status", response.ok ? "success" : "error");
-    redirectUrl.searchParams.set("message", data.message || "Unknown response");
+    redirectUrl.searchParams.set("message", data.message);
+    redirectUrl.searchParams.set(
+      "txHash",
+      data.transaction_hash || "Unknown transaction hash"
+    );
 
     return NextResponse.redirect(redirectUrl);
   } catch (error) {

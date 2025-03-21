@@ -88,10 +88,10 @@
     }
   },
   "Verify": {
-    "title": "Onchain Verification",
-    "description": "Securely verify your Kraken identity on-chain to access exclusive benefits across the Ink ecosystem",
+    "title": "Verify your Kraken account and unlock benefits",
+    "description": "Securely connect your Kraken account with your wallet to access exclusive rewards on GM.",
     "cta": "Connect to verify",
-    "proveIdentity": "Prove Identity",
+    "initVerificationCta": "Confirm ownership",
     "whatIsVerify": {
       "title": "What is Ink Verify?",
       "description": "Ink Verify is your gateway to effortless cross chain attestations. With Ink Verify, you can easily validate your DeFi activity, NFT mints and Kraken account all with zero gas fees. Just connect any wallet, including Kraken Wallet, Rainbow, or MetaMask to get started."
@@ -113,8 +113,51 @@
       "title": "Available verifications",
       "description": "Discover the latest verifications on Ink."
     },
+    "perks": {
+      "title": "Rewards and perks",
+      "description": "Discover the latest benefits"
+    },
+    "learnMore": {
+      "title": "Want to learn more?",
+      "description": "Find answers to common questions about verification, rewards and how to make the most of your benefits",
+      "cta": "Learn more"
+    },
+    "flow": {
+      "step1": {
+        "title": "Connect your wallet",
+        "description": "Choose the wallet you want to verify to begin the process"
+      },
+      "step2": {
+        "title": "Sign a verification request",
+        "description": "Confirm ownership of your wallet by signing a message"
+      },
+      "step3": {
+        "title": "Sign in to your Kraken account",
+        "description": "Confirm ownership of your Kraken account by signing in"
+      },
+      "step4": {
+        "title": "Successfully verified and ready to receive rewards",
+        "description": "Your Kraken account is now associated with your wallet on-chain"
+      }
+    },
+    "verified": {
+      "cta": "Revoke"
+    },
     "revokeVerification": "Revoke Verification",
-    "revokingVerification": "Revoking Verification..."
+    "revokingVerification": "Revoking Verification...",
+    "toast": {
+      "success": {
+        "title": "Successfully verified",
+        "description": "Your Kraken account is now associated with your wallet on-chain"
+      },
+      "revoke": {
+        "title": "Verification successfully revoked",
+        "description": "Your Kraken account is not associated with your wallet on-chain"
+      },
+      "error": {
+        "revoke": "Failed to revoke verification"
+      }
+    }
   },
   "About": {
     "title": "What is Ink?",

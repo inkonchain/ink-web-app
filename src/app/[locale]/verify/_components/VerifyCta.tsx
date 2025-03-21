@@ -1,9 +1,17 @@
 "use client";
 
 import type { FC } from "react";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import React from "react";
 import { Bounce, toast, ToastOptions } from "react-toastify";
-import { Button } from "@inkonchain/ink-kit";
+import {
+  Button,
+  InkIcon,
+  ListItem,
+  Popover,
+  PopoverButton,
+  PopoverPanel,
+} from "@inkonchain/ink-kit";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
 import { useAccount, useSignMessage } from "wagmi";
@@ -14,6 +22,9 @@ import { useCreateChallenge } from "@/hooks/useCreateChallenge";
 import { useInitVerification } from "@/hooks/useInitVerification";
 import { useRevokeVerification } from "@/hooks/useRevokeVerification";
 
+import { Stepper } from "./Stepper";
+import { VerifyToast } from "./VerifyToast";
+
 interface VerifyCtaProps {
   className?: string;
 }
@@ -21,20 +32,24 @@ interface VerifyCtaProps {
 const toastOptions: ToastOptions = {
   position: "top-center",
   autoClose: 5000,
-  className: "w-2xl",
   hideProgressBar: true,
   closeOnClick: false,
   pauseOnHover: false,
   draggable: false,
   progress: undefined,
-  theme: "colored",
   transition: Bounce,
+  className: "w-2xl ml-[-50%]",
+};
+
+const successToastOptions: ToastOptions = {
+  ...toastOptions,
+  className: "!p-0 !bg-transparent !shadow-none w-2xl ml-[-50%]",
+  bodyClassName: "!p-0 !m-0",
 };
 
 export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
   const searchParams = useSearchParams();
   const t = useTranslations("Verify");
-  const [isProving, setIsProving] = useState(false);
   const { isConnected, address, isConnecting, isReconnecting } = useAccount();
   const { data: verificationStatus, isLoading: isCheckingVerification } =
     useAddressVerificationStatus(address);
@@ -43,16 +58,23 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
   const router = useRouter();
   const initVerification = useInitVerification();
   const revokeVerification = useRevokeVerification();
-  const [isRevoking, setIsRevoking] = useState(false);
 
   // Check for status and message in URL params
   useEffect(() => {
     const status = searchParams.get("status");
     const message = searchParams.get("message");
+    const txHash = searchParams.get("txHash");
 
-    if (status && message) {
+    if (status && txHash) {
       if (status === "success") {
-        toast.success(message, toastOptions);
+        toast(VerifyToast, {
+          ...successToastOptions,
+          data: {
+            title: t("toast.success.title"),
+            description: t("toast.success.description"),
+            txHash,
+          },
+        });
       } else {
         toast.error(message, toastOptions);
       }
@@ -61,24 +83,14 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
       const params = searchParams.get("verifyPage") ? "?verifyPage=true" : "";
       router.replace(window.location.pathname + params, { scroll: false });
     }
-  }, [searchParams, router]);
+  }, [searchParams, router, t]);
 
-  const isLoading =
-    isConnecting ||
-    isReconnecting ||
-    isCheckingVerification ||
-    isProving ||
-    isRevoking ||
-    createChallenge.isPending ||
-    initVerification.isPending ||
-    revokeVerification.isPending;
+  const isLoading = isConnecting || isReconnecting || isCheckingVerification;
 
   const handleProveIdentity = async () => {
     if (!address) return;
 
     try {
-      setIsProving(true);
-
       // Create challenge
       const challenge = await createChallenge.mutateAsync({
         user_address: address,
@@ -101,7 +113,6 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
       }
     } catch (error) {
       console.error("Error during verification:", error);
-      setIsProving(false);
     }
   };
 
@@ -109,8 +120,6 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
     if (!address) return;
 
     try {
-      setIsRevoking(true);
-
       // Create challenge
       const challenge = await createChallenge.mutateAsync({
         user_address: address,
@@ -128,20 +137,23 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
       });
 
       if (data.status === "success") {
-        toast.success(data.message, toastOptions);
+        toast(VerifyToast, {
+          ...successToastOptions,
+          data: {
+            title: t("toast.revoke.title"),
+            description: t("toast.revoke.description"),
+            txHash: data.transaction_hash,
+          },
+        });
       } else {
         toast.error(data.message, toastOptions);
       }
     } catch (error) {
       console.error("Error during revocation:", error);
       toast.error(
-        error instanceof Error
-          ? error.message
-          : "Failed to revoke verification",
+        error instanceof Error ? error.message : t("toast.error.revoke"),
         toastOptions
       );
-    } finally {
-      setIsRevoking(false);
     }
   };
 
@@ -154,39 +166,84 @@ export const VerifyCta: FC<VerifyCtaProps> = ({ className }) => {
     );
   }
 
+  const verificationSteps = [
+    {
+      title: t("flow.step1.title"),
+      description: t("flow.step1.description"),
+      completed: searchParams.get("status") === "success" || isConnected,
+    },
+    {
+      title: t("flow.step2.title"),
+      description: t("flow.step2.description"),
+      completed:
+        searchParams.get("status") === "success" ||
+        initVerification.isPending ||
+        initVerification.isSuccess,
+    },
+    {
+      title: t("flow.step3.title"),
+      description: t("flow.step3.description"),
+      completed: searchParams.get("status") === "success",
+    },
+    {
+      title: t("flow.step4.title"),
+      description: t("flow.step4.description"),
+      completed: searchParams.get("status") === "success",
+    },
+  ];
+
   // Show verified state
   if (verificationStatus?.isVerified) {
     return (
-      <div className="flex flex-col items-center gap-4">
-        <p className="text-center text-lg font-medium text-green-600">
-          ✓ Your address is verified
+      <div className="flex items-center gap-8">
+        <p className="text-center text-xl font-bold text-green-600 px-8 py-4.5 bg-green-500/10 rounded-full">
+          You wallet is verified
         </p>
-        <Button
-          size="lg"
-          variant="secondary"
-          onClick={handleRevokeVerification}
-          disabled={isLoading}
-        >
-          {isRevoking ? t("revokingVerification") : t("revokeVerification")}
-        </Button>
+        <Popover>
+          <PopoverButton asChild>
+            <Button
+              size="lg"
+              rounded="full"
+              variant="wallet"
+              disabled={isLoading}
+            >
+              <div className="size-8">
+                <InkIcon.Dots />
+              </div>
+            </Button>
+          </PopoverButton>
+          <PopoverPanel>
+            <ListItem onClick={handleRevokeVerification}>Revoke</ListItem>
+          </PopoverPanel>
+        </Popover>
       </div>
     );
   }
 
   // Show action buttons
   return (
-    <div className={`relative w-full ${className ?? ""}`}>
-      {isConnected ? (
+    <div className={`relative w-full space-y-12 ${className ?? ""}`}>
+      <Stepper steps={verificationSteps} />
+      {isLoading ? (
+        <div className={`relative w-80 ${className ?? ""}`}>
+          <div className="h-12 animate-pulse rounded-full bg-whiteMagic dark:bg-gray-800" />
+        </div>
+      ) : isConnected ? (
         <Button
           size="lg"
           variant="primary"
           onClick={handleProveIdentity}
           disabled={isLoading}
         >
-          {t("proveIdentity")}
+          {t("initVerificationCta")}
         </Button>
       ) : (
-        <ConnectWalletButton connectLabel={t("cta")} size="lg" />
+        <ConnectWalletButton
+          connectLabel={t("cta")}
+          size="lg"
+          variant="primary"
+          noIcon
+        />
       )}
     </div>
   );

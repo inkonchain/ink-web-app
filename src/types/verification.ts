@@ -37,6 +37,7 @@ export const RevokeVerificationRequestBody = z.object({
 export const RevokeVerificationResponseBody = z.object({
   message: z.string(),
   status: z.enum(["success", "error"]),
+  transaction_hash: z.string(),
 });
 
 // Inferred types
