@@ -1,5 +1,3 @@
-"use client";
-
 import { InkIcon } from "@inkonchain/ink-kit";
 
 import { cn } from "@/lib/utils";
@@ -43,11 +41,7 @@ export const Stepper: React.FC<StepperProps> = ({ steps }) => {
               </div>
             </div>
             {index < steps.length - 1 && (
-              <div
-                className={cn(
-                  "ml-[15px] h-[12px] w-[2px] bg-default/20 my-2.5"
-                )}
-              />
+              <div className="ml-[15px] h-[12px] w-[2px] bg-default/20 my-2.5" />
             )}
           </div>
         ))}

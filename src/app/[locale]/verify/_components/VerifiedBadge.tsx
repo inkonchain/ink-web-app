@@ -1,4 +1,6 @@
 "use client";
+
+import { FC } from "react";
 import { InkIcon } from "@inkonchain/ink-kit";
 import * as Tooltip from "@radix-ui/react-tooltip";
 import { useSearchParams } from "next/navigation";
@@ -9,11 +11,7 @@ import { useAddressVerificationStatus } from "@/hooks/useAddressVerificationStat
 import { cn } from "@/lib/utils";
 import { Link } from "@/routing";
 
-interface VerifiedBadgeProps {
-  className?: string;
-}
-
-export const VerifiedBadge = ({ className }: VerifiedBadgeProps) => {
+export const VerifiedBadge: FC = () => {
   const t = useTranslations("Verify");
   const searchParams = useSearchParams();
   const { address, isConnected } = useAccount();
@@ -35,8 +33,7 @@ export const VerifiedBadge = ({ className }: VerifiedBadgeProps) => {
               "group flex items-center justify-center rounded-full p-1 transition-all duration-200",
               verificationStatus?.isVerified
                 ? "hover:bg-inkSuccess"
-                : "hover:bg-default/8",
-              className
+                : "hover:bg-default/8"
             )}
           >
             <div
@@ -64,5 +61,3 @@ export const VerifiedBadge = ({ className }: VerifiedBadgeProps) => {
     </Tooltip.Provider>
   );
 };
-
-VerifiedBadge.displayName = "VerifiedBadge";

@@ -1,5 +1,6 @@
 "use client";
 import { type ToastContentProps } from "react-toastify";
+import { Bounce, toast, ToastOptions } from "react-toastify";
 import { InkIcon } from "@inkonchain/ink-kit";
 
 import { ExplorerIcon } from "@/components/icons/ExplorerIcon";
@@ -13,6 +14,42 @@ interface VerifyToastData {
 
 type VerifyToastProps = Partial<ToastContentProps> & {
   data: VerifyToastData;
+};
+
+const toastOptions: ToastOptions = {
+  position: "top-center",
+  autoClose: 5000,
+  hideProgressBar: true,
+  closeOnClick: false,
+  pauseOnHover: false,
+  draggable: false,
+  progress: undefined,
+  transition: Bounce,
+  closeButton: false,
+};
+
+const successToastOptions: ToastOptions = {
+  ...toastOptions,
+  className: "!p-0 !bg-transparent !shadow-none",
+};
+
+export const showSuccessToast = (
+  title: string,
+  description: string,
+  txHash: string
+) => {
+  toast(VerifyToast, {
+    ...successToastOptions,
+    data: {
+      title,
+      description,
+      txHash,
+    },
+  });
+};
+
+export const showErrorToast = (message: string) => {
+  toast.error(message, toastOptions);
 };
 
 export const VerifyToast = ({ closeToast, data }: VerifyToastProps) => {

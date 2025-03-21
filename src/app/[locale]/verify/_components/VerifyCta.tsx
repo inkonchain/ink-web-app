@@ -1,9 +1,6 @@
 "use client";
 
-import type { FC } from "react";
-import { useEffect } from "react";
-import React from "react";
-import { Bounce, toast, ToastOptions } from "react-toastify";
+import { FC, useEffect } from "react";
 import {
   Button,
   InkIcon,
@@ -12,150 +9,46 @@ import {
   PopoverButton,
   PopoverPanel,
 } from "@inkonchain/ink-kit";
-import { useRouter, useSearchParams } from "next/navigation";
 import { useTranslations } from "next-intl";
-import { useAccount, useSignMessage } from "wagmi";
+import { useAccount } from "wagmi";
 
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { useAddressVerificationStatus } from "@/hooks/useAddressVerificationStatus";
-import { useCreateChallenge } from "@/hooks/useCreateChallenge";
-import { useInitVerification } from "@/hooks/useInitVerification";
-import { useRevokeVerification } from "@/hooks/useRevokeVerification";
 
-import { Stepper } from "./Stepper";
-import { VerifyToast } from "./VerifyToast";
+import { showErrorToast, showSuccessToast } from "../_components/VerifyToast";
+import { useRevocationFlow } from "../_hooks/useRevocationFlow";
+import { useVerificationFlow } from "../_hooks/useVerificationFlow";
+import { useVerificationParams } from "../_hooks/useVerificationParams";
 
-const toastOptions: ToastOptions = {
-  position: "top-center",
-  autoClose: 5000,
-  hideProgressBar: true,
-  closeOnClick: false,
-  pauseOnHover: false,
-  draggable: false,
-  progress: undefined,
-  transition: Bounce,
-  closeButton: false,
-};
-
-const successToastOptions: ToastOptions = {
-  ...toastOptions,
-  className: "!p-0 !bg-transparent !shadow-none",
-};
+import { VerificationSteps } from "./VerificationSteps";
 
 export const VerifyCta: FC = () => {
-  const searchParams = useSearchParams();
+  const { status, clearStatusParams, txHash, message } =
+    useVerificationParams();
   const t = useTranslations("Verify");
   const { isConnected, address, isConnecting, isReconnecting } = useAccount();
   const { data: verificationStatus, isLoading: isCheckingVerification } =
     useAddressVerificationStatus(address);
-  const createChallenge = useCreateChallenge();
-  const { signMessageAsync } = useSignMessage();
-  const router = useRouter();
-  const initVerification = useInitVerification();
-  const revokeVerification = useRevokeVerification();
-  const [isRevoking, setIsRevoking] = React.useState(false);
-  const [isConfirming, setIsConfirming] = React.useState(false);
+  const { isConfirming, handleProveIdentity, initVerification } =
+    useVerificationFlow(address);
+  const { isRevoking, handleRevoke } = useRevocationFlow(address);
 
-  // Check for status and message in URL params
   useEffect(() => {
-    const status = searchParams.get("status");
-    const message = searchParams.get("message");
-    const txHash = searchParams.get("txHash");
-
     if (status && txHash) {
       if (status === "success") {
-        toast(VerifyToast, {
-          ...successToastOptions,
-          data: {
-            title: t("toast.success.title"),
-            description: t("toast.success.description"),
-            txHash,
-          },
-        });
+        showSuccessToast(
+          t("toast.success.title"),
+          t("toast.success.description"),
+          txHash
+        );
       } else {
-        toast.error(message, toastOptions);
+        showErrorToast(message!);
       }
-
-      // Only keep verifyPage param if it exists
-      const params = searchParams.get("verifyPage") ? "?verifyPage=true" : "";
-      router.replace(window.location.pathname + params, { scroll: false });
+      clearStatusParams();
     }
-  }, [searchParams, router, t]);
+  }, [t, status, txHash, message, clearStatusParams]);
 
   const isLoading = isConnecting || isReconnecting || isCheckingVerification;
-
-  const handleProveIdentity = async () => {
-    if (!address) return;
-    setIsConfirming(true);
-
-    try {
-      // Create challenge
-      const challenge = await createChallenge.mutateAsync({
-        user_address: address,
-      });
-
-      // Sign the challenge message
-      const signature = await signMessageAsync({
-        message: challenge.message,
-      });
-
-      // Solve challenge
-      const data = await initVerification.mutateAsync({
-        challenge_id: challenge.id,
-        challenge_signature: signature,
-      });
-
-      // Redirect to Kraken OAuth if challenge was solved
-      if (data.oauth_url) {
-        router.push(data.oauth_url);
-      }
-    } catch (error) {
-      console.error("Error during verification:", error);
-    } finally {
-      setIsConfirming(false);
-    }
-  };
-
-  const handleRevokeVerification = async () => {
-    if (!address) return;
-    setIsRevoking(true);
-
-    try {
-      // Create challenge
-      const challenge = await createChallenge.mutateAsync({
-        user_address: address,
-      });
-
-      // Sign the challenge message
-      const signature = await signMessageAsync({
-        message: challenge.message,
-      });
-
-      // Revoke verification
-      const data = await revokeVerification.mutateAsync({
-        challenge_id: challenge.id,
-        challenge_signature: signature,
-      });
-
-      if (data.status === "success") {
-        toast(VerifyToast, {
-          ...successToastOptions,
-          data: {
-            title: t("toast.revoke.title"),
-            description: t("toast.revoke.description"),
-            txHash: data.transaction_hash,
-          },
-        });
-      } else {
-        toast.error(data.message, toastOptions);
-      }
-    } catch (error) {
-      console.error("Error during revocation:", error);
-      toast.error(t("toast.error.revoke"), toastOptions);
-    } finally {
-      setIsRevoking(false);
-    }
-  };
 
   if (isLoading) {
     return (
@@ -165,33 +58,6 @@ export const VerifyCta: FC = () => {
     );
   }
 
-  const verificationSteps = [
-    {
-      title: t("flow.step1.title"),
-      description: t("flow.step1.description"),
-      completed: searchParams.get("status") === "success" || isConnected,
-    },
-    {
-      title: t("flow.step2.title"),
-      description: t("flow.step2.description"),
-      completed:
-        searchParams.get("status") === "success" ||
-        initVerification.isPending ||
-        initVerification.isSuccess,
-    },
-    {
-      title: t("flow.step3.title"),
-      description: t("flow.step3.description"),
-      completed: searchParams.get("status") === "success",
-    },
-    {
-      title: t("flow.step4.title"),
-      description: t("flow.step4.description"),
-      completed: searchParams.get("status") === "success",
-    },
-  ];
-
-  // Show verified state
   if (verificationStatus?.isVerified) {
     return (
       <div className="flex items-center gap-8">
@@ -217,9 +83,7 @@ export const VerifyCta: FC = () => {
           </PopoverButton>
           <PopoverPanel>
             <PopoverButton asChild>
-              <ListItem onClick={handleRevokeVerification}>
-                {t("actions.revoke")}
-              </ListItem>
+              <ListItem onClick={handleRevoke}>{t("actions.revoke")}</ListItem>
             </PopoverButton>
           </PopoverPanel>
         </Popover>
@@ -227,10 +91,13 @@ export const VerifyCta: FC = () => {
     );
   }
 
-  // Show action buttons
   return (
     <div className="relative w-full space-y-12">
-      <Stepper steps={verificationSteps} />
+      <VerificationSteps
+        status={status}
+        isConnected={isConnected}
+        initVerification={initVerification}
+      />
       {isConnected ? (
         <Button
           size="lg"
