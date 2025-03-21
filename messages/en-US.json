@@ -88,9 +88,10 @@
     }
   },
   "Verify": {
-    "title": "Get Verified and Start Your On-Chain Journey Today",
-    "description": "Ink Verify — Seamlessly authenticate your activity, unlock rewards, and explore the limitless potential of Ink.",
+    "title": "Onchain Verification",
+    "description": "Securely verify your Kraken identity on-chain to access exclusive benefits across the Ink ecosystem",
     "cta": "Connect to verify",
+    "proveIdentity": "Prove Identity",
     "whatIsVerify": {
       "title": "What is Ink Verify?",
       "description": "Ink Verify is your gateway to effortless cross chain attestations. With Ink Verify, you can easily validate your DeFi activity, NFT mints and Kraken account all with zero gas fees. Just connect any wallet, including Kraken Wallet, Rainbow, or MetaMask to get started."

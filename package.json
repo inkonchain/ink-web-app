@@ -3,6 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbo",
+    "dev:https": "next dev --turbo --experimental-https",
     "build": "NODE_OPTIONS='--max_old_space_size=8192' next build",
     "start": "next start",
     "lint": "next lint",
