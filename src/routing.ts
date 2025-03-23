@@ -41,6 +41,7 @@ export const EXTERNAL_LINKS = {
   inkKit: "https://github.com/inkonchain/ink-kit",
   guild: "https://guild.xyz/",
   legal: "mailto:legal@inkonchain.com",
+  gm: "https://gm.inkonchain.com",
   // TODO: update this.
   inkVerify: "https://verify.inkonchain.com/",
   relayTxHistory: "https://relay.link/transactions?address=[address]",
