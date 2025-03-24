@@ -716,8 +716,8 @@
         "explorer"
       ],
       "links": {
-        "mainnetWebsite": "https://www.okx.com/en-au/web3/explorer/inkchain?channelId=okxep1",
-        "testnetWebsite": "https://www.okx.com/en-au/web3/explorer/inkchain?channelId=okxep1",
+        "mainnetWebsite": "https://web3.okx.com/explorer/inkchain",
+        "testnetWebsite": "https://web3.okx.com/explorer/inkchain",
         "x": "https://twitter.com/okxexplorer",
         "discord": "",
         "telegram": "",
