@@ -17,7 +17,7 @@ export async function GET(
     const { address } = RequestParamsSchema.parse(await params);
 
     // Construct the target URL
-    const targetUrl = `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/auth/verifications/${address}`;
+    const targetUrl = `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/verifications/${address}`;
 
     // Forward the request with all its original headers
     const response = await fetch(targetUrl, {

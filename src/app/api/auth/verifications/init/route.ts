@@ -7,7 +7,7 @@ export async function POST(request: Request) {
     const body = await request.json();
 
     const response = await fetch(
-      `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/auth/verifications/init`,
+      `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/verifications/init`,
       {
         method: request.method,
         headers: request.headers,

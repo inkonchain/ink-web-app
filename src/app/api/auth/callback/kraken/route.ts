@@ -12,7 +12,7 @@ export async function GET(request: Request) {
       throw new Error("Missing code or state parameters");
     }
 
-    const verifyApiUrl = `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/auth/verifications/complete`;
+    const verifyApiUrl = `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/verifications/complete`;
 
     const response = await fetch(verifyApiUrl, {
       method: "POST",
