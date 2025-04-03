@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { Stepper } from "@/components/Stepper";
 
 interface VerificationStepsProps {
-  status: string | null;
+  sessionSuccess: boolean;
   isConnected: boolean;
   initVerification: {
     isPending: boolean;
@@ -13,7 +13,7 @@ interface VerificationStepsProps {
 }
 
 export const VerificationSteps: FC<VerificationStepsProps> = ({
-  status,
+  sessionSuccess,
   isConnected,
   initVerification,
 }: VerificationStepsProps) => {
@@ -23,25 +23,25 @@ export const VerificationSteps: FC<VerificationStepsProps> = ({
     {
       title: t("flow.step1.title"),
       description: t("flow.step1.description"),
-      completed: status === "success" || isConnected,
+      completed: sessionSuccess || isConnected,
     },
     {
       title: t("flow.step2.title"),
       description: t("flow.step2.description"),
       completed:
-        status === "success" ||
+        sessionSuccess ||
         initVerification.isPending ||
         initVerification.isSuccess,
     },
     {
       title: t("flow.step3.title"),
       description: t("flow.step3.description"),
-      completed: status === "success",
+      completed: sessionSuccess,
     },
     {
       title: t("flow.step4.title"),
       description: t("flow.step4.description"),
-      completed: status === "success",
+      completed: sessionSuccess,
     },
   ];
 
