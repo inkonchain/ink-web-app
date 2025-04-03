@@ -1,10 +1,10 @@
 "use client";
 
-import { useTranslations } from "next-intl";
 import { Button } from "@inkonchain/ink-kit";
-import { Link } from "@/routing";
+import { useTranslations } from "next-intl";
 
 import { ColoredText } from "@/components/ColoredText";
+import { Link } from "@/routing";
 
 export function VerifyLearnMore() {
   const t = useTranslations("Verify.learnMore");

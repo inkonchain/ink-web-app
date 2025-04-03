@@ -1,8 +1,11 @@
 "use client";
 
+import { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
-const FAQ_ITEMS = [
+import { Link } from "@/routing";
+
+const FAQ_KEYS = [
   "whatIsVerify",
   "whatGoesOnchain",
   "payforGas",
@@ -13,57 +16,42 @@ const FAQ_ITEMS = [
   "support",
 ] as const;
 
-type FAQItemId = (typeof FAQ_ITEMS)[number];
-
 type FAQItem = {
-  id: FAQItemId;
+  id: (typeof FAQ_KEYS)[number];
   title: string;
-  description: string;
+  description: ReactNode;
 };
 
-const parseDescription = (description: string) => {
-  const parts = description.split(/(<link>.*?<\/link>)/g);
-  return parts.map((part, index) => {
-    if (part.startsWith("<link>") && part.endsWith("</link>")) {
-      const text = part.replace(/<\/?link>/g, "");
-      return (
-        <a
-          key={index}
+export default function FAQPage() {
+  const t = useTranslations("Verify");
+
+  const faqItems: FAQItem[] = FAQ_KEYS.map((id) => ({
+    id,
+    title: t(`faq.${id}.title`),
+    description: t.rich(`faq.${id}.description`, {
+      "eas-link": (chunks) => (
+        <Link
           href="https://docs.attest.org/docs/welcome"
           className="text-primary hover:underline"
           target="_blank"
           rel="noopener noreferrer"
         >
-          {text}
-        </a>
-      );
-    }
-    return <span key={index}>{part}</span>;
-  });
-};
-
-export default function FAQPage() {
-  const faqT = useTranslations("Verify.faq");
-  const faqTRaw = useTranslations("Verify.faq");
-
-  const faqItems: FAQItem[] = FAQ_ITEMS.map((id) => ({
-    id,
-    title: faqT(`${id}.title`),
-    description: faqTRaw.raw(`${id}.description`),
+          {chunks}
+        </Link>
+      ),
+    }),
   }));
 
   return (
     <div className="container mx-auto px-4 py-12">
       <div className="w-full max-w-4xl mt-12">
-        <h2 className="text-2xl font-medium mb-8">
-          Frequently Asked Questions
-        </h2>
+        <h2 className="text-2xl font-medium mb-8">{t("faq.title")}</h2>
         <div className="space-y-6">
           {faqItems.map((item) => (
             <div key={item.id} className="text-left">
               <h3 className="text-lg font-medium mb-2">{item.title}</h3>
               <p className="text-blackMagic/50 dark:text-whiteMagic/50">
-                {parseDescription(item.description)}
+                {item.description}
               </p>
             </div>
           ))}

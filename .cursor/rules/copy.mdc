@@ -1,0 +1,85 @@
+---
+description: 
+globs: *.tsx
+alwaysApply: false
+---
+# Copy Text Guidelines
+
+## All user-facing text must be stored in translation files
+
+### Rule
+All text that appears in the UI must be stored in the `en-US.json` translation file and accessed via translation keys. Never hardcode text directly in React components.
+
+### Examples
+
+❌ **Incorrect:**
+```tsx
+// Hardcoded text
+<h2>Frequently Asked Questions</h2>
+<p>Learn more about our service</p>
+```
+
+✅ **Correct:**
+```tsx
+// Using translation keys
+<h2>{t("faq.title")}</h2>
+<p>{t("faq.learnMore")}</p>
+```
+
+### Rich Text with next-intl
+
+next-intl provides a native way to handle rich text without custom parsers. Use the `rich` method:
+
+```tsx
+// In your component
+import { useTranslations } from 'next-intl';
+
+export default function Component() {
+  const t = useTranslations('Namespace');
+  
+  return (
+    <p>
+      {t.rich('richText', {
+        link: (chunks) => <a href="https://example.com">{chunks}</a>,
+        bold: (chunks) => <strong>{chunks}</strong>
+      })}
+    </p>
+  );
+}
+```
+
+With corresponding JSON:
+
+```json
+{
+  "Namespace": {
+    "richText": "Check our <link>documentation</link> and <bold>read carefully</bold>"
+  }
+}
+```
+
+### Benefits
+- Makes internationalization easier
+- Keeps text consistent across the application
+- Allows for centralized editing of copy
+- Enforces separation of concerns
+- Uses native next-intl capabilities for rich text
+
+### Best Practices
+
+1. **Use descriptive keys** - Organize keys logically (e.g., `pages.home.title`) rather than just (`title`)
+2. **Prefer a single translation object** - Use a single `t` object with full paths instead of multiple objects
+3. **Avoid string concatenation** - Don't build strings by concatenating translated parts
+4. **Dynamic content** - Use placeholders in your translations for dynamic content
+5. **Keep keys in sync** - Always update all language files when adding/changing keys
+
+```tsx
+// Avoid this (separate translations)
+const homeT = useTranslations('Home');
+const sharedT = useTranslations('Shared');
+
+// Prefer this (single translation with full paths)
+const t = useTranslations();
+t('home.title');
+t('shared.button');
+```

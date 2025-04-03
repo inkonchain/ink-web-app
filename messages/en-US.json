@@ -95,6 +95,7 @@
     "confirmingInWallet": "Confirming in wallet...",
     "redirecting": "Redirecting to Kraken...",
     "faq": {
+      "title": "Frequently Asked Questions",
       "whatIsVerify": {
         "title": "What is Kraken Verify?",
         "description": "Kraken Verify allows you to verify that your wallet address is associated with your Kraken account by making an onchain attestation. By verifying, you can begin to access exclusive features across Ink."
@@ -117,7 +118,7 @@
       },
       "howDoesitWork": {
         "title": "How does it work?",
-        "description": "Kraken Verify uses the <link>Ethereum Attestation Service (EAS)</link> on Ink to issue onchain attestations. EAS is a standard protocol for making trusted claims about onchain or offchain data — stored securely onchain. "
+        "description": "Kraken Verify uses the <eas-link>Ethereum Attestation Service (EAS)</eas-link> on Ink to issue onchain attestations. EAS is a standard protocol for making trusted claims about onchain or offchain data — stored securely onchain."
       },
       "transferable": {
         "title": "Are verifications transferable?",

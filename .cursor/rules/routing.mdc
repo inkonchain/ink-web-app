@@ -1,0 +1,53 @@
+---
+description: Ensure all links in the application use the Link component from @/routing
+globs: *.tsx
+alwaysApply: false
+---
+# Routing Guidelines
+
+## All links must use the Link component from @/routing
+
+### Rule
+All navigation links in the application must use the `Link` component imported from `@/routing`. Never use Next.js's built-in `next/link` or regular HTML `<a>` tags for internal navigation.
+
+### Examples
+
+❌ **Incorrect:**
+```tsx
+// Using Next.js built-in Link
+import Link from "next/link";
+
+<Link href="/about">About</Link>
+
+// Using HTML anchor tag
+<a href="/about">About</a>
+```
+
+✅ **Correct:**
+```tsx
+// Using the custom Link from @/routing
+import { Link } from "@/routing";
+
+<Link href="/about">About</Link>
+```
+
+### External Links
+For external links (links to other websites), you should still use the `Link` component from `@/routing`, but add the `target="_blank"` and `rel="noopener noreferrer"` attributes:
+
+```tsx
+import { Link } from "@/routing";
+
+<Link 
+  href="https://example.com" 
+  target="_blank" 
+  rel="noopener noreferrer"
+>
+  External Link
+</Link>
+```
+
+### Benefits
+- Ensures consistent routing behavior across the application
+- Allows for centralized routing logic and modifications
+- Provides proper i18n support for localized routes
+- Maintains consistent styling and behavior for links

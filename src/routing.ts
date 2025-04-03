@@ -51,6 +51,7 @@ export const EXTERNAL_LINKS = {
   grant: "https://docs.inkonchain.com/ink-grants",
   // TODO: update this.
   retroGrant: "https://docs.inkonchain.com/ink-grants/retro-grants",
+  eas: "https://docs.attest.org/docs/welcome",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
