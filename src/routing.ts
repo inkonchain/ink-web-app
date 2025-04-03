@@ -79,6 +79,7 @@ export const routing = defineRouting({
     "/apps/[category]": "/apps/[category]",
     "/bridge": "/bridge",
     "/verify": "/verify",
+    "/verify/faq": "/verify/faq",
     "/community": "/community",
     "/about": "/about",
     "/builders": "/builders",
@@ -93,6 +94,7 @@ export const routing = defineRouting({
     "/cookie": "/cookie",
     "/newsletter/resubscribe": "/newsletter/resubscribe",
     "/newsletter/unsubscribe": "/newsletter/unsubscribe",
+    "/faq": "/faq",
     ...externalLinksMap,
   },
 });
