@@ -88,41 +88,46 @@
     }
   },
   "Verify": {
-    "title": "Verify your Kraken account and unlock benefits",
-    "description": "Securely connect your Kraken account with your wallet to access exclusive rewards on GM.",
+    "title": "Verify your Kraken account onchain",
+    "description": "Securely connect your Kraken account with your wallet to start unlocking the Ink ecosystem.",
     "cta": "Connect to verify",
     "initVerificationCta": "Confirm ownership",
     "confirmingInWallet": "Confirming in wallet...",
     "redirecting": "Redirecting to Kraken...",
-    "whatIsVerify": {
-      "title": "What is Ink Verify?",
-      "description": "Ink Verify is your gateway to effortless cross chain attestations. With Ink Verify, you can easily validate your DeFi activity, NFT mints and Kraken account all with zero gas fees. Just connect any wallet, including Kraken Wallet, Rainbow, or MetaMask to get started."
-    },
-    "whyVerify": {
-      "title": "Why Verify?",
-      "description": "By verifying your on-chain activity, you can unlock rewards, perks, tools, and more. Designed with both users and developers in mind, Ink Verify is constantly evolving to support new verification categories."
-    },
-    "yourPrivacy": {
-      "title": "Your Privacy",
-      "description": "Privacy and security are embedded in the Ink ethos. Therefore no personal information is ever disclosed in your verifications."
-    },
-    "haveASuggestion": {
-      "title": "Have a suggestion?",
-      "description": "Ink Verify is a tool for both users and developers! Have a suggestion? Reach out to the Ink team to request additional categories here.",
-      "contactTeam": "Contact Team"
-    },
-    "verifications": {
-      "title": "Available verifications",
-      "description": "Discover the latest verifications on Ink."
-    },
-    "perks": {
-      "title": "Rewards and perks",
-      "description": "Discover the latest benefits"
-    },
-    "learnMore": {
-      "title": "Want to learn more?",
-      "description": "Find answers to common questions about verification, rewards and how to make the most of your benefits",
-      "cta": "Learn more"
+    "faq": {
+      "title": "Frequently Asked Questions",
+      "whatIsVerify": {
+        "title": "What is Kraken Verify?",
+        "description": "Kraken Verify allows you to verify that your wallet address is associated with your Kraken account by making an onchain attestation. By verifying, you can begin to access exclusive features across Ink."
+      },
+      "whatGoesOnchain": {
+        "title": "What goes onchain?",
+        "description": "We only store your wallet address and a confirmation that its been verified - nothing more."
+      },
+      "payforGas": {
+        "title": "Do I have to pay for gas?",
+        "description": "No! We cover the gas fees for you."
+      },
+      "numberofAddresses": {
+        "title": "How many addresses can I verify?",
+        "description": "You can verify one address at a time. Changing addresses is easy, simply revoke and re-verify with a new address."
+      },
+      "howManyTimes": {
+        "title": "How many times can I verify?",
+        "description": "To prevent abuse, Kraken Verify allows users to verify 20 times per year. Remember, you can only have one verified address at a time."
+      },
+      "howDoesitWork": {
+        "title": "How does it work?",
+        "description": "Kraken Verify uses the <eas-link>Ethereum Attestation Service (EAS)</eas-link> on Ink to issue onchain attestations. EAS is a standard protocol for making trusted claims about onchain or offchain data — stored securely onchain."
+      },
+      "transferable": {
+        "title": "Are verifications transferable?",
+        "description": "No, verifications are not transferable."
+      },
+      "support": {
+        "title": "Where can I get support?",
+        "description": ""
+      }
     },
     "flow": {
       "step1": {
@@ -139,7 +144,7 @@
       },
       "step4": {
         "title": "Successfully verified and ready to receive rewards",
-        "description": "Your Kraken account is now associated with your wallet on-chain"
+        "description": "Your Kraken account is now associated with your wallet onchain"
       }
     },
     "verified": {
@@ -150,11 +155,11 @@
     "toast": {
       "success": {
         "title": "Successfully verified",
-        "description": "Your Kraken account is now associated with your wallet on-chain"
+        "description": "Your Kraken account is now associated with your wallet onchain"
       },
       "revoke": {
         "title": "Verification successfully revoked",
-        "description": "Your Kraken account is not associated with your wallet on-chain"
+        "description": "Your Kraken account is not associated with your wallet onchain"
       },
       "error": {
         "revoke": "Failed to revoke verification"
@@ -169,6 +174,14 @@
     },
     "actions": {
       "revoke": "Revoke"
+    },
+    "perks": {
+      "title": "Kraken Verify Partners",
+      "description": "Explore our ecosystem partners who use Kraken Verify."
+    },
+    "learnMore": {
+      "title": "Have questions?",
+      "cta": "Learn more"
     }
   },
   "About": {

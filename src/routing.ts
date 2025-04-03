@@ -51,6 +51,7 @@ export const EXTERNAL_LINKS = {
   grant: "https://docs.inkonchain.com/ink-grants",
   // TODO: update this.
   retroGrant: "https://docs.inkonchain.com/ink-grants/retro-grants",
+  eas: "https://docs.attest.org/docs/welcome",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
@@ -79,6 +80,7 @@ export const routing = defineRouting({
     "/apps/[category]": "/apps/[category]",
     "/bridge": "/bridge",
     "/verify": "/verify",
+    "/verify/faq": "/verify/faq",
     "/community": "/community",
     "/about": "/about",
     "/builders": "/builders",
@@ -93,6 +95,7 @@ export const routing = defineRouting({
     "/cookie": "/cookie",
     "/newsletter/resubscribe": "/newsletter/resubscribe",
     "/newsletter/unsubscribe": "/newsletter/unsubscribe",
+    "/faq": "/faq",
     ...externalLinksMap,
   },
 });
