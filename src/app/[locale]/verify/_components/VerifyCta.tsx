@@ -18,13 +18,20 @@ import { useAddressVerificationStatus } from "@/hooks/useAddressVerificationStat
 import { showErrorToast, showSuccessToast } from "../_components/VerifyToast";
 import { useRevocationFlow } from "../_hooks/useRevocationFlow";
 import { useVerificationFlow } from "../_hooks/useVerificationFlow";
-import { useVerificationParams } from "../_hooks/useVerificationParams";
+import { useVerificationSession } from "../_hooks/useVerificationSession";
 
 import { VerificationSteps } from "./VerificationSteps";
 
 export const VerifyCta: FC = () => {
-  const { status, clearStatusParams, txHash, message } =
-    useVerificationParams();
+  const {
+    session,
+    isLoading: isLoadingSession,
+    isSuccess,
+    isError,
+    transactionHash,
+    errorMessage,
+  } = useVerificationSession();
+
   const t = useTranslations("Verify");
   const { isConnected, address, isConnecting, isReconnecting } = useAccount();
   const { data: verificationStatus, isLoading: isCheckingVerification } =
@@ -34,21 +41,26 @@ export const VerifyCta: FC = () => {
   const { isRevoking, handleRevoke } = useRevocationFlow(address);
 
   useEffect(() => {
-    if (status && txHash) {
-      if (status === "success") {
+    if (session) {
+      if (isSuccess && transactionHash) {
         showSuccessToast(
           t("toast.success.title"),
           t("toast.success.description"),
-          txHash
+          transactionHash
         );
-      } else {
-        showErrorToast(message!);
+      } else if (isError) {
+        showErrorToast(
+          errorMessage || "Could not get verified. Please try again later."
+        );
       }
-      clearStatusParams();
     }
-  }, [t, status, txHash, message, clearStatusParams]);
+  }, [session, isSuccess, isError, transactionHash, errorMessage, t]);
 
-  const isLoading = isConnecting || isReconnecting || isCheckingVerification;
+  const isLoading =
+    isConnecting ||
+    isReconnecting ||
+    isCheckingVerification ||
+    isLoadingSession;
 
   if (isLoading) {
     return (
@@ -94,7 +106,7 @@ export const VerifyCta: FC = () => {
   return (
     <div className="relative w-full space-y-12">
       <VerificationSteps
-        status={status}
+        sessionSuccess={isSuccess}
         isConnected={isConnected}
         initVerification={initVerification}
       />

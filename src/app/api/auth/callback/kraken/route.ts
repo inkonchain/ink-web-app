@@ -24,6 +24,9 @@ export async function GET(request: Request) {
 
     const data = await response.json();
 
+    // Get the session ID from the response
+    const sessionId = data.session_id;
+
     // Construct the redirect URL
     const host =
       request.headers.get("x-forwarded-host") ||
@@ -34,12 +37,11 @@ export async function GET(request: Request) {
 
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
-    redirectUrl.searchParams.set("status", response.ok ? "success" : "error");
-    redirectUrl.searchParams.set("message", data.message);
-    redirectUrl.searchParams.set(
-      "txHash",
-      data.transaction_hash || "Unknown transaction hash"
-    );
+
+    // Include the session ID in the redirect URL if it exists
+    if (sessionId) {
+      redirectUrl.searchParams.set("session", sessionId);
+    }
 
     return NextResponse.redirect(redirectUrl);
   } catch (error) {
@@ -52,10 +54,9 @@ export async function GET(request: Request) {
     const protocol = request.headers.get("x-forwarded-proto") || "https";
     const baseUrl = `${protocol}://${host}`;
 
+    // Only include verifyPage parameter
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
-    redirectUrl.searchParams.set("status", "error");
-    redirectUrl.searchParams.set("message", "Failed to complete verification");
 
     return NextResponse.redirect(redirectUrl);
   }
