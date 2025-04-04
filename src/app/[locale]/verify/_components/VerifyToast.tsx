@@ -18,7 +18,7 @@ type VerifyToastProps = Partial<ToastContentProps> & {
 
 const toastOptions: ToastOptions = {
   position: "top-center",
-  autoClose: 5000,
+  autoClose: 15000,
   hideProgressBar: true,
   closeOnClick: false,
   pauseOnHover: false,
