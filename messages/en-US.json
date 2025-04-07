@@ -94,9 +94,10 @@
     "initVerificationCta": "Confirm ownership",
     "confirmingInWallet": "Confirming in wallet...",
     "redirecting": "Redirecting to Kraken...",
+    "verificationInProgress": "Verification in progress...",
     "verifications": {
       "title": "Verifications",
-      "description": "Verify your on-chain activity across multiple networks"
+      "description": "Verify your onchain activity across multiple networks"
     },
     "faq": {
       "title": "Frequently Asked Questions",
@@ -104,9 +105,13 @@
         "title": "What is Kraken Verify?",
         "description": "Kraken Verify allows you to verify that your wallet address is associated with your Kraken account by making an onchain attestation. By verifying, you can begin to access exclusive features across Ink."
       },
+      "whyVerify": {
+        "title": "What partners or dApps support Kraken Verify?",
+        "description": "We're actively onboarding partners! GM will be the first to support onchain verification based features. "
+      },
       "whatGoesOnchain": {
         "title": "What goes onchain?",
-        "description": "We only store your wallet address and a confirmation that its been verified - nothing more."
+        "description": "We only store your wallet address and a confirmation that it's been verified - nothing more."
       },
       "payforGas": {
         "title": "Do I have to pay for gas?",
@@ -116,21 +121,29 @@
         "title": "How many addresses can I verify?",
         "description": "You can verify one address at a time. Changing addresses is easy, simply revoke and re-verify with a new address."
       },
-      "howManyTimes": {
-        "title": "How many times can I verify?",
-        "description": "To prevent abuse, Kraken Verify allows users to verify 20 times per year. Remember, you can only have one verified address at a time."
-      },
       "howDoesitWork": {
         "title": "How does it work?",
         "description": "Kraken Verify uses the <eas-link>Ethereum Attestation Service (EAS)</eas-link> on Ink to issue onchain attestations. EAS is a standard protocol for making trusted claims about onchain or offchain data — stored securely onchain."
+      },
+      "wherecaniView": {
+        "title": "Where can I view my onchain verification?",
+        "description": "When you verify, a notification will appear that links you to the transaction tied to your attestation."
       },
       "transferable": {
         "title": "Are verifications transferable?",
         "description": "No, verifications are not transferable."
       },
+      "wrongAddress": {
+        "title": "I connected the wrong wallet, what should I do?",
+        "description": "Revoke the verification and verify again with the correct address."
+      },
       "support": {
         "title": "Where can I get support?",
-        "description": ""
+        "description": "If you have any questions or concerns, please reach out to us via Kraken support channels."
+      },
+      "devSupport": {
+        "title": "I'm a developer and I want to integrate, how do I get started?",
+        "description": "To integrate with Kraken Verify, check out our documentation here: https://docs.inkonchain.com/build/verify"
       }
     },
     "flow": {

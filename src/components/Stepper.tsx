@@ -6,6 +6,7 @@ interface Step {
   title: string;
   description: string;
   completed: boolean;
+  loading?: boolean;
 }
 
 interface StepperProps {
@@ -25,7 +26,9 @@ export const Stepper: React.FC<StepperProps> = ({ steps }) => {
                   step.completed ? "bg-inkPurple" : "bg-default/6"
                 )}
               >
-                {step.completed ? (
+                {step.loading ? (
+                  <InkIcon.Loading className="h-4 w-4 animate-spin text-white" />
+                ) : step.completed ? (
                   <InkIcon.Check className="h-4 w-4 text-white" />
                 ) : (
                   <span className="text-sm text-default font-black">

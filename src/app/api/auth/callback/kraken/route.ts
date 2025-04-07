@@ -1,6 +1,11 @@
 import { NextResponse } from "next/server";
 
-import { env } from "@/env";
+const ALLOWED_DOMAINS = [
+  "inkonchain.com",
+  "preview1.inkonchain.com",
+  "preview2.inkonchain.com",
+  "localhost",
+];
 
 export async function GET(request: Request) {
   try {
@@ -12,49 +17,27 @@ export async function GET(request: Request) {
       throw new Error("Missing code or state parameters");
     }
 
-    const verifyApiUrl = `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/verifications/complete`;
+    const requestUrl = new URL(request.url);
+    const isAllowedDomain = ALLOWED_DOMAINS.some(
+      (domain) =>
+        requestUrl.hostname === domain ||
+        requestUrl.hostname.endsWith(`.${domain}`)
+    );
 
-    const response = await fetch(verifyApiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ code, state }),
-    });
-
-    const data = await response.json();
-
-    // Get the session ID from the response
-    const sessionId = data.session_id;
-
-    // Construct the redirect URL
-    const host =
-      request.headers.get("x-forwarded-host") ||
-      request.headers.get("host") ||
-      "";
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
-    const baseUrl = `${protocol}://${host}`;
+    const baseUrl = isAllowedDomain
+      ? `${requestUrl.protocol}//${requestUrl.host}`
+      : `https://inkonchain.com`;
 
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
 
-    // Include the session ID in the redirect URL if it exists
-    if (sessionId) {
-      redirectUrl.searchParams.set("session", sessionId);
-    }
+    redirectUrl.searchParams.set("code", code);
+    redirectUrl.searchParams.set("state", state);
 
     return NextResponse.redirect(redirectUrl);
   } catch (error) {
     console.error("Callback error: ", error);
-
-    const host =
-      request.headers.get("x-forwarded-host") ||
-      request.headers.get("host") ||
-      "";
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
-    const baseUrl = `${protocol}://${host}`;
-
-    // Only include verifyPage parameter
+    const baseUrl = `https://inkonchain.com`;
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
 
