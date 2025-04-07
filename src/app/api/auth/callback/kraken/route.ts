@@ -1,7 +1,5 @@
 import { NextResponse } from "next/server";
 
-import { env } from "@/env";
-
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -11,21 +9,6 @@ export async function GET(request: Request) {
     if (!code || !state) {
       throw new Error("Missing code or state parameters");
     }
-
-    const verifyApiUrl = `${env.KRAKEN_VERIFY_API_BASE_URL}/v1/verifications/complete`;
-
-    const response = await fetch(verifyApiUrl, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ code, state }),
-    });
-
-    const data = await response.json();
-
-    // Get the session ID from the response
-    const sessionId = data.session_id;
 
     // Construct the redirect URL
     const host =
@@ -38,10 +21,9 @@ export async function GET(request: Request) {
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
 
-    // Include the session ID in the redirect URL if it exists
-    if (sessionId) {
-      redirectUrl.searchParams.set("session", sessionId);
-    }
+    // Pass code and state parameters directly instead of making API call
+    redirectUrl.searchParams.set("code", code);
+    redirectUrl.searchParams.set("state", state);
 
     return NextResponse.redirect(redirectUrl);
   } catch (error) {

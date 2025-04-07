@@ -94,6 +94,7 @@
     "initVerificationCta": "Confirm ownership",
     "confirmingInWallet": "Confirming in wallet...",
     "redirecting": "Redirecting to Kraken...",
+    "verificationInProgress": "Verification in progress...",
     "verifications": {
       "title": "Verifications",
       "description": "Verify your on-chain activity across multiple networks"

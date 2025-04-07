@@ -4,7 +4,10 @@ import { useTranslations } from "next-intl";
 import { Stepper } from "@/components/Stepper";
 
 interface VerificationStepsProps {
-  sessionSuccess: boolean;
+  isConfirming: boolean;
+  isRedirecting: boolean;
+  verificationSuccess: boolean;
+  hasSuccessfullySignedInToKraken: boolean;
   isConnected: boolean;
   initVerification: {
     isPending: boolean;
@@ -13,7 +16,10 @@ interface VerificationStepsProps {
 }
 
 export const VerificationSteps: FC<VerificationStepsProps> = ({
-  sessionSuccess,
+  isConfirming,
+  isRedirecting,
+  verificationSuccess,
+  hasSuccessfullySignedInToKraken,
   isConnected,
   initVerification,
 }: VerificationStepsProps) => {
@@ -23,27 +29,33 @@ export const VerificationSteps: FC<VerificationStepsProps> = ({
     {
       title: t("flow.step1.title"),
       description: t("flow.step1.description"),
-      completed: sessionSuccess || isConnected,
+      completed: verificationSuccess || isConnected,
     },
     {
       title: t("flow.step2.title"),
       description: t("flow.step2.description"),
       completed:
-        sessionSuccess ||
+        verificationSuccess ||
         initVerification.isPending ||
-        initVerification.isSuccess,
+        initVerification.isSuccess ||
+        hasSuccessfullySignedInToKraken,
+      loading: isConfirming,
     },
     {
       title: t("flow.step3.title"),
       description: t("flow.step3.description"),
-      completed: sessionSuccess,
+      completed: hasSuccessfullySignedInToKraken,
+      loading: isRedirecting,
     },
     {
       title: t("flow.step4.title"),
       description: t("flow.step4.description"),
-      completed: sessionSuccess,
+      completed: verificationSuccess,
+      loading: hasSuccessfullySignedInToKraken,
     },
   ];
 
   return <Stepper steps={verificationSteps} />;
 };
+
+VerificationSteps.displayName = "VerificationSteps";
