@@ -147,8 +147,8 @@
         "description": "Confirm ownership of your Kraken account by signing in"
       },
       "step4": {
-        "title": "Successfully verified and ready to receive rewards",
-        "description": "Your Kraken account is now associated with your wallet onchain"
+        "title": "Successfully verified",
+        "description": "Your wallet now reflects the fact that you have a Kraken account"
       }
     },
     "verified": {
