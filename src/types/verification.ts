@@ -58,3 +58,17 @@ export type RevokeVerificationRequest = z.infer<
 export type RevokeVerificationResponse = z.infer<
   typeof RevokeVerificationResponseBody
 >;
+
+export const CompleteVerificationResponseBody = z.object({
+  attestation_uid: z.string(),
+  kraken_user_iban: z.string(),
+  user_address: z.string(),
+  created_at: z.string(),
+  transaction_hash: z.string(),
+  status: z.string(),
+  message: z.string(),
+});
+
+export type CompleteVerificationResponse = z.infer<
+  typeof CompleteVerificationResponseBody
+>;

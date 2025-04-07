@@ -13,26 +13,24 @@ import { useTranslations } from "next-intl";
 import { useAccount } from "wagmi";
 
 import { ConnectWalletButton } from "@/components/ConnectWalletButton";
-import { useAddressVerificationStatus } from "@/hooks/useAddressVerificationStatus";
 
 import { useRevocationFlow } from "../_hooks/useRevocationFlow";
 import { useVerificationFlow } from "../_hooks/useVerificationFlow";
-import { useCompleteVerification } from "../_hooks/useCompleteVerification";
+
 import { VerificationSteps } from "./VerificationSteps";
 
 export const VerifyCta: FC = () => {
+  const t = useTranslations("Verify");
   const { isConnected, address, isConnecting, isReconnecting } = useAccount();
   const {
-    data: verificationStatus,
-    isLoading: isCheckingVerification,
-    refetch,
-  } = useAddressVerificationStatus(address);
-  const { isSuccess, hasSuccessfullySignedInToKraken } =
-    useCompleteVerification(refetch);
-
-  const t = useTranslations("Verify");
-  const { isConfirming, handleProveIdentity, initVerification } =
-    useVerificationFlow(address);
+    isCheckingVerification,
+    isVerified,
+    isConfirming,
+    handleInitVerification,
+    initVerification,
+    completeVerification,
+    hasSuccessfullySignedInToKraken,
+  } = useVerificationFlow(address);
   const { isRevoking, handleRevoke } = useRevocationFlow(address);
 
   const isLoading = isConnecting || isReconnecting || isCheckingVerification;
@@ -45,7 +43,7 @@ export const VerifyCta: FC = () => {
     );
   }
 
-  if (verificationStatus?.isVerified) {
+  if (isVerified) {
     return (
       <div className="flex items-center gap-8">
         <p className="text-center text-xl font-bold text-inkSuccess px-8 py-4.5 bg-inkSuccess/10 rounded-full">
@@ -82,21 +80,24 @@ export const VerifyCta: FC = () => {
     <div className="relative w-full space-y-12">
       <VerificationSteps
         isConfirming={isConfirming}
-        isRedirecting={initVerification.isSuccess}
         hasSuccessfullySignedInToKraken={hasSuccessfullySignedInToKraken}
-        verificationSuccess={isSuccess}
         isConnected={isConnected}
         initVerification={initVerification}
+        completeVerification={completeVerification}
       />
       {isConnected ? (
         <Button
           size="lg"
           variant="primary"
-          onClick={handleProveIdentity}
+          onClick={handleInitVerification}
           disabled={
             isConfirming ||
             initVerification.isSuccess ||
-            hasSuccessfullySignedInToKraken
+            initVerification.isPending ||
+            hasSuccessfullySignedInToKraken ||
+            completeVerification.isPending ||
+            completeVerification.isSuccess ||
+            isVerified
           }
           className="flex gap-2"
         >

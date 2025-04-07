@@ -25,11 +25,12 @@ const toastOptions: ToastOptions = {
   draggable: false,
   progress: undefined,
   transition: Bounce,
-  closeButton: false,
+  closeButton: true,
 };
 
 const successToastOptions: ToastOptions = {
   ...toastOptions,
+  closeButton: false,
   className: "!p-0 !bg-transparent !shadow-none",
 };
 

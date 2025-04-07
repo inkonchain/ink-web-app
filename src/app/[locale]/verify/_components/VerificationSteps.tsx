@@ -4,24 +4,25 @@ import { useTranslations } from "next-intl";
 import { Stepper } from "@/components/Stepper";
 
 interface VerificationStepsProps {
-  isConfirming: boolean;
-  isRedirecting: boolean;
-  verificationSuccess: boolean;
-  hasSuccessfullySignedInToKraken: boolean;
   isConnected: boolean;
+  isConfirming: boolean;
   initVerification: {
+    isPending: boolean;
+    isSuccess: boolean;
+  };
+  hasSuccessfullySignedInToKraken: boolean;
+  completeVerification: {
     isPending: boolean;
     isSuccess: boolean;
   };
 }
 
 export const VerificationSteps: FC<VerificationStepsProps> = ({
-  isConfirming,
-  isRedirecting,
-  verificationSuccess,
-  hasSuccessfullySignedInToKraken,
   isConnected,
+  isConfirming,
   initVerification,
+  hasSuccessfullySignedInToKraken,
+  completeVerification,
 }: VerificationStepsProps) => {
   const t = useTranslations("Verify");
 
@@ -29,13 +30,12 @@ export const VerificationSteps: FC<VerificationStepsProps> = ({
     {
       title: t("flow.step1.title"),
       description: t("flow.step1.description"),
-      completed: verificationSuccess || isConnected,
+      completed: isConnected,
     },
     {
       title: t("flow.step2.title"),
       description: t("flow.step2.description"),
       completed:
-        verificationSuccess ||
         initVerification.isPending ||
         initVerification.isSuccess ||
         hasSuccessfullySignedInToKraken,
@@ -44,14 +44,16 @@ export const VerificationSteps: FC<VerificationStepsProps> = ({
     {
       title: t("flow.step3.title"),
       description: t("flow.step3.description"),
-      completed: hasSuccessfullySignedInToKraken,
-      loading: isRedirecting,
+      completed:
+        completeVerification.isSuccess || hasSuccessfullySignedInToKraken,
+      loading: initVerification.isPending || initVerification.isSuccess,
     },
     {
       title: t("flow.step4.title"),
       description: t("flow.step4.description"),
-      completed: verificationSuccess,
-      loading: hasSuccessfullySignedInToKraken,
+      completed: completeVerification.isSuccess,
+      loading:
+        hasSuccessfullySignedInToKraken && completeVerification.isPending,
     },
   ];
 

@@ -7,13 +7,16 @@ import { Link } from "@/routing";
 
 const FAQ_KEYS = [
   "whatIsVerify",
+  "whyVerify",
   "whatGoesOnchain",
   "payforGas",
   "numberofAddresses",
-  "howManyTimes",
   "howDoesitWork",
+  "wherecaniView",
   "transferable",
+  "wrongAddress",
   "support",
+  "devSupport",
 ] as const;
 
 type FAQItem = {
@@ -44,7 +47,7 @@ export default function FAQPage() {
 
   return (
     <div className="container mx-auto px-4 py-12">
-      <div className="w-full max-w-4xl mt-12">
+      <div className="w-full max-w-4xl mb-12">
         <h2 className="text-2xl font-medium mb-8">{t("faq.title")}</h2>
         <div className="space-y-6">
           {faqItems.map((item) => (

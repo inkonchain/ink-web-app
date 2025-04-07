@@ -1,5 +1,12 @@
 import { NextResponse } from "next/server";
 
+const ALLOWED_DOMAINS = [
+  "inkonchain.com",
+  "preview1.inkonchain.com",
+  "preview2.inkonchain.com",
+  "localhost",
+];
+
 export async function GET(request: Request) {
   try {
     const { searchParams } = new URL(request.url);
@@ -10,33 +17,27 @@ export async function GET(request: Request) {
       throw new Error("Missing code or state parameters");
     }
 
-    // Construct the redirect URL
-    const host =
-      request.headers.get("x-forwarded-host") ||
-      request.headers.get("host") ||
-      "";
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
-    const baseUrl = `${protocol}://${host}`;
+    const requestUrl = new URL(request.url);
+    const isAllowedDomain = ALLOWED_DOMAINS.some(
+      (domain) =>
+        requestUrl.hostname === domain ||
+        requestUrl.hostname.endsWith(`.${domain}`)
+    );
+
+    const baseUrl = isAllowedDomain
+      ? `${requestUrl.protocol}//${requestUrl.host}`
+      : `https://inkonchain.com`;
 
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
 
-    // Pass code and state parameters directly instead of making API call
     redirectUrl.searchParams.set("code", code);
     redirectUrl.searchParams.set("state", state);
 
     return NextResponse.redirect(redirectUrl);
   } catch (error) {
     console.error("Callback error: ", error);
-
-    const host =
-      request.headers.get("x-forwarded-host") ||
-      request.headers.get("host") ||
-      "";
-    const protocol = request.headers.get("x-forwarded-proto") || "https";
-    const baseUrl = `${protocol}://${host}`;
-
-    // Only include verifyPage parameter
+    const baseUrl = `https://inkonchain.com`;
     const redirectUrl = new URL("/verify", baseUrl);
     redirectUrl.searchParams.set("verifyPage", "true");
 
