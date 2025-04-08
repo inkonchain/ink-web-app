@@ -29,7 +29,7 @@ export function VerifyPerks() {
           <Card variant="secondary" className="flex-1">
             <CardContent.Tiny
               title={"GM"}
-              description={"Coming soon"}
+              description={"Boost your GMs with Kraken Verify"}
               icon={
                 <Image
                   src="/verify/gm.webp"
