@@ -139,11 +139,11 @@
       },
       "support": {
         "title": "Where can I get support?",
-        "description": "If you have any questions or concerns, please reach out to us via Kraken support channels."
+        "description": "If you have any questions or concerns, please take a look at our <support-link>Support Center article</support-link>."
       },
       "devSupport": {
         "title": "I'm a developer and I want to integrate, how do I get started?",
-        "description": "To integrate with Kraken Verify, check out our documentation here: https://docs.inkonchain.com/build/verify"
+        "description": "To integrate with Kraken Verify, check out our <docs-link>documentation here</docs-link>."
       }
     },
     "flow": {

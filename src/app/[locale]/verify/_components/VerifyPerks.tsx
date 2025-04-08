@@ -29,7 +29,7 @@ export function VerifyPerks() {
           <Card variant="secondary" className="flex-1">
             <CardContent.Tiny
               title={"GM"}
-              description={"Max your GM's"}
+              description={"Coming soon"}
               icon={
                 <Image
                   src="/verify/gm.webp"
@@ -41,6 +41,9 @@ export function VerifyPerks() {
             />
           </Card>
         </Link>
+        <Card variant="secondary" className="flex-1">
+          <CardContent.Tiny title={"Stay tuned for more"} description={""} />
+        </Card>
       </div>
     </div>
   );

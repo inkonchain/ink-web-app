@@ -52,6 +52,8 @@ export const EXTERNAL_LINKS = {
   // TODO: update this.
   retroGrant: "https://docs.inkonchain.com/ink-grants/retro-grants",
   eas: "https://docs.attest.org/docs/welcome",
+  verifySupport: "https://support.kraken.com/hc/en-us/articles/kraken-verify",
+  verifyDocs: "https://docs.inkonchain.com/build/verify",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];
