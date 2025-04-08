@@ -3,8 +3,8 @@
 import { ReactNode } from "react";
 import { useTranslations } from "next-intl";
 
-import { Link, HrefProp } from "@/routing";
 import { ColoredText } from "@/components/ColoredText";
+import { HrefProp, Link } from "@/routing";
 
 const FAQ_KEYS = [
   "whatIsVerify",
