@@ -55,6 +55,7 @@ jobs:
           # Kraken Connect
           NEXT_PUBLIC_KRAKEN_CLIENT_ID=${{ secrets.NEXT_PUBLIC_KRAKEN_CLIENT_ID }}
           KRAKEN_CLIENT_SECRET=${{ secrets.KRAKEN_CLIENT_SECRET }}
+          KRAKEN_VERIFY_API_BASE_URL=${{ secrets.KRAKEN_VERIFY_API_BASE_URL }}
 
           # App Submission Bot
           INK_APP_SUBMISSION_BOT_GITHUB_APP_ID=${{ secrets.INK_APP_SUBMISSION_BOT_GITHUB_APP_ID }}
