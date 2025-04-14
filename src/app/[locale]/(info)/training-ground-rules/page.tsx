@@ -85,17 +85,9 @@ export default function TrainingGroundRules() {
       <div>To participate in this Competition, you will need to:</div>
       <ul className="list-disc pl-5 space-y-2">
         <li>
-          Join Ink&apos;s{" "}
-          <Link
-            className="text-blue-500 hover:underline"
-            href="https://discord.com/invite/inkonchain?utm_source=landing&utm_medium=nav"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Discord
-          </Link>{" "}
-          and follow @inkonchain on X to receive announcements and information
-          about the contest; and
+          Join Ink&apos;s Discord (Ink&apos;s Discord is now disabled) and
+          follow @inkonchain on X to receive announcements and information about
+          the contest; and
         </li>
         <li>
           Register an EVM-compatible wallet with{" "}

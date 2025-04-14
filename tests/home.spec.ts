@@ -23,28 +23,4 @@ test.describe("Home Page", () => {
     await emailBox.fill("something@something.com");
     await emailBox.press("Enter");
   });
-
-  test.skip("can join the discord", async ({ page }) => {
-    // Get the button element
-    const discordButton = page
-      .getByRole("button", {
-        name: "Join Discord",
-      })
-      .first();
-
-    // Click the button
-    await discordButton.click();
-
-    // Wait for the new page to load
-    const [newPage] = await Promise.all([
-      page.waitForEvent("popup"),
-      discordButton.click(),
-    ]);
-
-    // Verify the new page URL is the Discord link
-    await expect(newPage.url()).toBe(routing.pathnames.discord);
-
-    // Verify the new page title
-    await expect(await newPage.title()).toMatch(/^(Ink|Discord)$/);
-  });
 });
