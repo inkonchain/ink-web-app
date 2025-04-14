@@ -16,8 +16,6 @@ export const EXTERNAL_LINKS = {
   inkubator: "https://inkubator.inkonchain.com/",
   status: "https://status.inkonchain.com/",
   inkJobs: "https://jobs.inkonchain.com/",
-  discord:
-    "https://discord.com/invite/inkonchain?utm_source=landing&utm_medium=nav",
   intopia: "https://lu.ma/h8rbfyse",
   inkdenver: "https://lu.ma/kvj8l82q",
   twitter: "https://x.com/inkonchain",

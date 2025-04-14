@@ -9,13 +9,11 @@ import { NEWSLETTER_MODAL_KEY } from "./Modals/NewsletterModal";
 interface SocialLinksRowProps {
   className?: string;
   includeMail?: boolean;
-  includeDiscord?: boolean;
 }
 
 export const SocialLinksRow: React.FC<SocialLinksRowProps> = ({
   className,
   includeMail = true,
-  includeDiscord = true,
 }) => {
   const { openModal: openNewsletterModal } =
     useModalContext(NEWSLETTER_MODAL_KEY);
@@ -36,18 +34,6 @@ export const SocialLinksRow: React.FC<SocialLinksRowProps> = ({
           <InkIcon.Social.X />
         </Link>
       </Button>
-
-      {includeDiscord && (
-        <Button variant="transparent" size="md" asChild rounded="full">
-          <Link
-            href={EXTERNAL_LINKS.discord}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <InkIcon.Social.Discord size="md" />
-          </Link>
-        </Button>
-      )}
 
       <Button variant="transparent" size="md" asChild rounded="full">
         <Link

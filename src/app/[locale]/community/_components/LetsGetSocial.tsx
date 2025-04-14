@@ -47,20 +47,6 @@ export const LetsGetSocial = () => {
         </Card>
         <Card variant="secondary" clickable asChild>
           <Link
-            href={EXTERNAL_LINKS.discord}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <CardContent.Link
-              title={t("discord.title")}
-              description={t("discord.description")}
-              icon={<InkIcon.Social.Discord />}
-              linkIcon={<ExternalLinkArrow />}
-            />
-          </Link>
-        </Card>
-        <Card variant="secondary" clickable asChild>
-          <Link
             href={EXTERNAL_LINKS.telegram}
             target="_blank"
             rel="noopener noreferrer"

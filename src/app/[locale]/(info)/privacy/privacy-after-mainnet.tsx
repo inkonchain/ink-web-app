@@ -532,20 +532,7 @@ export default function PrivacyAfterMainnet() {
         appropriate.
       </div>
       <div>
-        The fastest and easiest way to connect with our support is through our
-        Ink Discord community&nbsp;
-        <Link
-          className="text-blue-500 hover:underline"
-          href={EXTERNAL_LINKS.discord}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          here
-        </Link>
-        .
-      </div>
-      <div>
-        If this is not a feasible path for you, please&nbsp;
+        The fastest and easiest way to connect with our support is to&nbsp;
         <ContactUsPrivacyButton text="contact us" />
         &nbsp;through our website.
       </div>
