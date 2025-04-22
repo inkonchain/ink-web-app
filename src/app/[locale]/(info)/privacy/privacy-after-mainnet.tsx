@@ -1,6 +1,6 @@
 import { ColoredText } from "@/components/ColoredText";
 import { ContactUsPrivacyButton } from "@/components/ContactUsPrivacyButton";
-import { EXTERNAL_LINKS, Link } from "@/routing";
+import { Link } from "@/routing";
 
 export default function PrivacyAfterMainnet() {
   return (
