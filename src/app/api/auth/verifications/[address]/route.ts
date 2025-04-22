@@ -3,9 +3,11 @@ import { z } from "zod";
 
 import { env } from "@/env";
 
-// We keep minimal validation just to ensure the address parameter exists
+// Enhanced validation to only accept valid Ethereum addresses
 const RequestParamsSchema = z.object({
-  address: z.string().min(1),
+  address: z
+    .string()
+    .regex(/^0x[a-fA-F0-9]{40}$/, "Must be a valid Ethereum address"),
 });
 
 export async function GET(
@@ -13,7 +15,7 @@ export async function GET(
   { params }: { params: Promise<{ address: string }> }
 ) {
   try {
-    // Minimal validation of the address parameter
+    // Validate the address parameter is a valid Ethereum address
     const { address } = RequestParamsSchema.parse(await params);
 
     // Construct the target URL
@@ -33,6 +35,15 @@ export async function GET(
     });
   } catch (error) {
     console.error("Proxy error:", error);
+
+    // Return a 400 status for validation errors
+    if (error instanceof z.ZodError) {
+      return NextResponse.json(
+        { error: "Invalid Ethereum address format" },
+        { status: 400 }
+      );
+    }
+
     return NextResponse.json(
       { error: "Failed to proxy request" },
       { status: 500 }
