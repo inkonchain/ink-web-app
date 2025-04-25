@@ -588,6 +588,29 @@
       }
     },
     {
+      "id": "kryptos.apk",
+      "name": "kryptos.apk",
+      "description": "kryptos.io/intergrated,exchange,wallet",
+      "imageUrl": "/featured-apps/icons/kryptos.apk.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Both",
+      "tags": [
+        "wallet"
+      ],
+      "links": {
+        "mainnetWebsite": "http://kryptos.com",
+        "testnetWebsite": "http://kryptos.io",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "layerzero",
       "name": "LayerZero",
       "description": "LayerZero is a technology that enables applications to move data across blockchains, uniquely supporting censorship-resistant messages and permissionless development through immutable smart contracts.",
