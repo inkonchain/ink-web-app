@@ -28,3 +28,12 @@ pnpm install
 ```sh
 pnpm dev
 ```
+
+## Deployments
+
+To deploy to production:
+
+1. Checkout main branch: `git checkout main && git pull`
+2. Create a tag: `date +%Y-%m-%d-$(git rev-parse --short HEAD) | pbcopy && git tag $(pbpaste)`
+3. Push the tag: `git push origin $(pbpaste)`
+4. Complete the internal deployment process
