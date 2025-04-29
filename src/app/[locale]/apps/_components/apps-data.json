@@ -1,6 +1,31 @@
 {
   "apps": [
     {
+      "id": "0x",
+      "name": "0x",
+      "description": "Embed swaps in your onchain app. Access 10+ million tokens with liquidity from 140+ exchanges, with the best prices and the smoothest trading experience.",
+      "imageUrl": "/featured-apps/icons/0x.webp",
+      "category": [
+        "Infra",
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "dex",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://0x.org",
+        "testnetWebsite": "https://0x.org",
+        "x": "https://x.com/0xProject",
+        "discord": "",
+        "telegram": "",
+        "github": "https://github.com/0xProject",
+        "farcaster": "https://warpcast.com/0xproject",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "3dns",
       "name": "3DNS",
       "description": "The first onchain web domain registrar, supporting .com, .xyz, .box, and over 420 more TLDs. Bring your domain onchain!",
