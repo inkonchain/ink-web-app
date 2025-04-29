@@ -4,6 +4,9 @@ on:
     tags:
       - "20[0-9][0-9]-[0-1][0-9]-[0-3][0-9]-*"
 
+env:
+  TARGET_URL: ${{ secrets.INFRA_REPO_DISPATCH_URL }}
+
 jobs:
   image-build-push:
     runs-on: ubuntu-latest
@@ -68,7 +71,7 @@ jobs:
           EOF
       - name: Publish Ink Web App Image
         id: publish
-        uses: inkonchain/github-actions/publish@v1
+        uses: ./.github/actions/image-build-push
         with:
           repository-name: ink-web-app
           dockerfile-path: ./Dockerfile
@@ -76,6 +79,7 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
 
   create-deployment-pr:
+    environment: production
     name: Create Deployment PR
     needs: image-build-push
     runs-on: ubuntu-latest
@@ -86,7 +90,7 @@ jobs:
           fetch-depth: 0
 
       - name: Trigger Deployment
-        uses: inkonchain/github-actions/create-deployment-pr@v1
+        uses: ./.github/actions/create-deployment-pr
         with:
           app-id: ${{ secrets.INK_CI_GITHUB_APP_ID }}
           private-key: ${{ secrets.INK_CI_GITHUB_APP_PRIVATE_KEY }}
@@ -96,4 +100,3 @@ jobs:
           namespace: "ink-web-app"
           app: "app-ink-web-app"
           environment: "ink-primary"
-          branch-ref: "feat/prod-eks-deployments-ci"
