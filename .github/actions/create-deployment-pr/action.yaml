@@ -59,7 +59,7 @@ runs:
           -H "X-GitHub-Api-Version: 2022-11-28" \
           $TARGET_URL \
           -d '{
-            "ref": "feat/prod-eks-deployments-ci",
+            "ref": "main",
             "inputs": {
               "repo": "${{ inputs.repo }}",
               "digest": "${{ inputs.digest }}",
