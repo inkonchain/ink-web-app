@@ -1068,32 +1068,6 @@
       }
     },
     {
-      "id": "squidswap",
-      "name": "SquidSwap",
-      "description": "SquidSwap is  designed to provide a secure and efficient way to launch, lock, and trade tokens.",
-      "imageUrl": "/featured-apps/icons/squidswap.webp",
-      "category": [
-        "DeFi",
-        "Social"
-      ],
-      "network": "Mainnet",
-      "tags": [
-        "dex",
-        "fun",
-        "tokens"
-      ],
-      "links": {
-        "mainnetWebsite": "https://squidswap.ink",
-        "testnetWebsite": "https://squidswap.ink",
-        "x": "https://x.com/squidswap_ink",
-        "discord": "https://discord.gg/pF4dvjDMqs",
-        "telegram": "https://t.me/squidswap_portal",
-        "github": "https://github.com/squidswap-ink",
-        "farcaster": "https://warpcast.com/squidswap",
-        "smartContractUrl": "https://explorer.inkonchain.com/address/0x0E0d5Adbca35A4231B4d8B6161175624027F1696"
-      }
-    },
-    {
       "id": "stargate",
       "name": "Stargate",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of omnichain DeFi.",
