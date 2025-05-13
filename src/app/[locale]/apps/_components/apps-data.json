@@ -183,6 +183,28 @@
       }
     },
     {
+      "id": "curve",
+      "name": "Curve",
+      "description": "Creating deep on-chain liquidity using advanced bonding curves.",
+      "imageUrl": "/featured-apps/icons/curve.webp",
+      "category": [
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "dex"
+      ],
+      "links": {
+        "mainnetWebsite": "https://curve.finance/",
+        "testnetWebsite": "https://curve.finance/",
+        "x": "https://x.com/CurveFinance",
+        "discord": "https://discord.gg/9uEHakc",
+        "telegram": "https://t.me/curvefi",
+        "github": "https://github.com/curvefi",
+        "farcaster": ""
+      }
+    },
+    {
       "id": "deep-on-ink",
       "name": "The Deep",
       "description": "Dive into DeFi on Ink.",
