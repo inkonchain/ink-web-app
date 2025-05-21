@@ -1293,6 +1293,30 @@
       }
     },
     {
+      "id": "yieldnest",
+      "name": "YieldNest",
+      "description": "YieldNest simplifies DeFi with high-yield, risk-adjusted restaking and DeFi strategies—unified in a single asset, secured by DeFAI, and settled on L1.",
+      "imageUrl": "/featured-apps/icons/yieldnest.webp",
+      "category": [
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "yield",
+        "tokens"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.yieldnest.finance/",
+        "testnetWebsite": "https://www.yieldnest.finance/",
+        "x": "https://x.com/YieldNestFi",
+        "discord": "https://discord.com/invite/ayAZuQgFaE",
+        "telegram": "https://t.me/YieldNest",
+        "github": "https://github.com/yieldnest/",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "zerodev",
       "name": "ZeroDev",
       "description": "Chain-abstracted smart wallet. Build amazing Web3 experiences by removing bridging, gas, confirmations, and seed phrases.",
