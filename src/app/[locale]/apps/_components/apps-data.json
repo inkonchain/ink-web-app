@@ -869,6 +869,29 @@
       }
     },
     {
+      "id": "pwn",
+      "name": "PWN",
+      "description": "PWN is a permissionless, peer-to-peer, fixed-rate lending protocol. Unlock liquidity using any asset, customize terms, always without price-based liquidations.",
+      "imageUrl": "/featured-apps/icons/pwn.webp",
+      "category": [
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "lending"
+      ],
+      "links": {
+        "mainnetWebsite": "https://app.pwn.xyz",
+        "testnetWebsite": "https://app.pwn.xyz",
+        "x": "https://x.com/pwndao",
+        "discord": "https://discord.gg/n3hpbjf7",
+        "telegram": "https://t.me/pwndao",
+        "github": "https://github.com/pwndao",
+        "farcaster": "https://warpcast.com/pwndao",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x719A69d0dc67bd3Aa7648D4694081B3c87952797"
+      }
+    },
+    {
       "id": "pyth",
       "name": "Pyth",
       "description": "Secure your smart contracts with reliable, low-latency market data from institutional sources. Build apps with high-fidelity oracle feeds designed for mission-critical systems.",
