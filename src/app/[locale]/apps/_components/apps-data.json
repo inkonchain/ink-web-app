@@ -1091,6 +1091,33 @@
       }
     },
     {
+      "id": "shroomy-project",
+      "name": "Shroomy Project",
+      "description": "A community-oriented ecosystem with lending market, advanced token/NFT locker and airdropper tool. Also explore GameFi, mycology and charity work, all with the Shroomy Project!",
+      "imageUrl": "/featured-apps/icons/shroomy-project.webp",
+      "category": [
+        "DeFi",
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "fun",
+        "lending",
+        "yield",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://app.shroomy.io",
+        "testnetWebsite": "https://app.shroomy.io",
+        "x": "https://x.com/shroomyproject",
+        "discord": "",
+        "telegram": "https://t.me/shroomyproject",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "stargate",
       "name": "Stargate",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of omnichain DeFi.",
