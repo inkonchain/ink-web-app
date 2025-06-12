@@ -1,4 +1,4 @@
-.PHONY: help release
+.PHONY: help release dev build start lint lint-fix format format-check test fix-all install clean health-test
 
 help: ## Show this help message
 	@echo "\033[1mAvailable commands:\033[0m"
@@ -36,4 +36,51 @@ release: ## Interactive release command with enhanced developer experience
 	else \
 		echo ""; \
 		echo "\033[1;31m❌ Cancelled creating release tag\033[0m"; \
-	fi 
+	fi
+
+# Development commands
+dev: ## Start development server with turbo
+	pnpm run dev
+
+dev-https: ## Start development server with HTTPS
+	pnpm run dev:https
+
+build: ## Build the application for production
+	pnpm run build
+
+start: ## Start production server
+	pnpm run start
+
+# Code quality commands
+lint: ## Run ESLint
+	pnpm run lint
+
+lint-fix: ## Run ESLint with auto-fix
+	pnpm run lint:fix
+
+format: ## Format code with Prettier
+	pnpm run format
+
+format-check: ## Check code formatting
+	pnpm run format:check
+
+test: ## Run Playwright tests
+	pnpm run test
+
+fix-all: ## Run lint:fix and format
+	pnpm run fix:all
+
+# Package management
+install: ## Install dependencies
+	pnpm install
+
+clean: ## Clean node_modules and lockfile
+	rm -rf node_modules pnpm-lock.yaml
+
+# Health check testing
+health-test: ## Test health endpoint (requires dev server running)
+	@echo "\033[1mTesting basic health check...\033[0m"
+	@curl -s http://localhost:3000/api/health | jq . || curl -s http://localhost:3000/api/health
+	@echo ""
+	@echo "\033[1mTesting deep health check...\033[0m"
+	@curl -s http://localhost:3000/api/health?deep=true | jq . || curl -s http://localhost:3000/api/health?deep=true
