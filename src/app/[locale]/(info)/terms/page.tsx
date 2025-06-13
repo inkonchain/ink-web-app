@@ -270,6 +270,26 @@ export default function Terms() {
         upgrade, discontinue, suspend, or terminate the Testnet at any time and
         without notice.
       </div>
+      <div>
+        <span className="underline">Kraken Sequencer</span>
+      </div>
+      <div>
+        Kraken operates a node that receives, records, and combines multiple
+        transaction records from Ink into batches, which are then settled to the
+        Ethereum blockchain in a specified format (the "Kraken Sequencer"). You
+        are not required to use the Kraken Sequencer. If you use the Kraken
+        Sequencer, you agree to pay any applicable gas fees, which may be
+        modified at any time. Kraken will attempt to provide accurate gas fee
+        information in connection with your use of the Kraken Sequencer, but
+        such information reflects its estimate of gas fees, which may vary from
+        the fees you actually pay to use the Kraken Sequencer and interact with
+        Ink. The Kraken Sequencer does not store, take possession, custody, or
+        control of your Digital Assets at any time, except for receiving
+        applicable gas fees. It also does not have the ability to modify,
+        reverse, or otherwise modify any transactions submitted to the Ethereum
+        blockchain. Applicable gas fees received in connection with your use of
+        the Kraken Sequencer may be modified at any time.
+      </div>
       <b>4. Third Party Services</b>
       <div>
         When using our Services, Ink or the Bridge Smart Contracts you may have
@@ -293,40 +313,21 @@ export default function Terms() {
         privacy policies. We are not responsible for their data practices.
       </div>
       <div>
-        Kraken Continuance ("<b>Kraken</b>") operates a node that receives,
-        records, and combines multiple transaction records from Ink into
-        batches, which are then settled to the Ethereum blockchain in a
-        specified format (the "<b>Kraken Sequencer</b>"). You are not required
-        to use the Kraken Sequencer. If you use the Kraken Sequencer, you agree
-        to pay any applicable gas fees, which may be modified at any time.
-        Kraken will attempt to provide accurate gas fee information in
-        connection with your use of the Kraken Sequencer, but such information
-        reflects its estimate of gas fees, which may vary from the fees you
-        actually pay to use the Kraken Sequencer and interact with Ink. The
-        Kraken Sequencer does not store, take possession, custody, or control of
-        your Digital Assets at any time, except for receiving applicable gas
-        fees. It also does not have the ability to modify, reverse, or otherwise
-        modify any transactions submitted to the Ethereum blockchain. Applicable
-        gas fees received in connection with your use of the Kraken Sequencer
-        may be modified at any time.
-      </div>
-      <div>
-        To use certain of the Services or the Kraken Sequencer, you may need to
-        connect a compatible third-party digital wallet ("<b>Wallet</b>") with
-        the Services or the Kraken Sequencer. By using a Wallet in connection
-        with the Services or the Kraken Sequencer, you agree that you are using
-        the Wallet under the terms and conditions of the applicable third-party
+        To use certain of the Services, you may need to connect a compatible
+        third-party digital wallet ("Wallet") with the Services. By using a
+        Wallet in connection with the Services, you agree that you are using the
+        Wallet under the terms and conditions of the applicable third-party
         provider of such Wallet. Wallets are not associated with, maintained by,
         or affiliated with us. We accept no responsibility or liability to you
         in connection with your use of a Wallet, and we make no representations
-        or warranties regarding how the Services, the Kraken Sequencer or Ink
-        will operate or be compatible with any specific Wallet. The private keys
-        necessary to access the assets held in a Wallet are not held by us. You
-        are solely responsible for maintaining the confidentiality of your
-        private keys and you are responsible for any transactions signed with
-        your private keys. We reserve the right, in our sole discretion, to
-        prohibit certain Wallet addresses from being able to use or engage in
-        transactions using the Services or the Kraken Sequencer.
+        or warranties regarding how the Services or Ink will operate or be
+        compatible with any specific Wallet. The private keys necessary to
+        access the assets held in a Wallet are not held by us. You are solely
+        responsible for maintaining the confidentiality of your private keys and
+        you are responsible for any transactions signed with your private keys.
+        We reserve the right, in our sole discretion, to prohibit certain Wallet
+        addresses from being able to use or engage in transactions using the
+        Services.
       </div>
       <b>5. Content; Feedback</b>
       <div>
@@ -460,35 +461,33 @@ export default function Terms() {
       </ul>
       <b>7. Risks</b>
       <div>
-        There are substantial risks associated with using our Services, Ink
-        (including the Bridge Smart Contracts) and any third party service
-        available on Ink, and you should carefully consider whether using them
-        is suitable for you in light of your circumstances, knowledge, and
-        financial resources. You may be subject to legal and regulatory
-        compliance obligations in connection with your use of our Services, Ink
-        (including Bridge Smart Contracts), and third party services available
-        on Ink, and you agree that you are solely responsible for your
-        compliance with all laws and regulations. You acknowledge and agree that
-        our Services, Ink (including the Bridge Smart Contracts) and third party
-        services available on Ink may incorporate experimental and novel
-        technology and that the use of such technology involves a high degree of
-        risk, could unexpectedly fail or not perform as intended, and may
-        experience cyber-attacks, botting or other malicious activity, or other
-        operational or technical difficulties or vulnerabilities related to your
-        use of our Services, Ink (including Bridge Smart Contracts), and third
-        party services available on Ink. You acknowledge and agree that smart
-        contracts execute automatically when certain conditions are met, and we
-        do not have the ability to reverse a transaction recorded on a public
-        blockchain. You are responsible for ensuring that any details you enter
-        in connection with a transaction using any smart contracts are accurate
-        and complete. You acknowledge and agree that we cannot control how
-        third-party exchange platforms quote or value Digital Assets, and we are
-        not responsible for any losses you may incur as a result of fluctuations
-        in the value of Digital Assets. As such, you acknowledge and agree that
-        your use of our Services, Ink (including the Bridge Smart Contracts) and
-        any third party service available on Ink, is at your own risk, and that
-        we aren&apos;t liable to you for any losses you incur arising from such
-        risks.
+        There are substantial risks associated with using our Services, Ink and
+        any third party service (including the Bridge Smart Contracts) available
+        on Ink, and you should carefully consider whether using them is suitable
+        for you in light of your circumstances, knowledge, and financial
+        resources. You may be subject to legal and regulatory compliance
+        obligations in connection with your use of our Services, Ink , and third
+        party services (including Bridge Smart Contracts) available on Ink, and
+        you agree that you are solely responsible for your compliance with all
+        laws and regulations. You acknowledge and agree that our Services, Ink,
+        and third party services available on Ink may incorporate experimental
+        and novel technology and that the use of such technology involves a high
+        degree of risk, could unexpectedly fail or not perform as intended, and
+        may experience cyber-attacks, botting or other malicious activity, or
+        other operational or technical difficulties or vulnerabilities related
+        to your use of our Services, Ink , and third party services available on
+        Ink. You acknowledge and agree that smart contracts execute
+        automatically when certain conditions are met, and we do not have the
+        ability to reverse a transaction recorded on a public blockchain. You
+        are responsible for ensuring that any details you enter in connection
+        with a transaction using any smart contracts are accurate and complete.
+        You acknowledge and agree that we cannot control how third-party
+        exchange platforms quote or value Digital Assets, and we are not
+        responsible for any losses you may incur as a result of fluctuations in
+        the value of Digital Assets. As such, you acknowledge and agree that
+        your use of our Services, Ink and any third party service available on
+        Ink, is at your own risk, and that we aren&apos;t liable to you for any
+        losses you incur arising from such risks.
       </div>
       <b>8. Disclaimer of Warranties</b>
       <div>
@@ -505,9 +504,9 @@ export default function Terms() {
         OR OTHER HARMFUL COMPONENTS; (iv) THE SERVICES OR INK WILL BE COMPATIBLE
         WITH ANY OTHER APPLICATION, SYSTEM, DEVICE OR WALLET; AND (v) THAT THE
         SERVICES OR INK WILL PROTECT YOUR ASSETS FROM THEFT, HACKING, CYBER
-        ATTACK OR OTHER FORM OF LOSS CAUSED BY THIRD PARTY CONDUCT. WE
-        DON&apos;T PROVIDE ANY UPTIME GUARANTEES, AND WE MAY DISCONTINUE MAKING
-        OUR SERVICES AVAILABLE TO YOU AT ANY TIME AT OUR SOLE DISCRETION.
+        ATTACK OR OTHER FORM OF LOSS CAUSED BY THIRD PARTY CONDUCT. WE DON'T
+        PROVIDE ANY UPTIME GUARANTEES, AND WE MAY DISCONTINUE MAKING OUR
+        SERVICES AVAILABLE TO YOU AT ANY TIME AT OUR SOLE DISCRETION.
       </div>
       <b>9. Limitations on Liability</b>
       <div>
@@ -526,16 +525,15 @@ export default function Terms() {
         respective officers, directors, members, employees, and agents, from any
         claim, demand, action, damage, loss, cost, or expense (including
         reasonable attorneys&apos; fees) relating to (1) your use of our
-        Services and the Kraken Sequencer, (2) your violation of these Terms,
-        (3) your infringement, misappropriation, or violation of the rights of
-        any other person or entity, (4) any content, materials, or information
-        (in any form or medium) that you submit, post, upload, provide,
-        contribute, or make available (or authorize or instruct us to do so)
-        through the Services and the Kraken Sequencer, and (5) any Feedback. If
-        you&apos;re obligated to indemnify us or Kraken, we respectively have
-        the right to control any action if we want and you cannot settle any
-        action without our consent, unless the settlement is only for money
-        damages which you entirely pay.
+        Services, (2) your violation of these Terms, (3) your infringement,
+        misappropriation, or violation of the rights of any other person or
+        entity, (4) any content, materials, or information (in any form or
+        medium) that you submit, post, upload, provide, contribute, or make
+        available (or authorize or instruct us to do so) through the Services,
+        and (5) any Feedback. If you&apos;re obligated to indemnify us or
+        Kraken, we respectively have the right to control any action if we want
+        and you cannot settle any action without our consent, unless the
+        settlement is only for money damages which you entirely pay.
       </div>
       <b>11. Dispute Resolution By Binding Arbitration; Class Action Waiver</b>
       <div>
@@ -569,10 +567,10 @@ export default function Terms() {
         Subject to the informal process outlined in the preceding paragraph, you
         and us agree to arbitrate any dispute arising in connection with these
         Terms (including questions related to their validity, existence, or
-        termination) or your use of the Services and the Kraken Sequencer,
-        except for disputes in which either party seeks equitable and other
-        relief for the alleged unlawful use of copyrights, trademarks, trade
-        names, logos, trade secrets or patents.{" "}
+        termination) or your use of the Services, except for disputes in which
+        either party seeks equitable and other relief for the alleged unlawful
+        use of copyrights, trademarks, trade names, logos, trade secrets or
+        patents.{" "}
       </div>
       <div>
         The arbitration will be administered in accordance with the Rules of the
@@ -744,20 +742,13 @@ export default function Terms() {
         We can, at any time and without liability or prior notice to you:
       </div>
       <ul className="list-disc pl-5 space-y-2">
-        <li>
-          modify or discontinue our Services (or any parts of them) or the
-          Kraken Sequencer,
-        </li>
-        <li>
-          suspend, restrict, or terminate your access to our Services or the
-          Kraken Sequencer, or
-        </li>
+        <li>modify or discontinue our Services (or any parts of them),</li>
+        <li>suspend, restrict, or terminate your access to our Services, or</li>
         <li>suspend, restrict, or delete Your Content.</li>
       </ul>
       <div>
-        You may terminate your use of our Services or the Kraken Sequencer at
-        any time by ceasing to access or use our Services or the Kraken
-        Sequencer.
+        You may terminate your use of our Services at any time by ceasing to
+        access or use our Services.
       </div>
 
       <b>14. Personal Data</b>
@@ -779,21 +770,17 @@ export default function Terms() {
       <b>15. Notices</b>
       <div>
         You agree that we may electronically provide you all communications,
-        agreements, documents, notices, and disclosures ("
-        <b>Communications</b>") in connection with your access or use of our
-        Services or the Kraken Sequencer. You agree that we may provide
-        Communications to you by posting them on our Services, by emailing them
-        to you at the email address you provide, or by sending an SMS or text
-        message to a mobile phone number that you provide. Your carrier&apos;s
-        normal messaging, data, and other rates and fees may apply to any mobile
-        Communications you should retain copies of all Communications for your
-        records.
-      </div>
-      <div>
-        You may withdraw your consent to receive electronic Communications by
-        sending a withdrawal notice via the contact form on our website. If you
-        do, we may suspend or terminate your use of our Services or the Kraken
-        Sequencer.
+        agreements, documents, notices, and disclosures ("Communications") in
+        connection with your access or use of our Services. You agree that we
+        may provide Communications to you by posting them on our Services, by
+        emailing them to you at the email address you provide, or by sending an
+        SMS or text message to a mobile phone number that you provide. Your
+        carrier&apos;s normal messaging, data, and other rates and fees may
+        apply to any mobile Communications. You should retain copies of all
+        Communications for your records. You may withdraw your consent to
+        receive electronic Communications by sending a withdrawal notice via the
+        contact form on our website. If you do, we may suspend or terminate your
+        use of our Services.
       </div>
 
       <b>16. General</b>
