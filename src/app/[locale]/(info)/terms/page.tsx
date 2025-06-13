@@ -232,10 +232,10 @@ export default function Terms() {
         or changes to Ink that could result in a partial or complete disruption
         of Ink or loss, damage, or destruction of your Digital Assets. The
         Supported Networks, and the types of Digital Assets, that are capable of
-        functionating with Ink and the Bridge Smart Contracts may also be
-        subject to change at any time. We do not control third party
-        applications, including their development or deployment, on Ink, or any
-        activity or transactions occurring on Ink.{" "}
+        functioning with Ink and the Bridge Smart Contracts may also be subject
+        to change at any time. We do not control third party applications,
+        including their development or deployment, on Ink, or any activity or
+        transactions occurring on Ink.{" "}
         <b>
           Therefore, you acknowledge and agree that Ink, including its Bridge
           Smart Contracts, are not part of our Services, and we have no
