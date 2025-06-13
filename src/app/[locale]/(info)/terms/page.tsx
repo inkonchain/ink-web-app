@@ -82,7 +82,7 @@ export default function Terms() {
         <b>Terms of Service</b>
       </div>
       <div className="text-center underline">
-        <b>Last Updated: December 16, 2024</b>
+        <b>Last Updated: June 10, 2025</b>
       </div>
       <div>
         Please read these Terms of Service ("<b>Terms</b>") carefully, as they
@@ -115,10 +115,8 @@ export default function Terms() {
       <div>
         These Terms are a legally binding agreement between "you" (an
         individual, or an entity acting through an authorized individual) and
-        Ink Foundation, C/O CO Services Cayman Limited, PO Box 10008 Willow
-        House Cricket Square, Grand Cayman, Cayman Islands KY1-1001 ("<b>we</b>
-        ", "<b>us</b>", or "<b>our</b>
-        ").
+        Kraken Continuance, Inc., an exempted company incorporated in the Cayman
+        Islands ("Kraken," "we", "us", or "our").
       </div>
       <div className="border-2 border-gray-300 p-4 my-4 rounded-lg">
         ARBITRATION NOTICE: THESE TERMS CONTAIN AN ARBITRATION AGREEMENT AND A
@@ -184,9 +182,9 @@ export default function Terms() {
           resident in—or, if you are an entity, not be directly or indirectly
           owned or controlled by any person located in, under the control of, or
           organized or resident in—any sanctioned or embargoed jurisdiction
-          (including Crimea, Cuba, Donetsk, Iran, Luhansk, North Korea, Russia,
-          Belarus, and Syria), or any jurisdiction where we may have restricted
-          use of any services, and
+          (including Crimea, Cuba, Donetsk, Iran, Luhansk, North Korea, Russia
+          or Belarus), or any jurisdiction where we may have restricted use of
+          any services, and
         </li>
         <li>
           if you are an individual, not be listed on—or, if you are an entity,
@@ -629,7 +627,7 @@ export default function Terms() {
         The arbitrator may make rulings and resolve disputes as to the payment
         and reimbursement of fees or expenses at any time during the proceeding
         and upon request from either party made within 14 days of the
-        arbitrator’s ruling on the merits.
+        arbitrator&apos;s ruling on the merits.
       </div>
       <span className="underline">Batch Arbitration</span>
       <div>
@@ -659,15 +657,15 @@ export default function Terms() {
         of any such dispute by the Administrative Arbitrator, the parties agree
         the Administrative Arbitrator may set forth such procedures as are
         necessary to resolve any disputes promptly. The Administrative
-        Arbitrator’s fees shall be paid by us. You and us agree to cooperate in
-        good faith with the LCIA to implement the Batch Arbitration process
-        including the payment of single filing and administrative fees for
-        batches of claims, as well as any steps to minimize the time and costs
-        of arbitration, which may include: (i) the appointment of a discovery
-        special master to assist the arbitrator in the resolution of discovery
-        disputes; and (ii) the adoption of an expedited calendar of the
-        arbitration proceedings. This Batch Arbitration provision shall in no
-        way be interpreted as authorizing a class, collective and/or mass
+        Arbitrator&apos;s fees shall be paid by us. You and us agree to
+        cooperate in good faith with the LCIA to implement the Batch Arbitration
+        process including the payment of single filing and administrative fees
+        for batches of claims, as well as any steps to minimize the time and
+        costs of arbitration, which may include: (i) the appointment of a
+        discovery special master to assist the arbitrator in the resolution of
+        discovery disputes; and (ii) the adoption of an expedited calendar of
+        the arbitration proceedings. This Batch Arbitration provision shall in
+        no way be interpreted as authorizing a class, collective and/or mass
         arbitration or action of any kind, or arbitration involving joint or
         consolidated claims under any circumstances, except as expressly set
         forth in this provision.
@@ -686,7 +684,7 @@ export default function Terms() {
       <div>
         TO THE FULLEST EXTENT PERMITTED BY APPLICABLE LAW, YOU AND US EACH AGREE
         THAT ANY PROCEEDING TO RESOLVE ANY DISPUTE, CLAIM, OR CONTROVERSY WILL
-        BE BROUGHT AND CONDUCTED ONLY IN THE RESPECTIVE PARTY’S INDIVIDUAL
+        BE BROUGHT AND CONDUCTED ONLY IN THE RESPECTIVE PARTY&apos;S INDIVIDUAL
         CAPACITY AND NOT AS PART OF ANY CLASS (OR PURPORTED CLASS),
         CONSOLIDATED, MULTIPLE-PLAINTIFF, OR REPRESENTATIVE ACTION OR PROCEEDING
         ("<b>CLASS ACTION</b>").{" "}
@@ -701,15 +699,15 @@ export default function Terms() {
         THE AUTHORITY TO COMBINE OR AGGREGATE CLAIMS, CONDUCT A CLASS ACTION, OR
         MAKE AN AWARD TO ANY PERSON OR ENTITY NOT A PARTY TO THE ARBITRATION .
         FURTHER, YOU AND US AGREE THAT THE ARBITRATOR MAY NOT CONSOLIDATE
-        PROCEEDINGS FOR MORE THAN ONE PERSON’S CLAIMS, AND IT MAY NOT OTHERWISE
-        PRESIDE OVER ANY FORM OF A CLASS ACTION (OTHER THAN THE BATCH
+        PROCEEDINGS FOR MORE THAN ONE PERSON&apos;S CLAIMS, AND IT MAY NOT
+        OTHERWISE PRESIDE OVER ANY FORM OF A CLASS ACTION (OTHER THAN THE BATCH
         ARBITRATION SPECIFIED ABOVE). FOR THE AVOIDANCE OF DOUBT, HOWEVER, YOU
         CAN SEEK PUBLIC INJUNCTIVE RELIEF TO THE EXTENT AUTHORIZED BY LAW AND
         CONSISTENT WITH THE EXCEPTIONS DESCRIBED ABOVE.
       </div>
       <div>
         IF THIS CLASS ACTION WAIVER IS LIMITED, VOIDED, OR FOUND UNENFORCEABLE,
-        THEN, UNLESS THE PARTIES MUTUALLY AGREE OTHERWISE, THE PARTIES’
+        THEN, UNLESS THE PARTIES MUTUALLY AGREE OTHERWISE, THE PARTIES&apos;
         AGREEMENT TO ARBITRATE SHALL BE NULL AND VOID WITH RESPECT TO SUCH
         PROCEEDING SO LONG AS THE PROCEEDING IS PERMITTED TO PROCEED AS A CLASS
         ACTION. If a court decides that the limitations of this paragraph are
@@ -769,16 +767,7 @@ export default function Terms() {
 
       <b>14. Personal Data</b>
       <div>
-        Please read both our{" "}
-        <Link
-          className="text-blue-500 hover:underline"
-          href="/privacy"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Privacy Notice
-        </Link>
-        , and the{" "}
+        Please read the{" "}
         <Link
           className="text-blue-500 hover:underline"
           href={EXTERNAL_LINKS.krakenPrivacyNotice}
@@ -788,8 +777,8 @@ export default function Terms() {
           Kraken Privacy Notice
         </Link>
         , for information about how your personal data may be collected, used,
-        and shared. Both Privacy Notices are incorporated into these Terms by
-        reference.
+        and shared. The Kraken Privacy Notice is incorporated into these Terms
+        by reference.
       </div>
 
       <b>15. Notices</b>
@@ -926,12 +915,6 @@ export default function Terms() {
         all prior and contemporaneous understandings between you and us about
         our Services and the Kraken Sequencer. These Terms include all
         applicable Annexes hereto.
-      </div>
-      <div className="underline">How to Contact Us.</div>
-      <div>
-        You may contact us regarding the Services, the Kraken Sequencer or these
-        Terms
-        <ContactUsPrivacyButton text="here" />.
       </div>
     </>
   );
