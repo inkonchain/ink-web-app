@@ -1,5 +1,4 @@
 import { ColoredText } from "@/components/ColoredText";
-import { ContactUsPrivacyButton } from "@/components/ContactUsPrivacyButton";
 import { EXTERNAL_LINKS, Link } from "@/routing";
 
 export default function Terms() {
@@ -85,8 +84,8 @@ export default function Terms() {
         <b>Last Updated: June 10, 2025</b>
       </div>
       <div>
-        Please read these Terms of Service ("<b>Terms</b>") carefully, as they
-        are binding and govern your use of our website,{" "}
+        Please read these Terms of Service (&quot;<b>Terms</b>&quot;) carefully,
+        as they are binding and govern your use of our website,{" "}
         <a
           className="text-blue-500 hover:underline"
           href="https://inkonchain.com/"
@@ -95,11 +94,12 @@ export default function Terms() {
         >
           https://inkonchain.com/
         </a>{" "}
-        (the "<b>Website</b>"), Interface, Testnet, Kraken Sequencer and any
-        content, tools, documentation, features and functionality offered on or
-        through our Website (collectively, the "<b>Services</b>"). They also
-        govern your use of the Kraken Sequencer. By accessing or using our
-        Services, or by submitting any content, you agree to these Terms.
+        (the &quot;<b>Website</b>&quot;), Interface, Testnet, Kraken Sequencer
+        and any content, tools, documentation, features and functionality
+        offered on or through our Website (collectively, the &quot;
+        <b>Services</b>&quot;). They also govern your use of the Kraken
+        Sequencer. By accessing or using our Services, or by submitting any
+        content, you agree to these Terms.
       </div>
       <div>
         These Terms may change at any time and without notice, including updates
@@ -113,10 +113,11 @@ export default function Terms() {
         change these Terms, you agree to all our changes.
       </div>
       <div>
-        These Terms are a legally binding agreement between "you" (an
+        These Terms are a legally binding agreement between &quot;you&quot; (an
         individual, or an entity acting through an authorized individual) and
         Kraken Continuance, Inc., an exempted company incorporated in the Cayman
-        Islands ("Kraken," "we", "us", or "our").
+        Islands (&quot;Kraken,&quot; &quot;we&quot;, &quot;us&quot;, or
+        &quot;our&quot;).
       </div>
       <div className="border-2 border-gray-300 p-4 my-4 rounded-lg">
         ARBITRATION NOTICE: THESE TERMS CONTAIN AN ARBITRATION AGREEMENT AND A
@@ -160,7 +161,7 @@ export default function Terms() {
       <b>1. Eligibility</b>
       <div>
         To use any of our Services or the Kraken Sequencer, you must meet at
-        least the following conditions ("<b>Conditions</b>"):
+        least the following conditions (&quot;<b>Conditions</b>&quot;):
       </div>
       <ul className="list-disc pl-5 space-y-2">
         <li>
@@ -191,7 +192,7 @@ export default function Terms() {
           not listed on or be directly or indirectly owned or controlled by any
           person listed on—the Office of Foreign Assets Control of the U.S.
           Department of Treas.ury&apos;s Specially Designated Nationals and
-          Blocked Persons List ("<b>SDN</b>"), the U.S. Department of
+          Blocked Persons List (&quot;<b>SDN</b>&quot;), the U.S. Department of
           Commerce&apos;s Denied Persons List, Consolidated Non-SDN Lists
           available{" "}
           <a
@@ -217,25 +218,24 @@ export default function Terms() {
       <b>2. Ink</b>
       <div>
         Ink is a layer 2 optimistic rollup protocol for the Ethereum blockchain
-        ("Ink") built on open source software that we do not control. Ink
-        includes functionality whereby certain open source smart contracts can
-        receive and hold certain digital currency or other digital assets ("
-        <b>Digital Assets</b>") from certain supported blockchain networks such
-        as Ethereum ("
-        <b>Supported Networks</b>"), which are then represented on Ink ("
-        <b>Bridge Smart Contracts</b>"). The Bridge Smart Contract can also be
-        used to withdraw your Digital Assets from Ink back to Supported
-        Networks. We do not take possession, custody, or control of any Digital
-        Assets on Ink or sent to its Bridge Smart Contracts. There is a risk
-        that the open source software, including any upgrades, that Ink is built
-        on may introduce bugs, viruses, Trojan horses, or other vulnerabilities
-        or changes to Ink that could result in a partial or complete disruption
-        of Ink or loss, damage, or destruction of your Digital Assets. The
-        Supported Networks, and the types of Digital Assets, that are capable of
-        functioning with Ink and the Bridge Smart Contracts may also be subject
-        to change at any time. We do not control third party applications,
-        including their development or deployment, on Ink, or any activity or
-        transactions occurring on Ink.{" "}
+        (&quot;Ink&quot;) built on open source software that we do not control.
+        Ink includes functionality whereby certain open source smart contracts
+        can receive and hold certain digital currency or other digital assets
+        (&quot;Digital Assets&quot;) from certain supported blockchain networks
+        such as Ethereum (&quot;Supported Networks&quot;), which are then
+        represented on Ink (&quot;Bridge Smart Contracts&quot;). The Bridge
+        Smart Contract can also be used to withdraw your Digital Assets from Ink
+        back to Supported Networks. We do not take possession, custody, or
+        control of any Digital Assets on Ink or sent to its Bridge Smart
+        Contracts. There is a risk that the open source software, including any
+        upgrades, that Ink is built on may introduce bugs, viruses, Trojan
+        horses, or other vulnerabilities or changes to Ink that could result in
+        a partial or complete disruption of Ink or loss, damage, or destruction
+        of your Digital Assets. The Supported Networks, and the types of Digital
+        Assets, that are capable of functioning with Ink and the Bridge Smart
+        Contracts may also be subject to change at any time. We do not control
+        third party applications, including their development or deployment, on
+        Ink, or any activity or transactions occurring on Ink.{" "}
         <b>
           Therefore, you acknowledge and agree that Ink, including its Bridge
           Smart Contracts, are not part of our Services, and we have no
@@ -249,8 +249,8 @@ export default function Terms() {
         <span className="underline">Interface</span>
       </div>
       <div>
-        Our Website includes a user interface (the "<b>Interface</b>") that is
-        intended to allow you to more easily interact with certain
+        Our Website includes a user interface (the &quot;Interface&quot;) that
+        is intended to allow you to more easily interact with certain
         functionalities of Ink, such as the Bridge Smart Contracts. Other third
         parties may deploy their own applications or interfaces to interface
         with Bridge Smart Contracts, and those other applications or interfaces
@@ -260,7 +260,7 @@ export default function Terms() {
         <span className="underline">Testnet</span>
       </div>
       <div>
-        We operate the Ink testnet (the "<b>Testnet</b>") as a testing
+        We operate the Ink testnet (the &quot;Testnet&quot;) as a testing
         environment that is intended to reproduce the functionality and
         experience of Ink. The Testnet is intended to allow you to develop
         applications for Ink and otherwise improve the stability, security, and
@@ -276,19 +276,19 @@ export default function Terms() {
       <div>
         Kraken operates a node that receives, records, and combines multiple
         transaction records from Ink into batches, which are then settled to the
-        Ethereum blockchain in a specified format (the "Kraken Sequencer"). You
-        are not required to use the Kraken Sequencer. If you use the Kraken
-        Sequencer, you agree to pay any applicable gas fees, which may be
-        modified at any time. Kraken will attempt to provide accurate gas fee
-        information in connection with your use of the Kraken Sequencer, but
-        such information reflects its estimate of gas fees, which may vary from
-        the fees you actually pay to use the Kraken Sequencer and interact with
-        Ink. The Kraken Sequencer does not store, take possession, custody, or
-        control of your Digital Assets at any time, except for receiving
-        applicable gas fees. It also does not have the ability to modify,
-        reverse, or otherwise modify any transactions submitted to the Ethereum
-        blockchain. Applicable gas fees received in connection with your use of
-        the Kraken Sequencer may be modified at any time.
+        Ethereum blockchain in a specified format (the &quot;Kraken
+        Sequencer&quot;). You are not required to use the Kraken Sequencer. If
+        you use the Kraken Sequencer, you agree to pay any applicable gas fees,
+        which may be modified at any time. Kraken will attempt to provide
+        accurate gas fee information in connection with your use of the Kraken
+        Sequencer, but such information reflects its estimate of gas fees, which
+        may vary from the fees you actually pay to use the Kraken Sequencer and
+        interact with Ink. The Kraken Sequencer does not store, take possession,
+        custody, or control of your Digital Assets at any time, except for
+        receiving applicable gas fees. It also does not have the ability to
+        modify, reverse, or otherwise modify any transactions submitted to the
+        Ethereum blockchain. Applicable gas fees received in connection with
+        your use of the Kraken Sequencer may be modified at any time.
       </div>
       <b>4. Third Party Services</b>
       <div>
@@ -314,38 +314,38 @@ export default function Terms() {
       </div>
       <div>
         To use certain of the Services, you may need to connect a compatible
-        third-party digital wallet ("Wallet") with the Services. By using a
-        Wallet in connection with the Services, you agree that you are using the
-        Wallet under the terms and conditions of the applicable third-party
-        provider of such Wallet. Wallets are not associated with, maintained by,
-        or affiliated with us. We accept no responsibility or liability to you
-        in connection with your use of a Wallet, and we make no representations
-        or warranties regarding how the Services or Ink will operate or be
-        compatible with any specific Wallet. The private keys necessary to
-        access the assets held in a Wallet are not held by us. You are solely
-        responsible for maintaining the confidentiality of your private keys and
-        you are responsible for any transactions signed with your private keys.
-        We reserve the right, in our sole discretion, to prohibit certain Wallet
-        addresses from being able to use or engage in transactions using the
-        Services.
+        third-party digital wallet (&quot;Wallet&quot;) with the Services. By
+        using a Wallet in connection with the Services, you agree that you are
+        using the Wallet under the terms and conditions of the applicable
+        third-party provider of such Wallet. Wallets are not associated with,
+        maintained by, or affiliated with us. We accept no responsibility or
+        liability to you in connection with your use of a Wallet, and we make no
+        representations or warranties regarding how the Services or Ink will
+        operate or be compatible with any specific Wallet. The private keys
+        necessary to access the assets held in a Wallet are not held by us. You
+        are solely responsible for maintaining the confidentiality of your
+        private keys and you are responsible for any transactions signed with
+        your private keys. We reserve the right, in our sole discretion, to
+        prohibit certain Wallet addresses from being able to use or engage in
+        transactions using the Services.
       </div>
       <b>5. Content; Feedback</b>
       <div>
         <span className="underline">Our Content</span>. We or our licensors own
         (1) our Services, (2) all content, materials, software, and trademarks
         found on them, (3) the selection and arrangement of them, and (4) all
-        intellectual property rights in them (collectively, "<b>Our Content</b>
-        "). So long as you comply with these Terms, you&apos;re permitted to use
-        our Services, and Our Content made available to you as part of our
-        Services, but only for your own benefit. We can take away this
-        permission at any time for any reason. You don&apos;t have or acquire
-        any rights to Our Content beyond the limited, revocable permission in
-        the previous sentence.
+        intellectual property rights in them (collectively, &quot;Our
+        Content&quot;). So long as you comply with these Terms, you&apos;re
+        permitted to use our Services, and Our Content made available to you as
+        part of our Services, but only for your own benefit. We can take away
+        this permission at any time for any reason. You don&apos;t have or
+        acquire any rights to Our Content beyond the limited, revocable
+        permission in the previous sentence.
       </div>
       <div>
         <span className="underline">Your Content</span>. You may have the
         opportunity to transmit content or materials in or through our Services
-        ("<b>Your Content</b>"), excluding Personal Data as defined in our{" "}
+        (&quot;Your Content&quot;), excluding Personal Data as defined in our{" "}
         <Link
           className="text-blue-500 hover:underline"
           href={EXTERNAL_LINKS.krakenPrivacyNotice}
@@ -360,11 +360,11 @@ export default function Terms() {
       </div>
       <div>
         <span className="underline">Feedback</span>. You may provide us
-        feedback, suggestions, or ideas relating to our Services ("
-        <b>Feedback</b>"). You represent and warrant that you have the right to
-        provide us any Feedback that you provide. You agree that we&apos;ll own
-        all Feedback, and you hereby irrevocably assign all right, title, and
-        interest in and to all Feedback to us.
+        feedback, suggestions, or ideas relating to our Services
+        (&quot;Feedback&quot;). You represent and warrant that you have the
+        right to provide us any Feedback that you provide. You agree that
+        we&apos;ll own all Feedback, and you hereby irrevocably assign all
+        right, title, and interest in and to all Feedback to us.
       </div>
       <b>6. Restrictions</b>
       <div>You won&apos;t:</div>
@@ -492,9 +492,9 @@ export default function Terms() {
       <b>8. Disclaimer of Warranties</b>
       <div>
         TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR SERVICES AND INK
-        ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. WE (AND AS
-        APPLICABLE KRAKEN) EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND,
-        WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF
+        ARE PROVIDED ON AN &quot;AS IS&quot; AND &quot;AS AVAILABLE&quot; BASIS.
+        WE (AND AS APPLICABLE KRAKEN) EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY
+        KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF
         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
         NON-INFRINGEMENT RELATING TO OUR SERVICES AND INK. WITHOUT LIMITING THE
         FOREGOING, WE (AND AS APPLICABLE KRAKEN) DISCLAIM THAT (i) OUR SERVICES
@@ -504,9 +504,9 @@ export default function Terms() {
         OR OTHER HARMFUL COMPONENTS; (iv) THE SERVICES OR INK WILL BE COMPATIBLE
         WITH ANY OTHER APPLICATION, SYSTEM, DEVICE OR WALLET; AND (v) THAT THE
         SERVICES OR INK WILL PROTECT YOUR ASSETS FROM THEFT, HACKING, CYBER
-        ATTACK OR OTHER FORM OF LOSS CAUSED BY THIRD PARTY CONDUCT. WE DON'T
-        PROVIDE ANY UPTIME GUARANTEES, AND WE MAY DISCONTINUE MAKING OUR
-        SERVICES AVAILABLE TO YOU AT ANY TIME AT OUR SOLE DISCRETION.
+        ATTACK OR OTHER FORM OF LOSS CAUSED BY THIRD PARTY CONDUCT. WE
+        DON&apos;T PROVIDE ANY UPTIME GUARANTEES, AND WE MAY DISCONTINUE MAKING
+        OUR SERVICES AVAILABLE TO YOU AT ANY TIME AT OUR SOLE DISCRETION.
       </div>
       <b>9. Limitations on Liability</b>
       <div>
@@ -538,7 +538,7 @@ export default function Terms() {
       <b>11. Dispute Resolution By Binding Arbitration; Class Action Waiver</b>
       <div>
         This Dispute Resolution by Binding Arbitration section is referred to in
-        the Terms as the &quot;<b>Arbitration Agreement</b>&quot;.{" "}
+        the Terms as the &quot;Arbitration Agreement&quot;.{" "}
       </div>
       <div>
         <b>
@@ -553,7 +553,7 @@ export default function Terms() {
         and most concerns can be resolved quickly and to your satisfaction by
         emailing user support at legal@inkonchain.com. However, if such efforts
         prove unsuccessful, you may send to us, by email, a written Notice of
-        Dispute ("<b>Notice</b>"). The Notice should be sent to
+        Dispute (&quot;Notice&quot;). The Notice should be sent to
         legal@inkonchain.com and must (a) describe the nature and basis of the
         claim or dispute and (b) set forth the specific relief sought. If we and
         you do not resolve the claim or dispute set out in the Notice within
@@ -574,9 +574,9 @@ export default function Terms() {
       </div>
       <div>
         The arbitration will be administered in accordance with the Rules of the
-        London Court of International Arbitration then in effect (the "
-        <b>LCIA Rules</b>"). It will be conducted in English and the parties
-        will keep the arbitration proceedings confidential and not disclose any
+        London Court of International Arbitration then in effect (the &quot;LCIA
+        Rules&quot;). It will be conducted in English and the parties will keep
+        the arbitration proceedings confidential and not disclose any
         information regarding the arbitration (or any underlying claim or
         dispute) to any third party except as required by law.
       </div>
@@ -638,31 +638,30 @@ export default function Terms() {
         batch; and (c) provide for the resolution of each batch as a single
         consolidated arbitration with one set of filing and administrative fees
         due per side per batch, one procedural calendar, one hearing (if any) in
-        a place to be determined by the arbitrator, and one final award ("
-        <b>Batch Arbitration</b>"). All parties agree that claims are of a
-        "substantially similar nature" if they arise out of or relate to the
-        same event or factual scenario and raise the same or similar legal
-        issues and seek the same or similar relief. To the extent the parties
-        disagree on the application of the Batch Arbitration process, the
-        disagreeing party shall advise the LCIA, and the LCIA shall appoint a
-        sole standing arbitrator to determine the applicability of the Batch
-        Arbitration process ("
-        <b>Administrative Arbitrator</b>"). In an effort to expedite resolution
-        of any such dispute by the Administrative Arbitrator, the parties agree
-        the Administrative Arbitrator may set forth such procedures as are
-        necessary to resolve any disputes promptly. The Administrative
-        Arbitrator&apos;s fees shall be paid by us. You and us agree to
-        cooperate in good faith with the LCIA to implement the Batch Arbitration
-        process including the payment of single filing and administrative fees
-        for batches of claims, as well as any steps to minimize the time and
-        costs of arbitration, which may include: (i) the appointment of a
-        discovery special master to assist the arbitrator in the resolution of
-        discovery disputes; and (ii) the adoption of an expedited calendar of
-        the arbitration proceedings. This Batch Arbitration provision shall in
-        no way be interpreted as authorizing a class, collective and/or mass
-        arbitration or action of any kind, or arbitration involving joint or
-        consolidated claims under any circumstances, except as expressly set
-        forth in this provision.
+        a place to be determined by the arbitrator, and one final award
+        (&quot;Batch Arbitration&quot;). All parties agree that claims are of a
+        &quot;substantially similar nature&quot; if they arise out of or relate
+        to the same event or factual scenario and raise the same or similar
+        legal issues and seek the same or similar relief. To the extent the
+        parties disagree on the application of the Batch Arbitration process,
+        the disagreeing party shall advise the LCIA, and the LCIA shall appoint
+        a sole standing arbitrator to determine the applicability of the Batch
+        Arbitration process (&quot;Administrative Arbitrator&quot;). In an
+        effort to expedite resolution of any such dispute by the Administrative
+        Arbitrator, the parties agree the Administrative Arbitrator may set
+        forth such procedures as are necessary to resolve any disputes promptly.
+        The Administrative Arbitrator&apos;s fees shall be paid by us. You and
+        us agree to cooperate in good faith with the LCIA to implement the Batch
+        Arbitration process including the payment of single filing and
+        administrative fees for batches of claims, as well as any steps to
+        minimize the time and costs of arbitration, which may include: (i) the
+        appointment of a discovery special master to assist the arbitrator in
+        the resolution of discovery disputes; and (ii) the adoption of an
+        expedited calendar of the arbitration proceedings. This Batch
+        Arbitration provision shall in no way be interpreted as authorizing a
+        class, collective and/or mass arbitration or action of any kind, or
+        arbitration involving joint or consolidated claims under any
+        circumstances, except as expressly set forth in this provision.
       </div>
       <span className="underline">
         <b>
@@ -681,7 +680,7 @@ export default function Terms() {
         BE BROUGHT AND CONDUCTED ONLY IN THE RESPECTIVE PARTY&apos;S INDIVIDUAL
         CAPACITY AND NOT AS PART OF ANY CLASS (OR PURPORTED CLASS),
         CONSOLIDATED, MULTIPLE-PLAINTIFF, OR REPRESENTATIVE ACTION OR PROCEEDING
-        ("<b>CLASS ACTION</b>").{" "}
+        (&quot;CLASS ACTION&quot;).{" "}
       </div>
       <div>
         YOU AND US AGREE TO WAIVE THE RIGHT TO PARTICIPATE AS A PLAINTIFF OR
@@ -770,25 +769,25 @@ export default function Terms() {
       <b>15. Notices</b>
       <div>
         You agree that we may electronically provide you all communications,
-        agreements, documents, notices, and disclosures ("Communications") in
-        connection with your access or use of our Services. You agree that we
-        may provide Communications to you by posting them on our Services, by
-        emailing them to you at the email address you provide, or by sending an
-        SMS or text message to a mobile phone number that you provide. Your
-        carrier&apos;s normal messaging, data, and other rates and fees may
-        apply to any mobile Communications. You should retain copies of all
-        Communications for your records. You may withdraw your consent to
-        receive electronic Communications by sending a withdrawal notice via the
-        contact form on our website. If you do, we may suspend or terminate your
-        use of our Services.
+        agreements, documents, notices, and disclosures
+        (&quot;Communications&quot;) in connection with your access or use of
+        our Services. You agree that we may provide Communications to you by
+        posting them on our Services, by emailing them to you at the email
+        address you provide, or by sending an SMS or text message to a mobile
+        phone number that you provide. Your carrier&apos;s normal messaging,
+        data, and other rates and fees may apply to any mobile Communications.
+        You should retain copies of all Communications for your records. You may
+        withdraw your consent to receive electronic Communications by sending a
+        withdrawal notice via the contact form on our website. If you do, we may
+        suspend or terminate your use of our Services.
       </div>
 
       <b>16. General</b>
       <div className="underline">Force Majeure.</div>
       <div>
         We are not responsible or liable for any error, delay, loss, or damage
-        arising from any event beyond our reasonable control (each, a "
-        <b>Force Majeure Event</b>"). Force Majeure Events include flood,
+        arising from any event beyond our reasonable control (each, a
+        &quot;Force Majeure Event&quot;). Force Majeure Events include flood,
         extraordinary weather conditions, earthquake, or other act of God, fire,
         war, insurrection, riot, labor dispute, accident, action of government,
         communications, power failure, or equipment or software malfunction.
@@ -839,11 +838,12 @@ export default function Terms() {
       </div>
       <div className="underline">Interpretation.</div>
       <div>
-        In these Terms, (1) "or" is inclusive, (2) "including" or "such as"
-        aren&apos;t words of limitation, (3) headings are only for your
-        convenience, and (4) the "Summary of Terms of Service" and any
-        definitions provided only for informational purposes are provided only
-        for your convenience, is not legally binding, and does not affect the
+        In these Terms, (1) &quot;or&quot; is inclusive, (2)
+        &quot;including&quot; or &quot;such as&quot; aren&apos;t words of
+        limitation, (3) headings are only for your convenience, and (4) the
+        &quot;Summary of Terms of Service&quot; and any definitions provided
+        only for &quot;informational purposes&quot; are provided only for your
+        convenience, is not legally binding, and does not affect the
         interpretation of these Terms.
       </div>
       <div className="underline">Relationship.</div>
@@ -867,8 +867,8 @@ export default function Terms() {
         1789.3, you may report complaints to the Complaint Assistance Unit of
         the Division of Consumer Services of the California Department of
         Consumer Affairs by contacting them in writing at 1625 North Market
-        Blvd., Suite N 112 Sacramento, CA 95834, or by telephone at (800)
-        952-5210.
+        Blvd., Suite N 112 Sacramento, CA 95834, or by telephone at
+        (&quot;800&quot;) 952-5210.
       </div>
 
       <div className="underline">Survival.</div>
