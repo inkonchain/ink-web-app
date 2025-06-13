@@ -85,7 +85,7 @@ export default function Terms() {
         <b>Last Updated: December 16, 2024</b>
       </div>
       <div>
-        Please read these Terms of Service (“<b>Terms</b>”) carefully, as they
+        Please read these Terms of Service ("<b>Terms</b>") carefully, as they
         are binding and govern your use of our website,{" "}
         <a
           className="text-blue-500 hover:underline"
@@ -95,9 +95,9 @@ export default function Terms() {
         >
           https://inkonchain.com/
         </a>{" "}
-        (the “<b>Website</b>”), Interface, Testnet, Kraken Sequencer and any
+        (the "<b>Website</b>"), Interface, Testnet, Kraken Sequencer and any
         content, tools, documentation, features and functionality offered on or
-        through our Website (collectively, the “<b>Services</b>”). They also
+        through our Website (collectively, the "<b>Services</b>"). They also
         govern your use of the Kraken Sequencer. By accessing or using our
         Services, or by submitting any content, you agree to these Terms.
       </div>
@@ -113,12 +113,12 @@ export default function Terms() {
         change these Terms, you agree to all our changes.
       </div>
       <div>
-        These Terms are a legally binding agreement between “you” (an
+        These Terms are a legally binding agreement between "you" (an
         individual, or an entity acting through an authorized individual) and
         Ink Foundation, C/O CO Services Cayman Limited, PO Box 10008 Willow
-        House Cricket Square, Grand Cayman, Cayman Islands KY1-1001 (“<b>we</b>
-        ”, “<b>us</b>”, or “<b>our</b>
-        ”).
+        House Cricket Square, Grand Cayman, Cayman Islands KY1-1001 ("<b>we</b>
+        ", "<b>us</b>", or "<b>our</b>
+        ").
       </div>
       <div className="border-2 border-gray-300 p-4 my-4 rounded-lg">
         ARBITRATION NOTICE: THESE TERMS CONTAIN AN ARBITRATION AGREEMENT AND A
@@ -162,7 +162,7 @@ export default function Terms() {
       <b>1. Eligibility</b>
       <div>
         To use any of our Services or the Kraken Sequencer, you must meet at
-        least the following conditions (“<b>Conditions</b>”):
+        least the following conditions ("<b>Conditions</b>"):
       </div>
       <ul className="list-disc pl-5 space-y-2">
         <li>
@@ -193,7 +193,7 @@ export default function Terms() {
           not listed on or be directly or indirectly owned or controlled by any
           person listed on—the Office of Foreign Assets Control of the U.S.
           Department of Treas.ury&apos;s Specially Designated Nationals and
-          Blocked Persons List (“<b>SDN</b>”), the U.S. Department of
+          Blocked Persons List ("<b>SDN</b>"), the U.S. Department of
           Commerce&apos;s Denied Persons List, Consolidated Non-SDN Lists
           available{" "}
           <a
@@ -219,13 +219,13 @@ export default function Terms() {
       <b>2. Ink</b>
       <div>
         Ink is a layer 2 optimistic rollup protocol for the Ethereum blockchain
-        (“Ink”) built on open source software that we do not control. Ink
+        ("Ink") built on open source software that we do not control. Ink
         includes functionality whereby certain open source smart contracts can
-        receive and hold certain digital currency or other digital assets (“
-        <b>Digital Assets</b>”) from certain supported blockchain networks such
-        as Ethereum (“
-        <b>Supported Networks</b>”), which are then represented on Ink (“
-        <b>Bridge Smart Contracts</b>”). The Bridge Smart Contract can also be
+        receive and hold certain digital currency or other digital assets ("
+        <b>Digital Assets</b>") from certain supported blockchain networks such
+        as Ethereum ("
+        <b>Supported Networks</b>"), which are then represented on Ink ("
+        <b>Bridge Smart Contracts</b>"). The Bridge Smart Contract can also be
         used to withdraw your Digital Assets from Ink back to Supported
         Networks. We do not take possession, custody, or control of any Digital
         Assets on Ink or sent to its Bridge Smart Contracts. There is a risk
@@ -251,7 +251,7 @@ export default function Terms() {
         <span className="underline">Interface</span>
       </div>
       <div>
-        Our Website includes a user interface (the “<b>Interface</b>”) that is
+        Our Website includes a user interface (the "<b>Interface</b>") that is
         intended to allow you to more easily interact with certain
         functionalities of Ink, such as the Bridge Smart Contracts. Other third
         parties may deploy their own applications or interfaces to interface
@@ -262,7 +262,7 @@ export default function Terms() {
         <span className="underline">Testnet</span>
       </div>
       <div>
-        We operate the Ink testnet (the “<b>Testnet</b>”) as a testing
+        We operate the Ink testnet (the "<b>Testnet</b>") as a testing
         environment that is intended to reproduce the functionality and
         experience of Ink. The Testnet is intended to allow you to develop
         applications for Ink and otherwise improve the stability, security, and
@@ -296,10 +296,10 @@ export default function Terms() {
         practices.
       </div>
       <div>
-        Kraken Continuance (“<b>Kraken</b>”) operates a node that receives,
+        Kraken Continuance ("<b>Kraken</b>") operates a node that receives,
         records, and combines multiple transaction records from Ink into
         batches, which are then settled to the Ethereum blockchain in a
-        specified format (the “<b>Kraken Sequencer</b>”). You are not required
+        specified format (the "<b>Kraken Sequencer</b>"). You are not required
         to use the Kraken Sequencer. If you use the Kraken Sequencer, you agree
         to pay any applicable gas fees, which may be modified at any time.
         Kraken will attempt to provide accurate gas fee information in
@@ -315,7 +315,7 @@ export default function Terms() {
       </div>
       <div>
         To use certain of the Services or the Kraken Sequencer, you may need to
-        connect a compatible third-party digital wallet (“<b>Wallet</b>”) with
+        connect a compatible third-party digital wallet ("<b>Wallet</b>") with
         the Services or the Kraken Sequencer. By using a Wallet in connection
         with the Services or the Kraken Sequencer, you agree that you are using
         the Wallet under the terms and conditions of the applicable third-party
@@ -336,8 +336,8 @@ export default function Terms() {
         <span className="underline">Our Content</span>. We or our licensors own
         (1) our Services, (2) all content, materials, software, and trademarks
         found on them, (3) the selection and arrangement of them, and (4) all
-        intellectual property rights in them (collectively, “<b>Our Content</b>
-        ”). So long as you comply with these Terms, you&apos;re permitted to use
+        intellectual property rights in them (collectively, "<b>Our Content</b>
+        "). So long as you comply with these Terms, you&apos;re permitted to use
         our Services, and Our Content made available to you as part of our
         Services, but only for your own benefit. We can take away this
         permission at any time for any reason. You don&apos;t have or acquire
@@ -347,7 +347,7 @@ export default function Terms() {
       <div>
         <span className="underline">Your Content</span>. You may have the
         opportunity to transmit content or materials in or through our Services
-        (“<b>Your Content</b>”), excluding Personal Data as defined in our{" "}
+        ("<b>Your Content</b>"), excluding Personal Data as defined in our{" "}
         <Link
           className="text-blue-500 hover:underline"
           href={EXTERNAL_LINKS.krakenPrivacyNotice}
@@ -362,8 +362,8 @@ export default function Terms() {
       </div>
       <div>
         <span className="underline">Feedback</span>. You may provide us
-        feedback, suggestions, or ideas relating to our Services (“
-        <b>Feedback</b>”). You represent and warrant that you have the right to
+        feedback, suggestions, or ideas relating to our Services ("
+        <b>Feedback</b>"). You represent and warrant that you have the right to
         provide us any Feedback that you provide. You agree that we&apos;ll own
         all Feedback, and you hereby irrevocably assign all right, title, and
         interest in and to all Feedback to us.
@@ -496,7 +496,7 @@ export default function Terms() {
       <b>8. Disclaimer of Warranties</b>
       <div>
         TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR SERVICES, THE
-        KRAKEN SEQUENCER, AND INK ARE PROVIDED ON AN “AS IS” AND “AS AVAILABLE”
+        KRAKEN SEQUENCER, AND INK ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE"
         BASIS. WE (AND AS APPLICABLE KRAKEN) EXPRESSLY DISCLAIM ALL WARRANTIES
         OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF
         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
@@ -561,7 +561,7 @@ export default function Terms() {
         and most concerns can be resolved quickly and to your satisfaction by
         emailing user support at legal@inkonchain.com. However, if such efforts
         prove unsuccessful, you may send to us, by email, a written Notice of
-        Dispute (“<b>Notice</b>”). The Notice should be sent to
+        Dispute ("<b>Notice</b>"). The Notice should be sent to
         legal@inkonchain.com and must (a) describe the nature and basis of the
         claim or dispute and (b) set forth the specific relief sought. If we and
         you do not resolve the claim or dispute set out in the Notice within
@@ -582,8 +582,8 @@ export default function Terms() {
       </div>
       <div>
         The arbitration will be administered in accordance with the Rules of the
-        London Court of International Arbitration then in effect (the “
-        <b>LCIA Rules</b>”). It will be conducted in English and the parties
+        London Court of International Arbitration then in effect (the "
+        <b>LCIA Rules</b>"). It will be conducted in English and the parties
         will keep the arbitration proceedings confidential and not disclose any
         information regarding the arbitration (or any underlying claim or
         dispute) to any third party except as required by law.
@@ -646,16 +646,16 @@ export default function Terms() {
         batch; and (c) provide for the resolution of each batch as a single
         consolidated arbitration with one set of filing and administrative fees
         due per side per batch, one procedural calendar, one hearing (if any) in
-        a place to be determined by the arbitrator, and one final award (“
-        <b>Batch Arbitration</b>”). All parties agree that claims are of a
-        “substantially similar nature” if they arise out of or relate to the
+        a place to be determined by the arbitrator, and one final award ("
+        <b>Batch Arbitration</b>"). All parties agree that claims are of a
+        "substantially similar nature" if they arise out of or relate to the
         same event or factual scenario and raise the same or similar legal
         issues and seek the same or similar relief. To the extent the parties
         disagree on the application of the Batch Arbitration process, the
         disagreeing party shall advise the LCIA, and the LCIA shall appoint a
         sole standing arbitrator to determine the applicability of the Batch
-        Arbitration process (“
-        <b>Administrative Arbitrator</b>”). In an effort to expedite resolution
+        Arbitration process ("
+        <b>Administrative Arbitrator</b>"). In an effort to expedite resolution
         of any such dispute by the Administrative Arbitrator, the parties agree
         the Administrative Arbitrator may set forth such procedures as are
         necessary to resolve any disputes promptly. The Administrative
@@ -689,7 +689,7 @@ export default function Terms() {
         BE BROUGHT AND CONDUCTED ONLY IN THE RESPECTIVE PARTY’S INDIVIDUAL
         CAPACITY AND NOT AS PART OF ANY CLASS (OR PURPORTED CLASS),
         CONSOLIDATED, MULTIPLE-PLAINTIFF, OR REPRESENTATIVE ACTION OR PROCEEDING
-        (“<b>CLASS ACTION</b>”).{" "}
+        ("<b>CLASS ACTION</b>").{" "}
       </div>
       <div>
         YOU AND US AGREE TO WAIVE THE RIGHT TO PARTICIPATE AS A PLAINTIFF OR
@@ -795,8 +795,8 @@ export default function Terms() {
       <b>15. Notices</b>
       <div>
         You agree that we may electronically provide you all communications,
-        agreements, documents, notices, and disclosures (“
-        <b>Communications</b>”) in connection with your access or use of our
+        agreements, documents, notices, and disclosures ("
+        <b>Communications</b>") in connection with your access or use of our
         Services or the Kraken Sequencer. You agree that we may provide
         Communications to you by posting them on our Services, by emailing them
         to you at the email address you provide, or by sending an SMS or text
@@ -816,8 +816,8 @@ export default function Terms() {
       <div className="underline">Force Majeure.</div>
       <div>
         We are not responsible or liable for any error, delay, loss, or damage
-        arising from any event beyond our reasonable control (each, a “
-        <b>Force Majeure Event</b>”). Force Majeure Events include flood,
+        arising from any event beyond our reasonable control (each, a "
+        <b>Force Majeure Event</b>"). Force Majeure Events include flood,
         extraordinary weather conditions, earthquake, or other act of God, fire,
         war, insurrection, riot, labor dispute, accident, action of government,
         communications, power failure, or equipment or software malfunction.
@@ -868,9 +868,9 @@ export default function Terms() {
       </div>
       <div className="underline">Interpretation.</div>
       <div>
-        In these Terms, (1) “or” is inclusive, (2) “including” or “such as”
+        In these Terms, (1) "or" is inclusive, (2) "including" or "such as"
         aren&apos;t words of limitation, (3) headings are only for your
-        convenience, and (4) the “Summary of Terms of Service” and any
+        convenience, and (4) the "Summary of Terms of Service" and any
         definitions provided only for informational purposes are provided only
         for your convenience, is not legally binding, and does not affect the
         interpretation of these Terms.
