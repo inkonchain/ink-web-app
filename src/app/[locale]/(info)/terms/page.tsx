@@ -272,26 +272,25 @@ export default function Terms() {
       </div>
       <b>4. Third Party Services</b>
       <div>
-        When using our Services or Ink (including Bridge Smart Contracts), you
-        may have the opportunity to use or interact with third party services.
-        We do not verify, approve, monitor, control or endorse any third-party
-        services and are not liable to you for third-party services or
-        third-party content displayed or otherwise made available on the
-        Services. We are not responsible for, and make no representation as to,
-        any third-party content or services. Your use of third-party content or
-        services may be subject to additional terms and conditions with
-        third-parties, and we are not part of those terms or conditions. You may
-        also incur third-party fees, such as fees associated with third-party
-        services, or other fees, such as gas fees. You&apos;re solely
-        responsible for paying all such fees. If any third-party terms and
-        conditions conflict with these Terms, you agree that these Terms
-        control. Under no circumstances shall we incur any liability, of any
-        kind, to you arising from or relating to fees charged to you by
-        third-party content or services linked to or accessed through our
-        Services or Ink (including Bridge Smart Contracts). Your interactions
-        with third-party services, including digital wallets, are governed by
-        their respective privacy policies. We are not responsible for their data
-        practices.
+        When using our Services, Ink or the Bridge Smart Contracts you may have
+        the opportunity to use or interact with third party services. We do not
+        verify, approve, monitor, control or endorse any third-party services
+        and are not liable to you for third-party services or third-party
+        content displayed or otherwise made available on the Services. We are
+        not responsible for, and make no representation as to, any third-party
+        content or services. Your use of third-party content or services may be
+        subject to additional terms and conditions with third-parties, and we
+        are not part of those terms or conditions. You may also incur
+        third-party fees, such as fees associated with third-party services, or
+        other fees, such as gas fees. You&apos;re solely responsible for paying
+        all such fees. If any third-party terms and conditions conflict with
+        these Terms, you agree that these Terms control. Under no circumstances
+        shall we incur any liability, of any kind, to you arising from or
+        relating to fees charged to you by third-party content or services
+        linked to or accessed through our Services, Ink or the Bridge Smart
+        Contracts. Your interactions with third-party services, including Bridge
+        Smart Contracts and digital wallets, are governed by their respective
+        privacy policies. We are not responsible for their data practices.
       </div>
       <div>
         Kraken Continuance ("<b>Kraken</b>") operates a node that receives,
@@ -493,36 +492,33 @@ export default function Terms() {
       </div>
       <b>8. Disclaimer of Warranties</b>
       <div>
-        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR SERVICES, THE
-        KRAKEN SEQUENCER, AND INK ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE"
-        BASIS. WE (AND AS APPLICABLE KRAKEN) EXPRESSLY DISCLAIM ALL WARRANTIES
-        OF ANY KIND, WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF
+        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, OUR SERVICES AND INK
+        ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. WE (AND AS
+        APPLICABLE KRAKEN) EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND,
+        WHETHER EXPRESS OR IMPLIED, INCLUDING IMPLIED WARRANTIES OF
         MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND
-        NON-INFRINGEMENT RELATING TO OUR SERVICES, THE KRAKEN SEQUENCER, AND
-        INK. WITHOUT LIMITING THE FOREGOING, WE (AND AS APPLICABLE KRAKEN)
-        DISCLAIM THAT (i) OUR SERVICES OR THE KRAKEN SEQUENCER WILL BE
-        AVAILABLE, ACCURATE, SECURE, USEFUL, UNINTERRUPTED OR ERROR-FREE; (ii)
-        DEFECTS WITH OUR SERVICES OR THE KRAKEN SEQUENCER CAN OR WILL BE
-        CORRECTED; (iii) THE SERVERS THAT MAKE OUR SERVICES OR THE KRAKEN
-        SEQUENCER AVAILABLE ARE FREE FROM VIRUSES OR OTHER HARMFUL COMPONENTS;
-        (iv) THE SERVICES, THE KRAKEN SEQUENCER, OR INK WILL BE COMPATIBLE WITH
-        ANY OTHER APPLICATION, SYSTEM, DEVICE OR WALLET; AND (v) THAT THE
-        SERVICES, THE KRAKEN SEQUENCER, OR INK WILL PROTECT YOUR ASSETS FROM
-        THEFT, HACKING, CYBER ATTACK OR OTHER FORM OF LOSS CAUSED BY THIRD PARTY
-        CONDUCT. WE DON&apos;T PROVIDE ANY UPTIME GUARANTEES, AND WE MAY
-        DISCONTINUE MAKING OUR SERVICES OR THE KRAKEN SEQUENCER AVAILABLE TO YOU
-        AT ANY TIME AT OUR SOLE DISCRETION.
+        NON-INFRINGEMENT RELATING TO OUR SERVICES AND INK. WITHOUT LIMITING THE
+        FOREGOING, WE (AND AS APPLICABLE KRAKEN) DISCLAIM THAT (i) OUR SERVICES
+        WILL BE AVAILABLE, ACCURATE, SECURE, USEFUL, UNINTERRUPTED OR
+        ERROR-FREE; (ii) DEFECTS WITH OUR SERVICES CAN OR WILL BE CORRECTED;
+        (iii) THE SERVERS THAT MAKE OUR SERVICES AVAILABLE ARE FREE FROM VIRUSES
+        OR OTHER HARMFUL COMPONENTS; (iv) THE SERVICES OR INK WILL BE COMPATIBLE
+        WITH ANY OTHER APPLICATION, SYSTEM, DEVICE OR WALLET; AND (v) THAT THE
+        SERVICES OR INK WILL PROTECT YOUR ASSETS FROM THEFT, HACKING, CYBER
+        ATTACK OR OTHER FORM OF LOSS CAUSED BY THIRD PARTY CONDUCT. WE
+        DON&apos;T PROVIDE ANY UPTIME GUARANTEES, AND WE MAY DISCONTINUE MAKING
+        OUR SERVICES AVAILABLE TO YOU AT ANY TIME AT OUR SOLE DISCRETION.
       </div>
       <b>9. Limitations on Liability</b>
       <div>
-        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NEITHER WE, KRAKEN,
-        OR OUR RESPECTIVE DIRECTORS, MEMBERS, EMPLOYEES OR AGENTS WILL BE LIABLE
-        WITH RESPECT TO ANY CLAIM, WHETHER IN CONTRACT, TORT (INCLUDING
-        NEGLIGENCE), OR OTHERWISE, RELATED IN ANY WAY TO THESE TERMS, OUR
-        SERVICES, THE KRAKEN SEQUENCER, OR INK FOR (1) ANY INDIRECT, INCIDENTAL,
-        SPECIAL, CONSEQUENTIAL, OR EXEMPLARY DAMAGES, INCLUDING DAMAGES FOR LOSS
-        OF PROFITS, GOODWILL, USE, OR DATA AND (2) TO THE EXTENT NOT ALREADY
-        EXCLUDED, ANY AMOUNTS EXCEEDING $100 UNITED STATES DOLLARS.
+        TO THE MAXIMUM EXTENT PERMITTED BY APPLICABLE LAW, NEITHER WE , NOR OUR
+        RESPECTIVE DIRECTORS, MEMBERS, EMPLOYEES OR AGENTS WILL BE LIABLE WITH
+        RESPECT TO ANY CLAIM, WHETHER IN CONTRACT, TORT (INCLUDING NEGLIGENCE),
+        OR OTHERWISE, RELATED IN ANY WAY TO THESE TERMS, OUR SERVICES, OR INK
+        FOR (1) ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR EXEMPLARY
+        DAMAGES, INCLUDING DAMAGES FOR LOSS OF PROFITS, GOODWILL, USE, OR DATA
+        AND (2) TO THE EXTENT NOT ALREADY EXCLUDED, ANY AMOUNTS EXCEEDING $100
+        UNITED STATES DOLLARS.
       </div>
       <b>10. Indemnification</b>
       <div>
@@ -738,10 +734,9 @@ export default function Terms() {
 
       <b>12. Governing Law</b>
       <div>
-        These Terms, your use of the Services, the Kraken Sequencer and any
-        disputes arising out of or related thereto is governed by the laws of
-        the Cayman Islands, without regard to its conflict of law provisions or
-        principles.
+        These Terms, your use of the Services and any disputes arising out of or
+        related thereto is governed by the laws of the Cayman Islands, without
+        regard to its conflict of law provisions or principles.
       </div>
 
       <b>13. Suspension; Termination; Discontinuance</b>
@@ -889,19 +884,6 @@ export default function Terms() {
         952-5210.
       </div>
 
-      <div className="underline">Severability.</div>
-      <div>
-        You agree and understand that if any provision of these Terms, or
-        application thereof, shall be determined to be invalid or unenforceable
-        under any rule, law, or regulation or by any governmental judicial,
-        legislative or administrative body, such provision will be changed and
-        interpreted to accomplish the objectives of the provision to the
-        greatest extent possible under any applicable law. You further agree and
-        understand that the validity of or enforceability of any other provision
-        of these Terms unaffected by such invalidity or unenforceability (or of
-        such provision, to the extent its application is not invalid or
-        unenforceable) shall remain in full force and effect.
-      </div>
       <div className="underline">Survival.</div>
       <div>
         All sections which by their nature should survive the termination of
@@ -913,8 +895,7 @@ export default function Terms() {
       <div>
         These Terms are the entire agreement between you and us, and supersede
         all prior and contemporaneous understandings between you and us about
-        our Services and the Kraken Sequencer. These Terms include all
-        applicable Annexes hereto.
+        our Services
       </div>
     </>
   );
