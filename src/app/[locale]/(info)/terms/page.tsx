@@ -81,7 +81,7 @@ export default function Terms() {
         <b>Terms of Service</b>
       </div>
       <div className="text-center underline">
-        <b>Last Updated: June 10, 2025</b>
+        <b>Last Updated: June 13, 2025</b>
       </div>
       <div>
         Please read these Terms of Service (&quot;<b>Terms</b>&quot;) carefully,
@@ -867,8 +867,8 @@ export default function Terms() {
         1789.3, you may report complaints to the Complaint Assistance Unit of
         the Division of Consumer Services of the California Department of
         Consumer Affairs by contacting them in writing at 1625 North Market
-        Blvd., Suite N 112 Sacramento, CA 95834, or by telephone at
-        (&quot;800&quot;) 952-5210.
+        Blvd., Suite N 112 Sacramento, CA 95834, or by telephone at (800)
+        952-5210.
       </div>
 
       <div className="underline">Survival.</div>
