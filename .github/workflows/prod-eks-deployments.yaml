@@ -99,4 +99,4 @@ jobs:
           digest: ${{ needs.image-build-push.outputs.image_digest }}
           namespace: "ink-web-app"
           app: "app-ink-web-app"
-          environment: "ink-primary"
+          environment: "ink-prod-eu-west-1"
