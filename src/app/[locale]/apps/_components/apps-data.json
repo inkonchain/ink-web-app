@@ -636,6 +636,29 @@
       }
     },
     {
+      "id": "meme-brdige",
+      "name": "Meme Brdige",
+      "description": "MemeBridge is the cheapest Layer2 bridge.Earn points and bridge through Layer2s within seconds.",
+      "imageUrl": "/featured-apps/icons/meme-brdige.webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://memebridge.xyz/bridge",
+        "testnetWebsite": "https://memebridge.xyz/bridge",
+        "x": "https://x.com/MemebridgeB",
+        "discord": "https://discord.com/invite/UFFmGzryMX",
+        "telegram": "",
+        "github": "https://github.com/MeMeBridge",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "meme-bridge",
       "name": "Meme Bridge",
       "description": "The cheapest Layer2 bridge. Earn points and bridge through Layer2s within seconds.",
