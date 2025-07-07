@@ -84,20 +84,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Verify the request is coming from Braze using the dedicated Connected Content API key
-    const apiKey = request.headers.get("X-Braze-Connected-Content-Api-Key");
+    const authHeader = request.headers.get("Authorization");
+    const apiKey = authHeader?.replace("Bearer ", "");
+
     if (!apiKey || apiKey !== env.BRAZE_CONNECTED_CONTENT_API_KEY) {
       return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
     }
 
-    // Extract required headers
-    const brazeId = request.headers.get("X-Braze-Id");
-    const email = request.headers.get("X-Email");
-    const campaignId = request.headers.get("X-Campaign-Id");
+    const body = await request.json();
+    const { brazeId, email, campaignId } = body;
 
     if (!brazeId || !email) {
       return NextResponse.json(
-        { error: "Missing required headers: X-Braze-Id and X-Email" },
+        { error: "Missing required fields: brazeId and email" },
         { status: 400 }
       );
     }
