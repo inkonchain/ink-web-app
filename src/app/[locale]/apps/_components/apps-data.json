@@ -500,6 +500,30 @@
       }
     },
     {
+      "id": "inky-factory",
+      "name": "Inky Factory",
+      "description": "Inky Factory is a DeFi launchpad on Ink L2 that lets anyone launch tokens using hybrid CLMM+AMM pool mechanics. Low cost, no bonding curves, no funding—just pure onchain liquidity bootstrapping.",
+      "imageUrl": "/featured-apps/icons/inky-factory.webp",
+      "category": [
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "tools",
+        "tokens"
+      ],
+      "links": {
+        "mainnetWebsite": "https://mavrk.xyz/InkyFactory",
+        "testnetWebsite": "https://mavrk.xyz/InkyFactory",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "inkypump",
       "name": "InkyPump",
       "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image.",
