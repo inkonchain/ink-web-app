@@ -18,6 +18,10 @@ export const clientEnv = createEnv({
       .string()
       .url()
       .default("https://explorer.inkonchain.com"),
+    NEXT_PUBLIC_DISABLE_CAPTCHA: z
+      .string()
+      .optional()
+      .transform((val) => val === "true"),
   },
   runtimeEnv: {
     NEXT_PUBLIC_ENVIRONMENT: process.env.NEXT_PUBLIC_ENVIRONMENT,
@@ -31,5 +35,6 @@ export const clientEnv = createEnv({
     NEXT_PUBLIC_FAUCET_API_URL: process.env.NEXT_PUBLIC_FAUCET_API_URL,
     NEXT_PUBLIC_VERIFY_EXPLORER_BASE_URL:
       process.env.NEXT_PUBLIC_VERIFY_EXPLORER_BASE_URL,
+    NEXT_PUBLIC_DISABLE_CAPTCHA: process.env.NEXT_PUBLIC_DISABLE_CAPTCHA,
   },
 });
