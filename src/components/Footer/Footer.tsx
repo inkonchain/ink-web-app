@@ -80,7 +80,7 @@ export const Footer = () => {
 
             <CookieSettingsButton />
           </div>
-          <div className="flex flex-col gap-4">© 2024-2025 Ink Foundation</div>
+          <div className="flex flex-col gap-4">© 2024-2025 Payward, Inc.</div>
         </div>
       </div>
     </footer>
