@@ -500,6 +500,31 @@
       }
     },
     {
+      "id": "inky-factory",
+      "name": "Inky Factory",
+      "description": "Low-cost token factory launchpad using V3 CLMMs! Deploy your token with Inky Factory!",
+      "imageUrl": "/featured-apps/icons/inky-factory.webp",
+      "category": [
+        "DeFi",
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "fun",
+        "tokens"
+      ],
+      "links": {
+        "mainnetWebsite": "https://inkyfactory.com",
+        "testnetWebsite": "https://inkyfactory.com",
+        "x": "https://x.com/InkyFactory",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "inkypump",
       "name": "InkyPump",
       "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image.",
