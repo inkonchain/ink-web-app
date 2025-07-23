@@ -85,7 +85,6 @@ export const routing = defineRouting({
     "/about": "/about",
     "/builders": "/builders",
     "/terms": "/terms",
-    "/privacy": "/privacy",
     "/timeline": "/timeline",
     "/apply": "/apply",
     "/leaderboard": "/leaderboard",
