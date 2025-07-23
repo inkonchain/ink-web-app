@@ -73,11 +73,6 @@ export const Footer = () => {
               <TextUnderline halfOpacity />
             </Link>
 
-            <Link className="group relative" href="/privacy">
-              Privacy Notice
-              <TextUnderline halfOpacity />
-            </Link>
-
             <CookieSettingsButton />
           </div>
           <div className="flex flex-col gap-4">© 2024-2025 Payward, Inc.</div>
