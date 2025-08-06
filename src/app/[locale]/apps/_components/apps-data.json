@@ -1369,6 +1369,30 @@
       }
     },
     {
+      "id": "zerion",
+      "name": "Zerion",
+      "description": "Zerion is the best self-custodial wallet for everything you own onchain, helping you track and manage tokens, NFTs and DeFi positions across 55+ EVM chains - including ink",
+      "imageUrl": "/featured-apps/icons/zerion.webp",
+      "category": [
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "wallet",
+        "data"
+      ],
+      "links": {
+        "mainnetWebsite": "https://zerion.io/download?utm_source=inkchain",
+        "testnetWebsite": "https://zerion.io/download?utm_source=inkchain",
+        "x": "https://x.com/zerion",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "https://warpcast.com/zerion.eth",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "zerodev",
       "name": "ZeroDev",
       "description": "Chain-abstracted smart wallet. Build amazing Web3 experiences by removing bridging, gas, confirmations, and seed phrases.",
