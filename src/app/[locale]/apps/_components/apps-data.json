@@ -161,6 +161,32 @@
       }
     },
     {
+      "id": "cheapgm",
+      "name": "CheapGM",
+      "description": "Multi-chain social ritual",
+      "imageUrl": "/featured-apps/icons/cheapgm.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "tools",
+        "nfts",
+        "explorer",
+        "data"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.gm.cheap/",
+        "testnetWebsite": "https://www.gm.cheap/",
+        "x": "https://x.com/gmcheap",
+        "discord": "",
+        "telegram": "https://t.me/gmcheap",
+        "github": "https://github.com/CheapGM",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x3033d7DED400547D6442c55159Da5c61f2721633"
+      }
+    },
+    {
       "id": "comet-protocol",
       "name": "Comet Protocol",
       "description": "Bridge to other chains.",
