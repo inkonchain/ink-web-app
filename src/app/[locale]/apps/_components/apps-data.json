@@ -1144,6 +1144,31 @@
       }
     },
     {
+      "id": "squid-market",
+      "name": "Squid Market",
+      "description": "The go-to NFT ecosystem on Inkchain, join Inky squad community and get involved 🦑!",
+      "imageUrl": "/featured-apps/icons/squid-market.webp",
+      "category": [
+        "Social",
+        "Infra",
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.squidmarket.xyz/",
+        "testnetWebsite": "https://squid-market-evm-git-marketplacev72-clodron.vercel.app/marketplace",
+        "x": "https://x.com/SquidsOnInk",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x976aA0d86EfD532ECc35f62c9f405676863C603A"
+      }
+    },
+    {
       "id": "stargate",
       "name": "Stargate",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of omnichain DeFi.",
