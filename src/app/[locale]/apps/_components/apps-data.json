@@ -1257,6 +1257,31 @@
       }
     },
     {
+      "id": "test",
+      "name": "test",
+      "description": "test",
+      "imageUrl": "/featured-apps/icons/test.webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "data",
+        "cross-chain",
+        "explorer"
+      ],
+      "links": {
+        "mainnetWebsite": "https://test.com",
+        "testnetWebsite": "https://test.com",
+        "x": "https://x.com/username",
+        "discord": "https://discord.gg/invite",
+        "telegram": "https://t.me/username",
+        "github": "https://github.com/username",
+        "farcaster": "https://warpcast.com/username",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x46FA5cb9229C600Ca132ab319Ac3220673c07e5F"
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer.",
