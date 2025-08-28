@@ -317,6 +317,30 @@
       }
     },
     {
+      "id": "formo",
+      "name": "Formo",
+      "description": "Formo is the data platform for onchain apps. Formo makes analytics easy. Get the best of web, product, and onchain analytics on one versatile platform.",
+      "imageUrl": "/featured-apps/icons/formo.webp",
+      "category": [
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "data",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://formo.so",
+        "testnetWebsite": "https://formo.so",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "frax",
       "name": "Frax",
       "description": "The Decentralized Central Bank of Crypto.",
