@@ -478,6 +478,31 @@
       }
     },
     {
+      "id": "ink-betting-games",
+      "name": "Ink Betting Games",
+      "description": "Guess the last character of the block hash . Win 10x your bet if correct, lose your bet if wrong.   Why can not I set it as a game in the category and tags?",
+      "imageUrl": "/featured-apps/icons/ink-betting-games.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "tools",
+        "tokens",
+        "faucet"
+      ],
+      "links": {
+        "mainnetWebsite": "https://ink-bet-games.vercel.app/",
+        "testnetWebsite": "https://ink-bet-games.vercel.app/",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x39D0d5499934353157A8A6739c6f01f26239DE90"
+      }
+    },
+    {
       "id": "ink-paint",
       "name": "Ink Paint",
       "description": "Paint on Ink!",
