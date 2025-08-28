@@ -569,6 +569,32 @@
       }
     },
     {
+      "id": "jh",
+      "name": "Jh",
+      "description": "Uu",
+      "imageUrl": "/featured-apps/icons/jh.webp",
+      "category": [
+        "DeFi",
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "dex",
+        "domain names",
+        "explorer"
+      ],
+      "links": {
+        "mainnetWebsite": "https://google.com",
+        "testnetWebsite": "https://google.com",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "kraken",
       "name": "Kraken",
       "description": "Kraken is your bridge to the world of crypto. Spot, Futures, Margin, NFTs, Staking & OTC Buy, sell, trade, earn, explore and learn.",
