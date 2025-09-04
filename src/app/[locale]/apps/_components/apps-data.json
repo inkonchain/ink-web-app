@@ -227,6 +227,30 @@
       }
     },
     {
+      "id": "dfns",
+      "name": "Dfns",
+      "description": "Dfns is an API-first wallet infrastructure for digital assets. Dfns offers MPC security, compliance, and seamless integrations for banks, fintechs, and developers.",
+      "imageUrl": "/featured-apps/icons/dfns.webp",
+      "category": [
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "wallet",
+        "security"
+      ],
+      "links": {
+        "mainnetWebsite": "https://app.dfns.io/get-started",
+        "testnetWebsite": "https://app.dfns.io/get-started",
+        "x": "https://x.com/dfnsHQ",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "dinero",
       "name": "Dinero",
       "description": "The yield baseplate of Ethereum. Formerly Redacted.",
