@@ -92,13 +92,12 @@ jobs:
           fetch-depth: 0
 
       - name: Trigger Deployment
-        uses: ./.github/actions/create-deployment-pr
+        uses: inkonchain/github-actions/create-deployment-pr@v1
         with:
           app-id: ${{ secrets.INK_CI_GITHUB_APP_ID }}
           private-key: ${{ secrets.INK_CI_GITHUB_APP_PRIVATE_KEY }}
           owner: ${{ github.repository_owner }}
           repo: "ghcr.io/inkonchain/ink-web-app"
           digest: ${{ needs.image-build-push.outputs.image_digest }}
-          namespace: "ink-web-app"
           app: "app-ink-web-app"
           environment: "ink-prod-eu-west-1"
