@@ -1347,6 +1347,33 @@
       }
     },
     {
+      "id": "web3-packs",
+      "name": "Web3 Packs",
+      "description": "Crypto Simplified: One-Click, Single-Transaction Portfolios.",
+      "imageUrl": "/featured-apps/icons/web3-packs.webp",
+      "category": [
+        "DeFi",
+        "Other",
+        "Infra"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "dex",
+        "tokens",
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://web3packs.com/",
+        "testnetWebsite": "https://web3packs.com/",
+        "x": "https://x.com/web3packs",
+        "discord": "https://discord.gg/V4xNhjPCve",
+        "telegram": "https://t.me/web3packs0",
+        "github": "https://github.com/Charged-Particles/web3-packs-v2",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0xe2a9b15E283456894246499Fb912CCe717f83319"
+      }
+    },
+    {
       "id": "wormhole",
       "name": "Wormhole",
       "description": "Wormhole is the leading interoperability platform powering multichain applications and bridges at scale.",
