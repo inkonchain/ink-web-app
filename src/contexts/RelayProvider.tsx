@@ -5,7 +5,6 @@ import { useRelayChains } from "@reservoir0x/relay-kit-hooks";
 import { RelayKitProvider } from "@reservoir0x/relay-kit-ui";
 import { MAINNET_RELAY_API } from "@reservoir0x/relay-sdk";
 
-import { clientEnv } from "@/env-client";
 import { useCurrentInkAppName } from "@/hooks/useCurrentInkAppName";
 import { theme } from "@/util/relay-kit-theme";
 
