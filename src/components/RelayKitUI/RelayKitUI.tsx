@@ -1,72 +1,65 @@
 "use client";
+import { useState } from "react";
 import { InkIcon } from "@inkonchain/ink-kit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
-import { LinkedWallet, SwapWidget } from "@reservoir0x/relay-kit-ui";
-import { useAccount } from "wagmi";
+import { SwapWidget } from "@reservoir0x/relay-kit-ui";
+import { adaptViemWallet } from "@reservoir0x/relay-sdk";
+import { useWalletClient } from "wagmi";
 
 import { RelayLogo } from "@/components/icons/RelayLogo";
-import { EXTERNAL_LINKS, Link } from "@/routing";
 
 import "@reservoir0x/relay-kit-ui/styles.css";
 import "./RelayKitUI.css";
 
 export const RelayKitUI: React.FC = () => {
   const { openConnectModal } = useConnectModal();
-  const { address } = useAccount();
+  const { data: walletClient } = useWalletClient();
+
+  const [fromToken, setFromToken] = useState({
+    chainId: 1,
+    address: "0x0000000000000000000000000000000000000000",
+    decimals: 18,
+    name: "Ethereum",
+    symbol: "ETH",
+    logoURI: "https://assets.relay.link/icons/1/light.png",
+  });
+
+  const [toToken, setToToken] = useState({
+    chainId: 57073,
+    address: "0x0000000000000000000000000000000000000000",
+    decimals: 18,
+    name: "Ethereum",
+    symbol: "ETH",
+    logoURI: "https://inkonchain.com/icon.svg",
+  });
 
   return (
     <div className="flex flex-col gap-4 items-center">
       <div className="flex flex-col gap-4 p-6 pt-5">
-        <div className="flex justify-end items-center">
-          {address && (
-            <Link
-              href={{
-                pathname: EXTERNAL_LINKS.relayTxHistory,
-                params: { address },
-              }}
+        <div className="flex justify-end items-center h-4">
+          {walletClient && (
+            <a
+              href={`https://relay.link/transactions?address=${walletClient.account.address}`}
               target="_blank"
               rel="noopener noreferrer"
             >
               <InkIcon.History className="size-6 hover:opacity-70" />
-            </Link>
+            </a>
           )}
         </div>
-        {/* @ts-expect-error - Ignoring required props for SwapWidget */}
         <SwapWidget
-          linkedWallets={
-            address
-              ? [
-                  {
-                    address: address as string,
-                    vmType: "evm",
-                    connector: "",
-                  } satisfies LinkedWallet,
-                ]
-              : []
-          }
-          key={address}
-          defaultFromToken={{
-            chainId: 1,
-            address: "0x0000000000000000000000000000000000000000",
-            decimals: 18,
-            name: "Ethereum",
-            symbol: "ETH",
-            logoURI: "https://assets.relay.link/icons/1/light.png",
-          }}
-          defaultToToken={{
-            chainId: 57073,
-            address: "0x0000000000000000000000000000000000000000",
-            decimals: 18,
-            name: "Ethereum",
-            symbol: "ETH",
-            logoURI: "https://inkonchain.com/icon.svg",
-          }}
+          key={walletClient?.account.address}
+          wallet={walletClient ? adaptViemWallet(walletClient) : undefined}
+          fromToken={fromToken}
+          setFromToken={(token) => token && setFromToken(token)}
+          toToken={toToken}
+          setToToken={(token) => token && setToToken(token)}
           defaultAmount="0"
-          defaultToAddress={address}
+          defaultToAddress={walletClient?.account.address}
           supportedWalletVMs={["evm"]}
           onConnectWallet={openConnectModal}
-          onAnalyticEvent={(eventName, data) => {
-            console.debug("Analytic Event", eventName, data); // TODO: Adjust this
+          onSwapError={(error) => {
+            console.error("Swap error:", error);
           }}
         />
       </div>
