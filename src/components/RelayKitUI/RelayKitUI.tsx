@@ -4,7 +4,7 @@ import { InkIcon } from "@inkonchain/ink-kit";
 import { useConnectModal } from "@rainbow-me/rainbowkit";
 import { SwapWidget } from "@reservoir0x/relay-kit-ui";
 import { adaptViemWallet } from "@reservoir0x/relay-sdk";
-import { useWalletClient } from "wagmi";
+import { useAccount, useWalletClient } from "wagmi";
 
 import { RelayLogo } from "@/components/icons/RelayLogo";
 
@@ -14,6 +14,7 @@ import "./RelayKitUI.css";
 export const RelayKitUI: React.FC = () => {
   const { openConnectModal } = useConnectModal();
   const { data: walletClient } = useWalletClient();
+  const { address } = useAccount();
 
   const [fromToken, setFromToken] = useState({
     chainId: 1,
@@ -48,7 +49,7 @@ export const RelayKitUI: React.FC = () => {
           )}
         </div>
         <SwapWidget
-          key={walletClient?.account.address}
+          key={address}
           wallet={walletClient ? adaptViemWallet(walletClient) : undefined}
           fromToken={fromToken}
           setFromToken={(token) => token && setFromToken(token)}
