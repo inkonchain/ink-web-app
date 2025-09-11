@@ -93,7 +93,7 @@ jobs:
           fetch-depth: 0
 
       - name: Trigger Deployment
-        uses: inkonchain/github-actions/create-deployment-pr@v1
+        uses: ./.github/actions/create-deployment-pr
         with:
           app-id: ${{ secrets.INK_CI_GITHUB_APP_ID }}
           private-key: ${{ secrets.INK_CI_GITHUB_APP_PRIVATE_KEY }}
