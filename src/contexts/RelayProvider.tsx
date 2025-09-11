@@ -26,8 +26,11 @@ export const RelayProvider: React.FC<RelayProviderProps> = ({ children }) => {
         appName: appName,
         appFees: [],
         chains: chains,
-        duneApiKey: clientEnv.NEXT_PUBLIC_DUNE_API_KEY,
         baseApiUrl: MAINNET_RELAY_API,
+        duneConfig: {
+          apiBaseUrl: `${window.location.origin}/api/dune`,
+          apiKey: "",
+        },
       }}
     >
       {children}
