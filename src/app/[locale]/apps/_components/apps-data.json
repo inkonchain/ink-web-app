@@ -1117,6 +1117,31 @@
       }
     },
     {
+      "id": "shellies",
+      "name": "Shellies",
+      "description": "Shellies - 2,222 NFTs on InkChain. First collection with raffles and staking. Holders get access to exclusive raffle rewards and staking benefits.",
+      "imageUrl": "/featured-apps/icons/shellies.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts",
+        "tools",
+        "tokens"
+      ],
+      "links": {
+        "mainnetWebsite": "https://shellies.xyz/",
+        "testnetWebsite": "https://shellies.xyz/",
+        "x": "https://x.com/Shellies_NFTs",
+        "discord": "",
+        "telegram": "",
+        "github": "https://github.com/shelliesnfts-prog/shellies",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0xE757e8Aa82b7AD9f1ef8D4fE657d90341885c0De"
+      }
+    },
+    {
       "id": "shroomy-project",
       "name": "Shroomy Project",
       "description": "A community-oriented ecosystem with lending market, advanced token/NFT locker and airdropper tool. Also explore GameFi, mycology and charity work, all with the Shroomy Project!",
