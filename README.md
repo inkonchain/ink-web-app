@@ -40,3 +40,6 @@ make release
 ```
 
 The command will guide you through release creation, showing current branch/commit info and providing step-by-step deployment instructions.
+
+I'm here INKognito
+
