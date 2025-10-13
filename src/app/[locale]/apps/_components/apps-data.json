@@ -1169,6 +1169,31 @@
       }
     },
     {
+      "id": "squid-market",
+      "name": "Squid Market",
+      "description": "SquidMarket is a native NFT marketplace and launchpad built on InkChain. It’s designed to make NFT trading, collecting, and launching simple, secure, and rewarding for both creators and traders.",
+      "imageUrl": "/featured-apps/icons/squid-market.webp",
+      "category": [
+        "Social",
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts",
+        "domain names"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.squidmarket.xyz/",
+        "testnetWebsite": "https://www.squidmarket.xyz/",
+        "x": "https://x.com/SquidsOnInk",
+        "discord": "https://discord.gg/XH8UZtvBgm",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x9eBf93fdBA9F32aCCAb3D6716322dcCd617a78F3"
+      }
+    },
+    {
       "id": "stargate",
       "name": "Stargate",
       "description": "Stargate is a fully composable liquidity transport protocol that lives at the heart of omnichain DeFi.",
