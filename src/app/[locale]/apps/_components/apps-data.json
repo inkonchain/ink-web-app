@@ -1117,6 +1117,31 @@
       }
     },
     {
+      "id": "shellies",
+      "name": "Shellies",
+      "description": "Shellies is an OG collection on InkChain. We offer Play-to-Earn for holders and are building the first Raffle and Staking platforms. Sold out in 5 minutes via NFT2ME Launchpad.",
+      "imageUrl": "/featured-apps/icons/shellies.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts",
+        "tokens",
+        "fun"
+      ],
+      "links": {
+        "mainnetWebsite": "https://shellies.xyz/",
+        "testnetWebsite": "https://shellies.xyz/",
+        "x": "https://x.com/Shellies_NFTs",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x1c9838cdC00fA39d953a54c755b95605Ed5Ea49c"
+      }
+    },
+    {
       "id": "shroomy-project",
       "name": "Shroomy Project",
       "description": "A community-oriented ecosystem with lending market, advanced token/NFT locker and airdropper tool. Also explore GameFi, mycology and charity work, all with the Shroomy Project!",
