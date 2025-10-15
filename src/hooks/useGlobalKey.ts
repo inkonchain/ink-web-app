@@ -1,5 +1,5 @@
-import { useEffect } from "react";
 import { sendGTMEvent } from "@next/third-parties/google";
+import { useEffect } from "react";
 
 type KeyboardKey = KeyboardEvent["key"];
 
@@ -28,7 +28,7 @@ export function useGlobalKeyCallback() {
       if (!(lowerKey in allHandlersStacks)) return;
       if (shouldHandleAsNativeEvent(event)) return;
       const handlersStack = allHandlersStacks[lowerKey];
-      for (let handler of handlersStack.reverse()) {
+      for (let handler of [...handlersStack].reverse()) {
         if (handler()) {
           event.preventDefault();
           event.stopPropagation();
@@ -63,7 +63,9 @@ export const useCallbackOnKey = ({
     return () => {
       if (!isDisabled) {
         const index = allHandlersStacks[lowerKey].indexOf(handler);
-        allHandlersStacks[lowerKey].splice(index, 1);
+        if (index > -1) {
+          allHandlersStacks[lowerKey].splice(index, 1);
+        }
       }
     };
   }, [key, handler, isDisabled]);
