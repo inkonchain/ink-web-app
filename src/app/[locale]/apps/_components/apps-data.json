@@ -14,8 +14,8 @@
         "tools"
       ],
       "links": {
-        "mainnetWebsite": "",
-        "testnetWebsite": "",
+        "mainnetWebsite": "https://app.tydro.com/",
+        "testnetWebsite": "https://app.tydro.com/",
         "x": "https://x.com/tydroHQ",
         "discord": "",
         "telegram": "",
