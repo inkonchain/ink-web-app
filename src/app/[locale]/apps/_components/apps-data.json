@@ -531,6 +531,30 @@
       }
     },
     {
+      "id": "infinityname",
+      "name": "InfinityName",
+      "description": "The future is permanent ownership",
+      "imageUrl": "/featured-apps/icons/infinityname.webp",
+      "category": [
+        "Other",
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "domain names"
+      ],
+      "links": {
+        "mainnetWebsite": "https://infinityname.com/",
+        "testnetWebsite": "https://infinityname.com/",
+        "x": "https://x.com/Infinitynamecom",
+        "discord": "https://discord.com/invite/infinityname",
+        "telegram": "",
+        "github": "https://github.com/infinitynamecom",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x86f6d95E688A5953074C0aBCb0d9d930837E528E"
+      }
+    },
+    {
       "id": "ink-paint",
       "name": "Ink Paint",
       "description": "Paint on Ink!",
