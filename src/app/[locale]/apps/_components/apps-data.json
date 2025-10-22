@@ -1,34 +1,6 @@
 {
   "apps": [
     {
-      "id": "tydro",
-      "name": "Tydro",
-      "description": "A decentralized, non-custodial liquidity protocol built on Ink and powered by Aave.",
-      "imageUrl": "/featured-apps/icons/tydro.webp",
-      "category": [
-        "DeFi"
-      ],
-      "network": "Mainnet",
-      "tags": [
-        "borrowing",
-        "tools"
-      ],
-      "links": {
-        "mainnetWebsite": "https://app.tydro.com/",
-        "testnetWebsite": "https://app.tydro.com/",
-        "x": "https://x.com/tydroHQ",
-        "discord": "",
-        "telegram": "",
-        "github": "",
-        "farcaster": "",
-        "smartContractUrl": ""
-      },
-      "order": 1,
-      "pills": [
-        "AIRDROP"
-      ]
-    },
-    {
       "id": "0x",
       "name": "0x",
       "description": "Embed swaps in your onchain app. Access 10+ million tokens with liquidity from 140+ exchanges, with the best prices and the smoothest trading experience.",
@@ -186,6 +158,29 @@
         "telegram": "",
         "github": "",
         "farcaster": "https://warpcast.com/bungee-exchange"
+      }
+    },
+    {
+      "id": "cobridge",
+      "name": "coBridge",
+      "description": "coBridge is a fast and secure EVM cross-chain bridge enabling seamless asset and data transfers between Ethereum-compatible blockchains.",
+      "imageUrl": "/featured-apps/icons/cobridge.webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://cobridge.xyz",
+        "testnetWebsite": "https://cobridge.xyz",
+        "x": "https://x.com/ConftApp",
+        "discord": "https://discord.com/invite/FU8MNfMRv8",
+        "telegram": "https://t.me/co_nft",
+        "github": "https://github.com/Conft-dev",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x38feA0959656FF4009a8d807aDaa5247dbFEB590"
       }
     },
     {
@@ -1376,6 +1371,34 @@
         "farcaster": "",
         "smartContractUrl": "https://explorer.inkonchain.com/address/0xF44146f6533e8dff5FA02E16b0583B75dfC9aD90"
       }
+    },
+    {
+      "id": "tydro",
+      "name": "Tydro",
+      "description": "A decentralized, non-custodial liquidity protocol built on Ink and powered by Aave.",
+      "imageUrl": "/featured-apps/icons/tydro.webp",
+      "category": [
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "borrowing",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://app.tydro.com/",
+        "testnetWebsite": "https://app.tydro.com/",
+        "x": "https://x.com/tydroHQ",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      },
+      "order": 1,
+      "pills": [
+        "AIRDROP"
+      ]
     },
     {
       "id": "velodrome",
