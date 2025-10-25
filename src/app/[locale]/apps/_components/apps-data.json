@@ -689,6 +689,35 @@
       }
     },
     {
+      "id": "mavrk",
+      "name": "Mavrk",
+      "description": "A decentralized DeFi hub for token creation, trading, and cross-chain liquidity - the fastest and most capital-efficient way to create markets, all powered by Ink.",
+      "imageUrl": "/featured-apps/icons/mavrk.webp",
+      "category": [
+        "Bridge",
+        "DeFi",
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain",
+        "fun",
+        "tokens",
+        "wallet",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.mavrk.ink",
+        "testnetWebsite": "https://www.mavrk.ink",
+        "x": "https://www.x.com/MavrkOfficial",
+        "discord": "",
+        "telegram": "https://www.t.me/MavrkOfficial",
+        "github": "https://github.com/mavrkofficial/Mavrk-on-Ink",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0xD827F74E292060D4B495b7b82d6f2470C59ce89d"
+      }
+    },
+    {
       "id": "meme-bridge",
       "name": "Meme Bridge",
       "description": "The cheapest Layer2 bridge. Earn points and bridge through Layer2s within seconds.",
