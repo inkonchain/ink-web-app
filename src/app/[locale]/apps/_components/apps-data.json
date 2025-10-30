@@ -787,6 +787,29 @@
       }
     },
     {
+      "id": "net",
+      "name": "Net",
+      "description": "Net is a fully onchain NFT bazaar. All orders and sales are stored entirely onchain on Ink via Net  protocol. NFT trading is powered by Net protocol + Seaport.",
+      "imageUrl": "/featured-apps/icons/net.webp",
+      "category": [
+        "DeFi"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.netprotocol.app/",
+        "testnetWebsite": "https://www.netprotocol.app/",
+        "x": "https://x.com/netprotocolapp",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x00000000E3dA5fC031282A39759bDDA78ae7fAE5"
+      }
+    },
+    {
       "id": "nfts2me",
       "name": "NFTs2Me",
       "description": "Create, deploy and manage your NFT collection and minting page with custom subdomain for free. No-code Art Generator, Token Gating & much much more.",
