@@ -576,6 +576,34 @@
       }
     },
     {
+      "id": "inkcheck",
+      "name": "InkCheck",
+      "description": "Deploy contracts on Ink . Earn NFTs. Track  Tydro  points. Building tools for quality on-chain activity.",
+      "imageUrl": "/featured-apps/icons/inkcheck.webp",
+      "category": [
+        "DeFi",
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "fun",
+        "nfts",
+        "tokens",
+        "tools",
+        "yield"
+      ],
+      "links": {
+        "mainnetWebsite": "https://inkcheck.xyz/",
+        "testnetWebsite": "https://inkcheck.xyz/",
+        "x": "https://x.com/InkCheckXYZ",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "inkypump",
       "name": "InkyPump",
       "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image.",
