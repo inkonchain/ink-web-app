@@ -1463,6 +1463,29 @@
       }
     },
     {
+      "id": "test-again",
+      "name": "Test Again",
+      "description": "Test",
+      "imageUrl": "/featured-apps/icons/test-again.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "fun"
+      ],
+      "links": {
+        "mainnetWebsite": "https://test.xyz",
+        "testnetWebsite": "https://test.xyz",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer.",
