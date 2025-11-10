@@ -6,8 +6,8 @@ import { WebClient } from "@slack/web-api";
 import sharp from "sharp";
 
 import { InkApp } from "@/app/[locale]/apps/_components/InkApp";
-import { captureError } from "@/integrations/sentry";
 import { env } from "@/env";
+import { captureError } from "@/integrations/sentry";
 import { validateCaptcha } from "@/lib/hcaptcha";
 import {
   AppSubmissionFormData,
