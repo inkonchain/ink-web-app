@@ -604,6 +604,32 @@
       }
     },
     {
+      "id": "inkdca",
+      "name": "InkDCA",
+      "description": "InkDCA is a fully decentralized, trust minimized Dollar-Cost Averaging (DCA) platform built exclusively on Ink .",
+      "imageUrl": "/featured-apps/icons/inkdca.webp",
+      "category": [
+        "DeFi",
+        "Other"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "dex",
+        "tools",
+        "tokens"
+      ],
+      "links": {
+        "mainnetWebsite": "https://inkdca.com/",
+        "testnetWebsite": "https://inkdca.com/",
+        "x": "https://x.com/ink_dca",
+        "discord": "",
+        "telegram": "https://t.me/+qzZO0ePqZts3YmQ0",
+        "github": "https://github.com/0xgasleft/DCA",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x6065c8913141b141841310CdBB156a8993B73c17"
+      }
+    },
+    {
       "id": "inkypump",
       "name": "InkyPump",
       "description": "The first pump.fun-style protocol on Ink Network (Kraken's L2). Users can instantly create tokens by choosing a name, ticker, and JPG image.",
