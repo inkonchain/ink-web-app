@@ -841,6 +841,29 @@
       }
     },
     {
+      "id": "meson-fiannce",
+      "name": "Meson Fiannce",
+      "description": "Meson Finance is a leading unified cross-chain bridging protocol enabling staple digital assets like BTC, ETH, BNB, and stablecoins cross-chain between any of our supported 60+ blockchains.",
+      "imageUrl": "/featured-apps/icons/meson-fiannce.webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://meson.fi",
+        "testnetWebsite": "https://meson.fi",
+        "x": "https://x.com/mesonfi",
+        "discord": "https://discord.gg/mesonfi",
+        "telegram": "",
+        "github": "https://github.com/mesonfi",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x25aB3Efd52e6470681CE037cD546Dc60726948D3"
+      }
+    },
+    {
       "id": "mini-bridge",
       "name": "Mini Bridge",
       "description": "MiniBridge is a \"zero-fee\" cross-chain tool that offers multi-chain support for BTC/EVM/non-EVM and features such as fast transactions.",
