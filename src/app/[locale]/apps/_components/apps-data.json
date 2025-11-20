@@ -140,6 +140,32 @@
       }
     },
     {
+      "id": "boink",
+      "name": "BOINK",
+      "description": "Boink NFTs is a utility-driven ecosystem on Ink Chain featuring CoinFlip, NFT staking and an upcoming prediction market, while Boink 3D toys expand the brand beyond the blockchain.",
+      "imageUrl": "/featured-apps/icons/boink.webp",
+      "category": [
+        "Other"
+      ],
+      "network": "Both",
+      "tags": [
+        "nfts",
+        "tokens",
+        "fun",
+        "tools"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.boinknfts.club",
+        "testnetWebsite": "https://www.boinknfts.club",
+        "x": "https://x.com/boinknfts",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "brid.gg",
       "name": "Brid.gg",
       "description": "Experience seamless blockchain interactions like never before with Brid.gg, your premier interface for transferring assets across Ethereum, Optimism and Superchain networks.",
