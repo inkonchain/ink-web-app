@@ -1488,6 +1488,29 @@
       }
     },
     {
+      "id": "test",
+      "name": "test",
+      "description": "test",
+      "imageUrl": "/featured-apps/icons/test.webp",
+      "category": [
+        "Bridge"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "cross-chain"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.google.com/",
+        "testnetWebsite": "https://www.google.com/",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "token-deployer",
       "name": "Token Deployer",
       "description": "1-click token deployer.",
