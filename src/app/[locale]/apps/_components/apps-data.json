@@ -1192,6 +1192,29 @@
       }
     },
     {
+      "id": "rekt-ink",
+      "name": "Rekt Ink",
+      "description": "The first NFT project on Ink for the culture. 4,444 fully animated characters with chaotic glitch art energy. A decentralized, active community building tools, community, and culture.",
+      "imageUrl": "/featured-apps/icons/rekt-ink.webp",
+      "category": [
+        "Social"
+      ],
+      "network": "Mainnet",
+      "tags": [
+        "nfts"
+      ],
+      "links": {
+        "mainnetWebsite": "https://www.rektink.com/",
+        "testnetWebsite": "https://www.rektink.com/",
+        "x": "https://x.com/rektInk/",
+        "discord": "",
+        "telegram": "https://t.me/rektink",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x25Aa78Ab6785A4b0aeFF5c170998992Fd958d43d"
+      }
+    },
+    {
       "id": "reservoir:-relay",
       "name": "Reservoir: Relay",
       "description": "Instant, low-cost bridging\nand swapping.",
