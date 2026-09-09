@@ -87,8 +87,6 @@ export const routing = defineRouting({
     "/inkubator": "/inkubator",
     "/status": "/status",
     "/cookie": "/cookie",
-    "/newsletter/resubscribe": "/newsletter/resubscribe",
-    "/newsletter/unsubscribe": "/newsletter/unsubscribe",
     "/faq": "/faq",
     ...externalLinksMap,
   },
