@@ -8,7 +8,7 @@ import { ConsentLogger } from "@/components/CookieConsent/ConsentLogger";
 import { CookieConsent } from "@/components/CookieConsent/CookieConsent";
 import { Footer } from "@/components/Footer";
 import { GlobalSvgStuff } from "@/components/icons/GlobalSvgStuff";
-import { ContactUsModal, NewsletterModal } from "@/components/Modals";
+import { ContactUsModal } from "@/components/Modals";
 import { Providers } from "@/components/Providers";
 import { SiteBanner } from "@/components/SiteBanner";
 import { ToggleThemeShortcut } from "@/components/ToggleThemeShortcut";
@@ -91,7 +91,6 @@ export default async function LocaleLayout({
             <CookieConsent />
             <ConsentLogger />
 
-            <NewsletterModal />
             <ContactUsModal />
           </Providers>
         </NextIntlClientProvider>
