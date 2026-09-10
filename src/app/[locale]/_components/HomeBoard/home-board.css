@@ -227,8 +227,11 @@ html[data-home-board] body {
 }
 
 html[data-home-board] .home-board button {
-  background: none;
   cursor: pointer;
+}
+
+html[data-home-board] .home-board button:not(.slider__btn) {
+  background: none;
 }
 
 html[data-home-board] .home-board button:not(.pill) {
@@ -959,7 +962,7 @@ html[data-home-board] .slider__items {
   gap: 16px;
 }
 
-html[data-home-board] .slider__btn {
+html[data-home-board] .home-board button.slider__btn {
   display: flex;
   flex-shrink: 0;
   align-items: center;
@@ -969,6 +972,7 @@ html[data-home-board] .slider__btn {
   overflow: hidden;
   border: 1px solid var(--control-outline);
   background: var(--surface-page);
+  color: var(--text-primary);
   transition:
     background-color 160ms ease,
     border-color 160ms ease,
@@ -1091,7 +1095,7 @@ html[data-home-board] .slider__thumb {
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html[data-home-board] .slider__btn:hover:not([disabled]) {
+  html[data-home-board] .home-board button.slider__btn:hover:not([disabled]) {
     background: var(--surface-muted);
   }
 }
