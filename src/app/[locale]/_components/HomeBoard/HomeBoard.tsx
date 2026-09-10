@@ -130,22 +130,65 @@ export function HomeBoard() {
             </div>
             <div className="col__bottom">
               <p className="headline headline--sm">{t("shipHeadline")}</p>
-              <div className="code">
+              <div className="code" data-code-story data-scene="build">
+                <div className="code__bar">
+                  <div
+                    className="code__steps"
+                    role="group"
+                    aria-label={t("codeStoryLabel")}
+                  >
+                    <span className="code__thumb" data-code-thumb aria-hidden="true" />
+                    <button
+                      className="code__step"
+                      type="button"
+                      data-code-step="0"
+                      data-current
+                      aria-current="step"
+                    >
+                      {t("codeStepBuild")}
+                    </button>
+                    <button
+                      className="code__step"
+                      type="button"
+                      data-code-step="1"
+                      aria-current="false"
+                    >
+                      {t("codeStepTest")}
+                    </button>
+                    <button
+                      className="code__step"
+                      type="button"
+                      data-code-step="2"
+                      aria-current="false"
+                    >
+                      {t("codeStepDeploy")}
+                    </button>
+                    <button
+                      className="code__step"
+                      type="button"
+                      data-code-step="3"
+                      aria-current="false"
+                    >
+                      {t("codeStepLive")}
+                    </button>
+                  </div>
+                </div>
                 <pre>
-                  <code id="deploy-snippet" className="language-ts">
-                    <span className="cm">{"// deploy.config.ts"}</span>
-                    {"\n"}
-                    <span className="kw">export</span>{" "}
-                    <span className="kw">default</span>
-                    {" {\n  chain: "}
-                    <span className="str">{'"ink"'}</span>
-                    {",\n  stack: "}
-                    <span className="str">{'"op-stack"'}</span>
-                    {",\n  rpc: "}
-                    <span className="str">
-                      {'"https://rpc-gel.inkonchain.com"'}
+                  <code id="deploy-snippet">
+                    <span className="code__line">
+                      <span className="cm">{"# foundry.toml"}</span>
                     </span>
-                    {",\n}"}
+                    <span className="code__line">&nbsp;</span>
+                    <span className="code__line">
+                      <span className="kw">{"[rpc_endpoints]"}</span>
+                    </span>
+                    <span className="code__line">
+                      {"ink = "}
+                      <span className="str">
+                        {'"https://rpc-gel.inkonchain.com"'}
+                      </span>
+                      <span className="code__caret" aria-hidden="true" />
+                    </span>
                   </code>
                 </pre>
                 <button
@@ -153,6 +196,9 @@ export function HomeBoard() {
                   type="button"
                   aria-label={t("copyCode")}
                   data-copy="#deploy-snippet"
+                  data-copy-text={`# foundry.toml
+[rpc_endpoints]
+ink = "https://rpc-gel.inkonchain.com"`}
                 >
                   <span className="code__copy-icons" aria-hidden="true">
                     <svg

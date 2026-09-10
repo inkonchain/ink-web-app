@@ -1,3 +1,5 @@
+import { initCodeStory } from "./init-code-story";
+
 const APPS_EASE = "cubic-bezier(0.32, 0.72, 0, 1)";
 const APPS_MS = 420;
 
@@ -252,21 +254,23 @@ export function initBoard(scope: ParentNode): () => void {
   const copiedTimers = new Map<HTMLButtonElement, number>();
   const onCopy = async (event: Event) => {
     const btn = event.currentTarget as HTMLButtonElement;
+    const explicit = btn.getAttribute("data-copy-text");
     const selector = btn.getAttribute("data-copy");
-    if (!selector) return;
-    const el = scope.querySelector(selector);
-    if (!el) return;
-    const text = (el.textContent || "").replace(/\s+$/, "");
+    const el = selector ? scope.querySelector(selector) : null;
+    const text = (explicit ?? el?.textContent ?? "").replace(/\s+$/, "");
+    if (!text) return;
     try {
       await navigator.clipboard.writeText(text);
     } catch {
-      const range = document.createRange();
-      range.selectNodeContents(el);
-      const selection = window.getSelection();
-      selection?.removeAllRanges();
-      selection?.addRange(range);
-      document.execCommand("copy");
-      selection?.removeAllRanges();
+      if (el) {
+        const range = document.createRange();
+        range.selectNodeContents(el);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        document.execCommand("copy");
+        selection?.removeAllRanges();
+      }
     }
     btn.dataset.copied = "true";
     btn.setAttribute("aria-label", "Copied");
@@ -282,6 +286,7 @@ export function initBoard(scope: ParentNode): () => void {
   };
 
   copyButtons.forEach((btn) => btn.addEventListener("click", onCopy));
+  const stopCodeStory = initCodeStory(scope);
 
   return () => {
     navToggle?.removeEventListener("click", onToggleClick);
@@ -296,6 +301,7 @@ export function initBoard(scope: ParentNode): () => void {
     mobileNavQuery.removeEventListener("change", onMobileChange);
     copyButtons.forEach((btn) => btn.removeEventListener("click", onCopy));
     copiedTimers.forEach((timer) => window.clearTimeout(timer));
+    stopCodeStory();
     document.documentElement.removeAttribute("data-apps-open");
     document.documentElement.removeAttribute("data-apps-instant");
     document.documentElement.removeAttribute("data-mobile-controls-hidden");
