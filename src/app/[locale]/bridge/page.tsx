@@ -1,7 +1,6 @@
 import Image from "next/image";
 
 import { ColoredText } from "@/components/ColoredText";
-import { RelayKitUI } from "@/components/RelayKitUI";
 import {
   newLayoutContainerClasses,
   newLayoutSectionClasses,
@@ -60,11 +59,9 @@ export default function BridgePage() {
         Bridge
       </ColoredText>
 
-      <RelayKitUI />
-
       <div className={newLayoutSectionClasses()}>
         <ColoredText className="ink:text-h3 text-center" variant="purple">
-          More bridges
+          Bridges
         </ColoredText>
 
         {/* Mobile: List layout */}
