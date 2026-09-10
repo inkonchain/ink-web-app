@@ -15,6 +15,7 @@ import {
 } from "../../apps/_components/InkApp";
 
 import { HomeConnectPill } from "./HomeConnectPill";
+import { departureMono, satoshi } from "./home-board-fonts";
 import { initBoard } from "./init-board";
 import { initGoo } from "./init-goo";
 import { initNavGlass } from "./init-nav-glass";
@@ -97,8 +98,12 @@ export function HomeBoard() {
 
   const isDark = resolvedTheme === "dark";
 
+  // next-themes rewrites <html> classes on theme change, so font vars stay here.
   return (
-    <div className="home-board" ref={rootRef}>
+    <div
+      className={`home-board ${satoshi.variable} ${departureMono.variable}`}
+      ref={rootRef}
+    >
       <div className="page">
         <div className="board">
           <section className="col col--about" data-name="about">

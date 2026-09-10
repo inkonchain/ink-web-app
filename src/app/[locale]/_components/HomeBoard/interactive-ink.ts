@@ -152,7 +152,7 @@ class InteractiveInk extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
-    this.shadowRoot.innerHTML = `<style>:host{display:block;contain:layout paint;overflow:hidden;background:#f9f7ff}canvas{display:block;width:100%;height:100%;touch-action:pan-y;transform-origin:center;transition:filter 180ms cubic-bezier(.2,0,0,1),transform 180ms cubic-bezier(.2,0,0,1)}div{display:none;height:100%;place-items:center;color:#766f89;font:12px system-ui;background:radial-gradient(circle at 45% 35%,#c9bfff,transparent 26%),#f9f7ff}:host([fallback]) div{display:grid}:host([fallback]) canvas{display:none}@media(prefers-reduced-motion:reduce){canvas{transition-duration:0ms}}</style><canvas part="canvas"></canvas><div>Ink animation requires WebGL</div>`;
+    this.shadowRoot.innerHTML = `<style>:host{display:block;contain:layout paint;overflow:hidden;background:var(--surface-page,#fff)}canvas{display:block;width:100%;height:100%;touch-action:pan-y;transform-origin:center;transition:filter 180ms cubic-bezier(.2,0,0,1),transform 180ms cubic-bezier(.2,0,0,1)}div{display:none;height:100%;place-items:center;color:var(--text-secondary,#808080);font:12px/16px var(--board-font,system-ui);background:radial-gradient(circle at 45% 35%,color-mix(in srgb,var(--accent,#9e70ff) 28%,transparent),transparent 26%),var(--surface-page,#fff)}:host([fallback]) div{display:grid}:host([fallback]) canvas{display:none}@media(prefers-reduced-motion:reduce){canvas{transition-duration:0ms}}</style><canvas part="canvas"></canvas><div>Ink animation requires WebGL</div>`;
     this.canvas = this.shadowRoot.querySelector("canvas");
     this.pointer = [0.5, 0.5];
     this.pointerTarget = [0.5, 0.5];
@@ -246,11 +246,20 @@ class InteractiveInk extends HTMLElement {
       ? Math.max(0, value)
       : 1;
   }
+  set speed(next) {
+    this.setAttribute("speed", String(Math.max(0, Number(next) || 0)));
+  }
   get interaction() {
     const value = Number(this.getAttribute("interaction"));
     return this.hasAttribute("interaction") && Number.isFinite(value)
       ? Math.max(0, Math.min(1, value))
       : 0.7;
+  }
+  set interaction(next) {
+    this.setAttribute(
+      "interaction",
+      String(Math.max(0, Math.min(1, Number(next) || 0)))
+    );
   }
   get edge() {
     const value = Number(this.getAttribute("edge"));
@@ -258,11 +267,23 @@ class InteractiveInk extends HTMLElement {
       ? Math.max(0, Math.min(1, value))
       : 0;
   }
+  set edge(next) {
+    this.setAttribute(
+      "edge",
+      String(Math.max(0, Math.min(1, Number(next) || 0)))
+    );
+  }
   get blur() {
     const value = Number(this.getAttribute("blur"));
     return this.hasAttribute("blur") && Number.isFinite(value)
       ? Math.max(0, Math.min(18, value))
       : 0;
+  }
+  set blur(next) {
+    this.setAttribute(
+      "blur",
+      String(Math.max(0, Math.min(18, Number(next) || 0)))
+    );
   }
   // Animation seconds to seed the clock with, so the first frame is a chosen pose
   // rather than always the t = 0 one. Setting it later re-seeks the animation.
@@ -271,6 +292,9 @@ class InteractiveInk extends HTMLElement {
     return this.hasAttribute("phase") && Number.isFinite(value)
       ? Math.max(0, value)
       : 0;
+  }
+  set phase(next) {
+    this.setAttribute("phase", String(Math.max(0, Number(next) || 0)));
   }
   updateCanvasStyle() {
     if (!this.canvas) return;

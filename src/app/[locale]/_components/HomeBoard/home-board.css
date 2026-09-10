@@ -1,5 +1,4 @@
-/* Ported and scoped from the homepage prototype. */
-/* Figma: Untitled / Home 1:285 — tokens from get_variable_defs */
+/* Homepage styles match the ink prototype (Satoshi / Departure Mono). */
 @property --tune {
   syntax: "<number>";
   inherits: true;
@@ -64,7 +63,7 @@ html[data-home-board] {
   --theme-angle: 0deg;
 }
 
-html[data-home-board][data-theme="dark"] {
+html[data-home-board]:is([data-theme="dark"], .dark, .ink\:dark-theme) {
   color-scheme: dark;
   --text-primary: #f7f5fa;
   --text-secondary: #9d98a5;
@@ -199,6 +198,14 @@ html[data-home-board] .code {
   );
 }
 
+html[data-home-board] .home-board {
+  --board-font: var(--font-satoshi, "Satoshi"), sans-serif;
+  --board-mono: var(--font-departure-mono, "Departure Mono"), ui-monospace,
+    "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  width: 100%;
+  font-family: var(--board-font);
+}
+
 html[data-home-board] .home-board *,
 html[data-home-board] .home-board *::before,
 html[data-home-board] .home-board *::after {
@@ -208,25 +215,38 @@ html[data-home-board] .home-board *::after {
 }
 
 html[data-home-board],
-html[data-home-board] body,
-html[data-home-board],
 html[data-home-board] body {
   width: 100%;
   height: 100%;
   background: var(--surface-page);
   color: var(--text-primary);
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font, "Satoshi"), sans-serif;
   font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 html[data-home-board] .home-board button {
-  font: inherit;
-  color: inherit;
   background: none;
   border: none;
   cursor: pointer;
+}
+
+html[data-home-board] .home-board button:not(.pill) {
+  font: inherit;
+  color: inherit;
+}
+
+html[data-home-board] .home-board button.pill {
+  font-family: var(--board-font);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0;
+}
+
+html[data-home-board] .home-board button.pill--purple {
+  color: var(--on-accent);
 }
 
 html[data-home-board] .home-board img {
@@ -263,7 +283,7 @@ html[data-home-board] .pill {
   padding: 14px 20px;
   border: 1px solid var(--border-subtle);
   background: var(--surface-page);
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-size: 14px;
   font-weight: 500;
   line-height: 24px;
@@ -1001,13 +1021,15 @@ html[data-home-board] .theme-toggle__icon--sun {
   filter: blur(4px);
 }
 
-html[data-home-board][data-theme="dark"] .theme-toggle__icon--moon {
+html[data-home-board]:is([data-theme="dark"], .dark, .ink\:dark-theme)
+  .theme-toggle__icon--moon {
   opacity: 0;
   transform: rotate(45deg) scale(0.25);
   filter: blur(4px);
 }
 
-html[data-home-board][data-theme="dark"] .theme-toggle__icon--sun {
+html[data-home-board]:is([data-theme="dark"], .dark, .ink\:dark-theme)
+  .theme-toggle__icon--sun {
   opacity: 1;
   transform: rotate(0) scale(1);
   filter: blur(0);
@@ -1079,7 +1101,8 @@ html[data-home-board] .slider__thumb {
   }
 
   html[data-home-board] .theme-toggle__icon,
-  html[data-home-board][data-theme="dark"] .theme-toggle__icon {
+  html[data-home-board]:is([data-theme="dark"], .dark, .ink\:dark-theme)
+    .theme-toggle__icon {
     transition: opacity 120ms ease;
     transform: none;
     filter: none;
@@ -1204,7 +1227,7 @@ html[data-home-board] .col__copy {
 
 html[data-home-board] .headline {
   width: 100%;
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-weight: 700;
   font-size: 40px;
   line-height: 1.2;
@@ -1251,8 +1274,7 @@ html[data-home-board] .code {
 html[data-home-board] .code pre,
 html[data-home-board] .code code {
   margin: 0;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace,
-    ui-monospace, "SF Mono", SFMono-Regular, Menlo, Consolas, monospace;
+  font-family: var(--board-mono);
   font-size: 13px;
   font-weight: 400;
   line-height: 22px;
@@ -1423,7 +1445,7 @@ html[data-home-board] .step {
 }
 
 html[data-home-board] .step__n {
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-size: 20px;
   font-weight: 500;
   line-height: 24px;
@@ -1441,7 +1463,7 @@ html[data-home-board] .step__body {
 
 html[data-home-board] .step__label {
   width: 100%;
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-size: 16px;
   font-weight: 700;
   line-height: 24px;
@@ -1627,7 +1649,7 @@ html[data-home-board] .app__copy {
 
 html[data-home-board] .app__name {
   width: 100%;
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-size: 16px;
   font-weight: 700;
   line-height: 20px;
@@ -1649,7 +1671,7 @@ html[data-home-board] .app__desc-clip {
 
 html[data-home-board] .app__desc-text {
   padding-top: 8px;
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-size: 14px;
   font-weight: 500;
   line-height: 20px;
@@ -1759,7 +1781,7 @@ html[data-home-board] .tag {
   height: 32px;
   padding: 12px;
   border: 1px solid var(--border-subtle);
-  font-family: var(--font-plus-jakarta-sans), sans-serif, sans-serif;
+  font-family: var(--board-font);
   font-size: 12px;
   font-weight: 700;
   line-height: 16px;
@@ -1912,13 +1934,7 @@ html[data-home-board] body {
   html[data-home-board] body {
     overflow: hidden;
   }
-}
 
-html[data-home-board] .home-board {
-  width: 100%;
-}
-
-@media (min-width: 961px) {
   html[data-home-board] .home-board,
   html[data-home-board] .home-board .page {
     height: 100dvh;
@@ -1927,6 +1943,9 @@ html[data-home-board] .home-board {
 }
 
 html[data-home-board] .home-board a {
-  color: inherit;
   text-decoration: none;
+}
+
+html[data-home-board] .home-board a:not(.pill--purple) {
+  color: inherit;
 }
