@@ -1545,6 +1545,13 @@ html[data-home-board] .apps__close-icon {
 
 html[data-home-board] .apps__view-all {
   align-self: flex-start;
+  margin-bottom: 40px;
+}
+
+html[data-home-board]:not([data-apps-open]) .apps__inner {
+  flex: none;
+  height: auto;
+  min-height: auto;
 }
 
 html[data-home-board][data-apps-open] .apps__view-all {

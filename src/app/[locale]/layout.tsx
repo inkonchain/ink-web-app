@@ -61,12 +61,12 @@ export default async function LocaleLayout({
 
       <meta
         name="theme-color"
-        content="#f0efff"
+        content="#ffffff"
         media="(prefers-color-scheme: light)"
       />
       <meta
         name="theme-color"
-        content="#160f1f"
+        content="#0f0e12"
         media="(prefers-color-scheme: dark)"
       />
 
