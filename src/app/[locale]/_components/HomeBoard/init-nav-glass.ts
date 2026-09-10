@@ -41,8 +41,12 @@ export function initNavGlass(scope: ParentNode): () => void {
         : fallback;
     };
 
-    themeColors.page =
-      styles.getPropertyValue("--surface-page").trim() || themeColors.page;
+    // Use the computed page color so we track the winning theme rule
+    // (data-theme vs .dark), not a stale specified variable.
+    const page = styles.backgroundColor;
+    if (page && page !== "rgba(0, 0, 0, 0)" && page !== "transparent") {
+      themeColors.page = page;
+    }
     themeColors.tint = readRgb("--glass-tint-rgb", themeColors.tint);
     themeColors.accent = readRgb("--glass-accent-rgb", themeColors.accent);
   };
@@ -306,6 +310,10 @@ export function initNavGlass(scope: ParentNode): () => void {
     requestPaint();
   };
   window.addEventListener("inkthemechange", onTheme);
+  // next-themes flips .dark / ink:dark-theme after data-theme. Reading only
+  // on inkthemechange bakes the previous theme into the glass canvases.
+  const themeObserver = new MutationObserver(onTheme);
+  themeObserver.observe(root, { attributeFilter: ["data-theme", "class"] });
 
   if (hero?.tagName === "INTERACTIVE-INK") {
     hero.addEventListener("inkframe", onInkFrame);
@@ -339,6 +347,7 @@ export function initNavGlass(scope: ParentNode): () => void {
     window.removeEventListener("resize", onLayoutChange);
     window.removeEventListener("scroll", onScroll);
     window.removeEventListener("inkthemechange", onTheme);
+    themeObserver.disconnect();
     hero?.removeEventListener("inkframe", onInkFrame);
     resizeObserver.disconnect();
     visibility.disconnect();

@@ -228,13 +228,16 @@ html[data-home-board] body {
 
 html[data-home-board] .home-board button {
   background: none;
-  border: none;
   cursor: pointer;
 }
 
 html[data-home-board] .home-board button:not(.pill) {
   font: inherit;
   color: inherit;
+}
+
+html[data-home-board] .home-board button:not(.pill):not(.slider__btn) {
+  border: none;
 }
 
 html[data-home-board] .home-board button.pill {
