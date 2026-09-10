@@ -759,6 +759,25 @@
       }
     },
     {
+      "id": "test",
+      "name": "test",
+      "description": "test",
+      "imageUrl": "/featured-apps/icons/test.webp",
+      "category": ["Bridge"],
+      "network": "Mainnet",
+      "tags": ["explorer"],
+      "links": {
+        "mainnetWebsite": "https://test.com",
+        "testnetWebsite": "https://test.com",
+        "x": "",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "token-terminal",
       "name": "Token Terminal",
       "description": "Fundamentals for crypto. Available also on the Bloomberg Terminal App Portal at APPS TOKEN GO.",
