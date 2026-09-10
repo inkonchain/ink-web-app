@@ -13,6 +13,7 @@ export function initBoard(scope: ParentNode): () => void {
   const appsNav = nav?.querySelector('[data-w="apps"]');
   const appsTag = scope.querySelector(".apps__tag");
   const appsClose = scope.querySelector(".apps__close");
+  const appsViewAll = scope.querySelector(".apps__view-all");
   const appsSection = scope.querySelector("#apps");
   const appsInner = appsSection?.querySelector(".apps__inner");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -161,6 +162,8 @@ export function initBoard(scope: ParentNode): () => void {
     if (isOpen) {
       setMobileControlsHidden(false);
       closeNavInstantly();
+      const list = appsInner?.querySelector(".app-list");
+      if (list) list.scrollTop = 0;
     }
 
     if (
@@ -185,6 +188,7 @@ export function initBoard(scope: ParentNode): () => void {
   };
 
   const toggleApps = () => setAppsOpen(!isAppsOpen());
+  const openApps = () => setAppsOpen(true);
 
   navToggle?.addEventListener("click", onToggleClick);
   navMenu?.addEventListener("click", onNavMenuClick);
@@ -196,6 +200,7 @@ export function initBoard(scope: ParentNode): () => void {
     setAppsOpen(false);
     if (appsNav instanceof HTMLElement) appsNav.focus();
   });
+  appsViewAll?.addEventListener("click", openApps);
 
   let lastScrollY = window.scrollY;
   let scrollFrame = 0;
@@ -285,6 +290,7 @@ export function initBoard(scope: ParentNode): () => void {
     document.removeEventListener("click", onDocumentClick);
     appsNav?.removeEventListener("click", toggleApps);
     appsTag?.removeEventListener("click", toggleApps);
+    appsViewAll?.removeEventListener("click", openApps);
     window.removeEventListener("scroll", onScroll);
     document.removeEventListener("focusin", onFocusIn);
     mobileNavQuery.removeEventListener("change", onMobileChange);

@@ -35,12 +35,11 @@ export function HomeBoard() {
   const rootRef = useRef<HTMLDivElement>(null);
 
   const apps = useMemo(() => {
-    const extras = inkApps
-      .filter(
-        (app) => !inkFeaturedApps.some((featured) => featured.id === app.id)
-      )
-      .slice(0, Math.max(0, 8 - inkFeaturedApps.length));
-    return [...inkFeaturedApps, ...extras].slice(0, 8);
+    const featuredIds = new Set(inkFeaturedApps.map((app) => app.id));
+    return [
+      ...inkFeaturedApps,
+      ...inkApps.filter((app) => !featuredIds.has(app.id)),
+    ];
   }, []);
 
   useEffect(() => {
@@ -301,14 +300,14 @@ export function HomeBoard() {
                 </p>
               </div>
               <div className="app-list">
-                {apps.map((app, index) => {
+                {apps.map((app) => {
                   const href = mainUrl(app, "Mainnet") || "/apps";
                   const tags = app.tags.slice(0, 2);
                   return (
                     <a
                       className="app"
                       href={href}
-                      key={`${app.id}-${index}`}
+                      key={app.id}
                       target="_blank"
                       rel="noreferrer"
                     >
@@ -343,12 +342,9 @@ export function HomeBoard() {
                   );
                 })}
               </div>
-              <Link
-                className="pill pill--gray apps__view-all"
-                href={{ pathname: "/apps", query }}
-              >
+              <button className="pill pill--gray apps__view-all" type="button">
                 {t("appsCta")}
-              </Link>
+              </button>
             </div>
           </section>
           <div className="apps-spacer" aria-hidden="true" />
