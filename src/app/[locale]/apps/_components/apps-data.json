@@ -920,6 +920,25 @@
       }
     },
     {
+      "id": "ophis",
+      "name": "Ophis",
+      "description": "Ophis is an intent-based, MEV-protected DEX aggregator built for the agent era.",
+      "imageUrl": "/featured-apps/icons/ophis.webp",
+      "category": ["DeFi"],
+      "network": "Mainnet",
+      "tags": ["dex"],
+      "links": {
+        "mainnetWebsite": "https://ophis.fi/",
+        "testnetWebsite": "https://ophis.fi/",
+        "x": "https://x.com/ophisfi",
+        "discord": "",
+        "telegram": "",
+        "github": "",
+        "farcaster": "",
+        "smartContractUrl": ""
+      }
+    },
+    {
       "id": "otomate",
       "name": "Otomate",
       "description": "The adaptive app for onchain finance. Crypto, stocks, yield, AI automation.",
