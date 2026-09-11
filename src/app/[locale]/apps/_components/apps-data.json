@@ -767,6 +767,25 @@
       }
     },
     {
+      "id": "monipay",
+      "name": "Monipay",
+      "description": "AI powered non-custodial stablecoins payment. Send, pay, tip anyone on social platforms and operate your own merchant suite for free.",
+      "imageUrl": "/featured-apps/icons/monipay.webp",
+      "category": ["DeFi"],
+      "network": "Mainnet",
+      "tags": ["cross-chain", "domain names", "fun"],
+      "links": {
+        "mainnetWebsite": "https://www.monipay.xyz",
+        "testnetWebsite": "https://www.monipay.xyz",
+        "x": "https://x.com/monipay_xyz",
+        "discord": "https://discord.gg/QndT8r3PYp",
+        "telegram": "",
+        "github": "https://github.com/monipay",
+        "farcaster": "https://warpcast.com/monibot",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0xD294Ecaa25f9122FD3e16014D2f4923fEf874a08"
+      }
+    },
+    {
       "id": "multisender",
       "name": "Multisender",
       "description": "Multisender is a powerful dApp that streamlines the process of sending tokens to multiple addresses and creating airdrops",
