@@ -281,6 +281,25 @@
       }
     },
     {
+      "id": "delora-protocol",
+      "name": "Delora Protocol",
+      "description": "Delora is infrastructure for wallets and onchain apps that want to offer swaps, bridges, and liquidity access through one integration.",
+      "imageUrl": "/featured-apps/icons/delora-protocol.webp",
+      "category": ["DeFi", "Infra"],
+      "network": "Mainnet",
+      "tags": ["cross-chain", "interop"],
+      "links": {
+        "mainnetWebsite": "https://delora.build/",
+        "testnetWebsite": "https://delora.build/",
+        "x": "https://x.com/deloraprotocol",
+        "discord": "https://discord.gg/PXkhzN8b",
+        "telegram": "",
+        "github": "https://github.com/DeloraProtocol/",
+        "farcaster": "",
+        "smartContractUrl": "https://explorer.inkonchain.com/address/0x21534CC5023EDb08a63CBDDf2Ea180E71bDCBE88"
+      }
+    },
+    {
       "id": "dune",
       "name": "Dune",
       "description": "Query, visualize, share and export data across 75+ blockchains — build together with Web3's biggest data community.",
