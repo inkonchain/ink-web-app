@@ -3,8 +3,6 @@ import { Metadata } from "next";
 import { JsonLd } from "@/components/JsonLd";
 import { PageView } from "@/components/PageView";
 
-import { HomeBoard } from "./_components/HomeBoard";
-
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkonchain.com"),
   title: "Ink - DeFi unleashed by Kraken, built on the Superchain",
@@ -46,7 +44,6 @@ export default async function HomePage() {
         }}
       />
       <PageView />
-      <HomeBoard />
     </>
   );
 }

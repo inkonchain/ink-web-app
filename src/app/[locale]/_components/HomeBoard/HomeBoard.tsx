@@ -1,10 +1,17 @@
 "use client";
-import { useCallback, useEffect, useMemo, useRef } from "react";
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+} from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
+import { RelayKitUI } from "@/components/RelayKitUI";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
-import { EXTERNAL_LINKS, Link } from "@/routing";
+import { EXTERNAL_LINKS, Link, usePathname, useRouter } from "@/routing";
 
 import "./interactive-ink";
 
@@ -19,6 +26,7 @@ import { departureMono, satoshi } from "./home-board-fonts";
 import { initBoard } from "./init-board";
 import { initGoo } from "./init-goo";
 import { initNavGlass } from "./init-nav-glass";
+import { moreBridges } from "./more-bridges";
 
 import "./home-board.css";
 
@@ -31,8 +39,30 @@ function formatTag(tag: string) {
 export function HomeBoard() {
   const t = useTranslations("Home");
   const query = useRouterQuery();
+  const pathname = usePathname();
+  const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
   const rootRef = useRef<HTMLDivElement>(null);
+  const pendingOpenApps = useRef(false);
+  const pendingInstantBridge = useRef(false);
+  const bridgeReady = useRef(false);
+  const isBridge = pathname === "/bridge";
+
+  const goHome = useCallback(() => {
+    router.push({ pathname: "/", query });
+  }, [query, router]);
+
+  const goBridge = useCallback(() => {
+    router.push({ pathname: "/bridge", query });
+  }, [query, router]);
+
+  const toggleBridge = useCallback(() => {
+    if (isBridge) {
+      goHome();
+      return;
+    }
+    goBridge();
+  }, [goBridge, goHome, isBridge]);
 
   const apps = useMemo(() => {
     const featuredIds = new Set(inkFeaturedApps.map((app) => app.id));
@@ -48,6 +78,9 @@ export function HomeBoard() {
     return () => {
       html.removeAttribute("data-home-board");
       html.removeAttribute("data-theme");
+      html.removeAttribute("data-bridge-open");
+      html.removeAttribute("data-bridge-instant");
+      html.removeAttribute("data-bridge-closing");
       html.classList.remove("is-instant", "theme-fallback-transition");
     };
   }, []);
@@ -72,6 +105,74 @@ export function HomeBoard() {
       stopBoard();
     };
   }, []);
+
+  useEffect(() => {
+    const onCloseBridge = (event: Event) => {
+      const animate = (event as CustomEvent<{ animate?: boolean }>).detail
+        ?.animate;
+      if (animate === false) pendingInstantBridge.current = true;
+      goHome();
+    };
+    const onAppsFromBridge = () => {
+      pendingOpenApps.current = true;
+      goHome();
+    };
+    window.addEventListener("ink:close-bridge", onCloseBridge);
+    window.addEventListener("ink:open-apps-from-bridge", onAppsFromBridge);
+    return () => {
+      window.removeEventListener("ink:close-bridge", onCloseBridge);
+      window.removeEventListener("ink:open-apps-from-bridge", onAppsFromBridge);
+    };
+  }, [goHome]);
+
+  useLayoutEffect(() => {
+    const html = document.documentElement;
+    const animate = bridgeReady.current;
+    const openAppsAfter = pendingOpenApps.current;
+    const instantClose = pendingInstantBridge.current;
+    pendingInstantBridge.current = false;
+
+    if (isBridge) {
+      window.dispatchEvent(new Event("ink:close-apps-instant"));
+      if (!animate) {
+        html.setAttribute("data-bridge-instant", "");
+        html.setAttribute("data-bridge-open", "");
+        requestAnimationFrame(() => {
+          html.removeAttribute("data-bridge-instant");
+        });
+      }
+      window.dispatchEvent(
+        new CustomEvent("ink:set-bridge", {
+          detail: { open: true, animate },
+        })
+      );
+      if (!html.hasAttribute("data-bridge-open")) {
+        html.setAttribute("data-bridge-open", "");
+      }
+    } else {
+      if (!animate) {
+        html.removeAttribute("data-bridge-open");
+        html.removeAttribute("data-bridge-instant");
+        html.removeAttribute("data-bridge-closing");
+      }
+      window.dispatchEvent(
+        new CustomEvent("ink:set-bridge", {
+          detail: {
+            open: false,
+            animate: animate && !openAppsAfter && !instantClose,
+          },
+        })
+      );
+      if (openAppsAfter) {
+        pendingOpenApps.current = false;
+        requestAnimationFrame(() => {
+          window.dispatchEvent(new Event("ink:open-apps"));
+        });
+      }
+    }
+
+    bridgeReady.current = true;
+  }, [isBridge]);
 
   const toggleTheme = useCallback(() => {
     const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
@@ -102,6 +203,9 @@ export function HomeBoard() {
     <div
       className={`home-board ${satoshi.variable} ${departureMono.variable}`}
       ref={rootRef}
+      {...(isBridge && !bridgeReady.current
+        ? { "data-bridge-open": "", "data-bridge-instant": "" }
+        : {})}
     >
       <div className="page">
         <div className="board">
@@ -137,7 +241,11 @@ export function HomeBoard() {
                     role="group"
                     aria-label={t("codeStoryLabel")}
                   >
-                    <span className="code__thumb" data-code-thumb aria-hidden="true" />
+                    <span
+                      className="code__thumb"
+                      data-code-thumb
+                      aria-hidden="true"
+                    />
                     <button
                       className="code__step"
                       type="button"
@@ -393,6 +501,103 @@ ink = "https://rpc-gel.inkonchain.com"`}
               </button>
             </div>
           </section>
+
+          <div className="bridge-layer" inert={!isBridge}>
+            <div className="bridge-layer__inner">
+              <section className="col col--bridge" data-name="bridge">
+                <div className="bridge__inner">
+                  <div className="col__top">
+                    <span className="pill pill--glass">{t("bridgeCta")}</span>
+                  </div>
+                  <div className="bridge__widget">
+                    <RelayKitUI />
+                  </div>
+                </div>
+              </section>
+
+              <section className="col col--bridges" data-name="bridges">
+                <div className="bridges__inner">
+                  <div className="col__top">
+                    <div className="apps__heading">
+                      <span className="pill pill--glass">{t("bridgesLabel")}</span>
+                      <div className="apps__close-slot">
+                        <div className="apps__close-clip">
+                          <button
+                            className="slider__btn apps__close"
+                            type="button"
+                            aria-label={t("closeBridge")}
+                            onClick={goHome}
+                          >
+                            <span className="apps__close-icon" aria-hidden="true">
+                              <svg
+                                width="20"
+                                height="20"
+                                viewBox="0 0 20 20"
+                                fill="none"
+                              >
+                                <path
+                                  d="M5 5l10 10M15 5 5 15"
+                                  stroke="currentColor"
+                                  strokeWidth="1.6"
+                                  strokeLinecap="round"
+                                />
+                              </svg>
+                            </span>
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                    <p className="headline headline--sm headline--narrow">
+                      {t("bridgesHeadline")}
+                    </p>
+                  </div>
+                  <div className="app-list">
+                    {moreBridges.map((bridge) => (
+                      <a
+                        className="app"
+                        href={bridge.url}
+                        key={bridge.name}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        <div className="app__icon">
+                          {/* eslint-disable-next-line @next/next/no-img-element */}
+                          <img src={bridge.icon} alt="" />
+                        </div>
+                        <div className="app__meta">
+                          <div className="app__copy">
+                            <p className="app__name">{bridge.name}</p>
+                            <div className="app__desc">
+                              <div className="app__desc-clip">
+                                <p className="app__desc-text">
+                                  {bridge.description}
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                          <div className="app__tags">
+                            <div className="app__tags-clip">
+                              <div className="tags">
+                                {bridge.assetIcons.map((icon) => (
+                                  <span className="tag" key={icon}>
+                                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                                    <img
+                                      src={`/icons/tokens/${icon}.svg`}
+                                      alt=""
+                                    />
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </div>
+          </div>
           <div className="apps-spacer" aria-hidden="true" />
         </div>
 
@@ -524,13 +729,16 @@ ink = "https://rpc-gel.inkonchain.com"`}
                 >
                   {t("appsLabel")}
                 </button>
-                <Link
+                <button
                   className="pill"
                   data-w="bridge"
-                  href={{ pathname: "/bridge", query }}
+                  type="button"
+                  aria-expanded={isBridge}
+                  aria-current={isBridge ? "page" : undefined}
+                  onClick={toggleBridge}
                 >
                   {t("bridgeCta")}
-                </Link>
+                </button>
                 <Link
                   className="pill"
                   data-w="developers"

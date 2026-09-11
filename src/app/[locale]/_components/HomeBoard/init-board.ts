@@ -6,6 +6,10 @@ const APPS_MS = 420;
 const isAppsOpen = () =>
   document.documentElement.hasAttribute("data-apps-open");
 
+const isBridgeOpen = () =>
+  document.documentElement.hasAttribute("data-bridge-open") ||
+  document.documentElement.hasAttribute("data-bridge-closing");
+
 export function initBoard(scope: ParentNode): () => void {
   const nav = scope.querySelector(".nav");
   const navToggle = nav?.querySelector(".nav__toggle");
@@ -18,10 +22,13 @@ export function initBoard(scope: ParentNode): () => void {
   const appsViewAll = scope.querySelector(".apps__view-all");
   const appsSection = scope.querySelector("#apps");
   const appsInner = appsSection?.querySelector(".apps__inner");
+  const bridgeLayer = scope.querySelector(".bridge-layer");
+  const bridgeInner = bridgeLayer?.querySelector(".bridge-layer__inner");
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const copyButtons = [
     ...scope.querySelectorAll<HTMLButtonElement>("[data-copy]"),
   ];
+  let flipTimer = 0;
 
   const setNavOpen = (isOpen: boolean) => {
     if (!nav || !navToggle || !navMenu) return;
@@ -58,6 +65,12 @@ export function initBoard(scope: ParentNode): () => void {
     if (isAppsOpen()) {
       setAppsOpen(false, { animate: false });
       if (appsNav instanceof HTMLElement) appsNav.focus();
+      return;
+    }
+    if (document.documentElement.hasAttribute("data-bridge-open")) {
+      window.dispatchEvent(
+        new CustomEvent("ink:close-bridge", { detail: { animate: false } })
+      );
     }
   };
 
@@ -74,29 +87,44 @@ export function initBoard(scope: ParentNode): () => void {
     );
   };
 
+  const applyColumnInert = () => {
+    const appsOpen = isAppsOpen();
+    const bridgeOpen = isBridgeOpen();
+    scope
+      .querySelectorAll<HTMLElement>(".col--about, .col--hero, .col--started")
+      .forEach((col) => {
+        col.inert = appsOpen || bridgeOpen;
+      });
+    const appsCol = scope.querySelector<HTMLElement>(".col--apps");
+    if (appsCol) appsCol.inert = bridgeOpen;
+    if (bridgeLayer instanceof HTMLElement) {
+      bridgeLayer.inert = !document.documentElement.hasAttribute(
+        "data-bridge-open"
+      );
+    }
+  };
+
   const applyAppsState = (isOpen: boolean) => {
     document.documentElement.toggleAttribute("data-apps-open", isOpen);
     appsNav?.setAttribute("aria-expanded", String(isOpen));
     appsTag?.setAttribute("aria-expanded", String(isOpen));
-    scope
-      .querySelectorAll<HTMLElement>(".col:not(.col--apps)")
-      .forEach((col) => {
-        col.inert = isOpen;
-      });
+    applyColumnInert();
     if (appsClose instanceof HTMLElement) {
       appsClose.tabIndex = isOpen ? 0 : -1;
       appsClose.setAttribute("aria-hidden", String(!isOpen));
     }
   };
 
-  const playAppsFlip = (first: DOMRect, last: DOMRect, isOpen: boolean) => {
-    if (
-      !(appsSection instanceof HTMLElement) ||
-      !(appsInner instanceof HTMLElement)
-    ) {
+  const playFlip = (
+    section: HTMLElement,
+    inner: HTMLElement | null,
+    first: DOMRect,
+    last: DOMRect,
+    isOpen: boolean
+  ) => {
+    if (!last.width || !last.height) {
       return;
     }
-    if (!last.width || !last.height) return;
     const dx = first.left - last.left;
     const dy = first.top - last.top;
     const sx = first.width / last.width;
@@ -110,22 +138,27 @@ export function initBoard(scope: ParentNode): () => void {
       return;
     }
 
-    appsSection.getAnimations().forEach((animation) => animation.cancel());
+    section.getAnimations().forEach((animation) => animation.cancel());
+    if (flipTimer) window.clearTimeout(flipTimer);
 
     const duration = `${APPS_MS}ms ${APPS_EASE}`;
-    appsSection.style.transformOrigin = "top left";
-    appsInner.style.transformOrigin = "top left";
-    appsSection.style.transition = "none";
-    appsInner.style.transition = "none";
-    appsSection.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
-    appsInner.style.transform = `scale(${1 / sx}, ${1 / sy})`;
-    appsSection.style.willChange = "transform, filter";
-    appsInner.style.willChange = "transform";
-    appsSection.getBoundingClientRect();
-    appsSection.style.transition = `transform ${duration}`;
-    appsInner.style.transition = `transform ${duration}`;
-    appsSection.style.transform = "none";
-    appsInner.style.transform = "none";
+    section.style.transformOrigin = "top left";
+    section.style.transition = "none";
+    section.style.transform = `translate(${dx}px, ${dy}px) scale(${sx}, ${sy})`;
+    section.style.willChange = "transform, filter";
+    if (inner) {
+      inner.style.transformOrigin = "top left";
+      inner.style.transition = "none";
+      inner.style.transform = `scale(${1 / sx}, ${1 / sy})`;
+      inner.style.willChange = "transform";
+    }
+    section.getBoundingClientRect();
+    section.style.transition = `transform ${duration}`;
+    section.style.transform = "none";
+    if (inner) {
+      inner.style.transition = `transform ${duration}`;
+      inner.style.transform = "none";
+    }
 
     const travel =
       Math.hypot(dx, dy) +
@@ -134,7 +167,7 @@ export function initBoard(scope: ParentNode): () => void {
     const blurPeak = isOpen
       ? Math.min(8, Math.max(4, travel / 260))
       : Math.min(4, Math.max(2, travel / 420));
-    appsSection.animate(
+    section.animate(
       [
         { filter: "blur(0px)" },
         { filter: `blur(${blurPeak.toFixed(2)}px)`, offset: 0.18 },
@@ -143,20 +176,38 @@ export function initBoard(scope: ParentNode): () => void {
       { duration: APPS_MS, easing: APPS_EASE, fill: "none" }
     );
 
-    const clear = (event?: TransitionEvent) => {
-      if (event && event.target !== appsSection) return;
+    let settled = false;
+    const finish = (event?: TransitionEvent) => {
+      if (event && event.target !== section) return;
       if (event && event.propertyName && event.propertyName !== "transform") {
         return;
       }
-      appsSection.style.transition = "";
-      appsInner.style.transition = "";
-      appsSection.style.transform = "";
-      appsInner.style.transform = "";
-      appsSection.style.filter = "";
-      appsSection.style.willChange = "";
-      appsInner.style.willChange = "";
+      if (settled) return;
+      settled = true;
+      if (flipTimer) window.clearTimeout(flipTimer);
+      flipTimer = 0;
+      section.style.transition = "";
+      section.style.transform = "";
+      section.style.filter = "";
+      section.style.willChange = "";
+      if (inner) {
+        inner.style.transition = "";
+        inner.style.transform = "";
+        inner.style.willChange = "";
+      }
     };
-    appsSection.addEventListener("transitionend", clear, { once: true });
+    section.addEventListener("transitionend", finish, { once: true });
+    flipTimer = window.setTimeout(() => finish(), APPS_MS + 80);
+  };
+
+  const playAppsFlip = (first: DOMRect, last: DOMRect, isOpen: boolean) => {
+    if (
+      !(appsSection instanceof HTMLElement) ||
+      !(appsInner instanceof HTMLElement)
+    ) {
+      return;
+    }
+    playFlip(appsSection, appsInner, first, last, isOpen);
   };
 
   const setAppsOpen = (isOpen: boolean, { animate = true } = {}) => {
@@ -189,8 +240,106 @@ export function initBoard(scope: ParentNode): () => void {
     playAppsFlip(first, last, isOpen);
   };
 
-  const toggleApps = () => setAppsOpen(!isAppsOpen());
-  const openApps = () => setAppsOpen(true);
+  const applyBridgeState = (isOpen: boolean) => {
+    document.documentElement.toggleAttribute("data-bridge-open", isOpen);
+    if (isOpen) {
+      document.documentElement.removeAttribute("data-bridge-closing");
+    }
+    applyColumnInert();
+  };
+
+  let bridgeCloseTimer = 0;
+  let onBridgeTransition: ((event: TransitionEvent) => void) | null = null;
+
+  const stopBridgeClose = () => {
+    if (bridgeCloseTimer) {
+      window.clearTimeout(bridgeCloseTimer);
+      bridgeCloseTimer = 0;
+    }
+    if (onBridgeTransition && bridgeLayer instanceof HTMLElement) {
+      bridgeLayer.removeEventListener("transitionend", onBridgeTransition);
+    }
+    onBridgeTransition = null;
+  };
+
+  const finishBridgeClose = () => {
+    stopBridgeClose();
+    document.documentElement.removeAttribute("data-bridge-closing");
+    applyColumnInert();
+  };
+
+  const setBridgeOpen = (isOpen: boolean, { animate = true } = {}) => {
+    const html = document.documentElement;
+    const hasOpen = html.hasAttribute("data-bridge-open");
+    const hasClosing = html.hasAttribute("data-bridge-closing");
+    if (isOpen && hasOpen && !hasClosing) return;
+    if (!isOpen && !hasOpen && !hasClosing) return;
+    if (!isOpen && hasClosing) return;
+
+    stopBridgeClose();
+
+    if (isOpen) {
+      closeNavInstantly();
+      html.removeAttribute("data-bridge-closing");
+      const list = bridgeInner?.querySelector(".app-list");
+      if (list) list.scrollTop = 0;
+    }
+
+    const canAnimate =
+      animate &&
+      !reduceMotion.matches &&
+      bridgeLayer instanceof HTMLElement;
+
+    if (!canAnimate) {
+      html.removeAttribute("data-bridge-closing");
+      html.setAttribute("data-bridge-instant", "");
+      applyBridgeState(isOpen);
+      requestAnimationFrame(() => {
+        html.removeAttribute("data-bridge-instant");
+      });
+      return;
+    }
+
+    if (isOpen) {
+      applyBridgeState(true);
+      return;
+    }
+
+    html.removeAttribute("data-bridge-open");
+    html.setAttribute("data-bridge-closing", "");
+    applyColumnInert();
+
+    const layer = bridgeLayer;
+    onBridgeTransition = (event: TransitionEvent) => {
+      if (event.target !== layer || event.propertyName !== "opacity") return;
+      finishBridgeClose();
+    };
+    layer.addEventListener("transitionend", onBridgeTransition);
+    bridgeCloseTimer = window.setTimeout(finishBridgeClose, 220);
+  };
+
+  const toggleApps = () => {
+    if (isBridgeOpen()) {
+      window.dispatchEvent(new Event("ink:open-apps-from-bridge"));
+      return;
+    }
+    setAppsOpen(!isAppsOpen());
+  };
+  const openApps = () => {
+    if (isBridgeOpen()) {
+      window.dispatchEvent(new Event("ink:open-apps-from-bridge"));
+      return;
+    }
+    setAppsOpen(true);
+  };
+
+  const onOpenApps = () => setAppsOpen(true);
+  const onCloseAppsInstant = () => setAppsOpen(false, { animate: false });
+  const onSetBridge = (event: Event) => {
+    const detail = (event as CustomEvent<{ open?: boolean; animate?: boolean }>)
+      .detail;
+    setBridgeOpen(Boolean(detail?.open), { animate: detail?.animate !== false });
+  };
 
   navToggle?.addEventListener("click", onToggleClick);
   navMenu?.addEventListener("click", onNavMenuClick);
@@ -203,6 +352,9 @@ export function initBoard(scope: ParentNode): () => void {
     if (appsNav instanceof HTMLElement) appsNav.focus();
   });
   appsViewAll?.addEventListener("click", openApps);
+  window.addEventListener("ink:open-apps", onOpenApps);
+  window.addEventListener("ink:close-apps-instant", onCloseAppsInstant);
+  window.addEventListener("ink:set-bridge", onSetBridge);
 
   let lastScrollY = window.scrollY;
   let scrollFrame = 0;
@@ -288,6 +440,13 @@ export function initBoard(scope: ParentNode): () => void {
   copyButtons.forEach((btn) => btn.addEventListener("click", onCopy));
   const stopCodeStory = initCodeStory(scope);
 
+  const boardIsBridge =
+    (scope instanceof HTMLElement && scope.hasAttribute("data-bridge-open")) ||
+    document.documentElement.hasAttribute("data-bridge-open");
+  if (boardIsBridge) {
+    setBridgeOpen(true, { animate: false });
+  }
+
   return () => {
     navToggle?.removeEventListener("click", onToggleClick);
     navMenu?.removeEventListener("click", onNavMenuClick);
@@ -296,19 +455,25 @@ export function initBoard(scope: ParentNode): () => void {
     appsNav?.removeEventListener("click", toggleApps);
     appsTag?.removeEventListener("click", toggleApps);
     appsViewAll?.removeEventListener("click", openApps);
+    window.removeEventListener("ink:open-apps", onOpenApps);
+    window.removeEventListener("ink:close-apps-instant", onCloseAppsInstant);
+    window.removeEventListener("ink:set-bridge", onSetBridge);
     window.removeEventListener("scroll", onScroll);
     document.removeEventListener("focusin", onFocusIn);
     mobileNavQuery.removeEventListener("change", onMobileChange);
     copyButtons.forEach((btn) => btn.removeEventListener("click", onCopy));
     copiedTimers.forEach((timer) => window.clearTimeout(timer));
+    if (flipTimer) window.clearTimeout(flipTimer);
+    stopBridgeClose();
     stopCodeStory();
     document.documentElement.removeAttribute("data-apps-open");
     document.documentElement.removeAttribute("data-apps-instant");
     document.documentElement.removeAttribute("data-mobile-controls-hidden");
-    scope
-      .querySelectorAll<HTMLElement>(".col:not(.col--apps)")
-      .forEach((col) => {
-        col.inert = false;
-      });
+    scope.querySelectorAll<HTMLElement>(".col").forEach((col) => {
+      col.inert = false;
+    });
+    if (bridgeLayer instanceof HTMLElement) {
+      bridgeLayer.inert = false;
+    }
   };
 }

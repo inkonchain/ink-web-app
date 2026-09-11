@@ -138,8 +138,10 @@ ink = "https://rpc-gel.inkonchain.com"`,
   },
 ];
 
-const isAppsOpen = () =>
-  document.documentElement.hasAttribute("data-apps-open");
+const isBoardOverlayOpen = () =>
+  document.documentElement.hasAttribute("data-apps-open") ||
+  document.documentElement.hasAttribute("data-bridge-open") ||
+  document.documentElement.hasAttribute("data-bridge-closing");
 
 export function initCodeStory(scope: ParentNode): () => void {
   const root = scope.querySelector<HTMLElement>("[data-code-story]");
@@ -188,7 +190,7 @@ export function initCodeStory(scope: ParentNode): () => void {
     !paused &&
     !document.hidden &&
     !reduceMotion.matches &&
-    !isAppsOpen();
+    !isBoardOverlayOpen();
 
   const setCopy = (text: string) => {
     copyBtn?.setAttribute("data-copy-text", text);
@@ -383,18 +385,18 @@ export function initCodeStory(scope: ParentNode): () => void {
     void showScene(sceneIndex, "jump");
   };
 
-  const onApps = () => {
-    if (isAppsOpen()) {
+  const onOverlay = () => {
+    if (isBoardOverlayOpen()) {
       if (!revealing) clearTimers();
       return;
     }
     armAdvance();
   };
 
-  const appsObserver = new MutationObserver(onApps);
+  const appsObserver = new MutationObserver(onOverlay);
   appsObserver.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["data-apps-open"],
+    attributeFilter: ["data-apps-open", "data-bridge-open", "data-bridge-closing"],
   });
 
   const io = new IntersectionObserver(
@@ -415,9 +417,7 @@ export function initCodeStory(scope: ParentNode): () => void {
 
   const stepsRow = root.querySelector(".code__steps");
   const thumbObserver =
-    stepsRow && thumb
-      ? new ResizeObserver(() => moveThumb(sceneIndex))
-      : null;
+    stepsRow && thumb ? new ResizeObserver(() => moveThumb(sceneIndex)) : null;
   if (stepsRow && thumbObserver) thumbObserver.observe(stepsRow);
 
   steps.forEach((step) => step.addEventListener("click", onStepClick));

@@ -6,6 +6,7 @@ import { ConnectWalletButton } from "@/components/ConnectWalletButton";
 import { Footer } from "@/components/Footer";
 import { usePathname } from "@/routing";
 
+import { HomeBoard } from "./HomeBoard";
 import { InkLogo, InkLogoImage } from "./InkLogo";
 import { LayoutColumns } from "./LayoutColumns";
 import { MainPageBackground } from "./MainPageBackground";
@@ -13,11 +14,19 @@ import { MobileNav } from "./MobileNav";
 import { SideNav } from "./SideNav";
 import { ThemeToggle } from "./ThemeToggle";
 
+const isBoardPath = (pathname: string) =>
+  pathname === "/" || pathname === "/bridge";
+
 export function RoutedLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();
 
-  if (pathname === "/") {
-    return <>{children}</>;
+  if (isBoardPath(pathname)) {
+    return (
+      <>
+        {children}
+        <HomeBoard />
+      </>
+    );
   }
 
   return (
