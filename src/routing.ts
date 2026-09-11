@@ -49,6 +49,9 @@ export const EXTERNAL_LINKS = {
   retroGrant: "https://docs.inkonchain.com/ink-grants/retro-grants",
   tydro: "https://app.tydro.com/",
   nado: "https://app.nado.xyz/",
+  defillamaInk: "https://defillama.com/chain/ink",
+  l2beatInk: "https://l2beat.com/scaling/projects/ink",
+  growthepieInk: "https://www.growthepie.com/chains/ink",
 } as const;
 
 type ExternalLinkValues = (typeof EXTERNAL_LINKS)[keyof typeof EXTERNAL_LINKS];

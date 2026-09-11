@@ -5,11 +5,14 @@ import {
   useLayoutEffect,
   useMemo,
   useRef,
+  type CSSProperties,
 } from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
+import { OnlyWithFeatureFlag } from "@/components/OnlyWithFeatureFlag";
 import { RelayKitUI } from "@/components/RelayKitUI";
+import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { EXTERNAL_LINKS, Link, usePathname, useRouter } from "@/routing";
 
@@ -21,6 +24,13 @@ import {
   mainUrl,
 } from "../../apps/_components/InkApp";
 
+import {
+  builderExpectations,
+  builderFocusKeys,
+  builderResources,
+  builderStats,
+} from "./builder-resources";
+import { CodeStory } from "./CodeStory";
 import { HomeConnectPill } from "./HomeConnectPill";
 import { departureMono, satoshi } from "./home-board-fonts";
 import { initBoard } from "./init-board";
@@ -36,25 +46,94 @@ function formatTag(tag: string) {
     .replace(/\b\w/g, (character) => character.toUpperCase());
 }
 
+function DevLinkGoIcon() {
+  return (
+    <span className="dev-link__go" aria-hidden="true">
+      <svg width="24" height="24" viewBox="0 0 16 16" fill="none">
+        <path
+          d="M5 11 11 5M6.75 5H11v4.25"
+          stroke="currentColor"
+          strokeWidth="1.5"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+        />
+      </svg>
+    </span>
+  );
+}
+
+function OverlayClose({
+  label,
+  onClick,
+}: {
+  label: string;
+  onClick: () => void;
+}) {
+  return (
+    <div className="apps__close-slot">
+      <div className="apps__close-clip">
+        <button
+          className="slider__btn apps__close"
+          type="button"
+          aria-label={label}
+          onClick={onClick}
+        >
+          <span className="apps__close-icon" aria-hidden="true">
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path
+                d="M5 5l10 10M15 5 5 15"
+                stroke="currentColor"
+                strokeWidth="1.6"
+                strokeLinecap="round"
+              />
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+  );
+}
+
 export function HomeBoard() {
   const t = useTranslations("Home");
+  const tAbout = useTranslations("About");
+  const tBuilders = useTranslations("Builders");
   const query = useRouterQuery();
   const pathname = usePathname();
   const router = useRouter();
   const { resolvedTheme, setTheme } = useTheme();
+  const isMainnet = useFeatureFlag("mainnet") === true;
   const rootRef = useRef<HTMLDivElement>(null);
   const pendingOpenApps = useRef(false);
   const pendingInstantBridge = useRef(false);
-  const bridgeReady = useRef(false);
+  const overlayReady = useRef(false);
+  const overlayModeRef = useRef<"bridge" | "builders">(
+    pathname === "/builders" ? "builders" : "bridge"
+  );
   const isBridge = pathname === "/bridge";
+  const isBuilders = pathname === "/builders";
+  const isOverlay = isBridge || isBuilders;
+  if (isBuilders) overlayModeRef.current = "builders";
+  if (isBridge) overlayModeRef.current = "bridge";
+  const overlayMode = overlayModeRef.current;
+  const resources = useMemo(() => builderResources(isMainnet), [isMainnet]);
+
+  const queryParams = useMemo(
+    () => Object.fromEntries(new URLSearchParams(query)),
+    [query]
+  );
 
   const goHome = useCallback(() => {
-    router.push({ pathname: "/", query });
-  }, [query, router]);
+    router.push({ pathname: "/", query: queryParams });
+  }, [queryParams, router]);
 
   const goBridge = useCallback(() => {
-    router.push({ pathname: "/bridge", query });
-  }, [query, router]);
+    router.push({ pathname: "/bridge", query: queryParams });
+  }, [queryParams, router]);
+
+  const goBuilders = useCallback(() => {
+    router.push({ pathname: "/builders", query: queryParams });
+  }, [queryParams, router]);
 
   const toggleBridge = useCallback(() => {
     if (isBridge) {
@@ -64,6 +143,14 @@ export function HomeBoard() {
     goBridge();
   }, [goBridge, goHome, isBridge]);
 
+  const toggleBuilders = useCallback(() => {
+    if (isBuilders) {
+      goHome();
+      return;
+    }
+    goBuilders();
+  }, [goBuilders, goHome, isBuilders]);
+
   const apps = useMemo(() => {
     const featuredIds = new Set(inkFeaturedApps.map((app) => app.id));
     return [
@@ -72,7 +159,7 @@ export function HomeBoard() {
     ];
   }, []);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const html = document.documentElement;
     html.setAttribute("data-home-board", "");
     return () => {
@@ -81,6 +168,7 @@ export function HomeBoard() {
       html.removeAttribute("data-bridge-open");
       html.removeAttribute("data-bridge-instant");
       html.removeAttribute("data-bridge-closing");
+      html.removeAttribute("data-overlay");
       html.classList.remove("is-instant", "theme-fallback-transition");
     };
   }, []);
@@ -127,12 +215,13 @@ export function HomeBoard() {
 
   useLayoutEffect(() => {
     const html = document.documentElement;
-    const animate = bridgeReady.current;
+    const animate = overlayReady.current;
     const openAppsAfter = pendingOpenApps.current;
     const instantClose = pendingInstantBridge.current;
     pendingInstantBridge.current = false;
 
-    if (isBridge) {
+    if (isOverlay) {
+      html.setAttribute("data-overlay", overlayMode);
       window.dispatchEvent(new Event("ink:close-apps-instant"));
       if (!animate) {
         html.setAttribute("data-bridge-instant", "");
@@ -171,8 +260,8 @@ export function HomeBoard() {
       }
     }
 
-    bridgeReady.current = true;
-  }, [isBridge]);
+    overlayReady.current = true;
+  }, [isOverlay, overlayMode]);
 
   const toggleTheme = useCallback(() => {
     const nextTheme = resolvedTheme === "dark" ? "light" : "dark";
@@ -203,8 +292,12 @@ export function HomeBoard() {
     <div
       className={`home-board ${satoshi.variable} ${departureMono.variable}`}
       ref={rootRef}
-      {...(isBridge && !bridgeReady.current
-        ? { "data-bridge-open": "", "data-bridge-instant": "" }
+      {...(isOverlay && !overlayReady.current
+        ? {
+            "data-bridge-open": "",
+            "data-bridge-instant": "",
+            "data-overlay": overlayMode,
+          }
         : {})}
     >
       <div className="page">
@@ -232,116 +325,7 @@ export function HomeBoard() {
                 </div>
               </div>
             </div>
-            <div className="col__bottom">
-              <p className="headline headline--sm">{t("shipHeadline")}</p>
-              <div className="code" data-code-story data-scene="build">
-                <div className="code__bar">
-                  <div
-                    className="code__steps"
-                    role="group"
-                    aria-label={t("codeStoryLabel")}
-                  >
-                    <span
-                      className="code__thumb"
-                      data-code-thumb
-                      aria-hidden="true"
-                    />
-                    <button
-                      className="code__step"
-                      type="button"
-                      data-code-step="0"
-                      data-current
-                      aria-current="step"
-                    >
-                      {t("codeStepBuild")}
-                    </button>
-                    <button
-                      className="code__step"
-                      type="button"
-                      data-code-step="1"
-                      aria-current="false"
-                    >
-                      {t("codeStepTest")}
-                    </button>
-                    <button
-                      className="code__step"
-                      type="button"
-                      data-code-step="2"
-                      aria-current="false"
-                    >
-                      {t("codeStepDeploy")}
-                    </button>
-                    <button
-                      className="code__step"
-                      type="button"
-                      data-code-step="3"
-                      aria-current="false"
-                    >
-                      {t("codeStepLive")}
-                    </button>
-                  </div>
-                </div>
-                <pre>
-                  <code id="deploy-snippet">
-                    <span className="code__line">
-                      <span className="cm">{"# foundry.toml"}</span>
-                    </span>
-                    <span className="code__line">&nbsp;</span>
-                    <span className="code__line">
-                      <span className="kw">{"[rpc_endpoints]"}</span>
-                    </span>
-                    <span className="code__line">
-                      {"ink = "}
-                      <span className="str">
-                        {'"https://rpc-gel.inkonchain.com"'}
-                      </span>
-                      <span className="code__caret" aria-hidden="true" />
-                    </span>
-                  </code>
-                </pre>
-                <button
-                  className="code__copy"
-                  type="button"
-                  aria-label={t("copyCode")}
-                  data-copy="#deploy-snippet"
-                  data-copy-text={`# foundry.toml
-[rpc_endpoints]
-ink = "https://rpc-gel.inkonchain.com"`}
-                >
-                  <span className="code__copy-icons" aria-hidden="true">
-                    <svg
-                      className="code__icon code__icon--copy"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                    >
-                      <path
-                        d="M6.667 6.667V3.333H16.667V13.333H13.333M13.333 6.667V16.667H3.333V6.667H13.333Z"
-                        stroke="currentColor"
-                        strokeWidth="1.667"
-                        strokeLinecap="round"
-                      />
-                    </svg>
-                    <svg
-                      className="code__icon code__icon--check"
-                      width="20"
-                      height="20"
-                      viewBox="0 0 20 20"
-                      fill="none"
-                    >
-                      <path
-                        d="M4.167 10.417 8.125 14.375 15.833 5.625"
-                        stroke="currentColor"
-                        strokeWidth="1.667"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      />
-                    </svg>
-                  </span>
-                </button>
-              </div>
-            </div>
+            <CodeStory snippetId="deploy-snippet" />
           </section>
 
           <section className="col col--hero" data-name="hero">
@@ -354,10 +338,13 @@ ink = "https://rpc-gel.inkonchain.com"`}
               blur="0"
               phase="28"
             />
-            <span className="pill pill--glass pill--refractive glass-bar">
+            <Link
+              className="pill pill--glass pill--refractive glass-bar"
+              href={{ pathname: "/builders", query }}
+            >
               <canvas className="pill__glass" aria-hidden="true" />
               <span className="pill__label">{t("builtOnInk")}</span>
-            </span>
+            </Link>
           </section>
 
           <section className="col col--started" data-name="started">
@@ -502,12 +489,22 @@ ink = "https://rpc-gel.inkonchain.com"`}
             </div>
           </section>
 
-          <div className="bridge-layer" inert={!isBridge}>
+          <div
+            className="bridge-layer"
+            data-mode={overlayMode}
+            inert={!isOverlay}
+          >
             <div className="bridge-layer__inner">
               <section className="col col--bridge" data-name="bridge">
                 <div className="bridge__inner">
                   <div className="col__top">
-                    <span className="pill pill--glass">{t("bridgeCta")}</span>
+                    <div className="apps__heading">
+                      <span className="pill pill--glass">{t("bridgeCta")}</span>
+                      <OverlayClose
+                        label={t("closeBridge")}
+                        onClick={goHome}
+                      />
+                    </div>
                   </div>
                   <div className="bridge__widget">
                     <RelayKitUI />
@@ -518,35 +515,7 @@ ink = "https://rpc-gel.inkonchain.com"`}
               <section className="col col--bridges" data-name="bridges">
                 <div className="bridges__inner">
                   <div className="col__top">
-                    <div className="apps__heading">
-                      <span className="pill pill--glass">{t("bridgesLabel")}</span>
-                      <div className="apps__close-slot">
-                        <div className="apps__close-clip">
-                          <button
-                            className="slider__btn apps__close"
-                            type="button"
-                            aria-label={t("closeBridge")}
-                            onClick={goHome}
-                          >
-                            <span className="apps__close-icon" aria-hidden="true">
-                              <svg
-                                width="20"
-                                height="20"
-                                viewBox="0 0 20 20"
-                                fill="none"
-                              >
-                                <path
-                                  d="M5 5l10 10M15 5 5 15"
-                                  stroke="currentColor"
-                                  strokeWidth="1.6"
-                                  strokeLinecap="round"
-                                />
-                              </svg>
-                            </span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    <span className="pill pill--glass">{t("bridgesLabel")}</span>
                     <p className="headline headline--sm headline--narrow">
                       {t("bridgesHeadline")}
                     </p>
@@ -595,6 +564,277 @@ ink = "https://rpc-gel.inkonchain.com"`}
                     ))}
                   </div>
                 </div>
+              </section>
+
+              <section className="col col--devs" data-name="developers">
+                <div className="devs__inner">
+                  <div className="col__top">
+                    <div className="apps__heading">
+                      <span className="pill pill--glass">{t("developersCta")}</span>
+                      <OverlayClose
+                        label={t("closeDevelopers")}
+                        onClick={goHome}
+                      />
+                    </div>
+                  </div>
+                  <div className="devs__block">
+                    <p className="headline headline--sm">
+                      {tBuilders("why.title")}
+                    </p>
+                    <p className="devs__lede">{tAbout("description")}</p>
+                  </div>
+                  <div className="devs__focus">
+                    <p className="headline headline--sm">
+                      {tBuilders("expectations.title")}
+                    </p>
+                    <div className="dev-focus-list">
+                      {builderExpectations.map((item) => (
+                        <article className="dev-focus dev-focus--info" key={item.title}>
+                          <span
+                            className="dev-focus__icon"
+                            style={
+                              {
+                                "--dev-icon": `url("${item.icon}")`,
+                              } as CSSProperties
+                            }
+                            aria-hidden="true"
+                          />
+                          <p className="dev-focus__name">{item.title}</p>
+                          <p className="dev-focus__desc">{item.description}</p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="devs__focus">
+                    <p className="headline headline--sm">
+                      {tBuilders("stats.title")}
+                    </p>
+                    <div className="dev-stat-list">
+                      {builderStats.map((stat) => {
+                        const label = tBuilders(`stats.${stat.key}`);
+                        const body = (
+                          <>
+                            <p className="dev-stat__value">{stat.value}</p>
+                            <p className="dev-stat__label">{label}</p>
+                          </>
+                        );
+
+                        if ("href" in stat) {
+                          return (
+                            <a
+                              className="dev-stat"
+                              href={stat.href}
+                              key={stat.key}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${stat.value} ${label}. ${t("opensInNewTab")}`}
+                            >
+                              {body}
+                            </a>
+                          );
+                        }
+
+                        return (
+                          <div className="dev-stat" key={stat.key}>
+                            {body}
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div className="devs__focus">
+                    <p className="headline headline--sm">
+                      {tBuilders("focus.title")}
+                    </p>
+                    <p className="devs__lede">{tBuilders("focus.description")}</p>
+                    <div className="dev-focus-list">
+                      {builderFocusKeys.map((key) => (
+                        <article className="dev-focus" key={key}>
+                          <p className="dev-focus__name">
+                            {tBuilders(`focus.${key}.title`)}
+                          </p>
+                          <p className="dev-focus__desc">
+                            {tBuilders(`focus.${key}.description`)}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="devs__block">
+                    <p className="headline headline--sm">
+                      {tBuilders("tools.title")}
+                    </p>
+                    <div className="dev-links">
+                      {resources.map((resource) => {
+                        const className = "dev-link";
+                        const label = (
+                          <>
+                            <span className="dev-link__name">
+                              {resource.name}
+                            </span>
+                            <DevLinkGoIcon />
+                          </>
+                        );
+                        if (resource.external) {
+                          return (
+                            <a
+                              className={className}
+                              href={resource.href}
+                              key={resource.name}
+                              target="_blank"
+                              rel="noreferrer"
+                              aria-label={`${resource.name}. ${t("opensInNewTab")}`}
+                            >
+                              {label}
+                            </a>
+                          );
+                        }
+                        return (
+                          <Link
+                            className={className}
+                            href={resource.href}
+                            key={resource.name}
+                          >
+                            {label}
+                          </Link>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <OnlyWithFeatureFlag flag="grantsSection">
+                    <div className="devs__grants">
+                      <p className="devs__grants-title">
+                        {tBuilders("grants.title")}
+                      </p>
+                      <p className="devs__lede">{tBuilders("grants.description")}</p>
+                      <div className="app-list">
+                        <a
+                          className="app"
+                          href={EXTERNAL_LINKS.grant}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <div className="app__icon">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src="/builders/grant.png" alt="" />
+                          </div>
+                          <div className="app__meta">
+                            <div className="app__copy">
+                              <p className="app__name">
+                                {tBuilders("applyForGrant.title")}
+                              </p>
+                              <div className="app__desc">
+                                <div className="app__desc-clip">
+                                  <p className="app__desc-text">
+                                    {tBuilders("applyForGrant.description")}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                        <a
+                          className="app"
+                          href={EXTERNAL_LINKS.retroGrant}
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          <div className="app__icon">
+                            {/* eslint-disable-next-line @next/next/no-img-element */}
+                            <img src="/builders/retro-grant.png" alt="" />
+                          </div>
+                          <div className="app__meta">
+                            <div className="app__copy">
+                              <p className="app__name">
+                                {tBuilders("applyForRetroGrant.title")}
+                              </p>
+                              <div className="app__desc">
+                                <div className="app__desc-clip">
+                                  <p className="app__desc-text">
+                                    {tBuilders("applyForRetroGrant.description")}
+                                  </p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </a>
+                      </div>
+                    </div>
+                  </OnlyWithFeatureFlag>
+                  <CodeStory snippetId="builders-deploy-snippet" />
+                </div>
+              </section>
+
+              <section className="col col--devs-hero" data-name="developers-ink">
+                <interactive-ink
+                  className="hero-media"
+                  value="3"
+                  speed="1"
+                  interaction="0.7"
+                  edge="0"
+                  blur="0"
+                  phase="48"
+                />
+                <Link
+                  className="pill pill--glass pill--refractive glass-bar"
+                  href={{ pathname: "/builders", query }}
+                  aria-current="page"
+                >
+                  <canvas className="pill__glass" aria-hidden="true" />
+                  <span className="pill__label">{t("builtOnInk")}</span>
+                </Link>
+              </section>
+
+              <section className="col col--devs-started" data-name="developers-started">
+                <div className="col__top">
+                  <span className="pill pill--glass">
+                    {tBuilders("started.label")}
+                  </span>
+                  <p className="headline headline--sm headline--narrow">
+                    {tBuilders("started.headline")}
+                  </p>
+                </div>
+                <article className="step">
+                  <span className="step__n">1</span>
+                  <div className="step__body">
+                    <p className="step__label">{tBuilders("started.stepDocs")}</p>
+                    <Link
+                      className="pill pill--gray"
+                      href={EXTERNAL_LINKS.documentation}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t("docsCta")}
+                    </Link>
+                  </div>
+                </article>
+                <article className="step">
+                  <span className="step__n">2</span>
+                  <div className="step__body">
+                    <p className="step__label">
+                      {tBuilders("started.stepFaucet")}
+                    </p>
+                    <Link className="pill pill--gray" href="/faucet">
+                      {tBuilders("started.faucetCta")}
+                    </Link>
+                  </div>
+                </article>
+                <article className="step">
+                  <span className="step__n">3</span>
+                  <div className="step__body">
+                    <p className="step__label">
+                      {tBuilders("started.stepDeploy")}
+                    </p>
+                    <Link
+                      className="pill pill--gray"
+                      href={EXTERNAL_LINKS.inkKit}
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {tBuilders("started.deployCta")}
+                    </Link>
+                  </div>
+                </article>
               </section>
             </div>
           </div>
@@ -739,13 +979,16 @@ ink = "https://rpc-gel.inkonchain.com"`}
                 >
                   {t("bridgeCta")}
                 </button>
-                <Link
+                <button
                   className="pill"
                   data-w="developers"
-                  href={{ pathname: "/builders", query }}
+                  type="button"
+                  aria-expanded={isBuilders}
+                  aria-current={isBuilders ? "page" : undefined}
+                  onClick={toggleBuilders}
                 >
                   {t("developersCta")}
-                </Link>
+                </button>
                 <Link
                   className="pill"
                   data-w="docs"

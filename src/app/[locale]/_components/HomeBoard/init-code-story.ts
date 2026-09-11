@@ -144,14 +144,18 @@ const isBoardOverlayOpen = () =>
   document.documentElement.hasAttribute("data-bridge-closing");
 
 export function initCodeStory(scope: ParentNode): () => void {
-  const root = scope.querySelector<HTMLElement>("[data-code-story]");
-  const code = root?.querySelector<HTMLElement>("#deploy-snippet");
-  const copyBtn = root?.querySelector<HTMLButtonElement>(".code__copy");
-  const steps = root
-    ? [...root.querySelectorAll<HTMLButtonElement>("[data-code-step]")]
-    : [];
+  const stops = [...scope.querySelectorAll<HTMLElement>("[data-code-story]")].map(
+    (root) => initOneCodeStory(root)
+  );
+  return () => stops.forEach((stop) => stop());
+}
 
-  if (!root || !code) return () => undefined;
+function initOneCodeStory(root: HTMLElement): () => void {
+  const code = root.querySelector<HTMLElement>(".code__snippet");
+  const copyBtn = root.querySelector<HTMLButtonElement>(".code__copy");
+  const steps = [...root.querySelectorAll<HTMLButtonElement>("[data-code-step]")];
+
+  if (!code) return () => undefined;
 
   const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
   const timers = new Set<number>();
@@ -185,12 +189,19 @@ export function initCodeStory(scope: ParentNode): () => void {
     timers.clear();
   };
 
-  const canAutoplay = () =>
-    visible &&
-    !paused &&
-    !document.hidden &&
-    !reduceMotion.matches &&
-    !isBoardOverlayOpen();
+  const inOverlay = Boolean(root.closest(".col--devs"));
+  const canAutoplay = () => {
+    if (
+      !visible ||
+      paused ||
+      document.hidden ||
+      reduceMotion.matches ||
+      document.documentElement.hasAttribute("data-apps-open")
+    ) {
+      return false;
+    }
+    return inOverlay ? isBoardOverlayOpen() : !isBoardOverlayOpen();
+  };
 
   const setCopy = (text: string) => {
     copyBtn?.setAttribute("data-copy-text", text);

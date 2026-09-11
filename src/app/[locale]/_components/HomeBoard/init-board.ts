@@ -281,8 +281,9 @@ export function initBoard(scope: ParentNode): () => void {
     if (isOpen) {
       closeNavInstantly();
       html.removeAttribute("data-bridge-closing");
-      const list = bridgeInner?.querySelector(".app-list");
-      if (list) list.scrollTop = 0;
+      bridgeInner?.querySelectorAll(".app-list").forEach((list) => {
+        list.scrollTop = 0;
+      });
     }
 
     const canAnimate =

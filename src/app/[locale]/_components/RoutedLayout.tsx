@@ -15,7 +15,7 @@ import { SideNav } from "./SideNav";
 import { ThemeToggle } from "./ThemeToggle";
 
 const isBoardPath = (pathname: string) =>
-  pathname === "/" || pathname === "/bridge";
+  pathname === "/" || pathname === "/bridge" || pathname === "/builders";
 
 export function RoutedLayout({ children }: { children: React.ReactNode }) {
   const pathname = usePathname();

@@ -324,12 +324,12 @@ export function initNavGlass(scope: ParentNode): () => void {
   const slider = scope.querySelector(".slider");
   const track = slider?.querySelector(".slider__track");
   const thumb = slider?.querySelector(".slider__thumb");
-  const ink = scope.querySelector("interactive-ink");
+  const inks = [...scope.querySelectorAll("interactive-ink")];
   const cleanSlider = initSlider({
     root,
     slider: slider ?? null,
     track: track ?? null,
-    ink,
+    inks,
     markLayoutDirty: () => {
       layoutDirty = true;
     },
@@ -364,13 +364,13 @@ function initSlider({
   root,
   slider,
   track,
-  ink,
+  inks,
   markLayoutDirty,
 }: {
   root: HTMLElement;
   slider: Element | null;
   track: Element | null;
-  ink: Element | null;
+  inks: Element[];
   markLayoutDirty: () => void;
 }) {
   if (!slider || !(track instanceof HTMLElement)) return () => undefined;
@@ -405,9 +405,11 @@ function initSlider({
   const writeTune = () => {
     root.style.setProperty("--tune", String(value));
     track.setAttribute("aria-valuenow", String(Math.round(clamp(value) * 100)));
-    if (ink && "value" in ink) {
-      (ink as HTMLElement & { value: number }).value = inkValueFor(value);
-    }
+    inks.forEach((ink) => {
+      if ("value" in ink) {
+        (ink as HTMLElement & { value: number }).value = inkValueFor(value);
+      }
+    });
     markLayoutDirty();
     window.dispatchEvent(
       new CustomEvent("inktunechange", { detail: { tune: value } })
@@ -497,7 +499,9 @@ function initSlider({
     apply(target + (wheel.deltaY * deltaMultiplier) / 1200, { animate: true });
   };
 
-  ink?.addEventListener("wheel", onWheel, { passive: false });
+  inks.forEach((ink) => {
+    ink.addEventListener("wheel", onWheel, { passive: false });
+  });
 
   const onPointerDown = (event: Event) => {
     const pointer = event as PointerEvent;
@@ -555,7 +559,9 @@ function initSlider({
   return () => {
     stopSpring();
     dirButtons.forEach((btn) => btn.removeEventListener("click", onDirClick));
-    ink?.removeEventListener("wheel", onWheel);
+    inks.forEach((ink) => {
+      ink.removeEventListener("wheel", onWheel);
+    });
     track.removeEventListener("pointerdown", onPointerDown);
     track.removeEventListener("pointermove", onPointerMove);
     track.removeEventListener("pointerup", endDrag);
