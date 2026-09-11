@@ -2,13 +2,6 @@ import { Metadata } from "next";
 
 import { JsonLd } from "@/components/JsonLd";
 import { PageView } from "@/components/PageView";
-import { newLayoutContainerClasses } from "@/components/styles/container";
-
-import { HomeApps } from "./_components/Home/HomeApps";
-import { HomeSmallTag } from "./_components/Home/HomeSmallTag";
-import { HomeTagLine } from "./_components/Home/HomeTagLine";
-import { HomeTitle } from "./_components/Home/HomeTitle";
-import { HomeTydro } from "./_components/Home/HomeTydro";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://inkonchain.com"),
@@ -51,13 +44,6 @@ export default async function HomePage() {
         }}
       />
       <PageView />
-      <div className={newLayoutContainerClasses()}>
-        <HomeSmallTag />
-        <HomeTitle />
-        <HomeTydro />
-        <HomeApps />
-        <HomeTagLine />
-      </div>
     </>
   );
 }

@@ -69,7 +69,7 @@ export const CookieConsentForm: React.FC<CookieConsentProps> = (props) => {
 
   return (
     <motion.div
-      className="fixed bottom-0 left-0 m-4 max-w-[350px] lg:bottom-1 bg-white dark:bg-blackMagic text-blackMagic dark:text-whiteMagic z-50 flex flex-col rounded-xl overflow-hidden"
+      className="fixed right-0 bottom-0 m-4 max-w-[350px] lg:bottom-1 bg-white dark:bg-blackMagic text-blackMagic dark:text-whiteMagic z-50 flex flex-col rounded-xl overflow-hidden"
       initial={{ y: 20, opacity: 0 }}
       whileInView={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.3, delay: 1 }}

@@ -6,7 +6,6 @@ import { getMessages } from "next-intl/server";
 
 import { ConsentLogger } from "@/components/CookieConsent/ConsentLogger";
 import { CookieConsent } from "@/components/CookieConsent/CookieConsent";
-import { Footer } from "@/components/Footer";
 import { GlobalSvgStuff } from "@/components/icons/GlobalSvgStuff";
 import { ContactUsModal } from "@/components/Modals";
 import { Providers } from "@/components/Providers";
@@ -17,8 +16,6 @@ import { COOKIE_CONSENT } from "@/integrations/consent";
 
 import { inter, plus_jakarta_sans } from "../fonts";
 
-import { LayoutColumns } from "./_components/LayoutColumns";
-import { MainPageBackground } from "./_components/MainPageBackground";
 import { RoutedLayout } from "./_components/RoutedLayout";
 
 const themeClassesMapping: Record<string, string> = {
@@ -52,6 +49,9 @@ export default async function LocaleLayout({
       suppressHydrationWarning
       className={`${inter.variable} ${plus_jakarta_sans.variable} ${themeClasses}`}
       data-version={process.env.GITHUB_SHA?.slice(0, 7)}
+      {...(theme === "dark" || theme === "light"
+        ? { "data-theme": theme }
+        : {})}
     >
       {userHasAcceptedCookiePolicy && (
         <>
@@ -61,12 +61,12 @@ export default async function LocaleLayout({
 
       <meta
         name="theme-color"
-        content="#f0efff"
+        content="#ffffff"
         media="(prefers-color-scheme: light)"
       />
       <meta
         name="theme-color"
-        content="#160f1f"
+        content="#0f0e12"
         media="(prefers-color-scheme: dark)"
       />
 
@@ -77,16 +77,7 @@ export default async function LocaleLayout({
 
             <SiteBanner />
 
-            <RoutedLayout>
-              <div className="relative pt-0 overflow-hidden flex flex-col gap-8 w-full items-center">
-                <div className="flex flex-col w-full items-center min-h-[80vh]">
-                  <LayoutColumns>{children}</LayoutColumns>
-                </div>
-                <Footer />
-              </div>
-
-              <MainPageBackground />
-            </RoutedLayout>
+            <RoutedLayout>{children}</RoutedLayout>
 
             <CookieConsent />
             <ConsentLogger />

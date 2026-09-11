@@ -56,7 +56,43 @@
     "tagLine": "Simplified DeFi for|builders,degens,gigachads,institutions,normies,ALL",
     "cta:exploreApps": "Explore Apps",
     "appsTitle": "Featured apps on Ink",
-    "appsCta": "View all apps"
+    "appsCta": "View all apps",
+    "aboutLabel": "About",
+    "aboutHeadline": "Built by the team that brought you Kraken, home to Ink's DeFi ecosystem, open for trading",
+    "bridgeCta": "Bridge",
+    "docsCta": "Docs",
+    "shipHeadline": "Ship end of day.",
+    "copyCode": "Copy code",
+    "codeStoryLabel": "Launching on Ink",
+    "codeStepBuild": "Build",
+    "codeStepTest": "Test",
+    "codeStepDeploy": "Deploy",
+    "codeStepLive": "Live",
+    "builtOnInk": "Built on Ink",
+    "startedLabel": "Get started",
+    "startedHeadline": "60sec to make the most of INK",
+    "stepBridge": "Bridge from Ethereum",
+    "stepTrade": "Trade trending tokens on Ink",
+    "stepEarn": "Earn Yield and Ink Points",
+    "swapsCta": "Swaps",
+    "earnCta": "Earn Ink Points",
+    "appsLabel": "Apps",
+    "appsHeadline": "Killer apps",
+    "closeApps": "Close apps",
+    "bridgesLabel": "Apps",
+    "bridgesHeadline": "Bridge to Ink",
+    "closeBridge": "Close bridge",
+    "closeDevelopers": "Close developers",
+    "tuneLess": "Less ink and sharper corners",
+    "tuneMore": "More ink and rounder corners",
+    "tuneLabel": "Ink shape and corner radius",
+    "themeLight": "Switch to light mode",
+    "themeDark": "Switch to dark mode",
+    "primaryNav": "Primary",
+    "openMenu": "Open menu",
+    "developersCta": "Developers",
+    "connectCta": "Connect wallet",
+    "opensInNewTab": "Opens in a new tab"
   },
   "Community": {
     "title": "Join the Ink Community",
@@ -94,6 +130,59 @@
   "Builders": {
     "title": "Start building on Ink",
     "description": "Our commitment to builders: Ink will provide you with a world class development environment, complete with the tools, support, and users you need to bring your ideas to life.",
+    "why": {
+      "title": "Build on Ink"
+    },
+    "expectations": {
+      "title": "Our chain"
+    },
+    "stats": {
+      "title": "Ink today",
+      "tvl": "DeFi TVL",
+      "secured": "Value secured",
+      "transactions": "Daily transactions",
+      "blocks": "Block times"
+    },
+    "tools": {
+      "title": "Our toolkit"
+    },
+    "focus": {
+      "title": "Our Focus",
+      "description": "Ink backs builders shaping the future of onchain capital markets — across trading, infra, consumer experiences, and real-world finance.",
+      "defi": {
+        "title": "DeFi & Derivatives",
+        "description": "Lending, AMMs, options, structured products, vaults"
+      },
+      "trading": {
+        "title": "Trading & Infrastructure",
+        "description": "Terminals, bots, dark pools, oracles, analytics, bridge infra"
+      },
+      "prediction": {
+        "title": "Prediction & Onchain Games",
+        "description": "Prediction markets, sports betting, PvP wagers, casino primitives"
+      },
+      "rwa": {
+        "title": "RWA & Institutional Tools",
+        "description": "Tokenized credit, ETFs, reinsurance, treasury & DAO management"
+      },
+      "creator": {
+        "title": "Creator, Social & Loyalty",
+        "description": "Creator monetization, social identity, points & XP systems"
+      },
+      "ai": {
+        "title": "AI, Privacy & Payments",
+        "description": "Agent infra, zk tech, crypto checkout, ticketing, identity"
+      }
+    },
+    "started": {
+      "label": "Get started",
+      "headline": "Deploy on Ink",
+      "stepDocs": "Read the Ink docs",
+      "stepFaucet": "Fund a testnet wallet",
+      "faucetCta": "Faucet",
+      "stepDeploy": "Ship with Foundry and Ink Kit",
+      "deployCta": "Ink Kit"
+    },
     "grants": {
       "title": "Grants",
       "description": "Recognizing Ink builders"
