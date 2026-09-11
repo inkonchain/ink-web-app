@@ -44,7 +44,7 @@
       "imageUrl": "/featured-apps/icons/aleph-cloud.webp",
       "category": ["Infra"],
       "network": "Mainnet",
-      "tags": ["tools", "explorer"],
+      "tags": ["tools"],
       "links": {
         "mainnetWebsite": "https://aleph.cloud/",
         "testnetWebsite": "https://aleph.cloud/",
@@ -323,7 +323,7 @@
       "description": "Eco enables any onchain action to be a simple, one-click send. With Eco, apps can easily accept stablecoins, regardless of the network.",
       "imageUrl": "/featured-apps/icons/eco.webp",
       "category": ["Infra"],
-      "network": "Testnet",
+      "network": "Mainnet",
       "tags": ["cross-chain", "interop", "yield"],
       "links": {
         "mainnetWebsite": "https://eco.com/",
@@ -342,7 +342,7 @@
       "description": "The Eco Portal allows easy stablecoin transfers to Ink with one low fee powered by Eco Routes. See how Eco Routes can help your app quickly accept stablecoins on any connected chain.",
       "imageUrl": "/featured-apps/icons/eco-portal.webp",
       "category": ["Bridge"],
-      "network": "Both",
+      "network": "Mainnet",
       "tags": ["cross-chain", "interop"],
       "links": {
         "mainnetWebsite": "https://portal.eco.com/?dc=INK",
@@ -356,25 +356,6 @@
       }
     },
     {
-      "id": "elementfusion",
-      "name": "ElementFusion",
-      "description": "🌐 Combine, create, collect in a Web3 world! 🔗 Discover new elements and unlock blockchain magic with every fusion. ✨ Merge to make your mark!",
-      "imageUrl": "/featured-apps/icons/elementfusion.webp",
-      "category": ["Social", "Other"],
-      "network": "Mainnet",
-      "tags": ["fun", "nfts"],
-      "links": {
-        "mainnetWebsite": "https://www.elementfusion.tech/",
-        "testnetWebsite": "https://www.elementfusion.tech/",
-        "x": "https://x.com/element_fusion_",
-        "discord": "",
-        "telegram": "https://t.me/ElementFusion",
-        "github": "https://github.com/L-KH/ElementFusion",
-        "farcaster": "",
-        "smartContractUrl": "https://explorer.inkonchain.com/address/0x00002193Ab3f4f00Bb65A5A64A9a6ee768beE60D"
-      }
-    },
-    {
       "id": "envio",
       "name": "Envio",
       "description": "Envio is a modern, multi-chain EVM blockchain indexing framework speed-optimized for querying real-time and historical data.",
@@ -383,8 +364,8 @@
       "network": "Mainnet",
       "tags": ["data"],
       "links": {
-        "mainnetWebsite": "https://docs.envio.dev/docs/HyperIndex/ink",
-        "testnetWebsite": "https://docs.envio.dev/docs/HyperIndex/ink",
+        "mainnetWebsite": "https://envio.dev",
+        "testnetWebsite": "https://envio.dev",
         "x": "https://x.com/envio_indexer",
         "discord": "https://discord.com/invite/envio",
         "telegram": "https://t.me/+5mI61oZibEM5OGQ8",
@@ -404,7 +385,7 @@
       "links": {
         "mainnetWebsite": "https://fireflylabs.app/",
         "testnetWebsite": "https://fireflylabs.app/",
-        "x": "https://x.com/FireflyLabs_App",
+        "x": "https://x.com/FireflyLabs",
         "discord": "https://discord.com/invite/rrFzuqe2RZ",
         "telegram": "https://t.me/FireFly_Echo",
         "github": "https://github.com/firefly-dao",
@@ -438,7 +419,7 @@
       "imageUrl": "/featured-apps/icons/garden.webp",
       "category": ["Bridge", "Infra"],
       "network": "Mainnet",
-      "tags": ["dex", "interop"],
+      "tags": ["cross-chain", "interop"],
       "links": {
         "mainnetWebsite": "https://garden.finance/",
         "testnetWebsite": "https://garden.finance/",
@@ -473,13 +454,13 @@
       "name": "Gem Wallet",
       "description": "Gem Wallet is an open-source and self-custodial crypto wallet that lets you send, receive, swap, use dApps, buy, and stake cryptocurrencies.",
       "imageUrl": "/featured-apps/icons/gem-wallet.webp",
-      "category": ["DeFi"],
+      "category": ["Infra"],
       "network": "Mainnet",
       "tags": ["wallet"],
       "links": {
         "mainnetWebsite": "https://gemwallet.com/",
         "testnetWebsite": "https://gemwallet.com/",
-        "x": "https://x.com/GemWalletApp",
+        "x": "https://x.com/GemWallet",
         "discord": "https://discord.gg/4jpxtwT8r6",
         "telegram": "https://t.me/gemwallet",
         "github": "https://github.com/gemwalletcom",
@@ -627,8 +608,8 @@
       "tags": ["cross-chain", "tools"],
       "links": {
         "mainnetWebsite": "https://app.interport.fi/",
-        "testnetWebsite": "https://x.com/InterportFi",
-        "x": "",
+        "testnetWebsite": "",
+        "x": "https://x.com/InterportFi",
         "discord": "https://discord.com/invite/interport",
         "telegram": "https://t.me/interport_fi",
         "github": "https://github.com/Interport-Finance",
@@ -773,7 +754,7 @@
       "imageUrl": "/featured-apps/icons/monipay.webp",
       "category": ["DeFi"],
       "network": "Mainnet",
-      "tags": ["cross-chain", "domain names", "fun"],
+      "tags": ["tools", "cross-chain"],
       "links": {
         "mainnetWebsite": "https://www.monipay.xyz",
         "testnetWebsite": "https://www.monipay.xyz",
@@ -832,7 +813,7 @@
       "imageUrl": "/featured-apps/icons/nado-explorer.webp",
       "category": ["Explorers", "Other"],
       "network": "Mainnet",
-      "tags": ["tools", "funding", "explorer", "data"],
+      "tags": ["tools", "explorer", "data"],
       "links": {
         "mainnetWebsite": "https://nadoexplorer.com",
         "testnetWebsite": "https://nadoexplorer.com",
@@ -1464,7 +1445,7 @@
       "name": "Zeroway",
       "description": "Simple and cheap bridge using  Polymer, LayerZero and Hyperlane decentralised omnichain technology.",
       "imageUrl": "/featured-apps/icons/zeroway.webp",
-      "category": ["Bridge", "Social", "Infra"],
+      "category": ["Bridge", "Infra"],
       "network": "Mainnet",
       "tags": ["cross-chain"],
       "links": {
