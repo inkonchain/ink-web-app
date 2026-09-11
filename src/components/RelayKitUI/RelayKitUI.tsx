@@ -37,7 +37,7 @@ export const RelayKitUI: React.FC = () => {
   return (
     <div className="flex flex-col gap-4 items-center">
       <div className="flex flex-col gap-4 p-6 pt-5">
-        <div className="flex justify-end items-center h-4">
+        <div className="bridge__history flex justify-end items-center">
           {address && (
             <a
               href={`https://relay.link/transactions?address=${address}`}

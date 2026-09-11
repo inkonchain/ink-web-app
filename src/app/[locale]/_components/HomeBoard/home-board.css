@@ -775,7 +775,8 @@ html[data-home-board] .nav .pill[data-w="docs"] {
   width: 72px;
 }
 html[data-home-board] .nav .pill[data-w="connect"] {
-  width: 135px;
+  width: max-content;
+  min-width: 135px;
 }
 
 @media (max-width: 640px) {
@@ -856,8 +857,10 @@ html[data-home-board] .nav .pill[data-w="connect"] {
     transform: rotate(-45deg);
   }
 
-  html[data-home-board] .nav .pill[data-w] {
+  html[data-home-board] .nav .pill[data-w],
+  html[data-home-board] .nav .pill[data-w="connect"] {
     width: 100%;
+    min-width: 0;
   }
 
   html[data-home-board] .nav[data-no-motion] .nav__menu,
@@ -1340,8 +1343,29 @@ html[data-home-board] .bridge__widget .p-6 {
   gap: 20px;
 }
 
-html[data-home-board] .bridge__widget .h-4:empty {
+html[data-home-board] .bridge__widget .bridge__history {
+  min-height: 32px;
+  height: 32px;
+  overflow: visible;
+}
+
+html[data-home-board] .bridge__widget .bridge__history:empty {
   display: none;
+}
+
+html[data-home-board] .bridge__widget .bridge__history a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  color: var(--text-secondary);
+}
+
+html[data-home-board] .bridge__widget .bridge__history svg {
+  width: 24px;
+  height: 24px;
+  overflow: visible;
 }
 
 html[data-home-board] .bridge__widget,
