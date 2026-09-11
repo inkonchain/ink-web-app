@@ -11,7 +11,6 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 
 import { OnlyWithFeatureFlag } from "@/components/OnlyWithFeatureFlag";
-import { RelayKitUI } from "@/components/RelayKitUI";
 import { useFeatureFlag } from "@/hooks/useFeatureFlag";
 import { useRouterQuery } from "@/hooks/useRouterQuery";
 import { EXTERNAL_LINKS, Link, usePathname, useRouter } from "@/routing";
@@ -495,26 +494,15 @@ export function HomeBoard() {
             inert={!isOverlay}
           >
             <div className="bridge-layer__inner">
-              <section className="col col--bridge" data-name="bridge">
-                <div className="bridge__inner">
-                  <div className="col__top">
-                    <div className="apps__heading">
-                      <span className="pill pill--glass">{t("bridgeCta")}</span>
-                      <OverlayClose label={t("closeBridge")} onClick={goHome} />
-                    </div>
-                  </div>
-                  <div className="bridge__widget">
-                    <RelayKitUI />
-                  </div>
-                </div>
-              </section>
-
               <section className="col col--bridges" data-name="bridges">
                 <div className="bridges__inner">
                   <div className="col__top">
-                    <span className="pill pill--glass">
-                      {t("bridgesLabel")}
-                    </span>
+                    <div className="apps__heading">
+                      <span className="pill pill--glass">
+                        {t("bridgesLabel")}
+                      </span>
+                      <OverlayClose label={t("closeBridge")} onClick={goHome} />
+                    </div>
                     <p className="headline headline--sm headline--narrow">
                       {t("bridgesHeadline")}
                     </p>
