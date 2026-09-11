@@ -161,9 +161,15 @@ html[data-home-board].theme-fallback-transition *::after {
 html[data-home-board] .pill,
 html[data-home-board] .slider__btn,
 html[data-home-board] .nav__logo,
-html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
-html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
-html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"],
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_widget-selector-background,
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_secondary-button-background,
+html[data-home-board]
+  .bridge__widget
+  button[aria-label="Swap Tokens Direction"],
 html[data-home-board] [role="dialog"] input[placeholder^="Search"],
 html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"] {
   --r-max: 19px;
@@ -207,9 +213,15 @@ html[data-home-board] .code,
 html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius,
 html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
 html[data-home-board] .bridge__widget button[aria-label="Swap"],
-html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
-html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
-html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"],
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_widget-selector-background,
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_secondary-button-background,
+html[data-home-board]
+  .bridge__widget
+  button[aria-label="Swap Tokens Direction"],
 html[data-home-board] [role="dialog"] input[placeholder^="Search"],
 html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"] {
   border-radius: min(
@@ -1336,7 +1348,9 @@ html[data-home-board] .bridge-layer[data-mode="builders"] .col--bridges {
 
 html[data-home-board] .bridge-layer:not([data-mode="builders"]) .col--devs,
 html[data-home-board] .bridge-layer:not([data-mode="builders"]) .col--devs-hero,
-html[data-home-board] .bridge-layer:not([data-mode="builders"]) .col--devs-started {
+html[data-home-board]
+  .bridge-layer:not([data-mode="builders"])
+  .col--devs-started {
   display: none;
 }
 
@@ -1655,9 +1669,15 @@ html[data-home-board] .relay-kit-reset img {
 html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius,
 html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
 html[data-home-board] .bridge__widget button[aria-label="Swap"],
-html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
-html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
-html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"],
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_widget-selector-background,
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_secondary-button-background,
+html[data-home-board]
+  .bridge__widget
+  button[aria-label="Swap Tokens Direction"],
 html[data-home-board] [role="dialog"] input[placeholder^="Search"],
 html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"],
 html[data-home-board]
@@ -1684,12 +1704,16 @@ html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"] {
 }
 
 html[data-home-board] [role="dialog"] input[placeholder^="Search"]::placeholder,
-html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"]::placeholder {
+html[data-home-board]
+  [role="dialog"]
+  input[placeholder="Address or ENS"]::placeholder {
   color: var(--text-secondary) !important;
 }
 
 html[data-home-board] [role="dialog"] input[placeholder^="Search"]:focus,
-html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"]:focus {
+html[data-home-board]
+  [role="dialog"]
+  input[placeholder="Address or ENS"]:focus {
   border-color: var(--border-hover) !important;
   box-shadow: none !important;
   outline: none !important;
@@ -1726,9 +1750,15 @@ html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius {
   padding: 20px !important;
 }
 
-html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
-html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
-html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"] {
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_widget-selector-background,
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_secondary-button-background,
+html[data-home-board]
+  .bridge__widget
+  button[aria-label="Swap Tokens Direction"] {
   border: 1px solid var(--border-subtle) !important;
   background: var(--surface-page) !important;
   color: var(--text-primary) !important;
@@ -1740,7 +1770,10 @@ html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]
     transform 140ms var(--ease-out);
 }
 
-html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background * {
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_secondary-button-background
+  * {
   color: var(--text-primary) !important;
 }
 
@@ -1759,16 +1792,26 @@ html[data-home-board] .bridge__widget button[aria-label="Swap"] {
     transform 140ms var(--ease-out);
 }
 
-html[data-home-board] .bridge__widget button[aria-label="Connect wallet"]:active,
+html[data-home-board]
+  .bridge__widget
+  button[aria-label="Connect wallet"]:active,
 html[data-home-board] .bridge__widget button[aria-label="Swap"]:active,
-html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background:active,
-html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background:active,
-html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]:active {
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_widget-selector-background:active,
+html[data-home-board]
+  .bridge__widget
+  button.relay-bg_secondary-button-background:active,
+html[data-home-board]
+  .bridge__widget
+  button[aria-label="Swap Tokens Direction"]:active {
   transform: scale(0.97);
 }
 
 @media (hover: hover) and (pointer: fine) {
-  html[data-home-board] .bridge__widget button[aria-label="Connect wallet"]:hover,
+  html[data-home-board]
+    .bridge__widget
+    button[aria-label="Connect wallet"]:hover,
   html[data-home-board] .bridge__widget button[aria-label="Swap"]:hover,
   html[data-home-board]
     [role="dialog"]:has(input[placeholder="Address or ENS"])
@@ -1776,11 +1819,19 @@ html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]
     background: var(--accent-hover) !important;
   }
 
-  html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background:hover,
-  html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background:hover,
-  html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]:hover,
+  html[data-home-board]
+    .bridge__widget
+    button.relay-bg_widget-selector-background:hover,
+  html[data-home-board]
+    .bridge__widget
+    button.relay-bg_secondary-button-background:hover,
+  html[data-home-board]
+    .bridge__widget
+    button[aria-label="Swap Tokens Direction"]:hover,
   html[data-home-board] [role="dialog"] input[placeholder^="Search"]:hover,
-  html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"]:hover {
+  html[data-home-board]
+    [role="dialog"]
+    input[placeholder="Address or ENS"]:hover {
     border-color: var(--border-hover) !important;
     background: var(--surface-muted) !important;
     filter: none !important;
@@ -1790,20 +1841,34 @@ html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]
 @media (prefers-reduced-motion: reduce) {
   html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
   html[data-home-board] .bridge__widget button[aria-label="Swap"],
-  html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
-  html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
-  html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"] {
+  html[data-home-board]
+    .bridge__widget
+    button.relay-bg_widget-selector-background,
+  html[data-home-board]
+    .bridge__widget
+    button.relay-bg_secondary-button-background,
+  html[data-home-board]
+    .bridge__widget
+    button[aria-label="Swap Tokens Direction"] {
     transition:
       background-color 120ms ease,
       border-color 120ms ease,
       color 120ms ease;
   }
 
-  html[data-home-board] .bridge__widget button[aria-label="Connect wallet"]:active,
+  html[data-home-board]
+    .bridge__widget
+    button[aria-label="Connect wallet"]:active,
   html[data-home-board] .bridge__widget button[aria-label="Swap"]:active,
-  html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background:active,
-  html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background:active,
-  html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]:active {
+  html[data-home-board]
+    .bridge__widget
+    button.relay-bg_widget-selector-background:active,
+  html[data-home-board]
+    .bridge__widget
+    button.relay-bg_secondary-button-background:active,
+  html[data-home-board]
+    .bridge__widget
+    button[aria-label="Swap Tokens Direction"]:active {
     transform: none;
   }
 }

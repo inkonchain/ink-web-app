@@ -1,11 +1,11 @@
 "use client";
 import {
+  type CSSProperties,
   useCallback,
   useEffect,
   useLayoutEffect,
   useMemo,
   useRef,
-  type CSSProperties,
 } from "react";
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
@@ -31,8 +31,8 @@ import {
   builderStats,
 } from "./builder-resources";
 import { CodeStory } from "./CodeStory";
-import { HomeConnectPill } from "./HomeConnectPill";
 import { departureMono, satoshi } from "./home-board-fonts";
+import { HomeConnectPill } from "./HomeConnectPill";
 import { initBoard } from "./init-board";
 import { initGoo } from "./init-goo";
 import { initNavGlass } from "./init-nav-glass";
@@ -500,10 +500,7 @@ export function HomeBoard() {
                   <div className="col__top">
                     <div className="apps__heading">
                       <span className="pill pill--glass">{t("bridgeCta")}</span>
-                      <OverlayClose
-                        label={t("closeBridge")}
-                        onClick={goHome}
-                      />
+                      <OverlayClose label={t("closeBridge")} onClick={goHome} />
                     </div>
                   </div>
                   <div className="bridge__widget">
@@ -515,7 +512,9 @@ export function HomeBoard() {
               <section className="col col--bridges" data-name="bridges">
                 <div className="bridges__inner">
                   <div className="col__top">
-                    <span className="pill pill--glass">{t("bridgesLabel")}</span>
+                    <span className="pill pill--glass">
+                      {t("bridgesLabel")}
+                    </span>
                     <p className="headline headline--sm headline--narrow">
                       {t("bridgesHeadline")}
                     </p>
@@ -570,7 +569,9 @@ export function HomeBoard() {
                 <div className="devs__inner">
                   <div className="col__top">
                     <div className="apps__heading">
-                      <span className="pill pill--glass">{t("developersCta")}</span>
+                      <span className="pill pill--glass">
+                        {t("developersCta")}
+                      </span>
                       <OverlayClose
                         label={t("closeDevelopers")}
                         onClick={goHome}
@@ -589,7 +590,10 @@ export function HomeBoard() {
                     </p>
                     <div className="dev-focus-list">
                       {builderExpectations.map((item) => (
-                        <article className="dev-focus dev-focus--info" key={item.title}>
+                        <article
+                          className="dev-focus dev-focus--info"
+                          key={item.title}
+                        >
                           <span
                             className="dev-focus__icon"
                             style={
@@ -646,7 +650,9 @@ export function HomeBoard() {
                     <p className="headline headline--sm">
                       {tBuilders("focus.title")}
                     </p>
-                    <p className="devs__lede">{tBuilders("focus.description")}</p>
+                    <p className="devs__lede">
+                      {tBuilders("focus.description")}
+                    </p>
                     <div className="dev-focus-list">
                       {builderFocusKeys.map((key) => (
                         <article className="dev-focus" key={key}>
@@ -706,7 +712,9 @@ export function HomeBoard() {
                       <p className="devs__grants-title">
                         {tBuilders("grants.title")}
                       </p>
-                      <p className="devs__lede">{tBuilders("grants.description")}</p>
+                      <p className="devs__lede">
+                        {tBuilders("grants.description")}
+                      </p>
                       <div className="app-list">
                         <a
                           className="app"
@@ -751,7 +759,9 @@ export function HomeBoard() {
                               <div className="app__desc">
                                 <div className="app__desc-clip">
                                   <p className="app__desc-text">
-                                    {tBuilders("applyForRetroGrant.description")}
+                                    {tBuilders(
+                                      "applyForRetroGrant.description"
+                                    )}
                                   </p>
                                 </div>
                               </div>
@@ -765,7 +775,10 @@ export function HomeBoard() {
                 </div>
               </section>
 
-              <section className="col col--devs-hero" data-name="developers-ink">
+              <section
+                className="col col--devs-hero"
+                data-name="developers-ink"
+              >
                 <interactive-ink
                   className="hero-media"
                   value="3"
@@ -785,7 +798,10 @@ export function HomeBoard() {
                 </Link>
               </section>
 
-              <section className="col col--devs-started" data-name="developers-started">
+              <section
+                className="col col--devs-started"
+                data-name="developers-started"
+              >
                 <div className="col__top">
                   <span className="pill pill--glass">
                     {tBuilders("started.label")}
@@ -797,7 +813,9 @@ export function HomeBoard() {
                 <article className="step">
                   <span className="step__n">1</span>
                   <div className="step__body">
-                    <p className="step__label">{tBuilders("started.stepDocs")}</p>
+                    <p className="step__label">
+                      {tBuilders("started.stepDocs")}
+                    </p>
                     <Link
                       className="pill pill--gray"
                       href={EXTERNAL_LINKS.documentation}

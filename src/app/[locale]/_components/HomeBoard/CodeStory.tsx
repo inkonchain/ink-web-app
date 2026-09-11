@@ -64,9 +64,7 @@ export function CodeStory({ snippetId }: { snippetId: string }) {
             </span>
             <span className="code__line">
               {"ink = "}
-              <span className="str">
-                {'"https://rpc-gel.inkonchain.com"'}
-              </span>
+              <span className="str">{'"https://rpc-gel.inkonchain.com"'}</span>
               <span className="code__caret" aria-hidden="true" />
             </span>
           </code>

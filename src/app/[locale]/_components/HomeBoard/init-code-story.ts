@@ -144,16 +144,18 @@ const isBoardOverlayOpen = () =>
   document.documentElement.hasAttribute("data-bridge-closing");
 
 export function initCodeStory(scope: ParentNode): () => void {
-  const stops = [...scope.querySelectorAll<HTMLElement>("[data-code-story]")].map(
-    (root) => initOneCodeStory(root)
-  );
+  const stops = [
+    ...scope.querySelectorAll<HTMLElement>("[data-code-story]"),
+  ].map((root) => initOneCodeStory(root));
   return () => stops.forEach((stop) => stop());
 }
 
 function initOneCodeStory(root: HTMLElement): () => void {
   const code = root.querySelector<HTMLElement>(".code__snippet");
   const copyBtn = root.querySelector<HTMLButtonElement>(".code__copy");
-  const steps = [...root.querySelectorAll<HTMLButtonElement>("[data-code-step]")];
+  const steps = [
+    ...root.querySelectorAll<HTMLButtonElement>("[data-code-step]"),
+  ];
 
   if (!code) return () => undefined;
 
@@ -407,7 +409,11 @@ function initOneCodeStory(root: HTMLElement): () => void {
   const appsObserver = new MutationObserver(onOverlay);
   appsObserver.observe(document.documentElement, {
     attributes: true,
-    attributeFilter: ["data-apps-open", "data-bridge-open", "data-bridge-closing"],
+    attributeFilter: [
+      "data-apps-open",
+      "data-bridge-open",
+      "data-bridge-closing",
+    ],
   });
 
   const io = new IntersectionObserver(

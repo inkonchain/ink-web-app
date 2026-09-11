@@ -98,9 +98,8 @@ export function initBoard(scope: ParentNode): () => void {
     const appsCol = scope.querySelector<HTMLElement>(".col--apps");
     if (appsCol) appsCol.inert = bridgeOpen;
     if (bridgeLayer instanceof HTMLElement) {
-      bridgeLayer.inert = !document.documentElement.hasAttribute(
-        "data-bridge-open"
-      );
+      bridgeLayer.inert =
+        !document.documentElement.hasAttribute("data-bridge-open");
     }
   };
 
@@ -287,9 +286,7 @@ export function initBoard(scope: ParentNode): () => void {
     }
 
     const canAnimate =
-      animate &&
-      !reduceMotion.matches &&
-      bridgeLayer instanceof HTMLElement;
+      animate && !reduceMotion.matches && bridgeLayer instanceof HTMLElement;
 
     if (!canAnimate) {
       html.removeAttribute("data-bridge-closing");
@@ -339,7 +336,9 @@ export function initBoard(scope: ParentNode): () => void {
   const onSetBridge = (event: Event) => {
     const detail = (event as CustomEvent<{ open?: boolean; animate?: boolean }>)
       .detail;
-    setBridgeOpen(Boolean(detail?.open), { animate: detail?.animate !== false });
+    setBridgeOpen(Boolean(detail?.open), {
+      animate: detail?.animate !== false,
+    });
   };
 
   navToggle?.addEventListener("click", onToggleClick);
