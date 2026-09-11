@@ -160,7 +160,12 @@ html[data-home-board].theme-fallback-transition *::after {
 
 html[data-home-board] .pill,
 html[data-home-board] .slider__btn,
-html[data-home-board] .nav__logo {
+html[data-home-board] .nav__logo,
+html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
+html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
+html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"],
+html[data-home-board] [role="dialog"] input[placeholder^="Search"],
+html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"] {
   --r-max: 19px;
 }
 
@@ -176,7 +181,10 @@ html[data-home-board] .theme-control {
 
 html[data-home-board] .step,
 html[data-home-board] .app,
-html[data-home-board] .code {
+html[data-home-board] .code,
+html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius,
+html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
+html[data-home-board] .bridge__widget button[aria-label="Swap"] {
   --r-max: var(--radius-card);
 }
 
@@ -189,7 +197,15 @@ html[data-home-board] .slider,
 html[data-home-board] .theme-control,
 html[data-home-board] .step,
 html[data-home-board] .app,
-html[data-home-board] .code {
+html[data-home-board] .code,
+html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius,
+html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
+html[data-home-board] .bridge__widget button[aria-label="Swap"],
+html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
+html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
+html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"],
+html[data-home-board] [role="dialog"] input[placeholder^="Search"],
+html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"] {
   border-radius: min(
     var(--radius),
     calc(
@@ -1310,6 +1326,200 @@ html[data-home-board] .bridge__widget {
   justify-content: center;
   min-height: 0;
   overflow: auto;
+}
+
+html[data-home-board] .bridge__widget > .flex {
+  width: 100%;
+  max-width: 408px;
+  gap: 20px;
+}
+
+html[data-home-board] .bridge__widget .p-6 {
+  width: 100%;
+  padding: 0;
+  gap: 20px;
+}
+
+html[data-home-board] .bridge__widget .h-4:empty {
+  display: none;
+}
+
+html[data-home-board] .bridge__widget,
+html[data-home-board] .bridge__widget .relay-kit-reset {
+  --relay-kit-font-family: var(--board-font);
+  font-family: var(--board-font);
+}
+
+html[data-home-board] .bridge__widget :where(*),
+html[data-home-board] .relay-kit-reset :where(*) {
+  font-family: var(--board-font, "Satoshi"), sans-serif !important;
+}
+
+html[data-home-board] .bridge__widget img,
+html[data-home-board] .relay-kit-reset img {
+  object-fit: contain !important;
+  object-position: center;
+}
+
+html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius,
+html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
+html[data-home-board] .bridge__widget button[aria-label="Swap"],
+html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
+html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
+html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"],
+html[data-home-board] [role="dialog"] input[placeholder^="Search"],
+html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"],
+html[data-home-board]
+  [role="dialog"]:has(input[placeholder="Address or ENS"])
+  button.relay-bg_primary-button-background {
+  border-radius: min(
+    var(--radius),
+    calc(
+      var(--radius-rest) + var(--round) * (var(--r-max) - var(--radius-rest))
+    )
+  ) !important;
+}
+
+html[data-home-board] [role="dialog"] input[placeholder^="Search"],
+html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"] {
+  border: 1px solid var(--border-subtle) !important;
+  background: var(--surface-page) !important;
+  box-shadow: none !important;
+  color: var(--text-primary) !important;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    box-shadow 160ms ease;
+}
+
+html[data-home-board] [role="dialog"] input[placeholder^="Search"]::placeholder,
+html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"]::placeholder {
+  color: var(--text-secondary) !important;
+}
+
+html[data-home-board] [role="dialog"] input[placeholder^="Search"]:focus,
+html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"]:focus {
+  border-color: var(--border-hover) !important;
+  box-shadow: none !important;
+  outline: none !important;
+}
+
+html[data-home-board] [role="dialog"]:has(input[placeholder="Address or ENS"]) {
+  background: var(--surface-page) !important;
+  border: 1px solid var(--border-subtle) !important;
+  color: var(--text-primary) !important;
+}
+
+html[data-home-board]
+  [role="dialog"]:has(input[placeholder="Address or ENS"])
+  button.relay-bg_primary-button-background {
+  --r-max: 19px;
+  width: 100%;
+  border: 1px solid transparent !important;
+  background: var(--accent) !important;
+  color: var(--on-accent) !important;
+  font-family: var(--board-font, "Satoshi"), sans-serif !important;
+}
+
+html[data-home-board]
+  [role="dialog"]:has(input[placeholder="Address or ENS"])
+  button.relay-bg_primary-button-background:disabled {
+  border: 1px solid var(--border-subtle) !important;
+  background: var(--surface-muted) !important;
+  color: var(--text-secondary) !important;
+}
+
+html[data-home-board] .bridge__widget .relay-rounded_widget-card-border-radius {
+  background: var(--surface-page) !important;
+  border: 1px solid var(--border-subtle) !important;
+  padding: 20px !important;
+}
+
+html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
+html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
+html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"] {
+  border: 1px solid var(--border-subtle) !important;
+  background: var(--surface-page) !important;
+  color: var(--text-primary) !important;
+  filter: none !important;
+  transition:
+    background-color 160ms ease,
+    border-color 160ms ease,
+    color 160ms ease,
+    transform 140ms var(--ease-out);
+}
+
+html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background * {
+  color: var(--text-primary) !important;
+}
+
+html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
+html[data-home-board] .bridge__widget button[aria-label="Swap"] {
+  width: 100%;
+  border: 1px solid transparent !important;
+  background: var(--accent) !important;
+  padding: 20px !important;
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  line-height: 20px !important;
+  color: var(--on-accent) !important;
+  transition:
+    background-color 160ms ease,
+    transform 140ms var(--ease-out);
+}
+
+html[data-home-board] .bridge__widget button[aria-label="Connect wallet"]:active,
+html[data-home-board] .bridge__widget button[aria-label="Swap"]:active,
+html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background:active,
+html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background:active,
+html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]:active {
+  transform: scale(0.97);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  html[data-home-board] .bridge__widget button[aria-label="Connect wallet"]:hover,
+  html[data-home-board] .bridge__widget button[aria-label="Swap"]:hover,
+  html[data-home-board]
+    [role="dialog"]:has(input[placeholder="Address or ENS"])
+    button.relay-bg_primary-button-background:not(:disabled):hover {
+    background: var(--accent-hover) !important;
+  }
+
+  html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background:hover,
+  html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background:hover,
+  html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]:hover,
+  html[data-home-board] [role="dialog"] input[placeholder^="Search"]:hover,
+  html[data-home-board] [role="dialog"] input[placeholder="Address or ENS"]:hover {
+    border-color: var(--border-hover) !important;
+    background: var(--surface-muted) !important;
+    filter: none !important;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html[data-home-board] .bridge__widget button[aria-label="Connect wallet"],
+  html[data-home-board] .bridge__widget button[aria-label="Swap"],
+  html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background,
+  html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background,
+  html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"] {
+    transition:
+      background-color 120ms ease,
+      border-color 120ms ease,
+      color 120ms ease;
+  }
+
+  html[data-home-board] .bridge__widget button[aria-label="Connect wallet"]:active,
+  html[data-home-board] .bridge__widget button[aria-label="Swap"]:active,
+  html[data-home-board] .bridge__widget button.relay-bg_widget-selector-background:active,
+  html[data-home-board] .bridge__widget button.relay-bg_secondary-button-background:active,
+  html[data-home-board] .bridge__widget button[aria-label="Swap Tokens Direction"]:active {
+    transform: none;
+  }
+}
+
+html[data-home-board] .bridge__widget .text-blackMagic\/50,
+html[data-home-board] .bridge__widget .dark\:text-white\/50 {
+  color: var(--text-secondary);
 }
 
 @media (max-width: 1400px) and (min-width: 961px) {
